@@ -1,0 +1,10 @@
+<div class="transaction-type-select">
+	<md-input-container class="md-block">
+		<label>Transaction Type</label>
+		<md-select ng-model="$ctrl.ngModel" name="transtype" required>
+			<md-option ng-repeat="item in $ctrl.transtypes" value="{{item.memo}}">
+				{{item.memo}}
+			</md-option>
+		</md-select>
+	</md-input-container>
+</div>

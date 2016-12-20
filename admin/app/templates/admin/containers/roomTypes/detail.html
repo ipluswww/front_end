@@ -1,0 +1,96 @@
+<div layout="column" id="roomTypesDetail" class="admin-detail">
+    <div class="section-header">
+        <div layout="row" layout-align="start center" >
+            <md-button class="md-fab md-closetbox-fab" aria-label="Back" ng-click="$ctrl.backTo()">
+                <i class="material-icons">keyboard_arrow_left</i>
+                <md-tooltip>Back</md-tooltip>
+            </md-button>
+            <md-button class="md-fab md-closetbox-fab" aria-label="Room Type List" ng-click="$ctrl.backToList()">
+                <i class="material-icons">list</i>
+                <md-tooltip>Room Type List</md-tooltip>
+            </md-button>
+            <a aria-label="Create Room Type" ui-sref="app.admin.roomTypes.new" ui-sref-active="md-closetbox-primary" class="md-link">
+                <i class="material-icons">add</i>
+                Create
+            </a>
+            <a aria-label="Edit Room Type" ui-sref="app.admin.roomTypes.edit({id: $ctrl._id})" ui-sref-active="md-closetbox-primary" ng-if="$ctrl._id" class="md-link">
+                <i class="material-icons">create</i>
+                Edit
+            </a>
+            <md-button aria-label="Delete Room Type" class="md-raised md-closetbox-error" ng-if="$ctrl._id" ng-disabled="!$ctrl.isDeletable()" ng-click="$ctrl.deleteRecord()">
+                <i class="material-icons">delete</i>
+                Delete
+            </md-button>
+        </div>
+    </div>
+
+    <div>
+        <!-- Detail View -->
+        <!-- --------------------------------------------------------------------------------------- -->
+
+        <div ng-if="!$ctrl._edit" class="detail-section">
+            <div layout="row" class="data-row">
+                <span flex="30" class="input-label">Unit</span>
+                <span flex="70" class="static-value">{{ ::$ctrl.data.unit.name }}</span>
+            </div>
+            <div layout="row" class="data-row">
+                <span flex="30" class="input-label">Minimum Points</span>
+                <span flex="70" class="static-value">{{$ctrl.data.minimum }}</span>
+            </div>
+            <div layout="row" class="data-row">
+                <span flex="30" class="input-label">Maximum Points</span>
+                <span flex="70" class="static-value">{{$ctrl.data.maximum }}</span>
+            </div>
+            <div layout="row" class="data-row">
+                <span flex="30" class="input-label">Date Created</span>
+                <span flex="70" class="static-value">{{ ::$ctrl.data.dateCreated | date }}</span>
+            </div>
+            <div layout="row" class="data-row">
+                <span flex="30" class="input-label">Last Updated</span>
+                <span flex="70" class="static-value">{{::$ctrl.data.lastUpdated | date }}</span>
+            </div>
+        </div>
+        <!-- End of Detail View -->
+        <!-- --------------------------------------------------------------------------------------- -->
+
+        <!-- Form -->
+        <!-- --------------------------------------------------------------------------------------- -->
+        <form ng-if="$ctrl._edit" class="md-padding edit-section" name="$ctrl.roomTypesForm">
+            <div layout="column">
+                <div>
+                    <div layout="column">
+                        <md-input-container>
+                            <label>Unit</label>
+                            <md-select ng-model="$ctrl.data.roomUnit" aria-label="Unit" name="unit" placeholder="Unit">
+                                <md-option ng-repeat="inventoryType in $ctrl.unitList" ng-value="inventoryType._id">
+                                    {{inventoryType.name}}
+                                </md-option>
+                            </md-select>
+                        </md-input-container>
+                        <md-input-container>
+                            <label>Minimum Points</label>
+                            <input name="minimum" ng-model="$ctrl.data.minimum" required aria-label="Minimum Points" type="number" />
+                        </md-input-container>
+                        <md-input-container>
+                            <label>Maximum Points</label>
+                            <input name="maximum" ng-model="$ctrl.data.maximum" required aria-label="Maximum Points" type="number" compare-minmax="$ctrl.data.minimum" />
+                            <div ng-messages="$ctrl.roomTypesForm.maximum.$error" ng-show="($ctrl.roomTypesForm.maximum.$error.required || $ctrl.roomTypesForm.maximum.$error.compareMinmax)">
+                                <div ng-message-exp="['required', 'compareMinax']">
+                                    Maximum value should be greater than Minimum
+                                </div>
+                            </div>
+                        </md-input-container>
+                    </div>
+                </div>
+                <div>
+                    <div layout="row" layout-align="end center">
+                        <md-button aria-label="Save Information" class="md-raised md-closetbox-primary" ng-click="$ctrl.saveData()">Save</md-button>
+                        <md-button aria-label="Cancel" class="md-raised md-primary" ng-click="$ctrl.cancelEdit()">Cancel</md-button>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <!-- End of Form -->
+        <!-- --------------------------------------------------------------------------------------- -->
+    </div>
+</div>

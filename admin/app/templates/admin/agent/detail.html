@@ -1,0 +1,173 @@
+<div layout="row" id="agentDetail" layout-fill class="admin-detail">
+    <md-content class="md-whiteframe-2dp normal-padding"  flex>
+        <div layout="column">
+            <div class="section-header">
+                <div layout="row" layout-align="start center" >
+                    <md-button class="md-fab md-closetbox-fab" aria-label="Back" ng-click="$ctrl.backTo()">
+                        <i class="material-icons">keyboard_arrow_left</i>
+                        <md-tooltip>Back</md-tooltip>
+                    </md-button>
+                    <md-button class="md-fab md-closetbox-fab" aria-label="Agent List" ng-click="$ctrl.backToList()">
+                        <i class="material-icons">list</i>
+                        <md-tooltip>Agent List</md-tooltip>
+                    </md-button>
+                    <a aria-label="Create Agent" ui-sref="app.admin.agent.new" ui-sref-active="md-closetbox-primary" class="md-link" ng-if="$ctrl._User.isAllowedEdit()">
+                        <i class="material-icons">add</i>
+                        Create
+                    </a>
+                    <a aria-label="Edit Agent" ui-sref="app.admin.agent.edit({id: $ctrl._id})" ui-sref-active="md-closetbox-primary" ng-if="$ctrl._id && $ctrl._User.isAllowedEdit()" class="md-link">
+                        <i class="material-icons">create</i>
+                        Edit
+                    </a>
+                    <md-button aria-label="Delete Agent" class="md-raised md-closetbox-error" ng-if="$ctrl._id && $ctrl._User.isAllowedEdit()" ng-click="$ctrl.deleteItem()" ng-disabled="!$ctrl.isDeletable()">
+                        <i class="material-icons">delete</i>
+                        Delete
+                    </md-button>
+                </div>
+            </div>
+
+            <div>
+                <!-- Detail View -->
+                <!-- --------------------------------------------------------------------------------------- -->
+
+                <div ng-if="!$ctrl._edit" class="detail-section">
+                    <div layout="row" class="data-row">
+                        <span flex="30" class="input-label">Agent Name</span>
+                        <span flex="70" class="static-value">{{ ::$ctrl.data.name}}</span>
+                    </div>
+                    <div layout="row" class="data-row">
+                        <span flex="30" class="input-label">Phone Number</span>
+                        <span flex="70" class="static-value">{{ ::$ctrl.data.phone}}</span>
+                    </div>
+                    <div layout="row" class="data-row">
+                        <span flex="30" class="input-label">Email</span>
+                        <span flex="70" class="static-value">{{ ::$ctrl.data.email }}</span>
+                    </div>
+                    <h6 class="md-small-padding">Warehouses</h6>
+                    <div layout="row" class="data-row">
+                        <md-table-container ng-if="$ctrl.data.warehouseLocations && $ctrl.data.warehouseLocations.length > 0">
+                            <table md-table md-row-select="false" class="compact-table">
+                                <thead md-head>
+                                <tr md-row>
+                                    <th md-column>Warehouse Location</th>
+                                    <th md-column class="small-column small-padding">Handling Rate</th>
+                                    <th md-column class="small-column small-padding">Store Rate</th>
+                                    <th md-column class="small-column small-padding">Labor Rate 1 men</th>
+                                    <th md-column class="small-column small-padding">2 men / 2 hours</th>
+                                    <th md-column class="small-column small-padding">2 men / additional hours</th>
+                                    <th md-column class="small-column small-padding">3 men / 2 hours</th>
+                                    <th md-column class="small-column small-padding">3 men / additional hours</th>
+                                    <th md-column class="small-column small-padding">4 men / 2 hours</th>
+                                    <th md-column class="small-column small-padding">4 men / additional hours</th>
+                                </tr>
+                                </thead>
+                                <tbody md-body>
+                                <tr md-row ng-repeat="warehouse in $ctrl.data.warehouseLocations">
+                                    <td md-cell><a ui-sref="app.admin.warehouse.detail({id: warehouse._id})">{{warehouse.location.coordinate.lat}}, {{warehouse.location.coordinate.lng}}, {{warehouse.location.zipCode}}, {{warehouse.location.address}}</a></td>
+                                    <td md-cell class="small-padding" ng-click="$ctrl.editCellValue($event, warehouse, 'handlingRate', 'handling rate')">{{warehouse.handlingRate}}</td>
+                                    <td md-cell class="small-padding" ng-click="$ctrl.editCellValue($event, warehouse, 'storeRate', 'store rate')">{{warehouse.storeRate}}</td>
+                                    <td md-cell class="small-padding" ng-click="$ctrl.editCellValue($event, warehouse, 'laborRate_1m', 'one man labor rate')">{{warehouse.laborRate_1m}}</td>
+                                    <td md-cell class="small-padding" ng-click="$ctrl.editCellValue($event, warehouse, 'laborRate_2m_2h', 'labor rate for two men/two hours')">{{warehouse.laborRate_2m_2h}}</td>
+                                    <td md-cell class="small-padding" ng-click="$ctrl.editCellValue($event, warehouse, 'laborRate_2m_ah', 'labor rate for two men/additional hour')">{{warehouse.laborRate_2m_ah}}</td>
+                                    <td md-cell class="small-padding" ng-click="$ctrl.editCellValue($event, warehouse, 'laborRate_3m_2h', 'labor rate for three men/two hours')">{{warehouse.laborRate_3m_2h}}</td>
+                                    <td md-cell class="small-padding" ng-click="$ctrl.editCellValue($event, warehouse, 'laborRate_3m_ah', 'labor rate for three men/additional hour')">{{warehouse.laborRate_3m_ah}}</td>
+                                    <td md-cell class="small-padding" ng-click="$ctrl.editCellValue($event, warehouse, 'laborRate_4m_2h', 'labor rate for four men/two hours')">{{warehouse.laborRate_4m_2h}}</td>
+                                    <td md-cell class="small-padding" ng-click="$ctrl.editCellValue($event, warehouse, 'laborRate_4m_ah', 'labor rate for four men/additional hour')">{{warehouse.laborRate_4m_ah}}</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </md-table-container>
+                        <div ng-if="!$ctrl.data.warehouseLocations || $ctrl.data.warehouseLocations.length < 1">
+                            No warehouse yet
+                        </div>
+                    </div>
+
+                </div>
+                <!-- End of Detail View -->
+                <!-- --------------------------------------------------------------------------------------- -->
+
+                <!-- Form -->
+                <!-- --------------------------------------------------------------------------------------- -->
+                <form ng-if="$ctrl._edit" class="md-padding edit-section" name="$ctrl.agentForm">
+                    <div layout="column">
+                        <div>
+                            <div layout="column">
+                                <md-input-container>
+                                    <label>Agent Name</label>
+                                    <input name="name" ng-model="$ctrl.data.name" required aria-label="Agent Name" ng-minlength="1"  ng-change="$ctrl.checkDuplication()" ng-model-options="{debounce: 1000}" />
+                                    <div ng-messages="$ctrl.agentForm.name.$error" ng-show="$ctrl.agentForm.name.$touched && $ctrl.agentForm.name.$error.server">
+                                        <div ng-message-exp="['server']">
+                                            The name is invalid, it already exists.
+                                        </div>
+                                    </div>
+                                </md-input-container>
+
+                                <md-input-container>
+                                    <label>Phone Number</label>
+                                    <input ng-model="$ctrl.data.phone" required aria-label="Phone" ng-pattern="/^(([(][0-9]{3}[)])|([0-9]{3}))[- ]?[0-9]{3}[- ]?[0-9]{4}$/" />
+                                </md-input-container>
+                                <md-input-container>
+                                    <label>Email</label>
+                                    <input ng-model="$ctrl.data.email" required aria-label="Email" type="email" />
+                                </md-input-container>
+                                <h6>Warehouses</h6>
+                                <div>
+                                    <md-table-container ng-if="$ctrl.data.warehouseLocations && $ctrl.data.warehouseLocations.length > 0">
+                                        <table md-table md-row-select="false" class="compact-table">
+                                            <thead md-head>
+                                            <tr md-row>
+                                                <th md-column>Warehouse Location</th>
+                                                <th md-column class="small-column small-padding">Handling Rate</th>
+                                                <th md-column class="small-column small-padding">Store Rate</th>
+                                                <th md-column class="small-column small-padding">Labor Rate 1 men</th>
+                                                <th md-column class="small-column small-padding">2 men / 2 hours</th>
+                                                <th md-column class="small-column small-padding">2 men / additional hours</th>
+                                                <th md-column class="small-column small-padding">3 men / 2 hours</th>
+                                                <th md-column class="small-column small-padding">3 men / additional hours</th>
+                                                <th md-column class="small-column small-padding">4 men / 2 hours</th>
+                                                <th md-column class="small-column small-padding">4 men / additional hours</th>
+                                                <th md-column class="small-column small-padding">UNASSOCIATE</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody md-body>
+                                            <tr md-row ng-repeat="warehouse in $ctrl.data.warehouseLocations">
+                                                <td md-cell><a ui-sref="app.admin.warehouse.detail({id: warehouse._id})">{{warehouse.location.coordinate.lat}}, {{warehouse.location.coordinate.lng}}, {{warehouse.location.zipCode}}, {{warehouse.location.address}}</a></td>
+                                                <td md-cell class="small-padding" ng-click="$ctrl.editCellValue($event, warehouse, 'handlingRate', 'handling rate')">{{warehouse.handlingRate}}</td>
+                                                <td md-cell class="small-padding" ng-click="$ctrl.editCellValue($event, warehouse, 'storeRate', 'store rate')">{{warehouse.storeRate}}</td>
+                                                <td md-cell class="small-padding" ng-click="$ctrl.editCellValue($event, warehouse, 'laborRate_1m', 'one man labor rate')">{{warehouse.laborRate_1m}}</td>
+                                                <td md-cell class="small-padding" ng-click="$ctrl.editCellValue($event, warehouse, 'laborRate_2m_2h', 'labor rate for two men/two hours')">{{warehouse.laborRate_2m_2h}}</td>
+                                                <td md-cell class="small-padding" ng-click="$ctrl.editCellValue($event, warehouse, 'laborRate_2m_ah', 'labor rate for two men/additional hour')">{{warehouse.laborRate_2m_ah}}</td>
+                                                <td md-cell class="small-padding" ng-click="$ctrl.editCellValue($event, warehouse, 'laborRate_3m_2h', 'labor rate for three men/two hours')">{{warehouse.laborRate_3m_2h}}</td>
+                                                <td md-cell class="small-padding" ng-click="$ctrl.editCellValue($event, warehouse, 'laborRate_3m_ah', 'labor rate for three men/additional hour')">{{warehouse.laborRate_3m_ah}}</td>
+                                                <td md-cell class="small-padding" ng-click="$ctrl.editCellValue($event, warehouse, 'laborRate_4m_2h', 'labor rate for four men/two hours')">{{warehouse.laborRate_4m_2h}}</td>
+                                                <td md-cell class="small-padding" ng-click="$ctrl.editCellValue($event, warehouse, 'laborRate_4m_ah', 'labor rate for four men/additional hour')">{{warehouse.laborRate_4m_ah}}</td>
+                                                <td md-cell class="small-padding">
+                                                    <md-button ng-click="$ctrl.unassociate(warehouse)" class="md-raised md-closetbox-error">Un-Associate</md-button>
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </md-table-container>
+                                    <p ng-if="!$ctrl.data.warehouseLocations || $ctrl.data.warehouseLocations.length < 1">
+                                        No warehouse yet
+                                    </p>
+                                    <p>
+                                        <md-button class="md-raised md-primary" ng-click="$ctrl.openWarehouseModal()">Associate warehouse</md-button>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div layout="row" layout-align="end center">
+                                <md-button aria-label="Save Information" class="md-raised md-closetbox-primary" ng-click="$ctrl.saveData()">Save</md-button>
+                                <md-button aria-label="Cancel" class="md-raised md-primary" ng-click="$ctrl.cancelEdit()">Cancel</md-button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <!-- End of Form -->
+                <!-- --------------------------------------------------------------------------------------- -->
+            </div>
+        </div>
+    </md-content>
+</div>

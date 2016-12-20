@@ -1,0 +1,22 @@
+<div class = "requested-dates-picker" layout="column">
+	<div layout="row" ng-repeat="item in $ctrl.dates" class="date-row">
+		<div flex="60">
+			<md-datepicker ng-model="item.date" md-placeholder="Date" ng-change="$ctrl.select()"></md-datepicker>
+		</div>
+		<div flex="25" flex-offset="5" >
+			<md-select ng-model="item.hh" md-on-close="$ctrl.select()" aria-label="AM/PM">
+				<md-option value="0">AM</md-option>
+				<md-option value="12">PM</md-option>
+			</md-select>
+		</div>
+		<div flex="5" flex-offset="5" class="close">
+			<i class="material-icons" ng-click="$ctrl.remove($index)">close</i>
+		</div>
+	</div>
+	<div ng-show="$ctrl.dates.length < 3" class="date-new">
+		<a ng-click="$ctrl.addNew()">
+			<i class="material-icons">add</i>
+			<span>New</span>
+		</a>
+	</div>
+</div>

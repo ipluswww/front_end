@@ -1,0 +1,92 @@
+@import '../variables/index';
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.mdl-layout {
+  min-height: 100%;
+  flex-direction: column;
+  display: flex;
+  position: relative;
+}
+
+.content-wrapper {
+  flex: 1;
+  padding-top: 35px;
+}
+
+
+md-content.page-content {
+  margin-left: 60px;
+  width: 100%;
+  background-color: $grayBg1;
+}
+
+
+md-content.full {
+  margin-left: 0px;
+}
+
+.normal-padding {
+  padding: 20px;
+}
+
+header {
+  color: $thirdary;
+  position: relative;
+  z-index: 50;
+  padding: 0 10px;
+  .material-icons {
+    vertical-align: middle;
+  }
+
+}
+
+
+header {
+  height: 40px;
+  /* The mid section where image ad application name exists */
+  .app-name {
+    img, span {
+      display: inline-block;
+      vertical-align: middle;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    img {
+      max-height:30px;
+      margin-right: 7px;
+    }
+
+  } /*/.app-name  */
+
+  md-menu {
+    padding: 0;
+  }
+
+  .md-username {
+    margin-right: 7px;
+  }
+}
+
+
+
+footer {
+  padding: 16px 32px;
+  background: $thirdary;
+  font-size: 14px;
+  color: $white;
+  position: relative;
+  z-index: 10;
+  .logo-font {
+    margin-right: 20px;
+    color: $white;
+    text-decoration: none;
+  }
+}

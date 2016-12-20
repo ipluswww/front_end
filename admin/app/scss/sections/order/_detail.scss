@@ -1,0 +1,424 @@
+.header {
+    md-input-container {
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+}
+.inventory-row {
+    .bordered {
+        padding: 5px;
+        margin-left: 10px;
+        margin-right: 10px;
+        line-height: 24px;
+        font-size: 14px;
+        border: 1px solid $grayColor2;
+    }
+    i {
+        cursor: pointer;
+        line-height: 40px;
+    }
+    .name {
+        width: 200px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    .label {
+        width: 200px;
+    }
+    .content {
+        width: 200px;
+    }
+    input {
+        width: 50px;
+        padding: 5px 10px;
+        line-height: 24px;
+        margin-right: 10px;
+        margin-left: 10px;
+    }
+    .swap-inventory {
+        color: $secondary;
+        &:disabled {
+            color: $grayColor2;
+        }
+    }
+    .remove-inventory {
+        background: $closetboxRed;
+        color: white;
+        line-height: 35px;
+        height: 35px;
+        width: 35px;
+        text-align: center;
+        margin-top: 0px;
+        margin-left: 10px;
+        border-radius: 3px;
+    }
+} /* /.inventory-row */
+
+.space-price-display, .item-price-display {
+    span {
+        padding-top: 10px;
+        padding-bottom: 10px;
+        &.component-title, &.price {
+            font-weight: 700;
+        }
+        &.price {
+            margin-left: 10px;
+            span {
+                display: block;
+                padding: 0;
+            }
+        }
+        &.space, &.items {
+            border: 1px solid $grayColor2;
+            border-radius: 5px;
+            text-align: center;
+            max-height:38px;
+        }
+        &.space {
+            padding:0;
+
+            md-select {
+                margin:0;
+
+                md-select-value {
+                    border-bottom-width: 0;
+                    span {
+                        padding:0;
+                    }
+                }
+
+                &[disabled]{
+                    md-select-value {
+                        background-image:none;
+
+                        ._md-select-icon{
+                            display:none;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.space-price-display {
+    md-card {
+        margin-left:0;
+        margin-right:0;
+    }
+}
+
+.item-price-display {
+    md-card {
+        margin-right:0;
+    }
+}
+
+.order-detail  {
+
+    // page title
+    h3 span {
+        color: $primary;
+    }
+}
+
+.display-unit {
+    cursor: pointer;
+    outline: none;
+    .layout-row {
+        background: transparent;
+        font-size: 14px;
+    }
+    &.active .layout-row {
+        background: #95FFD5;
+    }
+}
+
+.filter-panel {
+    margin-top: 10px;
+    .filter-item {
+        text-align: center;
+    }
+    i {
+        cursor: pointer;
+        outline: none;
+        color: $grayColor1;
+        &.active {
+            color: $secondary;
+        }
+        &.disabled {
+            cursor:default;
+        }
+    }
+} /* /.filter-panel */
+
+/* Main body part */
+.available-inventories-list,
+.selectable-inventory-list {
+
+    .warehouse-location {
+        padding:2px;
+    }
+
+    ul {
+        margin-top:5px;
+        list-style: none;
+        padding-left: 0;
+        li {
+            cursor: pointer;
+            padding: 5px;
+            border-bottom-style:solid;
+            border-bottom-width: 1px;
+            border-bottom-color: $grayColor1;
+
+            &:first-child {
+                border-top-style:solid;
+                border-top-width: 1px;
+                border-top-color: $grayColor1;
+            }
+
+            &.active {
+                background: $grayBg1;
+            }
+        }
+    }
+}
+
+.selectable-inventory-list {
+    ul {
+        margin-top: 0;
+        li {
+            &:first-child {
+                border-top-style: none !important;
+
+            }
+        }
+    }
+}
+
+.selectable-inventory-list,
+.selected-inventory-list,
+.available-inventories-list,
+.selectable-inventory-list,
+.delivery-items-list {
+    overflow-y: scroll;
+    border: 1px solid $grayColor2;
+    height: 400px;
+    max-height:400px;
+    font-size:14px;
+}
+
+.available-inventories-list {
+    max-height: 398px !important;
+}
+
+.delivery-items-list,
+.selected-inventory-list {
+    .container-unit {
+        border-bottom: 1px solid $grayBg1;
+        padding-top:5px;
+
+        .type-icon {
+            color: $secondary;
+        }
+        input, span {
+            margin-bottom: 5px;
+            line-height: 18px;
+            height: 30px;
+        }
+
+        md-icon {
+            margin-bottom: 5px;
+            line-height: 18px;
+            height: 30px;
+        }
+
+        .value-box {
+            height: 35px;
+            line-height: 35px;
+            padding-left: 5px;
+            padding-right: 5px;
+        }
+        .icon {
+            width: 30px;
+            height: 30px;
+            border-radius: 3px;
+            text-align: center;
+            line-height: 30px;
+            cursor: pointer;
+        }
+        .remove.error {
+            background: $closetboxRed;
+            color: white;
+
+            &.disabled {
+                color: $grayColor1;
+            }
+        }
+    } /* /.container-unit */
+} /* /.delivery-items-list */
+.jump-to-inventory {
+    md-input-container {
+        margin:0;
+        margin-bottom:-21px;
+    }
+}
+.inventory-picture-modal {
+    height: 400px;
+    width: 500px;
+    .drop-box {
+        background: $grayBg2;
+        border: 5px dashed $grayColor2;
+        width: 170px;
+        text-align: center;
+        padding: 50px 10px;
+        margin-left: 10px;
+        &.accept {
+            border-color: $green;
+        }
+        &.drop-err {
+            border-color: $inputError;
+        }
+    }
+    ul {
+        height: 100px;
+        list-style: none;
+        li {
+            margin-left: 20px;
+            margin-right: 20px;
+            width: 50px;
+            max-height: 100px;
+            float: left;
+        }
+    }
+} /* /.inventory-picture-modal */
+
+.display-unit {
+    &:not(.disabled) {
+        cursor: pointer;
+        outline: none;
+    }
+
+
+    .layout-row {
+        background: transparent;
+        font-size: 14px;
+    }
+    &.active {
+        background: #95FFD5;
+    }
+}
+
+
+.search-input {
+    md-input-container {
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+}
+
+/* Bottom Button row */
+.button-row {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.section-header {
+
+    md-input-container {
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+
+
+    .lookup-component {
+        padding-right: 60px;
+        border-bottom: none;
+
+        .action {
+            line-height: 40px;
+            cursor: pointer;
+        }
+        .static-value {
+            border-bottom: 1px dashed $grayColor2;
+            line-height: 40px;
+            height: 40px;
+            margin-right: -10%;
+        }
+    }
+
+    .static-label {
+        margin-top: 15px;
+        line-height: 40px;
+    }
+
+}
+// refresh icon
+a.refresh-icon {
+    cursor: pointer;
+    i.material-icons {
+        font-size: 48px;
+    }
+}
+
+.order-detail--customer-name {
+    margin-left: -20px;
+}
+
+.inventory-filter {
+    margin-top:38px;
+
+    .filter-panel {
+        .filter-item {
+            text-align: center;
+        }
+        i {
+            color: $grayColor1;
+
+            &:not(.disabled) {
+                cursor: pointer;
+                outline: none;
+            }
+
+            &.active {
+                color: $secondary;
+            }
+        }
+    }
+}
+.as-sortable-item-handle.disabled {
+    cursor: pointer !important;
+}
+
+.inventory-to-capacity-display {
+    padding-right:3px;
+    margin-top:-3px;
+
+    md-card {
+        margin-top:0;
+        margin-left:0;
+        margin-right:0;
+        max-height:32px;
+    }
+
+    .inventory-to-capacity-display--ratio-label{
+        font-weight:700;
+        margin-right:5px;
+    }
+}
+.currently-stored-count {
+    padding-right:3px;
+    margin-bottom:-3px;
+
+    md-card {
+        margin-bottom:0;
+        margin-left:0;
+        margin-right:0;
+        max-height:32px;
+    }
+
+    .currently-stored-count--display-label{
+        font-weight:700;
+        margin-right:5px;
+    }
+}

@@ -1,0 +1,21 @@
+@import "../variables/colors.scss";
+
+.order-billing-table {
+    border: 1px solid $grayColor2;
+    border-radius: 5px;
+    overflow: hidden;
+    .info-list {
+        padding: 10px 20px;
+        line-height: 24px;
+        .info-row {
+            label {
+                font-weight: 700;
+                padding-right: 20px;
+            }
+        }
+    }
+    md-table-container {
+        border-top: 1px solid $grayColor2;
+        max-height: 300px;
+    }
+}

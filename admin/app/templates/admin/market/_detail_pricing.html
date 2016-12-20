@@ -1,0 +1,13 @@
+<section class="market-detail-pricing">
+    <div ng-if="$ctrl._edit == false">
+        <nvd3 options="$ctrl.options" data="$ctrl.pricingData" class="with-3d-shadow with-transitions"></nvd3>
+    </div>
+    <div ng-if="$ctrl._edit">
+        <md-select ng-model="$ctrl.selectedRevision" ng-change="$ctrl.revisionChange($ctrl.selectedRevision)">
+            <md-option ng-repeat="pricing in $ctrl.pricingHistoricalData" value="{{pricing.revision}}" >
+                {{pricing.revision}}
+            </md-option>
+        </md-select>
+        <textarea name="pricesData" ng-model="$ctrl.pricesData" rows="20" ng-list="&#10;" ng-trim="false"></textarea>
+    </div>
+</section>

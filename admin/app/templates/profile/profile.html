@@ -1,0 +1,162 @@
+<!-- TODO: Add validations -->
+<div layout="row" id="profile" layout-fill ng-cloak class="profile-form">
+    <md-content class="md-whiteframe-2dp normal-padding"  flex>
+        <h3>Profile</h3>
+        <div layout="row">
+            <div flex="45">
+                <form name="profileForm">
+                    <div layout="row" class="input-row">
+                        <span flex="40" class="input-label">Full Name</span>
+                        <md-input-container flex="60">
+                            <input ng-model="$ctrl.user.fullName" minlength="2" required aria-label="Full Name" name="fullname" />
+                            <div ng-messages="profileForm.fullname.$error" ng-show="(profileForm.fullname.$error.required || profileForm.fullname.$error.minlength)">
+                                <div ng-message-exp="['required', 'minlength']">
+                                    Must be at least 2 characters long.
+                                </div>
+                            </div>
+                        </md-input-container>
+                    </div>
+                    <div layout="row" class="data-row">
+                        <span flex="40" class="input-label">Email</span>
+                        <span flex="60" class="static-value" ng-bind="::$ctrl.user.username"></span>
+                    </div>
+                    <div layout="row" class="data-row">
+                        <span flex="40" class="input-label">Phone Number</span>
+                        <cb-phone-input cb-number="$ctrl.user.mobile" cb-required="true" flex="60">
+                        </cb-phone-input>
+                    </div>
+                    <div layout="row" class="data-row">
+                        <span flex="40" class="input-label">My Timezone</span>
+                        <md-input-container flex="60">
+                            <md-select ng-model="$ctrl.user.timezone" aria-label="timezone" name="timezone" required>
+                                <md-option ng-repeat="zone in $ctrl.timezones" ng-value="zone.hour">
+                                    {{zone.name}}
+                                </md-option>
+                            </md-select>
+                        </md-input-container>
+                    </div>
+                    <div layout="row" class="data-row">
+                        <span flex="40" class="input-label">Receive Emails</span>
+                        <md-switch flex="60" ng-model="$ctrl.user.receiveEmail" aria-label="Receive Email Notifications">
+                        </md-switch>
+                    </div>
+                    <div layout="row" class="data-row">
+                        <span flex="40" class="input-label">Receive SMS</span>
+                        <md-switch flex="60" ng-model="$ctrl.user.sms" aria-label="Receive SMS">
+                        </md-switch>
+                    </div>
+
+                    <div layout="row" class="data-row">
+                        <span flex="40" class="input-label">User Since</span>
+                        <span flex="60" class="static-value" ng-bind="::$ctrl.user.dateCreated | date:'short'"></span>
+                    </div>
+
+                    <div layout="row" class="data-row">
+                        <span flex="40" class="input-label">Profile Updated</span>
+                        <span flex="60" class="static-value" ng-bind="$ctrl.user.lastUpdated | date:'short'"></span>
+                    </div>
+
+
+                    <!-- Password Form -->
+                    <!----------------------------------------------------------------------------------------------------->
+                    <div layout="column" class="data-row">
+                        <div flex ng-hide="$ctrl.showPasswordForm">
+                            <div layout="row">
+                                <md-button flex="50" aria-label="Change Password" class="md-raised md-primary" ng-click="$ctrl.showPasswordForm = true">Change Password</md-button>
+                            </div>
+                        </div>
+                        <div class="password-form" ng-show="$ctrl.showPasswordForm">
+                            <div layout="column">
+                                <md-input-container>
+                                    <label>New Password</label>
+                                    <input ng-model="$ctrl.user.newpassword" type="password" name="newPassword" ng-required="$ctrl.showPasswordform" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" />
+                                    <div ng-messages="profileForm.newPassword.$error" ng-show="profileForm.newPassword.$touched && (profileForm.newPassword.$error.pattern || profileForm.newPassword.$error.required)">
+                                        <div ng-message-exp="['required', 'pattern']">
+                                            Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters.
+                                        </div>
+                                    </div>
+                                </md-input-container>
+                                <md-input-container>
+                                    <label>Repassword</label>
+                                    <input ng-model="$ctrl.user.repassword" type="password" name="rePassword" compare-to="$ctrl.user.newpassword" ng-required="$ctrl.showPasswordform" />
+                                    <div ng-messages="profileForm.rePassword.$error" ng-show="profileForm.rePassword.$touched && (profileForm.rePassword.$error.required || profileForm.rePassword.$error.compareTo)">
+                                        <div ng-message-exp="['required', 'compareTo']">
+                                            Password should match
+                                        </div>
+                                    </div>
+                                </md-input-container>
+                                <div>
+                                    <div layout="row">
+                                        <md-button ng-disabled="profileForm.newPassword.$invalid || profileForm.rePassword.$invalid" flex="40" aria-label="Update Password" class="md-raised md-closetbox-primary" ng-click="$ctrl.updatePassword()">Update Password</md-button>
+                                        <md-button flex="40" aria-label="Cancel" class="md-raised md-primary" ng-click="$ctrl.resetPasswordForm()">Cancel</md-button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!----------------------------------------------------------------------------------------------------->
+                    <div layout="row" class="button-row">
+                        <div flex="20" flex-offset="25">
+                            <div layout>
+                                <md-button ng-disabled="profileForm.timezone.$invalid || profileForm.fullname.$invalid || profileForm.mobile.$invalid" flex flex aria-label="Update" class="md-raised md-closetbox-primary" type="submit" ng-click="$ctrl.save()">Update</md-button>
+                            </div>
+                        </div>
+                        <div flex="20" flex-offset="10">
+                            <div layout>
+                                <md-button flex flex aria-label="Update" class="md-raised md-primary" type="reset" ng-click="$ctrl.postFetch()">Cancel</md-button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+
+
+
+            <!-- Right hand side: System Role, markets and warehouses information panel -->
+            <!----------------------------------------------------------------------------------------------------->
+            <div flex="50" flex-offset="5" class="information-panel">
+                <md-content layout="column">
+                    <h6>System Role:</h6>
+                    <md-chips ng-model="$ctrl.user.roles" readonly="true">
+                        <md-chip-template ng-bind="::$chip"></md-chip-template>
+                    </md-chips>
+                </md-content>
+                <md-content layout="column">
+                    <h6>Associated Agent:</h6>
+                    <div>
+                        <p>{{ $ctrl.user.agent.name || "No Agent Yet!" }}</p>
+                        <md-button flex flex aria-label="Associate Agent" 
+                            class="md-raised md-closetbox-primary" type="associate agent"
+                            ng-disabled="!$ctrl.canAssociateAgent()" 
+                            ng-click="$ctrl.openAgentModal()">Associate Agent</md-button>
+                    </div>
+                </md-content>
+                <md-content layout="column">
+                    <h6>Market Restrictions:</h6>
+                    <div ng-show="::$ctrl.user.allMarkets" class="restrictions-label">No Restriction</div>
+                    <ul ng-if="!$ctrl.user.allMarkets && $ctrl.user.markets.length > 0">
+                        <li ng-repeat="market in $ctrl.user.markets" ng-bind="::market.name"></li>
+                    </ul>
+                    <div ng-if="!$ctrl.user.allMarkets && $ctrl.user.markets.length == 0">
+                        No Market Access Allowed
+                    </div>
+                </md-content>
+                <md-content layout="column">
+                    <h6>Warehouse Restrictions:</h6>
+                    <div ng-show="::$ctrl.user.allWarehouses" class="restrictions-label">No Restriction</div>
+                    <ul ng-if="!$ctrl.user.allWarehouses && $ctrl.user.warehouseLocation.length > 0">
+                        <li ng-repeat="house in $ctrl.user.warehouseLocation">
+                            {{ ::house.location.coordinate.lat }}, {{ ::house.location.coordinate.lng }}, {{ ::house.location.address }}, {{ ::house.location.zipCode }}, {{ ::house.agentName }}, {{ ::house.location.phone }}
+                        </li>
+                    </ul>
+                    <div ng-if="!$ctrl.user.allWarehouses && $ctrl.user.warehouseLocation.length == 0">
+                        No Warehouse Access Allowed
+                    </div>
+                </md-content>
+            </div>
+            <!----------------------------------------------------------------------------------------------------->
+        </div> <!-- / layout-row -->
+
+    </md-content>
+</div>

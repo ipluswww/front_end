@@ -1,0 +1,43 @@
+@import 'variables/index';
+
+body, md-content {
+  color: $thirdary;
+}
+
+a {
+  text-decoration: none;
+}
+
+//------------------------------------------------------------------------------
+.text-center {
+  text-align: center !important;
+}
+//------------------------------------------------------------------------------
+
+
+a.main-link-color {
+  color: $primary;
+  &:hover {
+    color: $primary-hover;
+  }
+}
+
+
+.md-link.md-link-back {
+  cursor: pointer;
+}
+
+
+
+// TODO need to move to right file
+.information-panel {
+    md-content {
+        margin-bottom: 20px;
+    }
+    h6 {
+        margin-top: 0px;
+        font-size: 1rem;
+        margin-bottom: 10px;
+    }
+}
+

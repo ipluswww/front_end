@@ -1,0 +1,206 @@
+<div layout="row" id="logistics-overview" layout-fill>
+	<md-content class="md-whiteframe-2dp normal-padding" flex>
+		<h3>Overview</h3>
+		<div layout="column">
+			<div class="section-header">
+                <div layout="row">
+                    <md-input-container flex="40" class="search-container">
+                        <md-icon class="material-icons">search</md-icon>
+                        <input type="text" ng-model="$ctrl.query.search" placeholder="search" my-enter="$ctrl.onSearch()" ng-change="$ctrl.onSearch()" ng-model-options="{debounce: 1000}"/>
+                    </md-input-container>
+                    <div flex-offset="15" flex="45" layout="row">
+                        <md-datepicker ng-model="$ctrl.selectedDate" md-placeholder="Select a date"></md-datepicker>
+                    </div>
+                </div>
+            </div>
+			<div layout="row" class="data-row">
+				<div flex="80">
+					<ui-gmap-google-map center="$ctrl.map.center" zoom="$ctrl.map.zoom" options="$ctrl.map.options" control="$ctrl.map.control" ng-if="$ctrl.map">
+						<ui-gmap-window
+							show="$ctrl.map.window.show=='info' && $ctrl.map.window.model.values.type == 'market'"
+							coords="$ctrl.map.window.model.coords"  options="$ctrl.map.window.options" closeclick="$ctrl.map.window.closeClick()">
+							<div>
+								<p><b>{{ $ctrl.map.window.model.values.name }}</b></p>
+								<p>{{ $ctrl.map.window.model.values.subMarketNames }}</p>
+							</div>
+						</ui-gmap-window>
+						<ui-gmap-window
+							show="$ctrl.map.window.show=='info' && $ctrl.map.window.model.values.type == 'agent'"
+							coords="$ctrl.map.window.model.coords"  options="$ctrl.map.window.options" closeclick="$ctrl.map.window.closeClick()">
+							<div>
+								<p><b>{{ $ctrl.map.window.model.values.name }}</b></p>
+								<p>{{ $ctrl.map.window.model.values.address }}</p>
+							</div>
+						</ui-gmap-window>
+						<ui-gmap-window
+							show="$ctrl.map.window.show=='info' && $ctrl.map.window.model.values.type == 'customer'"
+							coords="$ctrl.map.window.model.coords"  options="$ctrl.map.window.options" closeclick="$ctrl.map.window.closeClick()">
+							<div>
+								<p><b>{{ $ctrl.map.window.model.values.name }}</b></p>
+							</div>
+						</ui-gmap-window>
+						<ui-gmap-window
+							show="$ctrl.map.window.show=='info' && ($ctrl.map.window.model.values.type == 'pickup' || $ctrl.map.window.model.values.type == 'delivery')"
+							coords="$ctrl.map.window.model.coords"  options="$ctrl.map.window.options" closeclick="$ctrl.map.window.closeClick()">
+							<div>
+								<p><b>ORDER {{ $ctrl.map.window.model.values.id }}</b></p>
+								<p>{{ $ctrl.map.window.model.values.disposition }}</p>
+							</div>
+						</ui-gmap-window>
+
+						<ui-gmap-window
+							show="$ctrl.map.window.show=='modal' && $ctrl.map.window.model.values.type == 'market'"
+							coords="$ctrl.map.window.model.coords"  options="$ctrl.map.window.options" closeclick="$ctrl.map.window.closeClick()">
+							<section class="modal-details">
+								<div layout="row" class="data-row">
+									<span flex="40" class="input-label">Name</span>
+									<span flex="60" class="static-value">{{ $ctrl.map.window.model.values.name }}</span>
+								</div>
+								<div layout="row" class="data-row">
+									<span flex="40" class="input-label">Market Alais</span>
+									<span flex="60" class="static-value">{{ $ctrl.map.window.model.values.shortName }}</span>
+								</div>
+								<div layout="row" class="data-row">
+									<span flex="40" class="input-label">Market Title</span>
+									<span flex="60" class="static-value">{{ $ctrl.map.window.model.values.title }}</span>
+								</div>
+								<div layout="row" class="data-row">
+									<span flex="40" class="input-label">Marketing URL</span>
+									<span flex="60" class="static-value">
+										<a ng-href="{{ $ctrl.map.window.model.values.url }}" target="_blank">{{ $ctrl.map.window.model.values.url }}</a>
+									</span>
+								</div>
+								<div layout="row" class="data-row">
+									<span flex="40" class="input-label">Description</span>
+									<span flex="60" class="static-value">{{ $ctrl.map.window.model.values.description }}</span>
+								</div>
+								<div layout="row" class="data-row">
+									<span flex="40" class="input-label">Active</span>
+									<span flex="60" class="static-value">{{ $ctrl.map.window.model.values.active }}</span>
+								</div>
+								<div layout="row" class="data-row">
+									<span flex="40" class="input-label">Coming Soon</span>
+									<span flex="60" class="static-value">{{ $ctrl.map.window.model.values.comingSoon }}</span>
+								</div>
+								<div layout="row" class="data-row">
+									<span flex="40" class="input-label">Auto Email Agent</span>
+									<span flex="60" class="static-value">{{ $ctrl.map.window.model.values.autoEmailAgent }}</span>
+								</div>
+								<div layout="row" class="data-row">
+									<span flex="40" class="input-label">Timezone</span>
+									<span flex="60" class="static-value">{{ $ctrl.map.window.model.values.timeZoneHour | timezoneFilter }}</span>
+								</div>
+								<div layout="row" class="data-row">
+									<span flex="40" class="input-label">Insurance Factor</span>
+									<span flex="60" class="static-value">{{ $ctrl.map.window.model.values.insuranceFactor }}</span>
+								</div>
+							</section>
+						</ui-gmap-window>
+						<ui-gmap-window
+							show="$ctrl.map.window.show=='modal' && $ctrl.map.window.model.values.type == 'agent'"
+							coords="$ctrl.map.window.model.coords"  options="$ctrl.map.window.options" closeclick="$ctrl.map.window.closeClick()">
+							<section class="modal-details">
+								<div layout="row" class="data-row">
+									<span flex="40" class="input-label">Agent Name</span>
+									<span flex="60" class="static-value">{{ $ctrl.map.window.model.values.name }}</span>
+								</div>
+								<div layout="row" class="data-row">
+									<span flex="40" class="input-label">Phone Number</span>
+									<span flex="60" class="static-value">{{ $ctrl.map.window.model.values.phone }}</span>
+								</div>
+								<div layout="row" class="data-row">
+									<span flex="40" class="input-label">Email</span>
+									<span flex="60" class="static-value">{{ $ctrl.map.window.model.values.email }}</span>
+								</div>
+								<b>Warehouses Location</b>
+								<div layout="row" class="data-row">
+									<span flex="40" class="input-label">Address</span>
+									<span flex="60" class="static-value">{{ $ctrl.map.window.model.values.location.address }}</span>
+								</div>
+								<div layout="row" class="data-row">
+									<span flex="40" class="input-label">Zip Code</span>
+									<span flex="60" class="static-value">{{ $ctrl.map.window.model.values.location.zipCode }}</span>
+								</div>
+								<div layout="row" class="data-row">
+									<span flex="40" class="input-label">Phone</span>
+									<span flex="60" class="static-value">{{ $ctrl.map.window.model.values.location.phone }}</span>
+								</div>
+							</section>
+						</ui-gmap-window>
+						<ui-gmap-window
+							show="$ctrl.map.window.show=='modal' && $ctrl.map.window.model.values.type == 'customer'"
+							coords="$ctrl.map.window.model.coords"  options="$ctrl.map.window.options" closeclick="$ctrl.map.window.closeClick()">
+							<section class="modal-details">
+								<div layout="row" class="data-row">
+									<span flex="40" class="input-label">Customer Name</span>
+									<span flex="60" class="static-value">{{ $ctrl.map.window.model.values.name }}</span>
+								</div>
+								<div layout="row" class="data-row">
+									<span flex="40" class="input-label">Phone Number</span>
+									<span flex="60" class="static-value">{{ $ctrl.map.window.model.values.phone }}</span>
+								</div>
+								<div layout="row" class="data-row">
+									<span flex="40" class="input-label">Email</span>
+									<span flex="60" class="static-value">{{ $ctrl.map.window.model.values.email }}</span>
+								</div>
+								<div layout="row" class="data-row">
+									<span flex="40" class="input-label">Address</span>
+									<span flex="60" class="static-value">{{ $ctrl.map.window.model.values.location.address }}</span>
+								</div>
+							</section>
+						</ui-gmap-window>
+						<ui-gmap-window
+							show="$ctrl.map.window.show=='modal' && ($ctrl.map.window.model.values.type == 'pickup' || $ctrl.map.window.model.values.type == 'delivery')"
+							coords="$ctrl.map.window.model.coords"  options="$ctrl.map.window.options" closeclick="$ctrl.map.window.closeClick()">
+							<section class="modal-details">
+								<div layout="row" class="data-row">
+									<span flex="40" class="input-label">Customer Name</span>
+									<span flex="60" class="static-value">{{ $ctrl.map.window.model.values.customer.name }}</span>
+								</div>
+								<div layout="row" class="data-row">
+									<span flex="40" class="input-label">Phone Number</span>
+									<span flex="60" class="static-value">{{ $ctrl.map.window.model.values.customer.phone }}</span>
+								</div>
+								<div layout="row" class="data-row">
+									<span flex="40" class="input-label">Email</span>
+									<span flex="60" class="static-value">{{ $ctrl.map.window.model.values.customer.email }}</span>
+								</div>
+								<div layout="row" class="data-row">
+									<span flex="40" class="input-label">Customer Address</span>
+									<span flex="60" class="static-value">{{ $ctrl.map.window.model.values.customer.location.address }}</span>
+								</div>
+								<div layout="row" class="data-row">
+									<span flex="40" class="input-label">Destination</span>
+									<span flex="60" class="static-value">{{ $ctrl.map.window.model.values.destination.address }}</span>
+								</div>
+							</section>
+						</ui-gmap-window>
+
+
+						<ui-gmap-markers
+							idkey="'id'"
+							models="$ctrl.map.markers"
+							coords="'coords'"
+							icon="'icon'"
+							options="'options'"
+							docluster="false"
+							click="$ctrl.map.onClickMarker"
+							events="$ctrl.map.events"
+						>
+						</ui-gmap-markers>
+					</ui-gmap-google-map>
+				</div>
+				<div flex="20">
+					<div class="option-section" ng-class="{'disabled':$ctrl.loading}">
+						<div layout="row" class="data-row" ng-repeat="item in $ctrl.options" ng-class="item.class">
+							<md-checkbox class="md-primary" ng-model="item.selected" ng-change="$ctrl.onOptionChange($ctrl.options[$index])" ng-disabled="$ctrl.loading">
+								{{ item.label }}
+							</md-checkbox>
+						</div>
+						<md-progress-circular md-mode="indeterminate" ng-show="$ctrl.loading"></md-progress-circular>
+					</div>
+				</div>
+			</div>
+		</div>
+	</md-content>
+</div>

@@ -1,0 +1,11 @@
+<div class="item-price-display">
+	<div layout="row" class="md-padding">
+		<span class="component-title" flex="30">Item Price:</span>
+		<span class="items" flex="40">{{ $ctrl.order.itemPriceSelection.total }} Items</span>
+		<span class="price" flex="40">
+			{{ $ctrl.order.itemPriceSelection.price | currency }} {{ $ctrl.getDiscount() }} / Month
+			<span ng-if="$ctrl.isFinal">{{ $ctrl.getPickup() }}</span>
+			<span ng-if="$ctrl.isFinal">{{ $ctrl.getOneTime() }}</span>
+		</span>
+	</div>
+</div>

@@ -1,0 +1,81 @@
+<md-tab label="Orders Cancellation">
+    <div layout="row" class="report-content" ng-controller="AdministrativeOrdersCancellationReportController as $ctrl">
+        <div flex="25" class="md-padding">
+            <h4>Orders Date Created Report</h4>
+            <p>This report lists all orders cancelled between a date created range and select markets.</p>
+            <div class="report-meta-info">
+                <p>Report Run Date:  {{ $ctrl.latestReport.runDate | date : "M/d/yy h:mm a"}}</p>
+                <p>Run By:  {{ $ctrl.latestReport.runBy }}</p>
+            </div>
+        </div>
+
+        <div flex="60" class="md-padding report-criteria">
+            <h4>Report Criteria</h4>
+            <div layout="row" ng-if="!$ctrl.isEntryMode">
+                <span flex="30" class="report-label">Created Date Range</span>
+                <div flex="70">
+                    <span class="report-values" ng-if="!$ctrl.isEntryMode">
+                        {{ $ctrl.latestReport.createdDateRange.start | date }} - {{ $ctrl.latestReport.createdDateRange.end | date }}
+                    </span>
+                </div>
+            </div>
+            <div ng-if="$ctrl.isEntryMode" class="entry-row">
+                <div layout="row">
+                    <span flex="30" class="report-label">Created Date Range</span>
+                </div>
+                <div layout="row">
+                    <div flex="85" flex-offset="15">
+                        <md-datepicker ng-model="$ctrl.operationReports.createdDateRange.start" md-placeholder="Start Date"></md-datepicker>
+                        To
+                        <md-datepicker ng-model="$ctrl.operationReports.createdDateRange.end" md-placeholder="End Date"></md-datepicker>
+                    </div>
+                </div>
+            </div>
+
+            <div layout="row" ng-if="!$ctrl.isEntryMode">
+                <span flex="30" class="report-label">Markets</span>
+                <div flex="70">
+                    <span class="report-values" ng-if="!$ctrl.isEntryMode">
+                        {{ $ctrl.latestReport.marketsLabel }}
+                    </span>
+                </div>
+            </div>
+            <div ng-if="$ctrl.isEntryMode" class="entry-row">
+                <div layout="row">
+                    <span flex="15" class="report-label">Markets</span>
+                    <div flex="85">
+                        <span class="report-values" ng-if="$ctrl.isEntryMode">
+                            <cb-market-multi-select ng-input-markets="$ctrl.allMarkets" list="$ctrl.operationReports.markets"></cb-market-multi-select>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <div layout="row" layout-align="start center" ng-if="!$ctrl.isEntryMode">
+                <md-button aria-label="Refresh Report" class="md-raised md-closetbox-primary" ng-click="$ctrl.refreshOperationReport()">Refresh Report</md-button>
+            </div>
+            <div layout="row" ng-if="$ctrl.isEntryMode && !$ctrl.inGenerating">
+                <div flex="90" layout layout-align="end center">
+                    <md-button aria-label="Run Report" class="md-raised md-closetbox-primary" ng-click="$ctrl.runReport()" ng-disabled="$ctrl.inGenerating">Run Report</md-button>
+                    <md-button aria-label="Cancel" class="md-link" ng-click="$ctrl.cancelEdit()" ng-disabled="$ctrl.inGenerating">Cancel</md-button>
+                </div>
+            </div>
+            <div layout="row" ng-if="$ctrl.inGenerating">
+                <div flex="90" layout layout-align="end center">
+                    <md-button aria-label="Cancel Report" class="md-raised md-closetbox-primary" ng-click="$ctrl.cancelReport()">Cancel Report</md-button>
+                </div>
+            </div>
+        </div>
+
+        <div flex="15" class="md-padding">
+            <a layout="column" ng-if="!$ctrl.inGenerating"  ng-href="{{$ctrl.reportURL}}">
+                <img src="assets/excel_icon.png" class="download-icon" />
+                <span class="text-center">Download <br />Report</span>
+            </a>
+            <a layout="column" ng-if="$ctrl.inGenerating">
+                <img src="assets/clock_icon.png" class="download-icon" />
+                <span class="text-center">Generating Report<br />Please Wait...</span>
+            </a>
+        </div>
+    </div>
+</md-tab>

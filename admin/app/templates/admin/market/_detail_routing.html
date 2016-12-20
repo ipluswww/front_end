@@ -1,0 +1,61 @@
+<section class="market-detail-routing">
+    <h3>Detail Routing</h3>
+    <div layout="row">
+        <div flex="25">
+            Warehouse Locations
+        </div>
+        <div flex="75">
+            <p ng-if="$ctrl._edit == false && $ctrl.data.warehousesWithInfo" ng-repeat="warehouse in $ctrl.data.warehousesWithInfo" ng-class="{'primary': warehouse.primary}">
+                <a ui-sref="app.admin.agent.detail({id: warehouse.associatedAgent._id})">{{ warehouse.associatedAgent.name }}</a>
+                /
+                <a ui-sref="app.admin.warehouse.detail({id: warehouse._id})">{{ warehouse.location.address }}</a>
+            </p>
+
+            <div ng-if="$ctrl._edit">
+
+                <table md-table md-row-select="false">
+                    <thead md-head>
+                    <tr md-row>
+                        <th md-column>Agent Name</th>
+                        <th md-column>Warehouses</th>
+                        <th md-column>Status</th>
+                    </tr>
+                    </thead>
+                    <tbody md-body ng-repeat="item in $ctrl.data.warehousesWithInfo">
+                    <tr md-row>
+                        <td md-cell><a ui-sref="app.admin.agent.detail({id: item.associatedAgent._id})">{{::item.associatedAgent.name}}</a></td>
+                        <td md-cell><a ui-sref="app.admin.warehouse.detail({id: item._id})">{{::item.location.address}}</a></td>
+                        <td md-cell>
+                            <md-select ng-model="item.primary" aria-label="warehouse">
+                                <md-option ng-value="true">Primary</md-option>
+                                <md-option ng-value="false">Secondary</md-option>
+                                <md-option disabled ng-value="null">Tertiary</md-option>
+                            </md-select>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+
+                <button class="md-raised md-closetbox-primary md-button" ng-click="$ctrl.openWarehouseModal()">Select warehouses</button>
+            </div>
+        </div>
+    </div>
+
+    <div layout="row">
+        <div flex="25">
+            Servicable Postal Codes
+        </div>
+        <div flex="75">
+            <md-chips ng-model="$ctrl.data.serviceablePostalCodes" readonly="true" ng-if="!$ctrl._edit">
+                <md-chip-template ng-bind="::$chip"></md-chip-template>
+            </md-chips>
+            <tags-input ng-if="$ctrl._edit"
+                        ng-model="$ctrl.data.serviceablePostalCodes"
+                        placeholder="Add a zip code"
+                        min-length="5"
+                        max-length="5"
+                        allowed-tags-pattern="^[0-9]+$">
+            </tags-input>
+        </div>
+    </div>
+</section>

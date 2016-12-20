@@ -1,0 +1,41 @@
+// =============================================================================
+// MAIN THEME STYLES
+// =============================================================================
+
+
+// Import all Variables
+// -----------------------------------------------------------------------------
+@import 'variables/index';
+// -----------------------------------------------------------------------------
+
+
+// Import all Common Styles
+// -----------------------------------------------------------------------------
+@import 'common/index';
+
+@import 'external/ng-tags-input';
+@import 'external/angular-material';
+@import 'external/angular-material-datetimepicker';
+// -----------------------------------------------------------------------------
+
+
+
+
+// Import Sections
+// -----------------------------------------------------------------------------
+@import 'sections/auth/index';
+@import 'sections/home/index';
+@import 'sections/profile/index';
+@import 'sections/system/access';
+
+
+@import 'sections/admin/index';
+
+@import 'sections/report/index';
+
+@import 'sections/logistics/index';
+
+@import 'sections/prospect/index';
+
+@import 'sections/order/index';
+// -----------------------------------------------------------------------------

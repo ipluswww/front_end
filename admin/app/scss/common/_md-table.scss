@@ -1,0 +1,59 @@
+@import '../variables/colors';
+table.md-table {
+
+    > thead > tr > th.md-column {
+        font-size: 16px;
+    }
+
+    /* selected Row styling */
+    tr.active {
+        border-top: 2px solid $grayBg1;
+        border-bottom: 2px solid $grayBg1;
+        border-left: 1px solid $grayBg1;
+        border-right: 1px solid $grayBg1;
+        td.md-cell {
+            background: $grayColor1 !important;
+        }
+
+    }
+}
+
+
+table.md-table.compact-table  {
+
+    > thead > tr > th.md-column {
+        font-size: 14px;
+    }
+
+    th.md-column.small-column {
+        width: 80px;
+        width: 80px;
+        word-wrap: break-word;
+        white-space: normal;
+    }
+
+    th.md-column.small-padding, td.md-cell.small-padding {
+        padding-right: 12px !important;
+    }
+
+} /* /table.md-table */
+
+
+table.md-table {
+    tbody tr.md-row:nth-child(odd) td.md-cell {
+        background: $grayBg2;
+    }
+
+    tbody tr.md-row:hover td.md-cell {
+        background: $grayBg1;
+    }
+}
+
+
+// Pagination Styliing
+.md-table-pagination.enlarged {
+    font-size: 16px;
+}
+.md-table-pagination.compact {
+    font-size: 14px;
+}

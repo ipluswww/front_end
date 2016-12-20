@@ -1,0 +1,9 @@
+<div class="assign-order">
+	<span ng-if="$ctrl.isAssigned()">{{ $ctrl.object.assigned.username }}</span>
+	<a ng-if="!$ctrl.isAssigned()" ng-click="$ctrl.assignToMe(item)">
+    	<i class="material-icons">
+    		assignment_ind
+        	<md-tooltip>assign to me</md-tooltip>
+    	</i>
+    </a>
+</div>

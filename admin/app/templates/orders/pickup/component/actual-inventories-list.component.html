@@ -1,0 +1,28 @@
+<div class="selected-inventory-list">
+    <div id="inventory-list" class="container-unit"
+         ng-repeat="item in $ctrl.groupedInventory track by item.inventoryIndex">
+        <div layout="row" class="inventory-row" ng-class="{'disabled': $ctrl.isLocked }">
+            <span flex="5">
+                <md-icon class="material-icons type-icon icon">{{$ctrl.getIconClass(item)}}</md-icon>
+            </span>
+            <span flex="20" class="bordered name">{{ ::item.subType.name }}</span>
+            <input flex="35" class="bordered label" name="label" ng-model="item.label"
+                ng-model-options="{debounce: 1000}" placeholder="Label"
+                ng-disabled="$ctrl.isLocked"/>
+            <input flex="35" class="bordered content" name="contents" ng-model="item.contents"
+                ng-model-options="{debounce: 1000}" placeholder="Contents"
+                ng-disabled="$ctrl.isLocked" />
+            <input flex="10" type="number" min="0" class="quantity" name="qty" ng-model="item.qty"
+                ng-change="$ctrl.updateQuantity(item, item.qty, $index)"
+                ng-disabled="$ctrl.isLocked"/>
+            <span flex="5">
+                <md-icon class="remove error icon"
+                         ng-click="$ctrl.removeItem(item, $index)"
+                         ng-class="{'disabled': $ctrl.isLocked }">clear</md-icon>
+            </span>
+         </div> <!-- /.inventory-row -->
+    </div>
+</div>
+<div>Total Pickup Inventory Selected: {{$ctrl.order.inventory.length}}</div>
+<div>Total Points: {{$ctrl.getTotalPoints()}}</div>
+<div>Total Est. Weight: {{$ctrl.getTotalEstimatedWeight()}} lbs</div>

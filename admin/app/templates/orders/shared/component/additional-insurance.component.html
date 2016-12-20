@@ -1,0 +1,8 @@
+<div layout="row">
+	<md-input-container flex>
+	    <label>Additional Insurance Coverage</label>
+	    <input ng-model="additionalInsurance.customerValuation"
+			aria-label="Insurance" type="number" ng-disabled="additionalInsurance.isLocked"
+			ng-blur="additionalInsurance.changeCustomerValuation()"/>
+	</md-input-container>
+</div>

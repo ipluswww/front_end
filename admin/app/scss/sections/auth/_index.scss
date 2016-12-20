@@ -1,0 +1,106 @@
+// =============================================================================
+// Auth PAGE
+// =============================================================================
+@import 'variables/index';
+// Layout
+// -----------------------------------------------------------------------------
+
+.auth-page md-input-container {
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+
+md-content.full {
+    background-image: url('/assets/login_bg.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.auth-page {
+    height: 100%;
+	/* For now, ignore what material layout provies, but wish to have fixed width */
+	.auth-form {
+		width: 400px;
+		margin: 0px auto;
+        padding: 30px 20px;
+        background: $white;
+	}
+
+    .password-form {
+        width: 400px;
+        margin: 0px auto;
+        padding: 30px 20px;
+        background: $white;
+    }
+	.text-xs-center {
+		text-align: center;
+	}
+
+
+	/* auth page basic styling */
+	h1 {
+		color: $secondary;
+        margin-top: 0px;
+	}
+	a.navs {
+		color: $primary;
+		text-decoration: none;
+	}
+
+    .errors {
+        color: red;
+        margin-bottom: 20px;
+        padding-left: 36px;
+        font-size: 15px;
+    }
+
+    a.forgot-password {
+        color: $grayColor2;
+        text-decoration: none;
+    }
+
+	fieldset {
+		border: none;
+        padding: 0px;
+	}
+
+
+    md-icon i {
+        color: $grayColor2;
+    }
+
+    /* In the auth pages, button is taking full width, we don't need margin and padding */
+    .md-button {
+        margin: 0;
+    }
+
+
+
+    // Forgot password page specific styling
+    // -----------------------------------------------------------------------------
+
+
+    .password-form {
+        // Error displaying channel
+        .errors {
+            margin-top: 20px;
+        }
+        // Bottom most, back to login link styling
+        a.back-login {
+            margin-top: 20px;
+            line-height: 24px;
+            color: $grayColor2;
+            text-decoration: none;
+            i {
+                vertical-align: middle;
+                margin-right: 8px;
+            }
+        }
+    }
+    // -----------------------------------------------------------------------------
+
+
+}
+
+// -----------------------------------------------------------------------------

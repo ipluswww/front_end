@@ -1,0 +1,17 @@
+@import '../../variables/colors';
+.schedule-modal {
+    width: 600px;
+    md-dialog-content {
+        height: 200px;
+    }
+
+    p {
+        cursor: pointer;
+    }
+
+    .md-fab {
+        i {
+            vertical-align: middle;
+        }
+    }
+}

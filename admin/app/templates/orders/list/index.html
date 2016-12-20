@@ -1,0 +1,41 @@
+<div layout="row" id="orders" layout-fill>
+    <md-content class="md-whiteframe-2dp normal-padding"  flex>
+        <h3>Orders</h3>
+        <section class="section-header">
+            <div class="search-section" layout="row">
+                <div flex="25">
+                    <cb-simple-search-box ng-model="$ctrl.query.search" on-search="$ctrl.getData()"></cb-simple-search-box>
+                </div>
+                <div flex="30">
+                    <div layout="row" layout-align="end end">
+                        <cb-market-multi-select list="$ctrl.marketFilter" on-select="$ctrl.getData()"></cb-market-multi-select>
+                    </div>
+                </div>
+                <div flex="30">
+                    <div layout="row" layout-align="end end">
+                        <cb-disposition-multi-select list="$ctrl.dispositionFilter" on-select="$ctrl.getData()"></cb-disposition-multi-select>
+                    </div>
+                </div>
+            </div>
+            <div class="filter-section" layout="row">
+                <div flex="40">
+                    <cb-available-orders-filter list="$ctrl.availableOrdersFilter" on-select="$ctrl.getData()"></cb-available-orders-filter>
+                </div>
+                <div flex="35" flex-offset="10">
+                    <cb-assignments-filter list="$ctrl.assignmentsFilter" on-select="$ctrl.getData()"></cb-assignments-filter>
+                </div>
+            </div>
+        </section> <!-- /.section-header -->
+        <div>
+            <cb-orders-table list="$ctrl.orders" 
+                            options="$ctrl.query" 
+                            total="$ctrl.totalCount" 
+                            on-select="$ctrl.showOrder(item)"
+                            on-reload="$ctrl.getData()">
+            </cb-orders-table>
+        </div>
+        <div ng-if="$ctrl.selectedOrder">
+            <cb-order-detail-view order="$ctrl.selectedOrder" on-update="$ctrl.getData()"></cb-order-detail-view>
+        </div>
+    </md-content>
+</div>

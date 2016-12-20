@@ -1,0 +1,10 @@
+<div layout="column" layout-align="end center">
+    <ul class="bookmark">
+        <li ng-repeat="item in $ctrl.items">
+            <a href="" offset="0" container="{{$ctrl.container}}" scroll-to="{{item.domSelector}}">
+                <i class="material-icons">{{item.iconClass}}</i>
+                <md-tooltip>{{item.tooltip}}</md-tooltip>
+            </a>
+        </li>
+    </ul>
+</div>

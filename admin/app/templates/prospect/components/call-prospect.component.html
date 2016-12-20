@@ -1,0 +1,8 @@
+<div class="call-prospect">
+	<span ng-class="{'active': $ctrl.order.called}" ng-click="$ctrl.onCallAction()">
+		<i class="material-icons">settings_phone</i>
+		<md-tooltip ng-if="$ctrl.order.called">
+			{{$ctrl.order.calledUser}} / {{$ctrl.order.called | date}}
+		</md-tooltip>
+	</span>
+</div>

@@ -1,0 +1,43 @@
+@import "../../variables/colors.scss";
+#prospect {
+    position: relative;
+    .search-section {
+        .search-container {
+            margin: 0;
+        }
+        .filter-label {
+            line-height: 35px;
+        }
+    } /* /.search-section */
+
+    // Table Styling
+    .action-column {
+        span {
+            cursor: pointer;
+            margin-left: 5px;
+            color: $grayColor2;
+            &.active {
+                color: $secondary;
+            }
+        }
+    }
+
+    thead {
+        .id-column, .name-column {
+            min-height: 56px;
+        }
+    }
+
+    a.phone-link {
+        cursor: default;
+    }
+
+    a.warning-inquiry {
+        color: red;
+    }
+
+    i.assign {
+        cursor: pointer;
+    }
+
+}

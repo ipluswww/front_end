@@ -1,0 +1,34 @@
+<nav class="md-whiteframe-2dp" layout="column" show-authed="true" >
+    <div layout="row" class="expanding-button-row">
+        <a ng-click="$ctrl.toggleNav()" class="expanding-button" aria-label="Toggle Sidenav">
+            <i class="material-icons" ng-show="$ctrl._expanded">keyboard_arrow_left</i>
+            <i class="material-icons" ng-hide="$ctrl._expanded">keyboard_arrow_right</i>
+        </a>
+    </div>
+    <ul flex class="menu-item flex">
+        <li ng-repeat="item in $ctrl._menuItems" ng-if="$ctrl.isAuthorized(item)">
+            <a ng-if="item.state" ng-attr-ui-sref="{{item.state}}" ui-sref-active="{{ item.children ? '' : 'active' }}" aria-label="{{item.label}}" ng-click="$ctrl.expandMenuitems(item)" layout="row" layout-align="start center">
+                <md-tooltip md-direction="right" ng-if="!$ctrl._expanded">
+                    {{item.label}}
+                </md-tooltip>
+                <i class="material-icons">{{item.iconClass}}</i>
+                <span ng-show="$ctrl._expanded">{{item.label}}</span>
+            </a>
+
+            <a ng-if="!item.state" aria-label="{{item.label}}" ng-click="$ctrl.expandMenuitems(item)" layout="row" layout-align="start center">
+                <md-tooltip md-direction="right" ng-if="!$ctrl._expanded">
+                    {{item.label}}
+                </md-tooltip>
+                <i class="material-icons">{{item.iconClass}}</i>
+                <span ng-show="$ctrl._expanded">{{item.label}}</span>
+            </a>
+
+            <ul ng-show="item.expanded" class="child-item">
+                <li ng-repeat="atom in item.children" ng-if="$ctrl.isAuthorized(atom)">
+                    <a ng-if="atom.state" ng-attr-ui-sref="{{atom.state}}" ui-sref-active="active">{{atom.label}}</a>
+                    <a ng-if="!atom.state" class="disabled">{{atom.label}}</a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</nav>

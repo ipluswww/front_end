@@ -1,0 +1,98 @@
+<div class="inquiries-table">
+    <md-table-container>
+        <table md-table md-row-select="false" md-progress="$ctrl.promise">
+            <thead md-head md-order="$ctrl.options.sort" md-on-reorder="$ctrl.onOrder">
+            <tr md-row>
+                <th md-column>Closed</th>
+                <th md-column md-order-by="name">Name</th>
+                <th md-column md-order-by="email">Email</th>
+                <th md-column md-order-by="phone">Phone</th>
+                <th md-column md-order-by="dateCreated">Date Submitted</th>
+                <th md-column md-order-by="messageRequested">Message</th>
+                <th md-column>Market / Zipcode</th>
+                <th md-column>Note</th>
+                <th md-column>Assigned</th>
+                <th md-column>Action</th>
+            </tr>
+            </thead>
+            <tbody md-body>
+            <tr md-row ng-repeat="item in $ctrl.list">
+                <td md-cell>
+                    <i class="material-icons" ng-class="{'active': item.closed}">lock</i>
+                    <md-tooltip ng-if="item.closed">
+                        {{item.closed}}
+                    </md-tooltip>
+                </td>
+                <td md-cell>{{item.name}}</td>
+                <td md-cell>
+                    <a ng-class="{'warning-inquiry': !item.customer}" href="mailto:{{item.email}}" ng-disabled="!item.customer">
+                        {{item.email}}
+                        <md-tooltip>
+                            Customer Email Exists
+                        </md-tooltip>
+                    </a>
+                </td>
+                <td md-cell>
+                    <cb-formatted-phone-number-link on-click="$ctrl.openPhoneCallModal(item)"
+                                                    value="item.mobile">
+                    </cb-formatted-phone-number-link>
+                </td>
+                <td md-cell>{{item.dateCreated | date}}</td>
+                <td md-cell>
+                  <span ng-if="!$ctrl.isEntryExpanded(item, 'message')">
+                    {{item.messageRequested | limitTo : 20}}
+                  </span>
+                  <span ng-if="item.messageRequested && item.messageRequested.length >20 && !$ctrl.isEntryExpanded(item, 'message')" ng-click="$ctrl.expandTextWrapper(item, 'message')">
+                    ...
+                  </span>
+                  <p ng-if="$ctrl.isEntryExpanded(item, 'message')">
+                    {{item.messageRequested}}
+                  </p>
+                </td>
+                <td md-cell>
+                    <span for="market">
+                        <a ng-if="item.market._id" ui-sref="app.admin.market.detail({id: item.market._id})">
+                            {{item.market.name}}
+                        </a>
+                        <span ng-if="!item.market._id">No Service</span>
+                    </span>
+                    /
+                    <span for="zipcode">
+                        {{item.originationLocation.zipCode || "No Zip Code"}}
+                    </span>
+                </td>
+                <td md-cell ng-click="$ctrl.editCellValue($event, item)">{{ item.notesVisitor }}</td>
+                <td md-cell class="action-column">
+                    <cb-assign-order visitor="item"></cb-assign-order>
+                </td>
+                <td md-cell class="action-column">
+                    <div layout="row">
+                        <span ng-class="{'active': item.called}" ng-click="$ctrl.toggleCall(item)">
+                            <i class="material-icons">settings_phone</i>
+                            <md-tooltip ng-if="item.called">
+                              {{item.calledUser}} / {{item.called | date}}
+                            </md-tooltip>
+                        </span>
+                        <span ng-class="{'active': item.email1Sent}" ng-click="$ctrl.toggleEmail(item, 'email1')">
+                            <i class="material-icons">markunread_mailbox</i>
+                            <md-tooltip ng-if="item.email1Sent">
+                              {{item.email1Username}} / {{item.email1Sent | date}}
+                            </md-tooltip>
+                        </span>
+                        <span ng-click="$ctrl.convertInquiry(item)">
+                            <i class="material-icons">change_history</i>
+                            <md-tooltip>
+                                Convert inqury.
+                            </md-tooltip>
+                        </span>
+                        <span ng-class="{'active': (item.disposition !== 'CANCELLED')}" ng-click="$ctrl.cancelItem(item)">
+                            <i class="material-icons">highlight_off</i>
+                        </span>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </md-table-container>
+    <md-table-pagination class="enlarged" md-limit="$ctrl.options.limit" md-page="$ctrl.options.page" md-total="{{$ctrl.total}}" md-on-paginate="$ctrl.onPagination" md-page-select></md-table-pagination>
+</div>

@@ -1,0 +1,60 @@
+<div class="order-payment" id="orderPayment">
+	<div layout="row" class="header">
+		<div flex="30">
+			<label>Manual Payment Portal:</label>
+		</div>
+		<div flex="40" flex-offset="5" class="mode-select">
+			<a ng-click="$ctrl.changeMode(true)" ng-class="{active: $ctrl.isWithdraw}">Withdraw</a><!--
+			--><a ng-click="$ctrl.changeMode(false)" ng-class="{active: !$ctrl.isWithdraw}">Deposit</a>
+		</div>
+		<div flex="10" flex-offset="5">
+			<a href="" offset="0" container="#editOrderSection" scroll-to=".order-billing-table">
+				<i class="material-icons">list</i>
+			</a>
+		</div>
+		<div flex="10">
+			<a class="btn-adjust-credit-card" ng-click="$ctrl.displayPaymentMethodForm()">Adjust Credit Card</a>
+		</div>
+	</div>
+	<div layout="column" class="order-info">
+		<div layout="row">
+			<div flex="50">
+				<label>Customer:</label>
+				<span>{{ $ctrl.order.customer.name }}</span>
+			</div>
+			<div flex="50">
+				<label>AccountID:</label>
+				<span>{{ $ctrl.order.customer.customerId }}</span>
+			</div>
+		</div>
+		<div layout="row">
+			<div flex="50">
+				<label>Order:</label>
+				<span>{{ $ctrl.order._id.slice(-5) }}</span>
+			</div>
+			<div flex="50">
+				<label>Type:</label>
+				<span>{{ $ctrl.order.goingToWarehouse ? "Pickup" : "Delivery" }}</span>
+			</div>
+		</div>
+	</div>
+	<form name="paymentForm" layout="column" class="payment-form">
+		<div layout="row">
+			<md-input-container class="md-block" flex="40">
+				<label>Amount</label>
+				<input ng-model="$ctrl.payment.amount" type="number" name="amount" required min="0.01">
+			</md-input-container>
+	        <div flex="55" flex-offset="5">
+				<cb-transaction-type-select ng-model="$ctrl.payment.transtype"></cb-transaction-type-select>
+			</div>
+		</div>
+		<div layout="row">
+			<div class="braintree-feedbacks" flex="80"></div>
+			<div flex="20" class="form-action">
+				<md-button ng-click="$ctrl.process(paymentForm)" class="md-closetbox-primary md-raised md-button" ng-disabled="!paymentForm.$valid">
+					Submit
+				</md-button>
+			</div>
+		</div>
+	</form>
+</div>

@@ -1,0 +1,24 @@
+<div class='add-payment-method'>
+    <form id="checkout-form" name="addPaymentMethod.form" method="post">
+        <div id="error-message"></div>
+        <md-input-container>
+            <label for="card-number">Card Number</label>
+            <div class="hosted-field payment-method--card-number" id="card-number"></div>
+        </md-input-container>
+
+        <md-input-container>
+            <label for="cvv">CVV</label>
+            <div class="hosted-field payment-method--cvv" id="cvv"></div>
+        </md-input-container>
+
+        <md-input-container>
+            <label for="expiration-date">Expiration Date</label>
+            <div class="hosted-field payment-method--expiration-date" id="expiration-date"></div>
+        </md-input-container>
+        <input type="hidden" name="payment-method-nonce" ng-model="addPaymentMethod.paymentMethodNonce">
+        <div ng-if="addPaymentMethod.isEdit()" layout="row" layout-align="end center" class="layout-align-end-center layout-row button-row" >
+            <i class="material-icons action" ng-click="addPaymentMethod.updatePaymentMethod()" ng-disabled="addPaymentMethod.isSaving">done</i>
+            <i class="material-icons action" ng-click="addPaymentMethod.cancelPaymentMethod()">clear</i>
+        </div>
+    </form>
+</div>

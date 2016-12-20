@@ -1,0 +1,10 @@
+<div class="currently-stored-count">
+    <md-card ng-class="{hidden: !currentlyStoredCount.hasPreviouslyStoredItems()}">
+        <div layout="row" class="md-padding" layout-align="center center">
+            <span class="currently-stored-count--display-label">Currently Stored: </span>
+            <span class="currently-stored-count--display">
+            	 {{ currentlyStoredCount.currentlyStoredInventory.length }} Items
+            </span>
+        </div>
+    </md-card>
+</div>

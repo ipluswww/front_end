@@ -1,0 +1,34 @@
+<div>
+    <section class="section-header">
+        <div class="search-section" layout="row">
+            <div flex="40">
+                <cb-simple-search-box ng-model="$ctrl.params.query.search" on-search="$ctrl.getData()"></cb-simple-search-box>
+            </div>
+            <div flex="35" flex-offset="5">
+                <div layout="row">
+                    <span class="filter-label" flex="20">Market</span>
+                    <cb-market-multi-select flex="80" list="$ctrl.params.markets" on-select="$ctrl.getData()"></cb-market-multi-select>
+                </div>
+            </div>
+            <div flex="10" layout-align="center center" class="icons-section">
+                <i ng-click="$ctrl.onAgentSummaryReport()" class="material-icons">print</i>
+            </div>
+        </div>
+        <div layout="row">
+            <div flex="40">
+                <cb-available-orders-filter list="$ctrl.params.availableOrdersFilter" on-select="$ctrl.getData()"></cb-available-orders-filter>
+            </div>
+            <div flex="40">
+                <cb-assignments-filter list="$ctrl.params.assignmentFilter" on-select="$ctrl.getData()"></cb-assignments-filter>
+            </div>
+        </div>
+    </section> <!-- /.section-header -->
+
+    <cb-home-orders-table list="$ctrl.data" 
+        options="$ctrl.params.query" 
+        total="$ctrl.totalCount" 
+        on-select="$ctrl.selectItem(item)"
+        on-reload="$ctrl.getData()">
+    </cb-home-orders-table>
+    <div ng-include="'templates/home/agent/_order_view.html'"></div>
+</div>

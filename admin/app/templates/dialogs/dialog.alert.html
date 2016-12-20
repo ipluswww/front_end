@@ -1,0 +1,13 @@
+<md-dialog aria-label="Alert dialog" class="alert-modal-container">
+	<md-toolbar> 
+	<div class="md-toolbar-tools">
+		<h2>{{ ctrl.template.title }}</h2>
+	</div>
+	</md-toolbar>  
+    <md-dialog-content class="md-dialog-content">
+        <p>{{ctrl.template.description}}</p>
+    </md-dialog-content>
+    <md-dialog-actions>
+        <md-button ng-click="ctrl.ok()" class="md-button md-closetbox-primary" md-autofocus=true>{{ctrl.template.okText}}</md-button>
+    </md-dialog-actions>
+</md-dialog>

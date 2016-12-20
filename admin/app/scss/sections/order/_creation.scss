@@ -1,0 +1,127 @@
+@import "../../variables/colors.scss";
+.order-creation {
+
+    .creation-form{
+        margin-top: 20px;
+    }
+
+    md-input-container {
+        margin-top: 0px !important;
+        margin-bottom: 4px !important;
+    }
+}
+
+.order-title{
+    .cb-icon--pickup-order, .cb-icon--delivery-order {
+        margin-right: 10px;
+    }
+
+    .customer-warnings {
+        margin-left:10px;
+
+        span, md-icon {
+            color:red !important;
+        }
+    }
+}
+
+.payment-method {
+
+    margin-right: 10px;
+    max-width: 750px;
+
+    md-input-container {
+        margin-top: -25px!important;
+        margin-bottom: -5px !important;
+
+        .hosted-field {
+            height:75px;
+        }
+    }
+    .payment-method-summary {
+        display: flex;
+        align-items: center;
+    }
+
+    .payment-method-summary--card-type-image {
+        height:40px;
+        margin-right:10px;
+        margin-left:10px;
+    }
+
+    .payment-method-summary--expiration-date {
+        margin-left:auto;
+        margin-right: 10px;
+    }
+
+    .add-payment-method {
+        padding-top: 20px;
+
+        i.action {
+            cursor: pointer;
+        }
+
+        .button-row {
+            margin-top: -25px;
+        }
+    }
+
+    .lookup-component {
+        border-bottom: 1px solid rgba(0,0,0,0.12);
+        i {
+            cursor: pointer;
+        }
+    }
+
+    .default-payment-method {
+        min-width: 420px;
+    }
+}
+
+.requested-pickup {
+    ul {
+        padding-left: 0;
+    }
+    .requested-date > div {
+        text-align: center;
+        & > md-radio-group {
+            white-space: nowrap;
+        }
+    }
+
+    .requested-pickup-dates {
+        .requested-date i {
+            margin: auto 10px auto 10px;
+            vertical-align:middle;
+        }
+        .requested-date--date {
+            display:inline-block;
+        }
+
+        .requested-date--remove, .requested-date--add {
+            cursor: pointer;
+        }
+        .requested-timeframe {
+            margin-left:10px;
+                md-radio-button {
+                display:inline;
+                vertical-align:middle;
+            }
+        }
+    }
+
+    &.ng-invalid {
+        .requested-pickup--label {
+            color: rgb(221, 44, 0);
+            border-bottom-color: rgb(221, 44, 0);
+            border-bottom-style: solid;
+            border-bottom-width: 2px;
+        }
+    }
+}
+
+.order-discounts, .order-addons {
+    & > md-chips {
+        margin-bottom: 40px;
+    }
+}

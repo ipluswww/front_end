@@ -1,0 +1,28 @@
+<div class="customer-orders" id="customerOrders">
+	<label>Orders of {{ $ctrl.customer.name }}</label>
+	<md-table-container >
+        <table md-table md-row-select="false">
+            <thead md-head>
+                <tr md-row>
+                    <th md-column>ID</th>
+                    <th md-column>Type</th>
+                    <th md-column>Disposition</th>
+                    <th md-column></th>
+                </tr>
+            </thead>
+            <tbody md-body>
+                <tr md-row ng-repeat="item in $ctrl.orders">
+                    <td md-cell><a ng-click="$ctrl.goToOrder(item)">{{ item._id.slice(-5) }}</a></td>
+                    <td md-cell>{{ item.goingToWarehouse ? "Pickup" : "Delivery" }}</td>
+                    <td md-cell>{{ item.disposition }}</td>
+                    <td md-cell>
+                    	<md-button class="md-raised md-primary"  offset="0" container="#editOrderSection" scroll-to="#storedItems">Inventory</md-button>
+                    </td>
+                </tr>
+                <tr md-row ng-show="!$ctrl.orders || $ctrl.orders.length === 0">
+                    <td md-cell colspan="6">No order for customer</td>
+                </tr>
+            </tbody>
+        </table>
+    </md-table-container>
+</div>

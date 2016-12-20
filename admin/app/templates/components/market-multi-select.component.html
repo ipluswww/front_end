@@ -1,0 +1,35 @@
+<section class="market-multi-select multi-select" click-outside="$ctrl.closeThis()"  outside-if-not="multi-select-list">
+    <div class="component-header" ng-click="$ctrl.toggleComponent($event)">
+        <span class="main-labels">
+            {{$ctrl.selectedMarketNames()}}
+        </span>
+        <span class="icon">
+            <i class="material-icons" ng-if="!$ctrl.expanded">keyboard_arrow_down</i>
+            <i class="material-icons" ng-if="$ctrl.expanded">keyboard_arrow_up</i>
+        </span>
+    </div>
+    <div class="list multi-select-list md-whiteframe-2dp" ng-if="$ctrl.expanded" >
+        <div class="action-row" layout="row">
+            <a flex="50" ng-click="$ctrl.selectAll()">Select All</a>
+            <a flex="50" ng-click="$ctrl.deselectAll()">Deselect All</a>
+        </div>
+        <ul>
+            <li ng-repeat="market in $ctrl.allMarkets | orderBy: 'name'" layout="column">
+                <span ng-click="$ctrl.toggle(market)">
+                    {{market.name}}
+                    <span class="icon">
+                        <i  ng-if="$ctrl.isExist(market) >= 0" class="material-icons">done</i>
+                    </span>
+                </span>
+                <ul ng-if="market.subMarkets">
+                    <li ng-repeat="subMarket in market.subMarkets | orderBy: 'name'" ng-click="$ctrl.toggle(subMarket)">
+                        {{subMarket.name}}
+                        <span class="icon">
+                            <i ng-if="$ctrl.isExist(subMarket) >= 0" class="material-icons">done</i>
+                        </span>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</section>

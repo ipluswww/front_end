@@ -1,0 +1,39 @@
+<md-dialog aria-label="Schedule dialog"  class="schedule-modal">
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <h2>Schedule Modal</h2>
+            <span flex></span>
+            <md-button class="md-icon-button" ng-click="$ctrl.cancel()">
+                <md-icon aria-label="Close dialog">
+                    <i class="material-icons">clear</i>
+                </md-icon>
+            </md-button>
+        </div>
+    </md-toolbar>
+    <md-dialog-content class="md-padding">
+        <div layout="row">
+            <div flex="30">
+                <p>Date Requested</p>
+                <p ng-click="$ctrl.selectRequestedDate(1)">{{ ::$ctrl._order.requestedDate1 | dateAP}}</p>
+                <p ng-click="$ctrl.selectRequestedDate(2)">{{ ::$ctrl._order.requestedDate2 | dateAP}}</p>
+                <p ng-click="$ctrl.selectRequestedDate(3)">{{ ::$ctrl._order.requestedDate3 | dateAP}}</p>
+            </div>
+            <div flex="60" flex-offset="10">
+                <p>Accepted Date</p>
+                <md-input-container>
+                    <input mdc-datetime-picker date="true" time="true" type="text" id="time" short-time="true"
+                        placeholder="Time"
+                        min-date="minDate"
+                        format="MM/DD/YYYY hh A"
+                        skipHide="true"
+                        ng-model="$ctrl.acceptedDate">
+                    <span ng-if="$ctrl.acceptedDate">to {{$ctrl.upperRangeTime()}}</span>
+                    <md-button class="md-fab" aria-label="Accept Order" ng-disabled="!$ctrl.acceptedDate" ng-click="$ctrl.acceptOrder()">
+                        <i class="material-icons">update</i>
+                    </md-button>
+                </md-input-container>
+            </div>            
+        </div>
+
+    </md-dialog-content>
+</md-dialog>

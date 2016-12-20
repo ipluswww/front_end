@@ -1,0 +1,34 @@
+.requested-dates-picker {
+	.date-row {
+		.close {
+			i {
+				cursor: pointer;
+				outline: none;
+				font-size: 20px;
+				line-height: 40px;
+			}
+		}
+		md-select {
+			margin: 0;
+			._md-select-value {
+				height:30px;
+			}
+			._md-text {
+				font-size: 12px;
+			}
+		}
+	}
+	.date-new {
+		padding-left: 20px;
+		a {
+			cursor: pointer;
+			span {
+				line-height: 30px;
+				vertical-align: top;
+			}
+			i {
+				line-height: 30px;
+			}
+		}
+	}
+}

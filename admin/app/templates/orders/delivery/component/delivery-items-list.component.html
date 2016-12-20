@@ -1,0 +1,25 @@
+<div class="delivery-items-list list" layout="column">
+    <div class="container-unit" ng-repeat="container in $ctrl.order.inventory" id="inventory-{{container._id}}">
+        <div layout="row" >
+            <span flex="5">
+                <md-icon class="material-icons type-icon icon">{{$ctrl.getIconClass(container)}}</md-icon>
+            </span>
+            <span class="value-box" flex="20">{{container.subType.name}}</span>
+            <span class="value-box" flex="35">{{container.label}}</span>
+            <span class="value-box" flex="30">{{container.contents}}</span>
+            <span flex="5">
+                <i class="material-icons icon" ng-show="container.photos && container.photos.length > 0"
+                    ng-click="$ctrl.openPictureModal(container)"
+                    ng-disabled="$ctrl.isLocked"  ng-class="{'disabled': $ctrl.isLocked}">camera_alt</i>
+            </span>
+            <span flex="5">
+                <md-icon class="remove error icon"
+                ng-click="$ctrl.removeContainer(container)"
+                ng-disabled="$ctrl.isLocked" ng-class="{'disabled': $ctrl.isLocked}">clear</md-icon>
+            </span>
+        </div>
+    </div>
+</div>
+<div>Total Delivery Inventory Selected: {{$ctrl.order.inventory.length}}</div>
+<div>Total Points: {{$ctrl.getTotalPoints()}}</div>
+<div>Total Est. Weight: {{$ctrl.getTotalEstimatedWeight()}} lbs</div>

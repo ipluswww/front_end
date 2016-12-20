@@ -1,0 +1,64 @@
+<div class="auth-page" layout layout-align="center center">
+    <div class="container page">
+        <div layout-gt-md="row">
+            <div class="auth-form md-whiteframe-2dp">
+
+                <div ng-if="$ctrl.errors" class="errors">
+                    Your username or password is incorrect. Please try again. Forget your password? <a ui-sref="app.password" class="forgot-password">Click here to reset it.</a>
+                </div>
+                <div ng-if="$ctrl.serverError" class="errors">
+                    Connection to server failed, please contact the administrator or try again in 5 minutes.
+                </div>
+
+                <form name="loginForm" ng-submit="$ctrl.submitForm()">
+                    <fieldset ng-disabled="$ctrl.isSubmitting">
+                        <div layout layout-sm="column">
+                            <md-input-container flex>
+                                <label>Email</label>
+                                <md-icon>
+                                    <i class="material-icons">person</i>
+                                </md-icon>
+                                <input name="email" ng-model="$ctrl.formData.email" ng-pattern="/^.+@.+\..+$/" required />
+                                <div ng-messages="loginForm.email.$error" ng-show="loginForm.email.$touched && (loginForm.email.$error.pattern || loginForm.email.$error.required)">
+                                    <div ng-message-exp="['required', 'pattern']">
+                                        Must be a valid e-mail address.
+                                    </div>
+                                </div>
+                            </md-input-container>
+                        </div>
+                        <div layout layout-sm="column">
+                            <md-input-container flex>
+                                <label>Password</label>
+                                <md-icon>
+                                    <i class="material-icons">lock</i>
+                                </md-icon>
+                                <input ng-model="$ctrl.formData.password" type="password" name="password" required />
+                                <div ng-messages="loginForm.password.$error" ng-show="loginForm.password.$touched && loginForm.password.$error.required">
+                                    <div ng-message-exp="['required']">
+                                        Password is requried.
+                                    </div>
+                                </div>
+                            </md-input-container>
+                        </div>
+                        <div layout layout-sm="column">
+                            <div flex>
+                                <md-checkbox aria-label="Remember me">
+                                    Remember me
+                                </md-checkbox>
+                            </div>
+                            <div flex layout layout-align="end start">
+                                <a ui-sref="app.password" class="forgot-password">
+                                    Forgot Password?
+                                </a>
+                            </div>
+                        </div>
+                        <div layout layout-sm="column" layout-align="center end">
+                            <md-button flex aria-label="$ctrl.title" class="md-raised md-closetbox-primary" type="submit" ng-disabled="loginForm.$invalid" ng-bind="$ctrl.title"></md-button>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>

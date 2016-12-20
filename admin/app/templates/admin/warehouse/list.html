@@ -1,0 +1,65 @@
+<div layout="row" id="warehouses" layout-fill class="admin-list">
+    <md-content class="md-whiteframe-2dp normal-padding"  flex>
+        <h3>Warehouses</h3>
+        <div layout="column">
+            <div class="section-header">
+                <div layout="row">
+                    <md-input-container flex="40" class="search-container">
+                        <md-icon class="material-icons">search</md-icon>
+                        <input type="text" ng-model="$ctrl.query.search" placeholder="search" my-enter="$ctrl.onSearch()" ng-change="$ctrl.onSearch()" ng-model-options="{debounce: 1000}"/>
+                    </md-input-container>
+                    <div class="button-group" flex-offset="15" flex="45" layout-align="end center" layout="row">
+                        <md-button ng-if="$ctrl.isAllowedEdit()" aria-label="Create" class="md-raised md-primary" ui-sref="app.admin.warehouse.new">Create New</md-button>
+                        <md-button class="md-fab md-closetbox-fab" aria-label="Back" ng-click="$ctrl.backTo()">
+                            <i class="material-icons">keyboard_arrow_left</i>
+                            <md-tooltip>Back</md-tooltip>
+                        </md-button>
+                    </div>
+                </div>
+            </div>
+
+
+            <div>
+                <md-table-container>
+                    <table md-table md-row-select="false" md-progress="$ctrl.promise">
+                        <thead md-head md-order="$ctrl.query.sort" md-on-reorder="$ctrl.onOrder">
+                        <tr md-row>
+                            <th md-column md-order-by="location.address">Address</th>
+                            <th md-column md-order-by="location.zipCode">Zip Code</th>
+                            <th md-column md-order-by="location.phone">Phone</th>
+                            <th md-column md-order-by="agentName">Associated Agent</th>
+                            <th md-column>Associated Markets</th>
+                            <th md-column>Associated Zip Codes</th>
+                        </tr>
+                        </thead>
+                        <tbody md-body>
+                        <tr md-row ng-repeat="warehouse in $ctrl.warehouses" ng-click="$ctrl.onRowSelect(warehouse)" ng-class="{'active': warehouse._id == $ctrl.selectedId }">
+                            <td md-cell><a ui-sref="app.admin.warehouse.detail({id: warehouse._id})">{{warehouse.location.address}}</a></td>
+                            <td md-cell>{{warehouse.location.zipCode}}</td>
+                            <td md-cell>{{warehouse.location.phone}}</td>
+                            <td md-cell>
+                                <a ng-if="warehouse.associatedAgent" ui-sref="app.admin.agent.detail({id: warehouse.associatedAgent._id})">{{ warehouse.associatedAgent.name || "Unassigned" }}</a>
+                                <span ng-if="!warehouse.associatedAgent">{{ warehouse.agentName || "Unassigned" }}</span>
+                            </td>
+                            <td md-cell>
+                                <ul ng-if="warehouse.associatedMarkets && warehouse.associatedMarkets.length > 0">
+                                    <li ng-repeat="market in warehouse.associatedMarkets">
+                                        <a>{{market.name}}</a>
+                                    </li>
+                                </ul>
+                                <span ng-if="!warehouse.associatedMarkets || warehouse.associatedMarkets.length < 1">None</span>
+                            </td>
+                            <td md-cell>
+                                {{ (warehouse.zipCodes && warehouse.zipCodes.length > 0) ? warehouse.zipCodes.join() : "None"}}
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </md-table-container>
+                <md-table-pagination class="enlarged" md-limit="$ctrl.query.limit" md-page="$ctrl.query.page" md-total="{{$ctrl.totalCount}}" md-on-paginate="$ctrl.onPagination" md-page-select></md-table-pagination>
+            </div>
+
+
+        </div>
+    </md-content>
+</div>

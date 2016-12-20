@@ -1,0 +1,135 @@
+<div id="ordersList">
+    <section class="section-header">
+        <div class="search-section" layout="row">
+            <md-input-container flex="20" class="search-container">
+                <md-icon class="material-icons">search</md-icon>
+                <input type="text" ng-model="$ctrl.query.search" placeholder="search" my-enter="$ctrl.onSearch()" ng-change="$ctrl.onSearch()" ng-model-options="{debounce: 1000}"/>
+            </md-input-container>
+            <div flex="30" flex-offset="5">
+                <div layout="row">
+                    <span class="filter-label" flex="35">Market</span>
+                    <cb-market-multi-select flex="80" list="$ctrl.limitedMarkets" on-select="$ctrl.onSearch()"></cb-market-multi-select>
+                </div>
+            </div>
+            <div flex="10" layout-align="center center" class="icons-section">
+                <i ng-click="$ctrl.onAgentSummaryReport()" class="material-icons">print</i>
+            </div>
+            <div flex="30" flex-offset="15">
+                <div layout="row">
+                    <span class="filter-label" flex="20">Agent</span>
+                    <cb-agent-select ng-input-agent-id="$ctrl.agentId" on-select="$ctrl.onAgentChange(agentId)"></cb-agent-select>
+                </div>
+            </div>
+        </div>
+        <div class="filter-section" layout="row">
+            <div flex="40" class="filter-unit" >
+                <div layout="column">
+                    <div class="selected-order-type text-center" ng-click="$ctrl.toggleFilterPanel()">
+                        <span class="expand-icon">
+                            <md-icon ng-if="!$ctrl.filterExpanded" class="material-icons">keyboard_arrow_down</md-icon>
+                            <md-icon ng-if="$ctrl.filterExpanded" class="material-icons">keyboard_arrow_up</md-icon>
+                        </span>
+                        Available Orders: {{ $ctrl.availableOrderFilter | humanizeFilter }}
+                    </div>
+                    <div class="type-list" ng-show="$ctrl.filterExpanded">
+                        <div layout="row">
+                            <button class="md-button md-primary" ng-click="$ctrl.toggleAvailableOrderFilter('pending')"
+                                    ng-class="{'md-raised': $ctrl.availableOrderFilter.indexOf('pending') >= 0,'flat': $ctrl.availableOrderFilter.indexOf('pending') < 0}"
+                                    flex="30">Pending</button>
+                            <button class="md-button md-primary" ng-click="$ctrl.toggleAvailableOrderFilter('in_progress')"
+                                    ng-class="{'md-raised': $ctrl.availableOrderFilter.indexOf('in_progress') >= 0,'flat': $ctrl.availableOrderFilter.indexOf('in_progress') < 0}"
+                                    flex="30" flex-offset="5">In Progress</button>
+                            <button class="md-button md-primary" ng-click="$ctrl.toggleAvailableOrderFilter('completed')"
+                                    ng-class="{'md-raised': $ctrl.availableOrderFilter.indexOf('completed') >= 0,'flat': $ctrl.availableOrderFilter.indexOf('completed') < 0}"
+                                    flex="30" flex-offset="5">Completed</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div flex="40" class="filter-unit">
+                <div layout="column">
+                    <div class="selected-order-type text-center" ng-click="$ctrl.toggleFilterPanel()">
+                        Assignment: {{ (($ctrl.assignmentFilter && $ctrl.assignmentFilter.length > 0) ? $ctrl.assignmentFilter : ['All']) | humanizeFilter }}
+                    </div>
+                    <div class="type-list" ng-show="$ctrl.filterExpanded">
+                        <div layout="row">
+                            <button class="md-button md-primary" ng-click="$ctrl.toggleAssignmentFilter('me')"
+                                    ng-class="{'md-raised': $ctrl.assignmentFilter.indexOf('me') >= 0,'flat': $ctrl.assignmentFilter.indexOf('me') < 0}"
+                                    flex="45">Assigned To Me</button>
+                            <button class="md-button md-primary flat" disabled flex="45" flex-offset="10">Unassigned</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section> <!-- /.section-header -->
+    <md-table-container >
+        <table md-table md-row-select="false" md-progress="$ctrl.promise">
+            <thead md-head md-order="$ctrl.query.sort" md-on-reorder="$ctrl.onOrder">
+            <tr md-row>
+                <th md-column>ID</th>
+                <th md-column md-order-by="customer.name">Name</th>
+                <th md-column>Type</th>
+                <th md-column md-order-by="customer.email">Email</th>
+                <th md-column md-order-by="customer.mobile">Phone</th>
+                <th md-column md-order-by="customer.mobile">Disposition</th>
+                <th md-column md-order-by="requestedDate">Date Requested</th>
+                <th md-column md-order-by="acceptedDate">Scheduled Date</th>
+                <th md-column md-order-by="market.name">Market / Zipcode</th>
+                <th md-column trim>
+                    <div class="address-cell">Address</div>
+                </th>
+                <th md-column>Est. Weight</th>
+                <th md-column>Act. Weight</th>
+            </tr>
+            </thead>
+            <tbody md-body>
+            <tr md-row ng-repeat="item in $ctrl.data">
+                <td md-cell ng-click="$ctrl.selectItem(item)">{{item._id.slice(-5)}}</td>
+                <td md-cell ng-click="$ctrl.selectItem(item)">{{item.customer.name}}</td>
+                <td md-cell ng-click="$ctrl.selectItem(item)">
+                    <p>{{$ctrl.getTypeString(item)}}</p>
+                    <p ng-if="item.tasks && item.tasks['Customer Dropoff/Pickup'] === true" class="type-access">
+                        (ACCESS)
+                        <md-tooltip ng-if="item.goingToWarehouse">Customer has requested to drop off their items themselves (pickup order)</md-tooltip>
+                        <md-tooltip ng-if="!item.goingToWarehouse"> “Customer has requested to pickup their items themselves (delivery order)</md-tooltip>
+                    </p>
+                </td>
+                <td md-cell>
+                    <a href="mailto:{{item.customer.email}}">{{item.customer.email}}</a>
+                </td>
+                <td md-cell>
+                    <cb-formatted-phone-number-link on-click="$ctrl.openPhoneCallModal(item.customer.mobile, item)"
+                                                    value="item.customer.mobile">
+                    </cb-formatted-phone-number-link>
+                </td>
+                <td md-cell ng-click="$ctrl.selectItem(item)">{{item.disposition}}</td>
+                <td md-cell ng-click="$ctrl.selectItem(item)">
+                    <p ng-if="item.requestedDate1">{{item.requestedDate1 | dateAP}}</p>
+                    <p ng-if="item.requestedDate2">{{item.requestedDate2 | dateAP}}</p>
+                    <p ng-if="item.requestedDate3">{{item.requestedDate3 | dateAP}}</p>
+                </td>
+                <td md-cell class="accepted-date"  ng-click="$ctrl.openScheduleModal(item)">
+                    {{ item.acceptedDate  | durationDateH }}
+                    <span class="action" ng-class="{'attention': !item.acceptedDate}">
+                        <i class="material-icons">update</i>
+                        <md-tooltip>Update scheduled date</md-tooltip>
+                    </span>
+                </td>
+                <td md-cell>
+                    <a class="market-link" ui-sref="app.admin.market.detail({id: item.market._id})">{{item.market.name}}</a>
+                    / {{item.originationLocation.zipCode}}</td>
+                <td md-cell class="address-cell" ng-click="$ctrl.selectItem(item)">
+                    {{ $ctrl.addressString(item) }}
+                </td>
+                <td md-cell ng-click="$ctrl.selectItem(item)">{{item.weight}}</td>
+                <td md-cell ng-click="$ctrl.selectItem(item)">{{item.agentWeight}}</td>
+
+            </tr>
+            </tbody>
+        </table>
+    </md-table-container>
+    <md-table-pagination class="enlarged" md-limit="$ctrl.query.limit" md-page="$ctrl.query.page" md-total="{{$ctrl.totalCount}}" md-on-paginate="$ctrl.onPagination" md-page-select></md-table-pagination>
+    <div ng-include="'templates/home/agent/_order_view.html'"></div>
+</div>

@@ -1,0 +1,63 @@
+<div class="orders-table">
+    {{ $ctrl.totalCount }}
+    <md-table-container >
+        <table md-table md-row-select="false">
+            <thead md-head md-order="$ctrl.options.sort" md-on-reorder="$ctrl.onOrder">
+                <tr md-row>
+                    <th md-column class="id-column">ID</th>
+                    <th md-column md-order-by="meta.customerName" class="name-column">Name</th>
+                    <th md-column md-order-by="goingToWarehouse">Type</th>
+                    <th md-column md-order-by="meta.customerEmail">Email</th>
+                    <th md-column md-order-by="meta.customerMobile">Phone</th>
+                    <th md-column md-order-by="disposition">Disposition</th>
+                    <th md-column md-order-by="requestedDate1">Date Requested</th>
+                    <th md-column md-order-by="acceptedDate">Date Accepted</th>
+                    <th md-column md-order-by="market.name">Market / Zipcode</th>
+                    <th md-column>Address</th>
+                    <th md-column md-order-by="dateCreated">Date Created</th>
+                    <th md-column>Assigned</th>
+                </tr>
+            </thead>
+            <tbody md-body>
+                <tr md-row ng-repeat="item in $ctrl.list">
+                    <td md-cell class="id-column" ng-click="$ctrl.selectItem(item)">{{item._id.slice(-5)}}</td>
+                    <td md-cell class="name-column" ng-click="$ctrl.selectItem(item)">{{item.customer.name}}</td>
+                    <td md-cell ng-click="$ctrl.selectItem(item)">
+                        {{item.goingToWarehouse ? 'Pickup' : 'Delivery'}}
+                        <span ng-if="item.tasks['Customer Dropoff/Pickup'] === true" class="type-access">
+                            (ACCESS)
+                            <md-tooltip ng-if="item.goingToWarehouse">Customer has requested to drop off their items themselves (pickup order)</md-tooltip>
+                            <md-tooltip ng-if="!item.goingToWarehouse"> “Customer has requested to pickup their items themselves (delivery order)</md-tooltip>
+                        </span>
+                    </td>
+                    <td md-cell><a href="mailto:{{item.customer.email}}">{{item.customer.email}}</a></td>
+                    <td md-cell>
+                        <cb-formatted-phone-number-link on-click="$ctrl.openPhoneCallModal(item)"
+                                                        value="item.customer.mobile">
+                        </cb-formatted-phone-number-link>
+                    </td>
+                    <td md-cell ng-click="$ctrl.selectItem(item)">{{item.disposition}}</td>
+                    <td md-cell ng-click="$ctrl.selectItem(item)">
+                        <p ng-if="item.requestedDate1">{{item.requestedDate1 | dateAP}}</p>
+                        <p ng-if="item.requestedDate2">{{item.requestedDate2 | dateAP}}</p>
+                        <p ng-if="item.requestedDate3">{{item.requestedDate3 | dateAP}}</p>
+                    </td>
+                    <td md-cell ng-click="$ctrl.selectItem(item)">{{ item.acceptedDate | durationDateH }}</td>
+                    <td md-cell ng-click="$ctrl.selectItem(item)">{{item.market.name}} / {{item.originationLocation.zipCode}}</td>
+                    <td md-cell>{{item.customer.location.address}}</td>
+                    <td md-cell ng-click="$ctrl.selectItem(item)">{{item.dateCreated | date}}</td>
+                    <td md-cell>
+                        <cb-assign-order order="item"></cb-assign-order>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </md-table-container>
+    <md-table-pagination class="enlarged" 
+                        md-limit="$ctrl.options.limit" 
+                        md-page="$ctrl.options.page" 
+                        md-total="{{$ctrl.total}}" 
+                        md-on-paginate="$ctrl.onPagination"
+                        md-page-select>
+    </md-table-pagination>
+</div>

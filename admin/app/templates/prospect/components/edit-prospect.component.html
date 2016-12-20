@@ -1,0 +1,235 @@
+<div class="order-edit-view md-whiteframe-5dp md-padding">
+  <!--________________________ Section Header, control buttons  ____________________-->
+  <section class="section-header">
+      <div layout="row">
+        <div flex="5">
+            <i class="collapse-panel-icon material-icons" ng-click="$editCtrl.closePanel(); $ctrl.closePanel();">keyboard_arrow_right</i>
+        </div>
+        <div flex="45">
+            <md-button class="md-closetbox-primary md-raised" ng-if="!$editCtrl.inEdit" ng-click="$editCtrl.triggerEditMode()">Edit Prospect</md-button>
+            <md-button class="md-closetbox-primary md-raised" ng-if="!$editCtrl.inEdit" ng-click="$editCtrl.createOrder()">Create Order</md-button>
+            <md-button class="md-closetbox-primary md-raised" ng-if="$editCtrl.inEdit" ng-click="$editCtrl.save()" ng-disabled="$editCtrl.prospectForm.$invalid">Save</md-button>
+            <md-button class="md-closetbox-primary md-raised" ng-if="$editCtrl.inEdit" ng-click="$editCtrl.cancel()">Cancel</md-button>
+        </div>
+        <div flex="25" class="action-column">
+            <div layout="row" layout-align="center center">
+                <span>
+                    <cb-call-prospect order="$editCtrl.data"></cb-call-prospect>
+                </span>
+                <span ng-class="{'active': $editCtrl.data.email1Sent}" ng-click="$editCtrl.toggleEmail('email1')">
+                    <i class="material-icons">markunread_mailbox</i>
+                    <md-tooltip ng-if="$editCtrl.data.email1Sent">
+                    {{$editCtrl.data.email1Username}} / {{$editCtrl.data.email1Sent | date}}
+                    </md-tooltip>
+                </span>
+                <span ng-class="{'active': $editCtrl.data.email2Sent}" ng-click="$editCtrl.toggleEmail('email2')">
+                    <i class="material-icons">markunread_mailbox</i>
+                    <md-tooltip ng-if="$editCtrl.data.email2Sent">
+                    {{$editCtrl.data.email2Username}} / {{$editCtrl.data.email2Sent | date}}
+                    </md-tooltip>
+                </span>
+                <span ng-class="{'active': ($editCtrl.data.disposition !== 'CANCELLED')}" ng-click="$editCtrl.cancelItem()">
+                    <i class="material-icons">highlight_off</i>
+                </span>
+            </div>
+        </div>
+    </div>
+  </section>
+  <!--________________________ Section Header, control buttons  ____________________-->
+
+    <div class="section-body-wrapper" layout="row">
+        <div class="order-jump-to" flex="5">
+            <div flex class="bookmark-bar">
+                <cb-bookmark-bar container="'#editOrderSection'" items="$editCtrl.bookmarkList"></cb-bookmark-bar>
+            </div>
+        </div>
+
+        <section flex="95" class="section-body" id="editOrderSection">
+    <!--________________________ Main prospect information - two column layout part ____________________-->
+    <div layout="row" layout-wrap layout-align="start top">
+        <div flex="50" class="data-row" id="orderID">
+            <span class="prospect-label">Order ID</span>
+            <span class="prospect-value" ng-bind-html="$editCtrl.data._id | orderidify">
+            </span>
+        </div>
+        <div flex="50" class="data-row">
+            <span class="prospect-label" ng-if="!$editCtrl.inEdit">Prospect</span>
+            <span class="prospect-value" ng-if="!$editCtrl.inEdit">
+                {{$editCtrl.data.customer.name}}
+                <i class="material-icons {{$editCtrl.data.billingStatusColor}} billing-status">language</i>
+            </span>
+            <span class="prospect-input" ng-if="$editCtrl.inEdit">
+                <md-input-container>
+                    <label>Prospect</label>
+                    <input ng-model="$editCtrl.data.customer.name" required aria-label="Name" />
+                </md-input-container>
+            </span>
+        </div>
+        <div flex="50" class="data-row">
+            <span class="prospect-label">Source</span>
+            <span class="prospect-value">
+                {{$editCtrl.sourceLabel()}}
+            </span>
+        </div>
+        <div flex="50" class="data-row">
+            <div ng-if="!$editCtrl.inEdit">
+                <span class="prospect-label">Assigned</span>
+                <span class="prospect-value" ng-if="$editCtrl.data.assigned">
+                    {{$editCtrl.data.assigned.name}}
+                </span>
+            </div>
+            <div ng-if="$editCtrl.inEdit">
+                <md-button class="md-raised md-primary" ng-click="$editCtrl.assignUser(true)" ng-disabled="$editCtrl._User.current._id === $editCtrl.data.assigned">Assign to me</md-button>
+                <md-button class="md-raised md-primary" ng-click="$editCtrl.assignUser(false)" ng-disabled="$editCtrl.data.assigned === null">Clear assignment</md-button>
+            </div>
+        </div>
+    </div>
+    <!--________________________ Main prospect information - two column layout part ____________________-->
+
+    <!--________________________ Main prospect information - two column layout part ____________________-->
+    <form layout="row" name="$editCtrl.prospectForm">
+        <!-- Left panel __  email, phone, address, selected market / zipcode, selected agent, date submitted and date requested -->
+        <div flex="50">
+            <div class="data-row">
+                <div ng-if="!$editCtrl.inEdit">
+                    <span class="prospect-label">Email</span>
+                    <span class="prospect-value">
+                        <a href="mailto: {{$editCtrl.data.customer.email}}">{{$editCtrl.data.customer.email}}</a>
+                    </span>
+                    <span>
+                        <i class="material-icons">forum</i>
+                        <md-tooltip>
+                           Future Communication Modal
+                         </md-tooltip>
+                    </span>
+                </div>
+                <span class="prospect-input" ng-if="$editCtrl.inEdit">
+                    <md-input-container>
+                        <label>Email</label>
+                        <input name="email" ng-model="$editCtrl.data.customer.email" required aria-label="Email" ng-change="$editCtrl.checkDuplicate()" ng-model-options="{debounce: 1000}" />
+                        <div ng-messages="$editCtrl.prospectForm.email.$error" ng-show="$editCtrl.prospectForm.email.$touched && $editCtrl.prospectForm.email.$error.server">
+                            <div ng-message-exp="['server']">
+                                The email is invalid, it already exists.
+                            </div>
+                        </div>
+                    </md-input-container>
+                </span>
+            </div>
+            <div class="data-row">
+                <div ng-if="!$editCtrl.inEdit">
+                    <span class="prospect-label">Phone</span>
+                    <span class="prospect-value phone-number">
+                        <cb-formatted-phone-number-link on-click="$editCtrl.openPhoneCallModal()"
+                                                        value="$editCtrl.data.customer.mobile">
+                        </cb-formatted-phone-number-link>
+                    </span>
+                </div>
+                <span class="prospect-input" ng-if="$editCtrl.inEdit">
+                    <cb-phone-input cb-number="$editCtrl.data.customer.mobile" cb-label="Mobile" cb-required="true">
+                    </cb-phone-input>
+                </span>
+            </div>
+            <div class="data-row">
+                <div ng-if="!$editCtrl.inEdit">
+                    <span class="prospect-label">Customer Address</span>
+                    <span class="prospect-value">
+                        {{$editCtrl.data.originationLocation.address}}
+                    </span>
+                </div>
+                <span class="prospect-input" ng-if="$editCtrl.inEdit">
+                    <md-input-container>
+                        <label>Customer Address</label>
+                        <input ng-model="$editCtrl.data.originationLocation.address" required aria-label="Address" />
+                    </md-input-container>
+                </span>
+            </div>
+            <div class="data-row" layout="column">
+                <div>
+                    <span class="prospect-label">Selected Market</span>
+                    <span class="prospect-value">
+                        {{$editCtrl.data.market.name}}
+                    </span>
+                </div>
+            </div>
+            <div class="data-row" layout="column">
+                <div ng-if="!$editCtrl.inEdit">
+                    <span class="prospect-label">Zip Code</span>
+                    <span class="prospect-value">
+                        {{$editCtrl.data.originationLocation.zipCode}}
+                    </span>
+                </div>
+                <span class="prospect-input" ng-if="$editCtrl.inEdit">
+                    <md-input-container>
+                        <label>Zipcode</label>
+                        <input ng-model="$editCtrl.data.originationLocation.zipCode" required aria-label="Zipcode" ng-minlength="5" ng-maxlength="5" />
+                    </md-input-container>
+                </span>
+            </div>
+
+            <div class="data-row">
+                <span class="prospect-label">Selected Agent</span>
+                <span class="prospect-value">
+                    {{$editCtrl.data.warehouseLocation.agentName}}
+                </span>
+            </div>
+
+            <div class="data-row">
+                <span class="prospect-label">Date Submitted:</span>
+                <span class="prospect-value">
+                    {{$editCtrl.data.dateCreated | date}}
+                </span>
+            </div>
+            <div layout="row">
+                <span class="prospect-label">Date Requested:</span>
+                <div layout="column">
+                    <div class="prospect-value" ng-if="$editCtrl.data.requestedDate1 && !$editCtrl.inEdit">
+                        {{$editCtrl.data.requestedDate1 | dateAP}}
+                    </div>
+                    <div class="prospect-value" ng-if="$editCtrl.data.requestedDate2 && !$editCtrl.inEdit">
+                        {{$editCtrl.data.requestedDate2 | dateAP}}
+                    </div>
+                    <div class="prospect-value" ng-if="$editCtrl.data.requestedDate3 && !$editCtrl.inEdit">
+                        {{$editCtrl.data.requestedDate3 | dateAP}}
+                    </div>
+                </div>
+            </div>
+            <div ng-if="$editCtrl.inEdit">
+                    <cb-order-requested-dates-picker order="$editCtrl.data"></cb-order-requested-dates-picker>
+            </div>
+        </div>
+        <!-- ________________________left panel end __________________________________________-->
+
+        <div flex="50">
+            <div layout="row" class="data-row">
+                <span class="discount-label">Discount Code</span>
+                <span class="discount-value">{{ $editCtrl.data.discountCode }}</span>
+            </div>
+            <div class="data-row" ng-if="$editCtrl.data.spacePrice">
+                <span class="prospect-label">Space Requested</span>
+                <span class="prospect-value">
+                    {{ $editCtrl.data.storageUnit.label }}
+                </span>
+            </div>
+
+            <div layout="column" class="data-row" ng-if="$editCtrl.data.inventory && $editCtrl.data.inventory.length > 0">
+                <span class="prospect-label">Inventory Requested({{$editCtrl.data.inventory.length}})</span>
+                <cb-order-inventories inventories="$editCtrl.groupedInventories"></cb-order-inventories>
+            </div>
+
+        </div>
+    </form>
+    <!--________________________ Main prospect information - two column layout part ____________________-->
+
+    <div layout="column" class="data-row" layout-wrap id="orderNote">
+        <span class="prospect-label">Notes</span>
+        <cb-order-notes order="$editCtrl.data"></cb-order-notes>
+    </div>
+    <div layout="column" class="data-row" id="orderEvent">
+
+        <span class="prospect-label">Events</span>
+        <cb-order-events order="$editCtrl.data"></cb-order-events>
+    </div>
+
+    </section>
+    </div>
+</div>

@@ -1,0 +1,8 @@
+<div class='default-payment-method' ng-class="{'cb-warn': defaultPaymentMethod.paymentMethod.expired}">
+    <div class="payment-method-summary">
+        <img ng-src="assets/{{defaultPaymentMethod.paymentMethod.cardType.toLowerCase()}}.png"
+            class="payment-method-summary--card-type-image"/>
+        <span><b>{{defaultPaymentMethod.paymentMethod.cardType}}</b> ending in {{defaultPaymentMethod.paymentMethod.last4}}</span>
+        <span class="payment-method-summary--expiration-date">Expires {{defaultPaymentMethod.paymentMethod.expirationDate}}</span>
+    </div>
+</div>

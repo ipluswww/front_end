@@ -1,0 +1,77 @@
+<div ng-controller="HomeAgentCalendarController as $ctrl">
+    <div id="calendar" layout-fill>
+        <div class="headbar" layout="row">
+            <span class="buttons">
+                <md-button class="md-icon-button md-primary" aria-label="Previous" ng-click="$ctrl.onArrow(-1)">
+                    <i class="material-icons">arrow_back</i>
+                </md-button>
+                <md-button class="md-icon-button md-primary" aria-label="Next" ng-click="$ctrl.setMonth(null)">
+                    <i class="material-icons">arrow_upwards</i>
+                </md-button>
+                <md-button class="md-icon-button md-primary" aria-label="Next" ng-click="$ctrl.onArrow(1)">
+                    <i class="material-icons">arrow_forward</i>
+                </md-button>
+            </span>
+            <span class="MM_YYYY">{{ $ctrl.calendar._values.monthes[$ctrl.calendar.mm] }} {{ $ctrl.calendar.yyyy }}</span>
+        </div>
+        <md-table-container layout="row">
+            <table md-table md-row-select="false" role="grid" class="mm-selector" ng-show="$ctrl.calendar.mm === null">
+                <tbody md-body>
+                    <tr>
+                        <td><span ng-click="$ctrl.setMonth(0)">January</span></td>
+                        <td><span ng-click="$ctrl.setMonth(1)">Febrary</span></td>
+                        <td><span ng-click="$ctrl.setMonth(2)">January</span></td>
+                        <td><span ng-click="$ctrl.setMonth(3)">April</span></td>
+                    </tr>
+                    <tr>
+                        <td><span ng-click="$ctrl.setMonth(4)">May</span></td>
+                        <td><span ng-click="$ctrl.setMonth(5)">June</span></td>
+                        <td><span ng-click="$ctrl.setMonth(6)">July</span></td>
+                        <td><span ng-click="$ctrl.setMonth(7)">August</span></td>
+                    </tr>
+                    <tr>
+                        <td><span ng-click="$ctrl.setMonth(8)">September</span></td>
+                        <td><span ng-click="$ctrl.setMonth(9)">October</span></td>
+                        <td><span ng-click="$ctrl.setMonth(10)">November</span></td>
+                        <td><span ng-click="$ctrl.setMonth(11)">December</span></td>
+                    </tr>
+                </tbody>
+            </table>
+            <table md-table md-row-select="false" md-progress="$ctrl.promise" role="grid" class="dd-selector" ng-show="$ctrl.calendar.mm !== null">
+                <thead md-head>
+                <tr>
+                    <th ng-repeat="weekday in $ctrl.calendar._values.weekdays">{{ weekday }}</th>
+                </tr>
+                </thead>
+                <tbody md-body>
+                <tr ng-repeat="week in $ctrl.calendar.data">
+                    <td ng-repeat="day in week" ng-class="{disabled: !day.active}">
+                        <div class="head">
+                            <div layout="row" layout-wrap class="blackouts">
+                                <div flex 
+                                    ng-class="{blackout: $ctrl.isBlackout(day.yyyy, day.mm, day.dd, 0)}" 
+                                    ng-click="$ctrl.toggleBlackout(day.yyyy, day.mm, day.dd, 0)">AM</div>
+                                <div flex 
+                                    ng-class="{blackout: $ctrl.isBlackout(day.yyyy, day.mm, day.dd, 12)}" 
+                                    ng-click="$ctrl.toggleBlackout(day.yyyy, day.mm, day.dd, 12)">PM</div>
+                            </div>
+                            <span class="date">{{ day.dd }}</span>
+                        </div>
+                        <div class="body">
+                            <span ng-repeat="order in $ctrl.getOrderForDate(day.yyyy, day.mm, day.dd)" ng-class="$ctrl.getType(order)" ng-click="$ctrl.selectItem(order)" >
+                                <i class="material-icons" ng-if="order.tasks && order.tasks['Customer Dropoff/Pickup']">
+                                    accessibility
+                                    <md-tooltip ng-if="order.goingToWarehouse">Customer has requested to drop off their items themselves (pickup order)</md-tooltip>
+                                    <md-tooltip ng-if="!order.goingToWarehouse"> “Customer has requested to pickup their items themselves (delivery order)</md-tooltip>
+                                </i>
+                                {{ $ctrl.displayOrder(order, day.yyyy, day.mm, day.dd) }} 
+                            </span>
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </md-table-container>
+    </div>
+    <div ng-include="'templates/home/agent/_order_view.html'"></div>
+</div>

@@ -1,0 +1,97 @@
+<div layout="row" id="pickupProcess" class="order-creation" layout-fill ng-form="orderCreation.form">
+	<md-content class="md-whiteframe-2dp normal-padding" flex>
+		<h3 layout="row">
+			<cb-order-title flex order="orderCreation.order" back-param="orderCreation.backParam"
+							has-expired-default-payment-method="orderCreation.hasExpiredDefaultPaymentMethod()"
+							has-order-with-payment-hold="orderCreation.hasOrderWithPaymentHold()"></cb-order-title>
+		</h3>
+		<div layout="column">
+			<div class="section-header">
+				<div layout="row" layout-wrap>
+					<md-card flex>
+                        <cb-item-price-display flex order="orderCreation.order" is-final="true"
+							ng-if="!orderCreation.isExistingCustomer() && orderCreation.isItemPriceSelected()"
+							is-locked="orderCreation.isLocked()"></cb-item-price-display>
+                        <cb-space-price-display flex order="orderCreation.order"
+							is-final="true"
+							ng-if="!orderCreation.isExistingCustomer() && !orderCreation.isItemPriceSelected()"
+							is-locked="orderCreation.isLocked()"
+							storage-units="orderCreation.spaceEstimators"></cb-space-price-display>
+						<cb-subscription-summary flex order="orderCreation.order"
+							ng-if="orderCreation.isExistingCustomer()"
+							currently-stored-inventory="orderCreation.currentlyStoredInventory"></cb-subscription-summary>
+					</md-card>
+					<md-card flex>
+					    <cb-insurance-coverage flex order="orderCreation.order"></cb-insurance-coverage>
+					</md-card>
+				</div>
+	      	</div>
+			<div layout="row" class="data-row creation-form">
+				<cb-customer-order-account-info flex
+					customer="orderCreation.customer"
+					order="orderCreation.order"
+					is-locked="orderCreation.isLocked()"
+					on-address-changed="orderCreation.onAddressChanged($event)"></cb-customer-order-account-info>
+			</div>
+			<div layout="row" class="data-row">
+				<div flex layout="column">
+					<div layout="row">
+						<cb-requested-pickup flex order="orderCreation.order"
+							is-locked="orderCreation.isLocked()"></cb-requested-pickup>
+					</div>
+					<div layout="row">
+						<cb-customer-dropoff-pickup flex order="orderCreation.order"
+						is-locked="orderCreation.isLocked()"></cb-customer-dropoff-pickup>
+					</div>
+					<div layout="row">
+						<cb-payment-method flex customer='orderCreation.order.customer'
+						hosted-fields-instance="orderCreation.hostedFieldsInstance"
+						payment-method-nonce="orderCreation.paymentMethodNonce"
+						is-locked="orderCreation.isLocked()"
+						braintree-customer="orderCreation.braintreeCustomer"
+						on-payment-method-updated="orderCreation.onPaymentMethodUpdated($event)"></cb-payment-method>
+					</div>
+				</div>
+				<div flex layout="column">
+					<div layout="row">
+						<cb-additional-insurance flex order="orderCreation.order"
+						is-locked="orderCreation.isLocked()"
+						on-customer-valuation-updated="orderCreation.onCustomerValuationUpdated($event)"></cb-additional-insurance>
+					</div>
+					<div layout="row">
+						<cb-discount-code flex order="orderCreation.order"
+						is-locked="orderCreation.isLocked()" on-discount-changed="orderCreation.onDiscountUpdated($event)"></cb-discount-code>
+					</div>
+					<div layout="row">
+						<cb-order-parameter-additions flex order="orderCreation.order"
+						is-locked="orderCreation.isLocked()"></cb-order-parameter-additions>
+					</div>
+					<div layout="row">
+						<cb-order-source flex order="orderCreation.order"
+						is-locked="orderCreation.isLocked()"></cb-order-source>
+					</div>
+				</div>
+
+			</div>
+			<div>
+				<div layout="row" layout-align="end center">
+					<md-button aria-label="Previous Step" class="md-raised md-primary" ng-click="orderCreation.goToPreviousStep()">Previous Step</md-button>
+					<md-button aria-label="Update Order"
+						class="md-raised md-closetbox-primary order-creation--save-order"
+						ng-if="orderCreation.isSaveUpdatedOrderVisible()"
+						ng-click="orderCreation.saveUpdatedOrder()">Update Order</md-button>
+					<md-button aria-label="Request Order"
+						class="md-raised md-closetbox-primary order-creation--save-order"
+						ng-if="orderCreation.isSaveRequestedOrderVisible()"
+						ng-disabled="!orderCreation.isSaveRequestedOrderEnabled()"
+						ng-click="orderCreation.saveRequestedOrder()">Request Order</md-button>
+					<md-button aria-label="Create Order"
+						class="md-raised md-closetbox-primary order-creation--save-order"
+						ng-if="orderCreation.isSaveCreatedOrderVisible()"
+						ng-disabled="!orderCreation.isSaveCreatedOrderEnabled()"
+						ng-click="orderCreation.saveCreatedOrder()">Create Order</md-button>
+				</div>
+			</div>
+    	</div>
+  	</md-content>
+</div>

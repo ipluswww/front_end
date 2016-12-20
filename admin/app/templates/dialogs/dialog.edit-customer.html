@@ -1,0 +1,34 @@
+<md-dialog aria-label="Customer" ng-cloak class="access-modals small">
+    <md-dialog-content>
+        <form name="customerForm">
+            <div layout="column">
+                <md-input-container>
+                    <label>Name</label>
+                    <input ng-model="$ctrl.user.name" type="text" name="name" required />
+                </md-input-container>
+                <md-input-container>
+                    <label>Email</label>
+                    <input ng-model="$ctrl.user.email" type="email" name="email" required />
+                </md-input-container>
+                <cb-phone-input cb-number="$ctrl.user.mobile" cb-required="true" cb-label="Phone"></cb-phone-input>
+                <md-select ng-model="$ctrl.user.status">
+                    <md-option ng-repeat="status in $ctrl.statuses" ng-value="status">
+                        {{status}}
+                    </md-option>
+                </md-select>
+                <div>
+                    <md-dialog-actions layout="row">
+                        <div layout="row" flex="50">
+                            <md-button ng-click="$ctrl.save()" ng-disabled="customerForm.$invalid" class="md-raised md-closetbox-primary">
+                                Save
+                            </md-button>
+                            <md-button ng-click="$ctrl.cancel()">
+                                Cancel
+                            </md-button>
+                        </div>
+                    </md-dialog-actions>
+                </div>
+            </div>
+        </form>
+    </md-dialog-content>
+</md-dialog>

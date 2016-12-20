@@ -1,0 +1,104 @@
+// =============================================================================
+// Material Custom Style
+// =============================================================================
+@import 'variables/index';
+
+
+.md-small-padding {
+    padding: 10px;
+}
+
+// Button classes
+// =============================================================================
+.md-button.md-closetbox-primary:not([disabled]) {
+    background-color: $primary;
+    color: white;
+    &:hover {
+        background-color: $primary-hover;
+    }
+}
+
+.md-button.md-focused.md-closetbox-primary:not([disabled]) {
+    background-color: $primary-hover;
+}
+
+.md-button.md-closetbox-secondary:not([disabled]) {
+    background-color: $secondary;
+    color: white;
+    &:hover {
+        background-color: $secondary-hover;
+    }
+}
+
+.md-button.md-closetbox-error:not([disabled]) {
+    background-color: $red;
+    color: white;
+    &:hover {
+        background-color: $red;
+    }
+}
+
+.md-button:disabled {
+    background-color: $grayBg1;
+    color: white;
+    &:hover {
+        background-color: $grayBg1;
+    }
+}
+
+
+// Mainly back button styling in the admin section
+.md-button.md-fab.md-closetbox-fab {
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    vertical-align: middle;
+    background-color: $primary;
+    &:hover {
+        background-color: $primary-hover;
+    }
+    i {
+        vertical-align: middle;
+    }
+}
+// =============================================================================
+
+
+
+// Link classes
+// =============================================================================
+.md-link {
+    background-color: transparent;
+    color: $secondary;
+    padding: 10px;
+    margin-right: 20px;
+    &:hover {
+        color: $secondary-hover;
+    }
+}
+
+.md-link.md-closetbox-primary {
+    color: $primary;
+    &:hover {
+        color: $primary-hover;
+    }
+}
+
+// toast to be displayed in fixed position
+md-toast {
+    position: fixed !important;
+
+    &.md-error-toast-theme {
+        .md-toast-content {
+            background-color: $red;
+        }
+    }
+
+}
+
+// apply this padding rule for all the data tables
+.page-content {
+    table.md-table:not(.md-row-select) td.md-cell:nth-child(n+2):nth-last-child(n+2), table.md-table:not(.md-row-select) th.md-column:nth-child(n+2):nth-last-child(n+2) {
+        padding: 0 10px 0 0;
+    }
+}

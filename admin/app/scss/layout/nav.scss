@@ -1,0 +1,114 @@
+@import '../variables/index';
+// Styles to override when navbar expanded
+.expanded {
+  nav {
+    width: 160px;
+
+    .expanding-button-row {
+      position: relative;
+      .expanding-button {
+        width: 36px;
+        right: 0;
+        position: absolute;
+      }
+    } /* /.expanding-button-row */
+
+    ul.menu-item .md-button {
+      align-items: flex-start;
+      justify-content: flex-start;
+    }
+  }
+  md-content.page-content {
+    margin-left: 160px;
+  }
+}
+
+nav {
+  display: flex;
+  background: $grayBg2;
+  position: fixed;
+  z-index: 40;
+  left: 0;
+  top: 40px;
+  bottom: 0px;
+  transition: width .1s;
+  width: 60px;
+  overflow: hidden;
+
+  a {
+    cursor: pointer;
+  }
+
+  // Expanding button row >> styles when not expanded
+  .expanding-button-row {
+    margin-bottom: 20px;
+    border-bottom: 1px solid $grayBg1;
+    height: 36px;
+    .expanding-button {
+      cursor: pointer;
+      background: $grayBg1;
+      width: 100%;
+      text-align: center;
+      line-height: 36px;
+      i {
+        vertical-align: middle;
+        display: inline-block;
+      }
+    }
+  } /* /.expanding-button-row */
+
+  // Main First depth menu items, icons styling
+  ul.menu-item {
+    list-style: none;
+    padding-left: 0px;
+    margin-top: 0;
+    >li {
+      margin-left: 10px;
+      a {
+        width: 100%;
+        margin-left: 0px;
+        padding: 5px;
+        color: $secondary;
+        &.active {
+          color: $primary;
+        }
+        &.disabled {
+          color: $grayColor2;
+          cursor: text;
+        }
+      }
+      i, span {
+        display: inline-block;
+        vertical-align: middle;
+      }
+      i {
+        font-size: 32px;
+      }
+
+      span {
+        margin-left: 20px;
+      }
+
+    }
+  } /* /ul.menu-item parent menu styling */
+
+  ul.child-item {
+    list-style: none;
+    padding-left: 20px;
+    li {
+      padding: 7px;
+      font-size: 16px;
+      a {
+        text-decoration: none;
+        &.active {
+          color: $primary;
+        }
+      }
+    }
+
+  }
+
+
+} /* /.nav */
+
+

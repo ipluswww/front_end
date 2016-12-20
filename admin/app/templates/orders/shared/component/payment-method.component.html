@@ -1,0 +1,19 @@
+<div class='payment-method' ng-form="defaultPaymentMethod.payment">
+    <div layout="row" class="lookup-component">
+        <div flex="95">Payment Method</div>
+        <div flex="5" ng-if="paymentMethod.shouldDisplayChangeCreditCardSelection()">
+            <i class="material-icons action" ng-click="paymentMethod.changeCreditCardSelection()">create</i>
+        </div>
+    </div>
+    <div md-whiteframe="1">
+        <cb-default-payment-method ng-if="paymentMethod.shouldDisplayDefaultPaymentMethod()"
+            braintree-customer="paymentMethod.braintreeCustomer" payment-method="paymentMethod.defaultPaymentMethod">
+        </cb-default-payment-method>
+        <cb-add-payment-method ng-cloak ng-if="paymentMethod.shouldDisplayAddPaymentMethod()"
+            payment-method-token="paymentMethod.customer.paymentMethodToken"
+            hosted-fields-instance="paymentMethod.hostedFieldsInstance"
+            on-payment-method-changed="paymentMethod.onPaymentMethodChanged($event)"
+            on-payment-method-cancelled="paymentMethod.onPaymentMethodCancelled($event)"> 
+        </cb-add-payment-method>
+    </div>
+</div>

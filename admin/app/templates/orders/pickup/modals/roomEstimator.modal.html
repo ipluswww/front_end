@@ -1,0 +1,37 @@
+<md-dialog aria-label="Room Estimator"  ng-cloak class="estimator-modal">
+    <form>
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h2>Room Estimator Points</h2>
+                <span flex></span>
+                <md-button class="md-icon-button" ng-click="$ctrl.cancel()">
+                    <md-icon aria-label="Close dialog">
+                        <i class="material-icons">clear</i>
+                    </md-icon>
+                </md-button>
+            </div>
+        </md-toolbar>
+        <md-dialog-content layout="column" class="md-padding">
+            <div class="md-padding">
+                <div layout="row" layout-wrap class="header">
+                    <span flex class="estimator-label">Room</span>
+                    <span flex class="estimator-label">Points</span>
+                </div>
+                <div layout="row" layout-wrap ng-repeat="room in $ctrl.data">
+                    <span flex class="estimator-label">{{ ::room.name }}</span>
+                    <md-input-container flex>
+                        <input ng-model="room.point" ng-change="$ctrl.updateEstmator(room)" ng-model-options="{ debounce: 1000 }"/>
+                    </md-input-container>
+                </div>
+            </div>
+        </md-dialog-content>
+        <md-dialog-actions layout="row">
+            <md-button ng-click="$ctrl.confirm()" class="md-raised md-closetbox-primary">
+                Confirm
+            </md-button>
+            <md-button ng-click="$ctrl.cancel()">
+                Cancel
+            </md-button>
+        </md-dialog-actions>
+    </form>
+</md-dialog>

@@ -1,0 +1,71 @@
+<div class="prospect-table">
+    <md-table-container >
+        <table md-table md-row-select="false" md-progress="$ctrl.promise">
+            <thead md-head md-order="$ctrl.options.sort" md-on-reorder="$ctrl.onOrder">
+            <tr md-row>
+                <th md-column class="id-column">ID</th>
+                <th md-column md-order-by="customer.name" class="name-column">Name</th>
+                <th md-column md-order-by="customer.email">Email</th>
+                <th md-column md-order-by="customer.phone">Phone</th>
+                <th md-column md-order-by="dateCreated">Date Created</th>
+                <th md-column md-order-by="requestedDate1">Date Requested</th>
+                <th md-column md-order-by="market.name">Market / Zipcode</th>
+                <th md-column>Source</th>
+                <th md-column>Discount Code</th>
+                <th md-column>Assigned</th>
+                <th md-column>Action</th>
+            </tr>
+            </thead>
+            <tbody md-body>
+            <tr md-row ng-repeat="item in $ctrl.list">
+                <td md-cell class="id-column" ng-click="$ctrl.selectItem(item)">{{item._id.slice(-5)}}</td>
+                <td md-cell class="name-column" ng-click="$ctrl.selectItem(item)">{{item.customer.name}}</td>
+                <td md-cell><a href="mailto:{{item.customer.email}}">{{item.customer.email}}</a></td>
+                <td md-cell>
+                    <cb-formatted-phone-number-link on-click="$ctrl.openPhoneCallModal(item)"
+                                                    value="item.customer.mobile">
+                    </cb-formatted-phone-number-link>
+                </td>
+                <td md-cell ng-click="$ctrl.selectItem(item)">{{item.dateCreated | date}}</td>
+                <td md-cell ng-click="$ctrl.selectItem(item)">
+                    <p ng-if="item.requestedDate1">{{item.requestedDate1 | dateAP}}</p>
+                    <p ng-if="item.requestedDate2">{{item.requestedDate2 | dateAP}}</p>
+                    <p ng-if="item.requestedDate3">{{item.requestedDate3 | dateAP}}</p>
+                </td>
+                <td md-cell ng-click="$ctrl.selectItem(item)">
+                    <a ui-sref="app.admin.market.detail({id: item.market._id})">{{item.market.name}}</a>
+                    / {{item.originationLocation.zipCode}}</td>
+                <td md-cell ng-click="$ctrl.selectItem(item)">{{ item.source }}</td>
+                <td md-cell ng-click="$ctrl.selectItem(item)">{{ item.discountCode }}</td>
+                <td md-cell>
+                    <cb-assign-order order="item"></cb-assign-order>
+                </td>
+                <td md-cell class="action-column">
+
+                    <div layout="row">
+                        <span>
+                            <cb-call-prospect order="item"></cb-call-prospect>
+                        </span>
+                        <span ng-class="{'active': (item.email1Sent !== null)}" ng-click="$ctrl.toggleEmail(item, 'email1')">
+                            <i class="material-icons">markunread_mailbox</i>
+                            <md-tooltip ng-if="item.email1Sent">
+                              {{item.email1Username}} / {{item.email1Sent | date}}
+                            </md-tooltip>
+                        </span>
+                        <span ng-class="{'active': (item.email2Sent !== null)}" ng-click="$ctrl.toggleEmail(item, 'email2')">
+                            <i class="material-icons">markunread_mailbox</i>
+                            <md-tooltip ng-if="item.email2Sent">
+                              {{item.email2Username}} / {{item.email2Sent | date}}
+                            </md-tooltip>
+                        </span>
+                        <span ng-class="{'active': (item.disposition !== 'CANCELLED')}" ng-click="$ctrl.cancelItem(item)">
+                            <i class="material-icons">highlight_off</i>
+                        </span>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </md-table-container>
+    <md-table-pagination class="enlarged" md-limit="$ctrl.options.limit" md-page="$ctrl.options.page" md-total="{{$ctrl.total}}" md-on-paginate="$ctrl.onPagination" md-page-select></md-table-pagination>
+</div>

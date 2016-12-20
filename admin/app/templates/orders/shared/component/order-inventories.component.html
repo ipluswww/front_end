@@ -1,0 +1,15 @@
+<div class="order-inventories">
+	<div class="container-type-box" ng-repeat="type in ['box', 'unboxed', 'furniture']" 
+		ng-if="$ctrl.inventories[type] && $ctrl.inventories[type].length > 0">
+		<p>{{type}}({{$ctrl.inventories[type].length}})</p>
+		<ul>
+			<li ng-repeat="container in $ctrl.inventories[type]" ng-if="container._id">
+				<div class="inventory-name">{{::container.subType.name}}</div>
+				<div class="inventory-label">
+					{{::container.label}}
+					<span ng-if="!$ctrl.shortVersion"> - {{::container.subType.estimatedWeight}} lbs - {{::container.subType.points}} pt</span>
+				</div>
+			</li>
+		</ul>
+	</div>
+</div>

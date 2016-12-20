@@ -1,0 +1,228 @@
+<!-- System / Access Page User Tab -->
+<!--------------------------------------------------------------------------------------------------- -->
+<md-tab label="Users">
+    <md-content class="md-padding user-tab-content">
+        <div layout="row">
+            <div flex="40">
+                <div layout="column">
+                    <md-input-container flex class="search-container">
+                        <md-icon class="material-icons">search</md-icon>
+                        <input type="text" ng-model="$ctrl.admin.query.search" placeholder="search" my-enter="$ctrl.onSearch()" ng-change="$ctrl.onSearch()" ng-model-options="{debounce: 1000}"/>
+                    </md-input-container>
+                    <div>
+                        <md-table-container>
+                            <table md-table md-progress="$ctrl.userTab.promise" class="compact-table">
+                                <thead md-head md-order="$ctrl.admin.query.sort" md-on-reorder="$ctrl.onOrder">
+                                <tr md-row>
+                                    <th md-column md-order-by="username">Username</th>
+                                    <th md-column md-order-by="fullName">Name</th>
+                                    <th md-column md-order-by="mobile">Mobile</th>
+                                </tr>
+                                </thead>
+                                <tbody md-body>
+                                <tr md-row ng-repeat="admin in $ctrl.admins" ng-click="$ctrl.onRowSelect(admin)" ng-class="{'active': admin._id == $ctrl.user._id }">
+                                    <td md-cell>{{admin.username}}</td>
+                                    <td md-cell><div class="full-name">{{admin.fullName}}</div></td>
+                                    <td md-cell>
+                                        <cb-formatted-phone-number-link value="admin.mobile"
+                                                                        style="{'pointer-events': 'none', 'color': 'inherit'}">
+                                        </cb-formatted-phone-number-link>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </md-table-container>
+                        <md-table-pagination class="compact" md-limit="$ctrl.admin.query.limit" md-page="$ctrl.admin.query.page" md-total="{{$ctrl.admin.count}}" md-on-paginate="$ctrl.onPagination" md-page-select></md-table-pagination>
+                    </div>
+                </div>
+            </div>
+            <!-- User New /Edit Panel -->
+            <!--------------------------------------------------------------------------------------------------- -->
+            <section flex="55" flex-offset="5">
+                <div layout="column">
+                    <div class="button-row">
+                        <md-button aria-label="New User" class="md-raised md-primary" ng-click="$ctrl.createNew()">Create New</md-button>
+                        <md-button aria-label="Change Password" class="md-raised md-primary" ng-click="$ctrl.openPasswordModal('user', 'Admin')" ng-disabled="(!$ctrl.user || $ctrl.user._id =='new' || $ctrl.user._id == null)">Change Password</md-button>
+                        <md-button aria-label="Un/Lock User" class="md-raised md-primary" ng-disabled="true">Un/Lock User</md-button>
+                        <md-button aria-label="Delete User" class="md-raised md-closetbox-error" ng-click="$ctrl.deleteUser()" ng-disabled="(!$ctrl.user || $ctrl.user._id =='new' || $ctrl.user._id == null)">Delete</md-button>
+                    </div>
+                    <!-- User detailed information -->
+                    <!--------------------------------------------------------------------------------------------------- -->
+                    <div class="user-detail-section">
+                        <h3 ng-if="!$ctrl.user._id">
+                            Nothing to see yet.
+                        </h3>
+                        <form class="profile-form" ng-if="$ctrl.user._id" name="$ctrl.profileForm">
+                            <div layout="row" layout-align="start start">
+                                <div flex="75">
+                                    <div layout="row" class="input-row">
+                                        <span flex="30" class="input-label">Full Name</span>
+                                        <md-input-container flex="70" ng-if="!$ctrl.userTab.readonly">
+                                            <input ng-model="$ctrl.user.fullName" minlength="2" required aria-label="Full Name" />
+                                        </md-input-container>
+                                        <span flex="70" ng-show="$ctrl.userTab.readonly" class="static-value">{{$ctrl.user.fullName}}</span>
+                                    </div>
+                                    <div layout="row" class="data-row">
+                                        <span flex="30" class="input-label">Username</span>
+                                        <md-input-container flex="70" ng-if="!$ctrl.userTab.readonly">
+                                            <input ng-model="$ctrl.user.username" type="email" minlength="2" required aria-label="Email" />
+                                        </md-input-container>
+                                        <span flex="70" ng-show="$ctrl.userTab.readonly" class="static-value">{{$ctrl.user.username}}</span>
+                                    </div>
+                                </div>
+                                <div flex="25"  ng-if="$ctrl.userTab.readonly">
+                                    <md-button class="md-raised md-primary" ng-click="$ctrl.userTab.readonly = !$ctrl.userTab.readonly">Edit</md-button>
+                                </div>
+                                <div layout="row" layout-align="end center" ng-if="!$ctrl.userTab.readonly">
+                                    <md-button aria-label="Save User Information" class="md-raised md-closetbox-primary" ng-click="$ctrl.saveUser()" ng-disabled="$ctrl.profileForm.$invalid">Save</md-button>
+                                    <md-button aria-label="Cancel Creating" class="md-raised md-primary" ng-click="$ctrl.cancelEdit()">Cancel</md-button>
+                                </div>
+                            </div>
+                            <div layout="row">
+                                <div flex="45">
+
+                                    <div layout="row" class="data-row">
+                                        <span flex="50" class="input-label">Mobile Number</span>
+                                        <cb-phone-input flex="50"
+                                                        ng-if="!$ctrl.userTab.readonly"
+                                                        cb-number="$ctrl.user.mobile"
+                                                        cb-required="true" >
+                                        </cb-phone-input>
+                                        <span flex="50" ng-show="$ctrl.userTab.readonly" class="static-value">
+                                            <cb-formatted-phone-number-link value="$ctrl.user.mobile"
+                                                                            style="{'pointer-events': 'none', 'color': 'inherit'}">
+                                            </cb-formatted-phone-number-link>
+                                        </span>
+                                    </div>
+
+                                    <div layout="row" class="data-row" ng-if="!$ctrl.userTab.readonly && $ctrl.user._id == 'new'">
+                                        <span flex="50" class="input-label">Password</span>
+                                        <md-input-container flex="50">
+                                            <input ng-model="$ctrl.user.password" minlength="6" required aria-label="Password" type="password" />
+                                        </md-input-container>
+                                    </div>
+                                    <div layout="row" class="data-row" ng-if="!$ctrl.userTab.readonly && $ctrl.user._id == 'new'">
+                                        <span flex="50" class="input-label">Re-password</span>
+                                        <md-input-container flex="50">
+                                            <input ng-model="$ctrl.user.repassword" minlength="6" required aria-label="Re-password" type="password" compare-to="$ctrl.user.password"/>
+                                        </md-input-container>
+                                    </div>
+
+
+                                    <div layout="row" class="data-row">
+                                        <span flex="50" class="input-label">Timezone</span>
+                                        <md-input-container flex="50" ng-if="!$ctrl.userTab.readonly">
+                                            <md-select ng-model="$ctrl.user.timezone" aria-label="timezone">
+                                                <md-option ng-repeat="zone in $ctrl.timezones" ng-value="zone.hour">
+                                                    {{zone.name}}
+                                                </md-option>
+                                            </md-select>
+                                        </md-input-container>
+                                        <span flex="50" ng-if="$ctrl.userTab.readonly" class="static-value">{{$ctrl.user.timezoneLabel}}</span>
+                                    </div>
+
+
+                                    <div layout="row" class="data-row">
+                                        <span flex="50" class="input-label">Receive Emails</span>
+                                        <md-switch flex="50" ng-model="$ctrl.user.receiveEmail" aria-label="Receive Email Notifications" ng-if="!$ctrl.userTab.readonly">
+                                        </md-switch>
+                                        <span flex="50" class="static-value" ng-if="$ctrl.userTab.readonly" ng-show="$ctrl.user.receiveEmail">On</span>
+                                        <span flex="50" class="static-value" ng-if="$ctrl.userTab.readonly" ng-hide="$ctrl.user.receiveEmail">Off</span>
+                                    </div>
+                                    <div layout="row" class="data-row">
+                                        <span flex="50" class="input-label">Receive SMS</span>
+                                        <md-switch flex="50" ng-model="$ctrl.user.sms" aria-label="Receive SMS" ng-if="!$ctrl.userTab.readonly">
+                                        </md-switch>
+                                        <span flex="50" class="static-value" ng-if="$ctrl.userTab.readonly" ng-show="$ctrl.user.sms">On</span>
+                                        <span flex="50" class="static-value" ng-if="$ctrl.userTab.readonly" ng-hide="$ctrl.user.sms">Off</span>
+                                    </div>
+
+
+                                    <div layout="row" class="data-row" ng-if="$ctrl.user.lastLogin">
+                                        <span flex="50" class="input-label">Last Login</span>
+                                        <span flex="50" class="static-value">{{$ctrl.user.lastLogin | date:'short'}}</span>
+                                    </div>
+
+                                    <div layout="row" class="data-row" ng-if="$ctrl.user.dateCreated">
+                                        <span flex="50" class="input-label">User Since</span>
+                                        <span flex="50" class="static-value">{{$ctrl.user.dateCreated | date:'short'}}</span>
+                                    </div>
+
+                                    <div layout="row" class="data-row" ng-if="$ctrl.user.lastUpdated">
+                                        <span flex="50" class="input-label">Profile Updated</span>
+                                        <span flex="50" class="static-value">{{$ctrl.user.lastUpdated | date:'short'}}</span>
+                                    </div>
+                                </div>
+                                <!-- Right hand side: System Role, markets and warehouses information panel -->
+                                <!--------------------------------------------------------------------------------------------------- -->
+                                <div flex="50" flex-offset="5" class="information-panel">
+                                    <md-content layout="column">
+                                        <h6>System Role:</h6>
+                                        <!-- Chips display  ng-show="$ctrl.userTab.readonly" -->
+                                        <div ng-if="!$ctrl.userTab.readonly" ng-repeat="item in $ctrl.roles">
+                                            <md-checkbox ng-checked="$ctrl.exists(item, 'roles', 'authority')" ng-click="$ctrl.toggle(item, 'roles', 'authority')">
+                                                {{item.authority}}
+                                            </md-checkbox>
+                                        </div>
+                                        <div ng-if="$ctrl.userTab.readonly">
+                                            <md-chips ng-model="$ctrl.user.roles" readonly="true" ng-if="$ctrl.user.roles && $ctrl.user.roles.length > 0">
+                                                <md-chip-template ng-bind="::$chip"></md-chip-template>
+                                            </md-chips>
+                                            <span ng-if="!$ctrl.user.roles || $ctrl.user.roles.length==0">No Roles Specified</span>
+                                        </div>
+                                    </md-content>
+                                    <md-content layout="column" ng-if="$ctrl.isAgentUser()">
+                                        <h6>Associated Agent:</h6>
+                                        <div>
+                                            {{$ctrl.user.agent.name}}
+                                        </div>
+                                        <div ng-if="!$ctrl.userTab.readonly">
+                                            <md-button aria-label="EditAgent" class="md-raised md-closetbox-primary" ng-click="$ctrl.openAgentsDialog()">Edit Agent</md-button>
+                                        </div>
+                                    </md-content>
+                                    <md-content layout="column" ng-hide="false">
+                                        <h6>Market Restrictions:</h6>
+                                        <div>
+                                            <div ng-show="$ctrl.user.allMarkets" class="restrictions-label">No Restriction</div>
+
+                                            <ul ng-if="!$ctrl.user.allMarkets && $ctrl.user.markets.length > 0">
+                                                <li ng-repeat="market in $ctrl.user.markets">{{market.name}}</li>
+                                            </ul>
+                                            <div ng-if="!$ctrl.user.allMarkets && $ctrl.user.markets.length == 0">
+                                                No Market Access Allowed
+                                            </div>
+                                        </div>
+                                        <div ng-if="!$ctrl.userTab.readonly" ng-hide="true">
+                                            <md-button aria-label="Edit Markets" class="md-raised md-closetbox-primary" ng-click="$ctrl.openMarketsDialog()">Edit Markets</md-button>
+                                        </div>
+                                    </md-content>
+                                    <md-content layout="column" ng-hide="false">
+                                        <h6>Warehouse Restrictions:</h6>
+                                        <div>
+                                            <div ng-show="$ctrl.user.allWarehouses" class="restrictions-label">No Restriction</div>
+                                            <ul ng-if="!$ctrl.user.allWarehouses && $ctrl.user.warehouseLocation.length > 0">
+                                                <li ng-repeat="warehouse in $ctrl.user.warehouseLocation">{{warehouse.location.address}}</li>
+                                            </ul>
+                                            <div ng-if="!$ctrl.user.allWarehouses && $ctrl.user.warehouseLocation.length == 0">
+                                                No Warehouses Access Allowed
+                                            </div>
+                                        </div>
+                                        <div ng-if="!$ctrl.userTab.readonly" ng-hide="true">
+                                            <md-button aria-label="Edit Warehouses" class="md-raised md-closetbox-primary" ng-click="$ctrl.openWarehousesDialog()">Edit Warehouses</md-button>
+                                        </div>
+                                    </md-content>
+                                </div>
+                                <!--------------------------------------------------------------------------------------------------- -->
+                            </div> <!-- / layout-row Main content part -->
+                        </form>
+                    </div>
+                    <!-- /.user-detail-section end -->
+                    <!--------------------------------------------------------------------------------------------------- -->
+                </div>
+            </section>
+            <!-- User New /Edit Panel -->
+            <!-------------------------------------------------------------------------------------------------- --->
+        </div>
+    </md-content>
+</md-tab>
+<!--------------------------------------------------------------------------------------------------- -->

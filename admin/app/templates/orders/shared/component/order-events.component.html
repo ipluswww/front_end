@@ -1,0 +1,7 @@
+<div class="order-events">
+    <ul>
+        <li ng-repeat="event in $ctrl.order.events | orderBy: '-date'">
+            {{event.type}} - {{event.status}} - {{event.source}} - {{event.date | date}}
+        </li>
+    </ul>
+</div>

@@ -1,0 +1,83 @@
+<div layout="row" id="pickupProcess" class="order-detail" layout-fill ng-form="$ctrl.form">
+	<md-content class="md-whiteframe-2dp normal-padding" flex id="detail">
+		<h3 layout="row">
+			<cb-order-title flex order="detail.order" back-param="detail.backParam"
+							has-expired-default-payment-method="detail.hasExpiredDefaultPaymentMethod()"
+							has-order-with-payment-hold="detail.hasOrderWithPaymentHold()"></cb-order-title>
+		</h3>
+		<div layout="column">
+			<div class="section-header">
+				<div layout="row">
+					<div flex="30">
+						<cb-zipcode-lookup order="detail.order" originalOrder="detail.order"
+						on-zip-updated="detail.onZipCodeMarketUpdated($event)" is-locked="detail.isLocked()"
+										   currently-stored-inventory="detail.currentlyStoredInventory"></cb-zipcode-lookup>
+					</div>
+					<div flex="40">
+						<cb-customer-email-lookup order="detail.order"
+						 on-customer-updated="detail.onCustomerUpdated($event)"
+						 is-locked="detail.isLocked()"></cb-customer-email-lookup>
+					</div>
+					<div flex="30" layout="row" layout-align="begin center">
+						<div class="order-detail--customer-name">{{detail.getCustomerNameLabel()}}</div>
+					</div>
+				</div>
+			</div>
+			<div layout="row"  class="data-row">
+				<div flex-offset="30" flex="70">
+					<!-- Header part -->
+					<div layout="row">
+						<div flex="50" class="right-normal-padding display-unit"
+						ng-class="{disabled: detail.isLocked()}">
+							<cb-currently-stored-item-count flex order="detail.order"
+								currently-stored-inventory="detail.currentlyStoredInventory"></cb-currently-stored-item-count>
+						</div>
+					</div>
+				</div>
+	        </div>
+	        <div layout="row"  class="data-row">
+	            <div flex="25">
+	                <cb-inventory-filter order="detail.order"
+	                    selected="detail.selectedInventory"
+	                    on-data-updated="detail.onItemAddedToOrderInventory($event)"
+	                    on-error-feedback="detail.provideErrorFeedback(message)"
+						is-locked="detail.isLocked()"></cb-inventory-filter>
+	            </div>
+	            <div flex-offset="5" flex="70">
+	                <!-- Header part -->
+	                <div layout="row" layout-wrap>
+                    	<md-card flex class="display-unit no-left-margin no-right-margin"
+	                        ng-class="{'active': detail.order.spacePrice, disabled: detail.isLocked()}"
+	                        ng-click="detail.selectPricePlanOption(true)">
+			                <cb-space-price-display order="detail.order"
+								storage-units="detail.spaceEstimators"
+								on-storage-unit-changed="detail.onStorageUnitChanged($event)"
+								is-Locked="detail.isLocked()"></cb-space-price-display>
+						</md-card>
+	                	<md-card flex class="display-unit no-right-margin"
+	                        ng-class="{'active': !detail.order.spacePrice, disabled: detail.isLocked()}"
+	                        ng-click="detail.selectPricePlanOption(false)">
+				            <cb-item-price-display order="detail.order"
+								currently-stored-inventory="detail.currentlyStoredInventory"></cb-item-price-display>
+						</md-card>
+	                </div>
+					<div layout="row" flex>
+	                    <cb-inventory-to-capacity-display flex="50" order="detail.order"
+							currently-stored-inventory="detail.currentlyStoredInventory"></cb-inventory-to-capacity-display>
+					</div>
+
+	                <cb-actual-inventories-list order="detail.order"
+	                    selected="detail.selectedInventory"
+	                    on-data-updated="detail.onInventoryItemQuanityUpdated($event)"
+	                    on-error-feedback="detail.provideErrorFeedback(message)"
+						is-locked="detail.isLocked()"></cb-actual-inventories-list>
+	            </div>
+	        </div>
+	        <div layout="row" class="button-row" layout-align="end center">
+                <md-button ng-click="detail.goToCreationStep()"
+				ng-disabled="!detail.isOrderValidForCreateStep()"
+				class="md-raised md-button md-closetbox-primary">Next Step</md-button>
+	        </div>
+		</div>
+  	</md-content>
+</div>

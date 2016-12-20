@@ -1,0 +1,48 @@
+<md-dialog aria-label="Space Estimator"  ng-cloak class="estimator-modal space-estimator-modal">
+    <form>
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h2>Space Estimator Points</h2>
+                <span flex></span>
+                <md-button class="md-icon-button" ng-click="$ctrl.cancel()">
+                    <md-icon aria-label="Close dialog">
+                        <i class="material-icons">clear</i>
+                    </md-icon>
+                </md-button>
+            </div>
+        </md-toolbar>
+        <md-dialog-content layout="column" class="md-padding">
+            <md-table-container>
+                <table md-table md-row-select="false" class="compact-table">
+                    <thead md-head>
+                    <tr md-row>
+                        <th md-column>Space</th>
+                        <th md-column class="small-column small-padding">Item Cap</th>
+                        <th md-column class="small-column small-padding">Boxed</th>
+                        <th md-column class="small-column small-padding">Unboxed</th>
+                        <th md-column class="small-column small-padding">Furniture</th>
+                    </tr>
+                    </thead>
+                    <tbody md-body>
+                        <tr ng-repeat="space in $ctrl.data">
+                            <td md-cell class="small-padding">{{ space.unit.name }}</td>
+                            <td md-cell class="small-padding" ng-click="$ctrl.editCellValue($event, space, 'itemCap', 'itemCap')">{{space.itemCap}}</td>
+                            <td md-cell class="small-padding" ng-click="$ctrl.editCellValue($event, space, 'boxed', 'boxed')">{{space.boxed}}</td>
+                            <td md-cell class="small-padding" ng-click="$ctrl.editCellValue($event, space, 'unboxed', 'unboxed')">{{space.unboxed}}</td>
+                            <td md-cell class="small-padding" ng-click="$ctrl.editCellValue($event, space, 'furniture', 'furniture')">{{space.furniture}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </md-table-container>
+            <p>Updated Date: {{ $ctrl.lastUpdatedDate() | date }}</p>
+        </md-dialog-content>
+        <md-dialog-actions layout="row">
+            <md-button ng-click="$ctrl.confirm()" class="md-raised md-closetbox-primary">
+                Confirm
+            </md-button>
+            <md-button ng-click="$ctrl.cancel()">
+                Cancel
+            </md-button>
+        </md-dialog-actions>
+    </form>
+</md-dialog>

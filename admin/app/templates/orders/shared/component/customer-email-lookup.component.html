@@ -1,0 +1,44 @@
+<div layout="row" class="lookup-component">
+    <div flex="85">
+        <div ng-if="customerEmailLookup.isInEdit">
+            <md-autocomplete
+                md-selected-item="customerEmailLookup.customer"
+                md-search-text="customerEmailLookup.query.search"
+                md-items="item in customerEmailLookup.querySearch(customerEmailLookup.query)"
+                md-item-text="item.email"
+                md-selected-item-change="customerEmailLookup.selectedItemChange(item)"
+                md-min-length="5"
+                md-floating-label="email"
+                ng-model-options="{debounce: 500}">
+                <md-item-template>
+                    <span md-highlight-text="customerEmailLookup.searchText" md-highlight-flags="^i">
+                        {{item.email}}
+                    </span>
+                </md-item-template>
+                <md-not-found>
+                    No emails matching "{{customerEmailLookup.query.search}}" were found.
+                </md-not-found>
+            </md-autocomplete>
+        </div>
+        <div ng-if="!customerEmailLookup.isInEdit" class="static-value" ng-click="customerEmailLookup.startEdit()">
+            {{customerEmailLookup.order.customer.email}}
+        </div>
+    </div>
+    <div flex="15">
+        <div layout="row" layout-align="end center">
+            <div ng-if="customerEmailLookup.isInEdit">
+                <i
+                    class="material-icons action"
+                    ng-click="customerEmailLookup.finalizeChange()"
+                    ng-class="{disabled: customerEmailLookup.finalizeIsDisabled()}"
+                >
+                    done
+                </i>
+                <i class="material-icons action" ng-click="customerEmailLookup.cancelChange()">clear</i>
+            </div>
+            <div ng-if="!customerEmailLookup.isLockedOrIsInEdit()">
+                <i class="material-icons action" ng-click="customerEmailLookup.startEdit()">create</i>
+            </div>
+        </div>
+    </div>
+</div>

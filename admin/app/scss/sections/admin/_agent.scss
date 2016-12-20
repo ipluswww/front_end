@@ -1,0 +1,20 @@
+#agentDetail {
+    h6 {
+        margin-top: 20px;
+        font-size: 1rem;
+        margin-bottom: 0px;
+    }
+
+    table.md-table.compact-table {
+        /* Cell Width adjustment */
+        td.md-cell:first-child, th.md-column:first-child {
+            width: 250px;
+            white-space: pre-wrap;
+        }
+    }
+}
+
+
+#warehouseModal {
+    width: 600px;
+}

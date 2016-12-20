@@ -1,0 +1,41 @@
+@import "../variables/colors.scss";
+
+.order-notes {
+	.atom-note {
+		position: relative;
+		padding-right: 60px;
+		margin-bottom: 10px;
+		border-bottom: 1px solid #A1A1A1;
+
+		p {
+			margin-top: 0;
+			margin-bottom: 0;
+		}
+		.note-action {
+			position: absolute;
+			top: -6px;
+			right: 0;
+			color: $secondary;
+			span {
+				cursor: pointer;
+			}
+		}
+	}
+	md-input-container {
+		margin-top: 0;
+		margin-bottom: 0;
+		width: 96%;
+		.md-errors-spacer {
+			display: none !important;
+		}
+	}
+	.add-note {
+		color: $secondary;
+		line-height: 24px;
+		vertical-align: middle;
+		cursor: pointer;
+		i {
+			vertical-align: middle;
+		}
+	}
+}

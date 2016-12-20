@@ -1,0 +1,20 @@
+<div layout="column" class="order-notes" layout-wrap>
+    <div class="atom-note" ng-repeat="note in $ctrl.order.notesObj | orderBy: '-dateCreated'">
+        <p ng-if="!note.inEdit">{{ note.dateCreated | date : 'M/d' }}: {{ note.text }}   {{ note.person.username}}</p>
+        <md-input-container ng-if="note.inEdit">
+            <label>Note</label>
+            <input ng-model="note.text" my-enter="$editCtrl.saveNote($index)" aria-label="Note Text" />
+        </md-input-container>
+        <div class="note-action" ng-if="(!note.inEdit)"> <!-- ($editCtrl._User.current._id === note.person) &&  -->
+            <span ng-click="$ctrl.editNote(note)"><i class="material-icons">create</i></span>
+            <span ng-click="$ctrl.deleteNote(note, $index)"><i class="material-icons">delete</i></span>
+        </div>
+    </div>
+    <div class="new-note" ng-show="$ctrl.inNewNote">
+        <md-input-container>
+            <label>Note</label>
+            <input ng-model="$ctrl.newNoteText" my-enter="$ctrl.createNewNote()" aria-label="Note Text" />
+        </md-input-container>
+    </div>
+    <a class="add-note" ng-disabled="$ctrl.inNewNote" ng-click="$ctrl.createNote()"><i class="material-icons">add</i>Note</a>
+</div>

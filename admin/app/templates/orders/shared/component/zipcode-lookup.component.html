@@ -1,0 +1,39 @@
+<div layout="row" class="lookup-component">
+    <div flex="80">
+        <div ng-if="zipcodeLookup.isInEdit">
+            <md-autocomplete
+                md-selected-item="zipcodeLookup.market"
+                md-search-text="zipcodeLookup.query.search"
+                md-selected-item-change="zipcodeLookup.selectedMarketChanged(item)"
+                md-items="item in zipcodeLookup.querySearch(zipcodeLookup.query)"
+                md-item-text="zipcodeLookup.query.search"
+                md-min-length="5"
+                md-max-length="5"
+                md-floating-label="zipcode"
+                ng-model-options="{debounce: 500}">
+                <md-item-template>
+                    <span>
+                        {{zipcodeLookup.query.search}} ({{item.name}})
+                    </span>
+                </md-item-template>
+                <md-not-found>
+                    No zipcodes matching "{{zipcodeLookup.query.search}}" were found.
+                </md-not-found>
+            </md-autocomplete>
+        </div>
+        <div ng-if="!zipcodeLookup.isInEdit" class="static-value" ng-click="zipcodeLookup.startEdit()">
+            <span ng-if="zipcodeLookup.order.market._id">{{zipcodeLookup.order.market.name}}</span>
+        </div>
+    </div>
+    <div flex="20">
+        <div layout="row" layout-align="end center">
+            <div ng-if="zipcodeLookup.isInEdit">
+                <i class="material-icons action" ng-click="zipcodeLookup.finalizeChange()">done</i>
+                <i class="material-icons action" ng-click="zipcodeLookup.cancelChange()">clear</i>
+            </div>
+            <div ng-if="!zipcodeLookup.isLockedOrIsInEdit()">
+                <i class="material-icons action" ng-click="zipcodeLookup.startEdit()">create</i>
+            </div>
+        </div>
+    </div>
+</div>

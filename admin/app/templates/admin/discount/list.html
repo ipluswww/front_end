@@ -1,0 +1,53 @@
+<div layout="row" id="discounts" layout-fill class="admin-list">
+    <md-content class="md-whiteframe-2dp normal-padding"  flex>
+        <h3>Discounts</h3>
+        <div layout="column">
+            <div class="section-header">
+                <div layout="row">
+                    <md-input-container flex="40" class="search-container">
+                        <md-icon class="material-icons">search</md-icon>
+                        <input type="text" ng-model="$ctrl.query.search" placeholder="search" my-enter="$ctrl.onSearch()" ng-change="$ctrl.onSearch()" ng-model-options="{debounce: 1000}"/>
+                    </md-input-container>
+                    <div class="button-group" flex-offset="15" flex="45" layout-align="end center" layout="row">
+                        <md-button aria-label="Create" class="md-raised md-primary" ui-sref="app.admin.discount.new">Create New</md-button>
+                        <md-button class="md-fab md-closetbox-fab" aria-label="Back" ng-click="$ctrl.backTo()">
+                            <i class="material-icons">keyboard_arrow_left</i>
+                            <md-tooltip>Back</md-tooltip>
+                        </md-button>
+                    </div>
+                </div>
+            </div>
+
+
+            <div>
+                <md-table-container>
+                    <table md-table md-row-select="false" md-progress="$ctrl.promise">
+                        <thead md-head md-order="$ctrl.query.sort" md-on-reorder="$ctrl.onOrder">
+                        <tr md-row>
+                            <th md-column md-order-by="code">Code</th>
+                            <th md-column md-order-by="discountPercent">Discount Percent</th>
+                            <th md-column md-order-by="fixedPrice">Fixed Price</th>
+                            <th md-column md-order-by="status">Status</th>
+                            <th md-column md-order-by="type">Type</th>
+                            <th md-column>Link</th>
+                        </tr>
+                        </thead>
+                        <tbody md-body>
+                        <tr md-row ng-repeat="item in $ctrl.data">
+                            <td md-cell><a ui-sref="app.admin.discount.detail({id: item._id})">{{::item.code}}</a></td>
+                            <td md-cell>{{((item.discountPercent || 0)*100).toFixed(2)}}%</td>
+                            <td md-cell>{{ ::item.fixedPrice | currency}}</td>
+                            <td md-cell>{{ (item.status == true) ? "ON" : "OFF" }}</td>
+                            <td md-cell>{{ ::item.type }}</td>
+                            <td md-cell><a href="{{ ::item.url }}">{{ ::item.url }}</a></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </md-table-container>
+                <md-table-pagination class="enlarged" md-limit="$ctrl.query.limit" md-page="$ctrl.query.page" md-total="{{$ctrl.totalCount}}" md-on-paginate="$ctrl.onPagination" md-page-select></md-table-pagination>
+            </div>
+
+
+        </div>
+    </md-content>
+</div>

@@ -1,0 +1,22 @@
+<div layout="row" id="agents" layout-fill class="admin-list" id="containers">
+    <md-content class="md-whiteframe-2dp normal-padding"  flex>
+        <md-tabs md-stretch-tabs md-selected="$ctrl.selectedIndex">
+            <md-tab>
+                <md-tab-label>
+                    <a ui-sref="app.admin.containerTypes.list" ui-sref-active="$ctrl.isActive('containerTypes')">Container Types</a>
+                </md-tab-label>
+            </md-tab>
+            <md-tab>
+                <md-tab-label>
+                    <a ui-sref="app.admin.inventoryTypes.list" ui-sref-active="$ctrl.isActive('inventoryTypes')">Inventory Types</a>
+                </md-tab-label>
+            </md-tab>
+            <md-tab>
+                <md-tab-label>
+                    <a ui-sref="app.admin.roomTypes.list" ui-sref-active="$ctrl.isActive('roomTypes')">Room Types</a>
+                </md-tab-label>
+            </md-tab>
+        </md-tabs>
+        <ui-view class="md-padding" />
+    </md-content>
+</div>

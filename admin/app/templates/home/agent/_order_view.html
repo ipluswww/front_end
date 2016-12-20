@@ -1,0 +1,209 @@
+<div class="md-whiteframe-5dp md-padding order-edit-view" id="editOrder" 
+    ng-class="{'expanded': $ctrl.selectedItem}" ng-if="$ctrl.selectedItem" 
+    ng-controller="HomeAgentOrdersEditController as $editCtrl" 
+    ngf-drop="$editCtrl.uploadAgentManifest($file)" ngf-pattern="'.doc,.docx,image/*,application/pdf'" ngf-accept="'.doc,.docx,image/*,application/pdf'">
+  <!--________________________ Section Header, control buttons  ____________________-->
+
+    <section class="section-header">
+    <div layout="row">
+        <div flex="5">
+            <i class="collapse-panel-icon material-icons" ng-click="$ctrl.selectedItem = null;">keyboard_arrow_right</i>
+        </div>
+    </div>
+  </section>
+  <!--________________________ Section Header, control buttons  ____________________-->
+
+    <div class="section-body-wrapper" layout="row">
+        <div class="order-jump-to" flex="5">
+            <div flex class="bookmark-bar">
+                <cb-bookmark-bar container="'#editOrderSection'" items="$ctrl.bookmarkList"></cb-bookmark-bar>
+            </div>
+        </div>
+    <section flex="95" class="section-body" id="editOrderSection">
+    <!--________________________ Main prospect information - two column layout part ____________________-->
+    <div layout="row" layout-wrap layout-align="start top">
+        <div flex id="orderID">
+            <div class="data-row">
+                <span class="prospect-label">Order ID</span>
+                <span class="prospect-value" ng-bind-html="$editCtrl.data._id | orderidify">
+                </span>
+            </div>
+            <div class="data-row">
+                <span class="prospect-label">Type</span>
+                <span class="prospect-value">
+                    <span>{{$ctrl.getTypeString($ctrl.selectedItem)}}</span>
+                    <span ng-if="$ctrl.selectedItem.tasks && $ctrl.selectedItem.tasks['Customer Dropoff/Pickup'] === true" class="type-access">
+                        (ACCESS)
+                        <md-tooltip ng-if="$ctrl.selectedItem.goingToWarehouse">Customer has requested to drop off their items themselves (pickup order)</md-tooltip>
+                        <md-tooltip ng-if="!$ctrl.selectedItem.goingToWarehouse"> “Customer has requested to pickup their items themselves (delivery order)</md-tooltip>
+                    </span>
+                </span>
+            </div>
+            <div class="data-row">
+                <span class="prospect-label">Disposition</span>
+                <span class="prospect-value">
+                    {{$ctrl.selectedItem.disposition}}
+                </span>
+            </div>
+            <div class="data-row">
+                <div>
+                    <span class="prospect-label">Customer</span>
+                    <span class="prospect-value">
+                        {{$ctrl.selectedItem.customer.name}}
+                    </span>
+                </div>
+            </div>
+            <div class="data-row">
+                <div>
+                    <span class="prospect-label">Email</span>
+                    <span class="prospect-value">
+                        {{$ctrl.selectedItem.customer.email}}
+                    </span>
+                </div>
+            </div>
+            <div class="data-row">
+                <div>
+                    <span class="prospect-label">Phone</span>
+                    <span class="prospect-value phone-number">
+                        <cb-formatted-phone-number-link on-click="$editCtrl.openPhoneCallModal()"
+                                                        value="$ctrl.selectedItem.customer.mobile">
+                        </cb-formatted-phone-number-link>
+                    </span>
+                </div>
+            </div>
+            <div class="data-row">
+                <div ng-if="$ctrl.selectedItem.originationLocation.address">
+                    <span class="prospect-label">{{ $ctrl.selectedItem.goingToWarehouse ? "Pickup Address:" : "Warehouse Address:" }}</span>
+                    <span class="prospect-value address">{{$ctrl.selectedItem.originationLocation.address}}</span>
+                </div>
+                <div ng-if="$ctrl.selectedItem.terminalLocation.address">
+                    <span class="prospect-label">{{ $ctrl.selectedItem.goingToWarehouse ? "Warehouse Address:" : "Delivery Address:" }}</span>
+                    <span class="prospect-value address">{{$ctrl.selectedItem.terminalLocation.address}}</span>
+                </div>
+            </div>
+            <div class="data-row">
+                <div>
+                    <span class="prospect-label">Selected Market: </span>
+                    <span class="prospect-value">{{$ctrl.selectedItem.marketName}}</span>
+                </div>
+            </div>
+            <div class="data-row">
+                <div>
+                    <span class="prospect-label">Zipcode: </span>
+                    <span class="prospect-value">{{$ctrl.selectedItem.customer.location.zipCode}}</span>
+                </div>
+            </div>
+            <div class="data-row">
+                <div>
+                    <span class="prospect-label">Selected Agent: </span>
+                    <span class="prospect-value">
+                        {{$ctrl.selectedItem.warehouseLocation.agentName}}
+                    </span>
+                </div>
+            </div>
+            <div class="data-row" id="orderDate">
+                <div layout="row">
+                    <div flex="45">
+                        <span class="prospect-label">Date Requested: </span>
+                        <span class="prospect-value">
+                            <p ng-if="$ctrl.selectedItem.requestedDate1">{{$ctrl.selectedItem.requestedDate1 | dateAP}}</p>
+                            <p ng-if="$ctrl.selectedItem.requestedDate2">{{$ctrl.selectedItem.requestedDate2 | dateAP}}</p>
+                            <p ng-if="$ctrl.selectedItem.requestedDate3">{{$ctrl.selectedItem.requestedDate3 | dateAP}}</p>
+                        </span>
+                    </div>
+                    <div flex="50" flex-offset="5">
+                        <span class="prospect-label">Scheduled Date: </span>
+                        <span class="prospect-value">
+                            <p>{{ $ctrl.selectedItem.acceptedDate | durationDateH }}</p>
+                        </span>
+                        <span class="action" ng-click="$ctrl.openScheduleModal($ctrl.selectedItem)">
+                            <i class="material-icons">update</i>
+                            <md-tooltip>Update scheduled date</md-tooltip>
+                        </span>
+                    </div>
+                </div>
+            </div> <!-- /.data-row -->
+        </div> <!-- end of left column -->
+        <!-- ________________________left panel end __________________________________________-->
+
+
+        <div flex>
+
+            <div class="data-row manifest-row" ng-show="$editCtrl.data.agentManifests.length">
+                <p>Agent Manifest</p>
+                <div class="upload-panel">
+                    <span aria-label="Agent Manifest">
+                        <md-tooltip>
+                            Agent Manifest
+                        </md-tooltip>
+                    </span>
+                </div>
+                <!-- just place holder for uploaded files -->
+                <ul class="uploaded-files">
+                    <li ng-repeat="manifest in $editCtrl.data.agentManifests">
+                        <a ng-href="{{manifest.url}}">
+                            <i class="material-icons">library_books</i>
+                            {{ $editCtrl.displayAgentManifest(manifest) }}
+                        </a>
+                        <i class="material-icons close-icon" ng-click="$editCtrl.removeAgentManifest(manifest)">close</i>
+                    </li>
+                </ul>
+                <!-- end of agent manifest-->
+            </div>
+            <div class="data-row icon-row">
+                <span aria-label="Agent Manifest"  ngf-select="$editCtrl.uploadAgentManifest($file)" ngf-pattern="'.doc,.docx,image/*,application/pdf'" ngf-accept="'.doc,.docx,image/*,application/pdf'">
+                    <i class="material-icons">library_books</i>
+                    <md-tooltip>
+                        Agent Manifest
+                    </md-tooltip>
+                </span>
+                <span aria-label="Driver Order Summary">
+                    <i class="material-icons">printer</i>
+                    <md-tooltip>
+                        Driver Order Summary
+                    </md-tooltip>
+                </span>
+            </div><!-- /.data-row.icon-row -->
+            <div class="data-row">
+                <span class="prospect-label">Est. Weight: </span>
+                <span class="prospect-value">
+                    {{ $ctrl.selectedItem.weight }}
+                </span>
+            </div>
+            <div class="data-row">
+                <span class="prospect-label">Act. Weight: </span>
+                <span class="prospect-value">
+                    {{ $ctrl.selectedItem.agentWeight }}
+                </span>
+            </div>
+
+            <div class="data-row" ng-if="$editCtrl.data.spacePrice">
+                <span class="prospect-label">Space Requested</span>
+                <span class="prospect-value">
+                    {{ $editCtrl.data.storageUnit.label }}
+                </span>
+            </div>
+
+            <div layout="column" class="data-row" ng-if="$editCtrl.data.inventory && $editCtrl.data.inventory.length > 0">
+                <span class="prospect-label">Inventory Requested ({{$editCtrl.data.inventory.length}})</span>
+                <cb-order-inventories inventories="$editCtrl.groupedInventories" short-version="true"></cb-order-inventories>
+            </div>
+
+            
+
+        </div> <!-- end of right column -->
+    </div>
+    <!--________________________ end of two column layout part ____________________-->
+     <div layout="column" class="data-row" id="orderNote">
+        <span class="prospect-label">Notes</span>
+        <cb-order-notes order="$editCtrl.data"></cb-order-notes>
+    </div> <!-- /notes section end-->
+
+    <div layout="column" class="data-row" id="orderEvent">
+        <span class="prospect-label">Events</span>
+        <cb-order-events order="$editCtrl.data"></cb-order-events>
+    </div>
+
+  </section>
+    </div>
+</div>

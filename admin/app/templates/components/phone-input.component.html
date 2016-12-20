@@ -1,0 +1,19 @@
+<md-input-container ng-form="phoneInputForm" class="phone-input-container">
+    <label ng-show="$ctrl.label">{{$ctrl.label}}</label>
+    <input
+        name="mobile"
+        type="tel"
+        aria-label="Mobile"
+        ng-model="$ctrl.number"
+        ng-required="$ctrl.required"
+        ng-disabled="$ctrl.disabled"
+        cb-validate-and-format-phone-number
+    />
+    <div ng-messages="phoneInputForm.mobile.$error" role="alert">
+        <div ng-if="$ctrl.number && $ctrl.number.length > 2" class="no-animate">
+            <div ng-message="valid" class="input-error-message">
+                must be a 10 digit U.S. phone number
+            </div>
+        </div>
+    </div>
+</md-input-container>

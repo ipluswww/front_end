@@ -1,0 +1,263 @@
+<div class="order-detail-view order-edit-view md-whiteframe-5dp md-padding" ng-class="{'expanded': $ctrl.order}">
+    <section class="section-header">
+        <div layout="row">
+            <div flex="5">
+                <i class="collapse-panel-icon material-icons" ng-click="$ctrl.close();">keyboard_arrow_right</i>
+            </div>
+            <div flex="15" layout="row" ng-show="!$ctrl.editOrder">
+                <md-button class="md-closetbox-primary md-raised"
+                    ng-disabled="!$ctrl.isAllowedEdit()"
+                    ng-click="$ctrl.edit()" ng-show="!$ctrl.editOrder">Edit</md-button>
+            </div>
+            <div flex="30" layout="row" ng-show="$ctrl.editOrder">
+                <md-button class="md-closetbox-primary md-raised" ng-click="$ctrl.cancelEdit()" ng-show="$ctrl.editOrder">Cancel</md-button>
+                <md-button class="md-closetbox-primary md-raised" ng-click="$ctrl.save()" ng-show="$ctrl.editOrder" ng-disabled="!orderForm.$valid">Save</md-button>
+            </div>
+            <div flex="80" layout="row" ng-show="!$ctrl.editOrder">
+                <cb-disposition-header-buttons order="$ctrl.order" ></cb-disposition-header-buttons>
+            </div>
+        </div>
+    </section>
+    <div class="section-body-wrapper" layout="row">
+        <div class="order-jump-to" flex="5">
+            <div flex class="bookmark-bar">
+                <cb-bookmark-bar container="'#editOrderSection'" items="$ctrl.bookmarkList"></cb-bookmark-bar>
+            </div>
+        </div>
+        <section flex="95" class="section-body" id="editOrderSection">
+            <form layout="row" name="orderForm">
+                <div layout="column" flex="50" id="orderID">
+                    <div layout="row" class="field">
+                        <div class="values">
+                            <label>Order ID</label>
+                            <span ng-bind-html="$ctrl.order._id | orderidify"></span>
+                        </div>
+                    </div>
+                    <div layout="row" class="field">
+                        <div class="values" layout="row">
+                            <label>Type</label>
+                            <span>{{ $ctrl.order.goingToWarehouse ? 'Pickup' : 'Delivery' }}</span>
+                            <span ng-show="$ctrl.order.tasks['Customer Dropoff/Pickup'] && !$ctrl.editOrder" class="idify-highlight">
+                            (Access)
+                        </span>
+                        </div>
+                    </div>
+                    <div layout="row" class="field" ng-show="$ctrl.editOrder">
+                        <div class="values" layout="row">
+                            <label>Cust. Self Service Requested (Access)</label>
+                            <span>
+                            <md-switch ng-model="$ctrl.editOrder.tasks['Customer Dropoff/Pickup']" aria-label="Customer Dropoff/Pickup"></md-switch>
+                        </span>
+                        </div>
+                    </div>
+                    <div layout="row" class="field">
+                        <div class="values">
+                            <label>Disposition</label>
+                            <span>{{ $ctrl.order.disposition }}</span>
+                        </div>
+                    </div>
+                    <div layout="row" class="field">
+                        <div ng-show="!$ctrl.editOrder" class="values">
+                            <label>Customer</label>
+                            <span>{{ $ctrl.order.customer.name }}</span>
+                        </div>
+                        <md-input-container ng-show="$ctrl.editOrder" flex="90">
+                            <label>Customer</label>
+                            <input ng-model="$ctrl.editOrder.customer.name" aria-label="customer" required name="customerName">
+                            <div ng-messages="orderForm.customerName.$error" ng-show="$ctrl.hasError(orderForm.customerName)">
+                                <div ng-message="required">This is required.</div>
+                            </div>
+                        </md-input-container>
+                    </div>
+                    <div layout="row" class="field">
+                        <div ng-show="!$ctrl.editOrder" class="values">
+                            <label>Email</label>
+                            <span><a href="mailto:{{$ctrl.order.customer.email}}">{{$ctrl.order.customer.email}}</a></span>
+                        </div>
+                        <md-input-container ng-show="$ctrl.editOrder" flex="90">
+                            <label>Email</label>
+                            <input ng-model="$ctrl.editOrder.customer.email" required ng-pattern="/^.+@.+\..+$/" type="email" name="customerEmail" aria-label="customer email">
+                            <div ng-messages="orderForm.customerEmail.$error" ng-show="$ctrl.hasError(orderForm.customerEmail)">
+                                <div ng-message-exp="['required', 'pattern']">This is not valid format.</div>
+                            </div>
+                        </md-input-container>
+                    </div>
+                    <div layout="row" class="field">
+                        <div ng-show="!$ctrl.editOrder" class="values">
+                            <label>Phone</label>
+                            <span class="phone-number">
+                            <cb-formatted-phone-number-link on-click="$ctrl.openPhoneCallModal()"
+                                                            value="$ctrl.order.customer.mobile">
+                            </cb-formatted-phone-number-link>
+                        </span>
+                        </div>
+                        <cb-phone-input cb-number="$ctrl.editOrder.customer.mobile"
+                                        cb-required="true"
+                                        cb-label="Phone"
+                                        ng-show="$ctrl.editOrder"
+                                        flex="90">
+                        </cb-phone-input>
+                    </div>
+                    <div layout="row" class="field">
+                        <div ng-show="!$ctrl.editOrder" class="values">
+                            <label>Customer Address</label>
+                            <span>{{$ctrl.order.customer.location.address}}</span>
+                        </div>
+                        <md-input-container ng-show="$ctrl.editOrder" flex="90">
+                            <label>Customer Address</label>
+                            <input ng-model="$ctrl.editOrder.customer.location.address" required name="customerAddress" aria-label="customer address">
+                            <div ng-messages="orderForm.customerAddress.$error" ng-show="$ctrl.hasError(orderForm.customerAddress)">
+                                <div ng-message-exp="['required']">This is required.</div>
+                            </div>
+                        </md-input-container>
+                    </div>
+                    <div layout="row" class="field">
+                        <div ng-show="!$ctrl.editOrder"  class="values">
+                            <label>{{ $ctrl.order.goingToWarehouse ? 'Pickup Address' : 'Warehouse Address' }}</label>
+                            <span>{{$ctrl.order.originationLocation.address}}</span>
+                        </div>
+                        <md-input-container ng-show="$ctrl.editOrder" flex="90">
+                            <label>{{ $ctrl.editOrder.goingToWarehouse ? 'Pickup Address' : 'Warehouse Address' }}</label>
+                            <input ng-model="$ctrl.editOrder.originationLocation.address" required name="origAddress" aria-label="originationLocation">
+                            <div ng-messages="orderForm.origAddress.$error" ng-show="$ctrl.hasError(orderForm.origAddress)">
+                                <div ng-message-exp="['required']">This is required.</div>
+                            </div>
+                        </md-input-container>
+                    </div>
+                    <div layout="row" class="field">
+                        <div ng-show="!$ctrl.editOrder"  class="values">
+                            <label>{{ $ctrl.order.goingToWarehouse ? 'Warehouse Address' : 'Delivery Address' }}</label>
+                            <span>{{$ctrl.order.terminalLocation.address}}</span>
+                        </div>
+                        <md-input-container ng-show="$ctrl.editOrder" flex="90">
+                            <label>{{ $ctrl.editOrder.goingToWarehouse ? 'Warehouse Address' : 'Delivery Address' }}</label>
+                            <input ng-model="$ctrl.editOrder.terminalLocation.address" required name="termAddress" aria-label="terminalLocation">
+                            <div ng-messages="orderForm.termAddress.$error" ng-show="$ctrl.hasError(orderForm.termAddress)">
+                                <div ng-message-exp="['required']">This is required.</div>
+                            </div>
+                        </md-input-container>
+                    </div>
+                    <div layout="row" class="field">
+                        <div class="values">
+                            <label>Selected Market</label>
+                            <span>{{ $ctrl.order.market.name }}</span>
+                        </div>
+                    </div>
+                    <div layout="row" class="field">
+                        <div ng-show="!$ctrl.editOrder" class="values">
+                            <label>Zipcode</label>
+                            <span>{{ $ctrl.order.originationLocation.zipCode }}</span>
+                        </div>
+                        <md-input-container ng-show="$ctrl.editOrder" flex="90">
+                            <label>Zipcode</label>
+                            <input ng-model="$ctrl.editOrder.originationLocation.zipCode" required ng-pattern="/^(\d{5})$/" name="zipcode" aria-label="zipcode">
+                            <div ng-messages="orderForm.zipcode.$error" ng-show="$ctrl.hasError(orderForm.zipcode)">
+                                <div ng-message-exp="['required', 'pattern']">This is not valid format.</div>
+                            </div>
+                        </md-input-container>
+                    </div>
+                    <div layout="row" class="field">
+                        <div class="values">
+                            <label>Selected Agent</label>
+                            <span>{{ $ctrl.order.warehouseLocation.agentName }}</span>
+                        </div>
+                    </div>
+                    <div layout="column" class="field" id="orderDate">
+                        <div class="values" layout="row">
+                            <label>Date Requested</label>
+                            <span layout="column" ng-show="!$ctrl.editOrder">
+                            <span ng-show="$ctrl.order.requestedDate1">{{ $ctrl.order.requestedDate1 | dateAP }}</span>
+                            <span ng-show="$ctrl.order.requestedDate2">{{ $ctrl.order.requestedDate2 | dateAP }}</span>
+                            <span ng-show="$ctrl.order.requestedDate3">{{ $ctrl.order.requestedDate3 | dateAP }}</span>
+                        </span>
+                        </div>
+                        <div ng-if="$ctrl.editOrder" class="requested-editor" flex="100">
+                            <cb-order-requested-dates-picker order="$ctrl.editOrder"></cb-order-requested-dates-picker>
+                        </div>
+                    </div>
+                    <div layout="row" class="field">
+                        <div class="values">
+                            <label>Scheduled Date</label>
+                            <span>{{ $ctrl.order.acceptedDate | durationDateH }}</span>
+                        </div>
+                    </div>
+                    <div layout="row" class="field">
+                        <div class="values">
+                            <label>Date Created</label>
+                            <span>{{ $ctrl.order.dateCreated | date }}</span>
+                        </div>
+                    </div>
+                </div>
+                <div layout="column" flex="50">
+                    <div layout="row" class="field">
+                        <div class="values">
+                            <label>Est. Weight</label>
+                            <span>{{ $ctrl.order.weight }}</span>
+                        </div>
+                    </div>
+                    <div layout="row" class="field">
+                        <div class="values">
+                            <label>Pricing</label>
+                            <span>{{ $ctrl.order.market.name }} v{{ $ctrl.order.market.version }}</span>
+                        </div>
+                    </div>
+                    <div layout="row" class="field">
+                        <div class="values">
+                            <label>Discount Code</label>
+                            <span>{{ $ctrl.order.discountCode }}</span>
+                        </div>
+                    </div>
+                    <div layout="row" class="field"  ng-if="$ctrl.order.spacePrice">
+                        <div class="values">
+                            <label>Space Selected</label>
+                            <span>
+                            {{ $ctrl.order.storageUnit.label }}
+                        </span>
+                        </div>
+                    </div>
+                    <div layout="row" class="field" ng-if="$ctrl.order.inventory && $ctrl.order.inventory.length > 0">
+                        <div class="values" layout="column">
+                            <label>Inventory Selected({{$ctrl.order.inventory.length}})</label>
+                            <cb-order-inventories inventories="$ctrl.groupedInventories"></cb-order-inventories>
+                        </div>
+                    </div>
+                    <div layout="row" class="field">
+                        <div class="values" layout="row">
+                            <label>Added Items
+                                <span ng-if="$ctrl.order.options && $ctrl.order.options.length >0">
+                                {{$ctrl.order.options.length}}
+                            </span>
+                            </label>
+                            <div layout=column>
+                            <span ng-repeat="option in $ctrl.order.options">
+                                {{ option.type }} : {{ option.quantity }}
+                            </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <div class="field" id="orderNote">
+                <div class="values" layout=column>
+                    <label>Notes</label>
+                    <cb-order-notes order="$ctrl.order"></cb-order-notes>
+                </div>
+            </div>
+
+            <div class="field" id="orderEvent">
+                <div class="values" layout="column">
+                    <label>Events</label>
+                    <cb-order-events order="$ctrl.order"></cb-order-events>
+                </div>
+            </div>
+
+            <cb-order-billing-table order="$ctrl.order" ng-if="$ctrl.order"></cb-order-billing-table>
+            <cb-order-payment order="$ctrl.order"></cb-order-payment>
+            <cb-customer-orders customer="$ctrl.order.customer" except="$ctrl.order._id"></cb-customer-orders>
+            <cb-customer-inventory-view
+                    space="$ctrl.customerSpace"
+                    inventory="$ctrl.customerInventory"></cb-customer-inventory-view>
+        </section>
+    </div>
+
+</div>

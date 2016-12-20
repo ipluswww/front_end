@@ -1,0 +1,27 @@
+<section class="disposition-multi-select multi-select" click-outside="$ctrl.closeThis()" outside-if-not="multi-select-list">
+    <div class="component-header" ng-click="$ctrl.toggleComponent($event)">
+        <span class="main-labels">
+            {{$ctrl.selectedDispositionNames()}}
+        </span>
+        <span class="icon">
+            <i class="material-icons" ng-if="!$ctrl.expanded">keyboard_arrow_down</i>
+            <i class="material-icons" ng-if="$ctrl.expanded">keyboard_arrow_up</i>
+        </span>
+    </div>
+    <div class="list multi-select-list md-whiteframe-2dp" ng-if="$ctrl.expanded" >
+        <div class="action-row" layout="row">
+            <a flex="50" ng-click="$ctrl.selectAll()">Select All</a>
+            <a flex="50" ng-click="$ctrl.deselectAll()">Deselect All</a>
+        </div>
+        <ul>
+            <li ng-repeat="item in $ctrl.allData" layout="column">
+                <span ng-click="$ctrl.toggle(item)">
+                    {{item.text}}
+                    <span class="icon">
+                        <i  ng-if="$ctrl.isExist(item)" class="material-icons">done</i>
+                    </span>
+                </span>
+            </li>
+        </ul>
+    </div>
+</section>

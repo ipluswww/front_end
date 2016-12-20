@@ -1,0 +1,293 @@
+@import "../../variables/colors.scss";
+
+// USED in Homepage and prospect.
+// highlighting the last 5 digits of order
+span.idify-highlight {
+    font-weight: bold;
+    color: $primary;
+}
+
+
+// Define the bookmark bar styling, used in Homepage, prospect, orders and finance page
+.order-edit-view {
+    max-width: 668px;
+    .bookmark-bar {
+        margin-left: -13px;
+        ul.bookmark {
+            list-style: none;
+            padding-left: 0;
+            margin-top: 0;
+            margin-bottom: 0;
+            margin-right: 0px;
+            li {
+                float: left;
+                margin-left: 5px;
+                margin-right: 5px;
+                border-style: solid solid none solid;
+                border-width: 1px;
+                padding: 4px;
+                border-color: lightgray;
+
+                &:last-child {
+                    border-bottom-style: solid;
+                }
+            }
+        }
+    } /* /.bookmark-bar */
+
+    .phone-number {
+        a {
+            cursor: pointer;
+        } 
+        i {
+            vertical-align: middle;
+            cursor: pointer;
+        }
+    }
+
+    .container-type-box {
+        padding-left: 10px;
+        p {
+            font-weight: bold;
+            margin-top: 3px;
+            margin-bottom: 3px;
+        }
+        ul {
+            padding-left: 20px;
+            margin-bottom: 5px;
+        }
+    }
+}
+
+
+#home {
+    overflow: left;
+}
+
+#homeAgentList {
+    /* On Page header */
+    // header part __________________________________________________________________
+    .search-section {
+        margin-top: 15px;
+        .search-container {
+            margin-top: 0;
+            margin-bottom: 0;
+        }
+        .filter-label {
+            line-height: 35px;
+        }
+    }
+
+    // Print icon section
+    .icons-section {
+        text-align: center;
+        i {
+            line-height: 30px;
+            cursor: pointer;
+            color: $secondary;
+            outline: none;
+        }
+    }
+
+    // header part __________________________________________________________________
+
+    /* In side the table */
+    //________________________________________________________________________________
+    md-table-container {
+        td.md-cell, a {
+            cursor: pointer;
+        }
+
+        // accepted date(Scheduled date)
+        .accepted-date {
+            font-weight: bold;
+            span.attention {
+                color: red;
+            }
+        }
+
+        .market-link {
+            padding-left: 10px;
+        }
+
+        .type-access {
+            color: red;
+        }
+
+        .address-cell {
+            width: 250px;
+        }
+
+        table.md-table > tbody > tr > td.address-cell {
+            width: 500px;
+            word-wrap: break-word;
+        }
+    } /* /md-table-container */
+
+    //________________________________________________________________________________
+} /* end of #homeAgentList */
+
+
+/* Agent Pull out styling */
+//________________________________________________________________________________
+#editOrder {
+    display: none;
+    position: fixed;
+    width: 700px;
+    top: 45px;
+    right: 0px;
+    background: white;
+    &.expanded {
+        display: block;
+    }
+
+    /* section header styling */
+    .section-header {
+        padding-bottom: 10px;
+        i {
+            line-height: 45px;
+            outline: none;
+        }
+        i.collapse-panel-icon {
+            cursor: pointer;
+        }
+
+        .action-column {
+            span {
+                margin-left: 5px;
+            }
+        }
+    } /* /.section-header */
+
+    .section-body {
+        height: 400px;
+        padding-bottom: 20px;
+        overflow-y: auto;
+
+        .prospect-label {
+            font-weight: bold;
+            margin-right: 5px;
+            line-height: 30px;
+            margin-bottom: 5px;
+        }
+        .prospect-value {
+            line-height: 30px;
+            margin-bottom: 5px;
+        }
+
+        .data-row {
+            margin-bottom: 10px;
+        }
+
+
+        ul {
+            margin-top: 0px;
+        }
+
+        // Input control styling while in edit status
+        md-input-container, md-select {
+            margin-top: 0px;
+            margin-bottom: 0px;
+        }
+
+        .accepted-date {
+            font-weight: bold;
+            span.attention {
+                color: red;
+            }
+        }
+
+
+        .prospect-input md-input-container {
+            width: 90%;
+        }
+
+        .prospect-value.address p {
+            margin-top: 5px;
+            margin-bottom: 5px;
+        }
+
+        .billing-status {
+            &.Yellow {
+                color: yellow;
+            }
+            &.Red {
+                color: red;
+            }
+            &.Greeen {
+                color: green;
+            }
+        }
+
+        .icon-row {
+            i {
+                color: $secondary;
+                font-size: 30px;
+                cursor: pointer;
+            }
+        }
+
+        .manifest-row {
+            ul.uploaded-files {
+                padding-left: 0px;
+                list-style: none;
+                li {
+                    padding-right: 20px;
+                    position: relative;
+                    a {
+                        line-height: 16px;
+                        vertical-align: top;
+                        font-size:12px;
+                        .material-icons {
+                            font-size: 16px;
+                        }
+                    }
+                    .close-icon {
+                        position: absolute;
+                        right: 0;
+                        top: 0;
+                        cursor: pointer;
+                        font-size: 16px;
+                    }
+                }
+            }
+        }
+
+
+        .notes-section {
+            .atom-note {
+                margin-bottom: 10px;
+                border-bottom: 1px solid $grayColor2;
+                p {
+                    margin-top: 0px;
+                    margin-bottom: 0px;
+                    padding-bottom: 5px;
+                }
+                .note-action {
+                    color: $secondary;
+                    span {
+                        cursor: pointer;
+                    }
+                }
+            }
+            .add-note {
+                color: $secondary;
+                line-height: 30px;
+                vertical-align: middle;
+                cursor: pointer;
+                &:disabled {
+                    color: $grayColor2;
+                    cursor: default;
+                }
+                i {
+                    vertical-align: middle;
+                }
+            }
+
+            md-input-container {
+                width: 95%;
+            }
+        } /* /.notes-section */
+    } /* /.section-body */
+
+} /* end of #editOrder */

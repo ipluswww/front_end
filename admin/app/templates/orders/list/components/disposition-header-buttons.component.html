@@ -1,0 +1,23 @@
+<div>
+    <md-button class="md-button md-closetbox-primary md-raised" 
+        ng-click="$ctrl.goToCreateOrderWizard()"
+        ng-show="$ctrl.canOrderBeChangedToCreated()">Create</md-button>
+    <md-button class="md-closetbox-primary md-raised" 
+        ng-click="$ctrl.completeOrder()"
+        ng-show="$ctrl.canOrderBeChangedToCompleted()">Complete</md-button>
+    <md-button class="md-closetbox-primary md-raised" 
+        ng-click="$ctrl.scheduleOrder()"
+        ng-show="$ctrl.canOrderBeChangedToScheduled()">Schedule</md-button>
+    <md-button class="md-closetbox-primary md-raised" 
+        ng-click="$ctrl.inTransitOrder()"
+        ng-show="$ctrl.canOrderBeChangedToInTransit()">In Transit</md-button>
+    <md-button class="md-closetbox-primary md-raised" 
+        ng-click="$ctrl.acceptOrder()"
+        ng-show="$ctrl.canOrderBeChangedToAccepted()">Accept</md-button>
+    <md-button class="md-closetbox-primary md-raised" 
+        ng-click="$ctrl.cancelOrder()"
+        ng-show="$ctrl.canOrderBeChangedToCancelled()">Cancel</md-button>
+    <md-button class="md-closetbox-primary md-raised" 
+        ng-click="$ctrl.payHoldOrder()"
+        ng-show="$ctrl.canOrderBeChangedToPaymentHold()">Pay Hold</md-button>
+</div>

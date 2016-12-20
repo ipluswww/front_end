@@ -1,0 +1,34 @@
+<md-dialog aria-label="Agents"  ng-cloak class="access-modals">
+    <form>
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h2>Cancellation Reason</h2>
+                <span flex></span>
+                <md-button class="md-icon-button" ng-click="$ctrl.cancel()">
+                    <md-icon aria-label="Close dialog">
+                        <i class="material-icons">clear</i>
+                    </md-icon>
+                </md-button>
+            </div>
+        </md-toolbar>
+        <md-dialog-content layout="column" class="md-padding">
+            <div class="md-padding">
+                <div layout="column" layout-wrap>
+                    <div ng-repeat="item in $ctrl.allReasons" >
+                        <md-checkbox ng-checked="$ctrl.exists(item)" ng-click="$ctrl.toggle(item)">
+                            {{item}}
+                        </md-checkbox>
+                    </div>
+                </div>
+            </div>
+        </md-dialog-content>
+        <md-dialog-actions layout="row">
+            <md-button ng-click="$ctrl.confirm()" class="md-raised md-closetbox-primary" md-disabled="$ctrl.reasons.length < 1">
+                Confirm
+            </md-button>
+            <md-button ng-click="$ctrl.cancel()">
+                Stop
+            </md-button>
+        </md-dialog-actions>
+    </form>
+</md-dialog>

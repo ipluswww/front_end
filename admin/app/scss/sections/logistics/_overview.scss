@@ -1,0 +1,48 @@
+// =============================================================================
+// Google Map Style;
+// =============================================================================
+
+.angular-google-map-container { 
+	height: 640px;
+}
+
+#logistics-overview {
+	.option-section {
+		position: relative;
+		margin-left: 20px;
+		padding: 20px;
+		border: 1px solid #000;
+		border-radius: 8px;
+		&.disabled {
+			background-color: rgba(0, 0, 0, 0.3);
+		}
+		.markets-option {
+			color: #fcc438;
+		}
+		.agents-option {
+			color: #834187;
+		}
+		.customers-option {
+			color: #19967d;
+		}
+		.pickups-option {
+			color: #a3d977;
+		}
+		.deliveries-option {
+			color: #83bbe5;
+		}
+		.other-option {
+			color: #f19b3d;
+		}
+		& > md-progress-circular {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			margin-left: -25px;
+			margin-top: -25px;
+		}
+	}
+	.modal-details {
+		width: 300px
+	}
+}

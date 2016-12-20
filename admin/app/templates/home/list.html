@@ -1,0 +1,7 @@
+<div class="plain-home" ng-if="::!$parentCtrl.isAgent">
+    <h3>HOME</h3>
+    <ul>
+        <li ng-repeat="role in $parentCtrl.roles">{{role}}</li>
+    </ul>
+</div>
+<div id="homeAgentList" ng-include="'templates/home/agent/_orders_list.html'" ng-if="::$parentCtrl.isAgent"></div>

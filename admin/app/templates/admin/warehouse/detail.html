@@ -1,0 +1,235 @@
+<div layout="row" id="warehouseDetail" layout-fill class="admin-detail">
+    <md-content class="md-whiteframe-2dp normal-padding"  flex>
+        <div layout="column">
+            <div class="section-header">
+                <div layout="row" layout-align="start center" >
+                    <md-button class="md-fab md-closetbox-fab" aria-label="Back" ng-click="$ctrl.backTo()">
+                        <i class="material-icons">keyboard_arrow_left</i>
+                        <md-tooltip>Back</md-tooltip>
+                    </md-button>
+                    <md-button class="md-fab md-closetbox-fab" aria-label="WarehouseLocation List" ng-click="$ctrl.backToList()">
+                        <i class="material-icons">list</i>
+                        <md-tooltip>WarehouseLocation List</md-tooltip>
+                    </md-button>
+
+                    <a ng-if="$ctrl.isAllowedEdit()"  aria-label="Create WarehouseLocation" ui-sref="app.admin.warehouse.new" ui-sref-active="md-closetbox-primary" class="md-link">
+                        <i class="material-icons">add</i>
+                        Create
+                    </a>
+                    <a aria-label="Edit WarehouseLocation" ui-sref="app.admin.warehouse.edit({id: $ctrl._id})" ui-sref-active="md-closetbox-primary" ng-if="$ctrl._id && $ctrl.isAllowedEdit()" class="md-link">
+                        <i class="material-icons">create</i>
+                        Edit
+                    </a>
+                    <md-button aria-label="Delete Warehouse" class="md-raised md-closetbox-error" ng-if="$ctrl._id && $ctrl.isAllowedEdit()" ng-disabled="!$ctrl.isDeletable()" ng-click="$ctrl.deleteRecord()">
+                        <i class="material-icons">delete</i>
+                        Delete
+                    </md-button>
+                </div>
+            </div>
+
+            <div>
+                <!-- Detail View -->
+                <!-- --------------------------------------------------------------------------------------- -->
+
+                <div ng-if="!$ctrl._edit" class="detail-section">
+                    <div layout="row" class="data-row">
+                        <span flex="30" class="input-label">Address</span>
+                        <span flex="70" class="static-value">{{ ::$ctrl.data.location.address}}</span>
+                    </div>
+                    <div layout="row" class="data-row">
+                        <span flex="30" class="input-label">Zip Code</span>
+                        <span flex="70" class="static-value">{{ ::$ctrl.data.location.zipCode}}</span>
+                    </div>
+                    <div layout="row" class="data-row">
+                        <span flex="30" class="input-label">Phone</span>
+                        <span flex="70" class="static-value">{{ ::$ctrl.data.location.phone }}</span>
+                    </div>
+                    <div layout="row" class="data-row">
+                        <span flex="30" class="input-label">GPS Coordinates</span>
+                        <span flex="70" class="static-value">{{ ::$ctrl.data.location.coordinate.lat }}, {{ ::$ctrl.data.location.coordinate.lng }}</span>
+                    </div>
+                    <div layout="row" class="data-row">
+                        <span flex="30" class="input-label">Handling Rate</span>
+                        <span flex="70" class="static-value">{{ ::$ctrl.data.handlingRate}}</span>
+                    </div>
+                    <div layout="row" class="data-row">
+                        <span flex="30" class="input-label">Store Rate</span>
+                        <span flex="70" class="static-value">{{ ::$ctrl.data.storeRate}}</span>
+                    </div>
+                    <div layout="row" class="data-row">
+                        <span flex="30" class="input-label">Labor Rate 1 men</span>
+                        <span flex="70" class="static-value">{{ ::$ctrl.data.laborRate_1m}}</span>
+                    </div>
+                    <div layout="row" class="data-row">
+                        <span flex="30" class="input-label">Labor Rate 2 men / 2 hours</span>
+                        <span flex="70" class="static-value">{{ ::$ctrl.data.laborRate_2m_2h}}</span>
+                    </div>
+                    <div layout="row" class="data-row">
+                        <span flex="30" class="input-label">Labor Rate 2 men / additional hours</span>
+                        <span flex="70" class="static-value">{{ ::$ctrl.data.laborRate_2m_ah}}</span>
+                    </div>
+                    <div layout="row" class="data-row">
+                        <span flex="30" class="input-label">Labor Rate 3 men / 2 hours</span>
+                        <span flex="70" class="static-value">{{ ::$ctrl.data.laborRate_3m_2h}}</span>
+                    </div>
+                    <div layout="row" class="data-row">
+                        <span flex="30" class="input-label">Labor Rate 3 men / additional hours</span>
+                        <span flex="70" class="static-value">{{ ::$ctrl.data.laborRate_3m_ah}}</span>
+                    </div>
+                    <div layout="row" class="data-row">
+                        <span flex="30" class="input-label">Labor Rate 4 men / 2 hours</span>
+                        <span flex="70" class="static-value">{{ ::$ctrl.data.laborRate_4m_2h}}</span>
+                    </div>
+                    <div layout="row" class="data-row">
+                        <span flex="30" class="input-label">Labor Rate 4 men / additional hours</span>
+                        <span flex="70" class="static-value">{{ ::$ctrl.data.laborRate_4m_ah}}</span>
+                    </div>
+
+                    <div layout="row" class="data-row">
+                        <span flex="30" class="input-label">Associated Agent Name</span>
+                        <span flex="70" class="static-value">{{ ::$ctrl.data.agentName}}</span>
+                    </div>
+                    <div layout="row" class="data-row">
+                        <span flex="30" class="input-label">Associated Markets</span>
+                        <span flex="70" class="static-value">
+                            <ul>
+                                <li ng-repeat="market in $ctrl.data.associatedMarkets">{{ ::market.name }}</li>
+                            </ul>
+                        </span>
+                    </div>
+                    <div layout="row" class="data-row">
+                        <span flex="30" class="input-label">Associated Zip Codes</span>
+                        <span flex="70" class="static-value">{{ ::$ctrl.data.zipCodes.join() }}</span>
+                    </div>
+
+
+                    <div layout="row" class="data-row">
+                        <span flex="30" class="input-label">Date Created</span>
+                        <span flex="70" class="static-value">{{ ::$ctrl.data.dateCreated | date: 'shortDate'}}</span>
+                    </div>
+                    <div layout="row" class="data-row">
+                        <span flex="30" class="input-label">Last Updated</span>
+                        <span flex="70" class="static-value">{{ ::$ctrl.data.lastUpdated | date: 'shortDate'}}</span>
+                    </div>
+
+                </div>
+                <!-- End of Detail View -->
+                <!-- --------------------------------------------------------------------------------------- -->
+
+                <!-- Form -->
+                <!-- --------------------------------------------------------------------------------------- -->
+                <form ng-if="$ctrl._edit" class="md-padding edit-section" name="warehouseForm">
+                    <div layout="row">
+                        <div flex="45">
+                            <div layout="column">
+                                <md-input-container>
+                                    <label>Address</label>
+                                    <input ng-model="$ctrl.data.location.address" minlength="2" required aria-label="Address" />
+                                </md-input-container>
+                                <div>
+                                    <div layout="row">
+                                        <md-input-container>
+                                            <label>Lat</label>
+                                            <input ng-model="$ctrl.data.location.coordinate.lat" required aria-label="Lat" />
+                                        </md-input-container>
+                                        <md-input-container>
+                                            <label>Lng</label>
+                                            <input ng-model="$ctrl.data.location.coordinate.lng" required aria-label="Lng" />
+                                        </md-input-container>
+                                    </div>
+                                </div>
+                                <md-input-container>
+                                    <label>Zip Code</label>
+                                    <input ng-model="$ctrl.data.location.zipCode" length="5" required aria-label="Zip Code" />
+                                </md-input-container>
+                                <md-input-container>
+                                    <label>Phone</label>
+                                    <input ng-model="$ctrl.data.location.phone" required aria-label="Phone" />
+                                </md-input-container>
+                                <md-input-container>
+                                    <label>Handling Rate</label>
+                                    <input ng-model="$ctrl.data.handlingRate" required aria-label="Handling Rate" />
+                                </md-input-container>
+                                <md-input-container>
+                                    <label>Store Rate</label>
+                                    <input ng-model="$ctrl.data.storeRate" required aria-label="Store Rate" />
+                                </md-input-container>
+                                <md-input-container>
+                                    <label>Labor rate 1 men</label>
+                                    <input ng-model="$ctrl.data.laborRate_1m" required aria-label="Labor rate 1 men" />
+                                </md-input-container>
+                                <md-input-container>
+                                    <label>Labor Rate 2 men / 2 hours</label>
+                                    <input ng-model="$ctrl.data.laborRate_2m_2h" required aria-label="Labor Rate 2 men / 2 hours" />
+                                </md-input-container>
+                                <md-input-container>
+                                    <label>Labor Rate 2 men / additional hours</label>
+                                    <input ng-model="$ctrl.data.laborRate_2m_ah" required aria-label="Labor Rate 2 men / additional hours" />
+                                </md-input-container>
+                                <md-input-container>
+                                    <label>Labor Rate 3 men / 2 hours</label>
+                                    <input ng-model="$ctrl.data.laborRate_3m_2h" required aria-label="Labor Rate 3 men / 2 hours" />
+                                </md-input-container>
+                                <md-input-container>
+                                    <label>Labor Rate 3 men / additional hours</label>
+                                    <input ng-model="$ctrl.data.laborRate_3m_ah" required aria-label="Labor Rate 3 men / additional hours" />
+                                </md-input-container>
+                                <md-input-container>
+                                    <label>Labor Rate 4 men / 2 hours</label>
+                                    <input ng-model="$ctrl.data.laborRate_4m_2h" required aria-label="Labor Rate 4 men / 2 hours" />
+                                </md-input-container>
+                                <md-input-container>
+                                    <label>Labor Rate 4 men / additional hours</label>
+                                    <input ng-model="$ctrl.data.laborRate_4m_ah" required aria-label="Labor Rate 4 men / additional hours" />
+                                </md-input-container>
+                            </div>
+                        </div> <!-- basic info part -->
+
+                        <div flex="45" flex-offset="10" class="information-panel">
+                            <md-content layout="column">
+                                <h6>Associate Agent</h6>
+                                <div>
+                                    <p ng-if="$ctrl.data.associatedAgent">{{$ctrl.data.associatedAgent.name}}</p>
+                                    <md-button aria-label="Associate Agents" class="md-raised md-closetbox-primary" ng-click="$ctrl.openAssociateAgentsDialog()">Associate Agents</md-button>
+                                </div>
+                            </md-content>
+                            <md-content layout="column">
+                                <h6>Associate Markets</h6>
+                                <div>
+                                    <ul>
+                                        <li ng-repeat="market in $ctrl.data.associatedMarkets">{{market.name}}</li>
+                                    </ul>
+                                    <md-button aria-label="Associate Markets" class="md-raised md-closetbox-primary" ng-click="$ctrl.openMarketsDialog()">Associate Markets</md-button>
+                                </div>
+                            </md-content>
+                            <md-content layout="column">
+                                <h6>Associate Zip Codes</h6>
+                                <div>
+                                    <tags-input ng-model="$ctrl.data.zipCodesData"
+                                                placeholder="Add a zip code"
+                                                min-length="5"
+                                                max-length="5"
+                                                allowed-tags-pattern="^[0-9]+$">
+                                    </tags-input>
+                                </div>
+                            </md-content>
+                            <md-content layout="column">
+                                <h6>Availability Scheduling</h6>
+                                <div>
+                                    <md-button aria-label="Availability Scheduling" class="md-raised md-closetbox-primary" ng-click="$ctrl.openAssociateAgentsDialog()" disabled>Availability Scheduling</md-button>
+                                </div>
+                            </md-content>
+                        </div>
+                    </div>
+
+                    <div layout="row" layout-align="end center">
+                        <md-button aria-label="Save Information" class="md-raised md-closetbox-primary" ng-click="$ctrl.saveData()">Save</md-button>
+                        <md-button aria-label="Cancel" class="md-raised md-primary" ng-click="$ctrl.cancelEdit()">Cancel</md-button>
+                    </div>
+                </form>
+                <!-- End of Form -->
+                <!-- --------------------------------------------------------------------------------------- -->
+            </div>
+        </div>
+    </md-content>
+</div>

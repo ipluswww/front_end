@@ -1,0 +1,61 @@
+<md-dialog aria-label="Phone action modal"  ng-cloak class="phone-action-modal">
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <h2>Phone Modal</h2>
+            <span flex></span>
+            <md-button class="md-icon-button" ng-click="$ctrl.cancel()">
+                <md-icon aria-label="Close dialog">
+                    <i class="material-icons">clear</i>
+                </md-icon>
+            </md-button>
+        </div>
+    </md-toolbar>
+    <md-dialog-content layout="column">
+        <div layout="row" class="phone-row">
+            <div flex="50">
+                <md-select ng-model="$ctrl.selectedNumber" ng-change="$ctrl.changeNumber()" ng-show="$ctrl.selectedNumber !='new_number'">
+                    <md-option value="{{$ctrl._number}}">
+                        <cb-formatted-phone-number-link value="$ctrl._number"
+                                                        style="{'pointer-events': 'none', 'color': 'inherit'}">
+                        </cb-formatted-phone-number-link>
+                    </md-option>
+                    <md-option value="new_number" ng-if="$ctrl._order">New Number</md-option>
+                </md-select>
+                <md-input-container class="search-container" ng-show="$ctrl.selectedNumber == 'new_number'">
+                   <input type="text" ng-model="$ctrl.newNumber" ng-change="$ctrl.updateList()" ng-pattern="/^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/"/>
+                </md-input-container>
+            </div>
+            <div flex="10" layout-align="center left">
+                <a ng-click="$ctrl.callNumber()">
+                    <i class="material-icons">call</i>
+                </a>
+            </div>
+        </div>
+
+        <div class="message-log md-padding" layout="column" class="md-padding">
+            <div class="message" ng-repeat="atom in $ctrl.messageLog" ng-class="{'from': (atom.sender === 'me'), 'to': (atom.sender === 'customer')}">
+                <span class="message-wrapper">
+                    <span class="datetime">{{atom.datetime | date}}</span>
+                    <span class="msg">{{atom.msg}}</span>
+                </span>
+            </div>
+        </div>
+
+        <div class="message-panel" layout="column">
+            <md-input-container>
+                <input type="text" ng-model="$ctrl.message" />
+            </md-input-container>
+            <div class="clearfix">
+                <span class="text-count">{{$ctrl.message.length || 0}} Characters</span>
+                <span class="text-status">Status: {{$ctrl.messageStatus}}</span>
+            </div>
+        </div>
+
+        <div class="button-row" layout="row" layout-align="end center">
+            <md-button aria-label="Send SMS" class="md-raised md-closetbox-primary" ng-click="$ctrl.sendSMS()" ng-disabled="$ctrl.status == 'sending' || ($ctrl.message.length == 0)">
+                <i class="material-icons">chat</i> Send SMS
+            </md-button>
+        </div>
+
+    </md-dialog-content>
+</md-dialog>

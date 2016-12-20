@@ -1,0 +1,30 @@
+<div layout="row" class='order-addons' ng-form="addOns.form">
+    <md-chips flex ng-model="addOns.order.options" md-autocomplete-snap
+              md-transform-chip="addOns.transformChip($chip)"
+              md-max-chips="addOns.maxAddOns"
+              readonly="addOns.isLocked">
+      <md-autocomplete ng-disabled="!addOns.canAddMoreAddOns()"
+        md-require-match="addOns.requireMatch"
+        md-search-text="addOns.query.search"
+        md-items="item in addOns.querySearch()"
+        md-item-text="item.name"
+        placeholder="Add On"
+                       ng-model-options="{debounce: 500}">
+        <md-item-template>
+            <span md-highlight-text="addOns.searchText" md-highlight-flags="^i">
+            </span>
+            <strong>{{item.name}}</strong>
+            <em>({{ item.value | currency }})</em>
+        </md-item-template>
+        <md-not-found>
+            No Add On matching "{{addOns.query.search}}" were found.
+        </md-not-found>
+      </md-autocomplete>
+      <md-chip-template>
+        <span>
+          <strong>{{$chip.name}}</strong>
+          <em>({{ $chip.value | currency }})</em>
+        </span>
+      </md-chip-template>
+    </md-chips>
+</div>

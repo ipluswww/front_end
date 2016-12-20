@@ -1,0 +1,47 @@
+<header class="md-whiteframe-2dp cb-app-header" layout="row" layout-align="end center" flex>
+    <div flex="10">
+        <md-menu>
+            <md-button class="md-icon-button" ng-click="$mdOpenMenu()" aria-label="Open menu" layout-align="end center">
+                <i class="material-icons">menu</i>
+            </md-button>
+            <md-menu-content width="3">
+                <md-menu-item><md-button ng-click="$mdCloseMenu()">Future</md-button></md-menu-item>
+                <md-menu-item><md-button ng-click="$mdCloseMenu()">Placeholder</md-button></md-menu-item>
+            </md-menu-content>
+        </md-menu>
+    </div>
+
+    <div flex="65" class="app-name">
+        <a ui-sref="app.home.list">
+            <img src="assets/closetbox_ITB.png">
+        </a>
+        <a ui-sref="app.home.list">
+            <span class="md-body-2" ng-bind="::$ctrl.appName"></span>
+        </a>
+    </div>
+    <div flex="25" layout="row" layout-align="end center">
+        <a ng-if="$ctrl.isAuthorizedToOrderCreation()" flex ui-sref="app.orders.pickup.detail" aria-label="Create New Pickup Order" layout-align="center center">
+            <md-tooltip md-direction="bottom">
+              Create New Pickup Order
+            </md-tooltip>
+            <md-icon class="material-icons cb-icon--pickup-order" md-svg-src="assets/cardboard-box-pickup.svg" aria-label="New Pickup Order "></md-icon>
+        </a>
+        <a ng-if="$ctrl.isAuthorizedToOrderCreation()" flex ui-sref="app.orders.delivery.detail" aria-label="Create New Delivery Order" layout-align="center center">
+            <md-tooltip md-direction="bottom">
+              Create New Delivery Order
+            </md-tooltip>
+            <md-icon class="material-icons cb-icon--delivery-order" md-svg-src="assets/truck-delivery.svg" aria-label="New Delivery Order "></md-icon>
+        </a>
+        <md-menu show-authed="true">
+            <md-button class="capitalize" ng-click="$mdOpenMenu()" aria-label="Open menu" layout-align="center center">
+                <span class="md-username">{{$ctrl.username}}</span>
+                <i class="material-icons">account_circle</i>
+            </md-button>
+            <md-menu-content width="3">
+                <md-menu-item><md-button ui-sref="app.profile">Profile</md-button></md-menu-item>
+                <md-menu-item><md-button ng-click="$ctrl.logout()">Log out</md-button></md-menu-item>
+            </md-menu-content>
+        </md-menu>
+    </div>
+
+</header>

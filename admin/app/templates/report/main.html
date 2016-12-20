@@ -1,0 +1,77 @@
+<div layout="row" id="reports" layout-fill>
+    <md-content class="md-whiteframe-2dp normal-padding"  flex>
+        <h3>Reporting</h3>
+        <section>
+            <v-accordion class="vAccordion--default" multiple>
+                <v-pane expanded ng-if="$ctrl.hasRole('administrative')">
+                    <v-pane-header>
+                        Administrative Reports
+                    </v-pane-header>
+
+                    <v-pane-content>
+                        <section>
+                            <md-tabs md-dynamic-height md-border-bottom>
+                                <!-- Orders Tab -->
+                                <!----------------------------------------------------------------------------------------------------->
+                                <div ng-include="'templates/report/administrative_reports/_orders_tab.html'"></div>
+                                <!----------------------------------------------------------------------------------------------------->
+
+                                <!-- Customer Tab -->
+                                <!----------------------------------------------------------------------------------------------------->
+                                <div ng-include="'templates/report/administrative_reports/_customers_tab.html'"></div>
+                                <!----------------------------------------------------------------------------------------------------->
+
+                                <!-- OrdersCancellation Tab -->
+                                <!----------------------------------------------------------------------------------------------------->
+                                <div ng-include="'templates/report/administrative_reports/_ordersCancellation_tab.html'"></div>
+                                <!----------------------------------------------------------------------------------------------------->
+
+                            </md-tabs>
+                        </section>
+                    </v-pane-content>
+                </v-pane>
+
+                <v-pane ng-if="$ctrl.hasRole('agent')">
+                    <v-pane-header>
+                        Agent Reports
+                    </v-pane-header>
+
+                    <v-pane-content>
+                        <p>Coming Soon</p>
+                    </v-pane-content>
+                </v-pane>
+
+                <v-pane ng-if="$ctrl.hasRole('financial')">
+                    <v-pane-header>
+                        Financial Reports
+                    </v-pane-header>
+
+                    <v-pane-content>
+                        <p>Coming Soon</p>
+                    </v-pane-content>
+                </v-pane>
+
+                <v-pane ng-if="$ctrl.hasRole('marketing')">
+                    <v-pane-header>
+                        Marketing Reports
+                    </v-pane-header>
+
+                    <v-pane-content>
+                        <p>Coming Soon</p>
+                    </v-pane-content>
+                </v-pane>
+
+                <v-pane ng-if="$ctrl.hasRole('system')">
+                    <v-pane-header>
+                        System Reports
+                    </v-pane-header>
+
+                    <v-pane-content>
+                        <p>Coming Soon</p>
+                    </v-pane-content>
+                </v-pane>
+
+            </v-accordion>
+        </section>
+    </md-content>
+</div>

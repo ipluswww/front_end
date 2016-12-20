@@ -1,0 +1,100 @@
+#logistics-agent_ops {
+	.agent-page {
+		#ordersList {
+		    /* On Page header */
+		    // header part __________________________________________________________________
+		    .search-section {
+		        margin-top: 15px;
+		        .search-container {
+		            margin-top: 0;
+		            margin-bottom: 0;
+		        }
+		        .filter-label {
+		            line-height: 35px;
+		        }
+		    }
+
+		    .filter-section {
+		        margin-bottom: 15px;
+		        .text-center {
+		            text-align: center;
+		        }
+		        .selected-order-type {
+		            position: relative;
+		            line-height: 35px;
+		            margin-bottom: 5px;
+		            outline: none;
+		            cursor: pointer;
+		            .expand-icon {
+		                position: absolute;
+		                top: 0;
+		                left: 5px;
+		                cursor: pointer;
+		                outline: 0;
+		            }
+		        }
+		        .filter-unit {
+		            border: 1px solid $grayColor2;
+		            border-radius: 5px;
+		        }
+		    } /* /.filter-section */
+		    // Print icon section
+		    .icons-section {
+		        text-align: center;
+		        i {
+		            line-height: 30px;
+		            cursor: pointer;
+		            color: $secondary;
+		            outline: none;
+		        }
+		    }
+
+		    // header part __________________________________________________________________
+
+		    /* In side the table */
+		    //________________________________________________________________________________
+		    md-table-container {
+		        td.md-cell, a {
+		            cursor: pointer;
+		        }
+
+		        // accepted date(Scheduled date)
+		        .accepted-date {
+		            font-weight: bold;
+		            span.attention {
+		                color: red;
+		            }
+		        }
+
+		        .market-link {
+		            padding-left: 10px;
+		        }
+
+		        .type-access {
+		            color: red;
+		        }
+
+		        .address-cell {
+		            width: 250px;
+		        }
+
+		        table.md-table > tbody > tr > td.address-cell {
+		            width: 500px;
+		            word-wrap: break-word;
+		        }
+		    } /* /md-table-container */
+
+		    //________________________________________________________________________________
+		}
+
+		#calendar {
+			.search-section {
+				margin-top: 15px;
+				margin-bottom: 15px;
+				span {
+					line-height: 35px;
+				}
+			}
+		}
+	}
+}

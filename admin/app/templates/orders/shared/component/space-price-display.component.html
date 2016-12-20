@@ -1,0 +1,21 @@
+<div class="space-price-display">
+    <div layout="row" class="md-padding">
+        <span class="component-title" flex="30">Space Price:</span>
+        <span class="space" flex="40">
+            <md-select ng-model="$ctrl.order.storageUnit.subType" class="md-no-underline"
+                ng-change="$ctrl.selectStorageUnit($ctrl.order.storageUnit.subType)"
+                ng-disabled="!$ctrl.canStorageUnitBeChanged()"
+                aria-label="Storage Unit">
+              <md-option ng-repeat="storageUnit in $ctrl.storageUnits" ng-value="storageUnit.unit"
+                ng-selected="$ctrl.isStorageUnitOnOrder(storageUnit)">
+                {{storageUnit.unit.name}}
+              </md-option>
+            </md-select>
+        </span>
+        <span class="price" flex="40">
+        	{{ $ctrl.order.spacePriceSelection.price | currency }} {{ $ctrl.getDiscount() }} / Month
+			<span ng-if="$ctrl.isFinal">{{ $ctrl.getPickup() }}</span>
+			<span ng-if="$ctrl.isFinal">{{ $ctrl.getOneTime() }}</span>
+        </span>
+    </div>
+</div>

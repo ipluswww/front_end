@@ -1,0 +1,25 @@
+<div class="subscription-summary">
+    <div layout="column" class="md-padding" layout-align="center center">
+        <div class="subscription-summary--current-inventory" flex layout="column"
+            ng-if="subscriptionSummary.hasPreviouslyStoredItems()">
+            <span>
+                <strong>
+                    Current Subscription: {{subscriptionSummary.order.customer.subscription.nextBillingPeriodAmount | currency}} / Month
+                </strong>
+            </span>
+            <span>
+                {{subscriptionSummary.getCurrentPriceSelection()}} / {{subscriptionSummary.getCurrentlyStoredItemCount()}} Items Stored
+            </span>
+        </div>
+        <div class="subscription-summary--new-inventory" flex layout="column">
+            <span>
+                <strong>New Subscription:
+                    {{subscriptionSummary.getPrice() | currency}} / Month
+                </strong>
+            </span>
+            <span >
+                {{subscriptionSummary.getCurrentPriceSelection()}} / {{subscriptionSummary.getCurrentlyStoredItemCount()}} Items Stored / {{ subscriptionSummary.getOrderInventoryCount()}} {{subscriptionSummary.getAddRemovePhrase()}}
+            </span>
+        </div>
+    </div>
+</div>

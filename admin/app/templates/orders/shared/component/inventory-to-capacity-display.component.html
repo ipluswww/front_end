@@ -1,0 +1,10 @@
+<div class="inventory-to-capacity-display">
+    <md-card ng-class="{ 'cb-warn' : inventoryToCapacity.isCapacityExceeded() }">
+        <div layout="row" class="md-padding" layout-align="center center">
+            <span class="inventory-to-capacity-display--ratio-label">Space Limit: </span>
+            <span class="inventory-to-capacity-display--ratio">
+            	 {{ inventoryToCapacity.getTotalItemCount() }} of {{ inventoryToCapacity.getCapacityDescription() }} Items
+            </span>
+        </div>
+    </md-card>
+</div>

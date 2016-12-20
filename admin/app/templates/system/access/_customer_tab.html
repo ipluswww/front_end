@@ -1,0 +1,62 @@
+<!-- System / Access Page Customer Tab -->
+<!----------------------------------------------------------------------------------------------------->
+<md-tab label="customers">
+    <md-content class="md-padding customer-tab-content">
+        <div layout="column">
+            <div class="section-header">
+                <div layout="row">
+                    <md-input-container flex="40" class="search-container">
+                        <md-icon class="material-icons">search</md-icon>
+                        <input type="text" ng-model="$ctrl.customer.query.search" placeholder="search" my-enter="$ctrl.onCustomerSearch()" ng-change="$ctrl.onCustomerSearch()" ng-model-options="{debounce: 1000}"/>
+                    </md-input-container>
+                    <div class="button-group" flex-offset="20" flex="40">
+                        <md-button aria-label="Edit Customer" class="md-raised md-primary" ng-click="$ctrl.openCustomerEditModal()" ng-disabled="(!$ctrl.customer || $ctrl.customer._id =='new' || $ctrl.customer._id == null)">Edit</md-button>
+                        <md-button aria-label="Change Password" class="md-raised md-primary" ng-click="$ctrl.openPasswordModal('customer', 'Customer')" ng-disabled="(!$ctrl.customer || $ctrl.customer._id =='new' || $ctrl.customer._id == null)">Change Password</md-button>
+                        <md-button aria-label="Un/Lock Customer" class="md-raised md-primary" ng-disabled="true">Un/Lock</md-button>
+                        <md-button aria-label="Delete Customer" class="md-raised md-closetbox-error" ng-click="$ctrl.deleteCustomer()" ng-disabled="(!$ctrl.customer|| $ctrl.customer._id =='new' || $ctrl.customer._id == null)">Delete</md-button>
+                    </div>
+                </div>
+            </div>
+
+
+            <div>
+                <md-table-container>
+                    <table md-table md-row-select="false" md-progress="$ctrl.customerTab.promise">
+                        <thead md-head md-order="$ctrl.customer.query.sort" md-on-reorder="$ctrl.onCustomerOrder">
+                        <tr md-row>
+                            <th md-column md-order-by="name">Name</th>
+                            <th md-column md-order-by="email">Email</th>
+                            <th md-column md-order-by="mobile">Mobile</th>
+                            <th md-column md-order-by="status">Status</th>
+                            <th md-column>Market</th>
+                            <th md-column>Last Login</th>
+                            <th md-column>Start Date</th>
+                        </tr>
+                        </thead>
+                        <tbody md-body>
+                        <tr md-row ng-repeat="customer in $ctrl.customers" ng-click="$ctrl.onCustomerRowSelect(customer)" ng-class="{'active': customer._id == $ctrl.customer._id }">
+                            <td md-cell>{{::customer.name}}</td>
+                            <td md-cell>{{::customer.email}}</td>
+                            <td md-cell>
+                                <cb-formatted-phone-number-link value="customer.mobile"
+                                                                style="{'pointer-events': 'none', 'color': 'inherit'}">
+                                </cb-formatted-phone-number-link>
+                            </td>
+                            <td md-cell>{{::customer.status}}</td>
+                            <td md-cell>
+                                {{$ctrl.prepareMarketsString(customer.markets)}}
+                            </td>
+                            <td md-cell>{{::customer.person.lastLogin}}</td>
+                            <td md-cell>{{::customer.startDate | dateCustom:'MM/DD/YYYY hh:mm A'}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </md-table-container>
+                <md-table-pagination class="enlarged" md-limit="$ctrl.customer.query.limit" md-page="$ctrl.customer.query.page" md-total="{{$ctrl.customer.count}}" md-on-paginate="$ctrl.onCustomerPagnination" md-page-select></md-table-pagination>
+            </div>
+
+
+        </div>
+    </md-content>
+</md-tab>
+<!----------------------------------------------------------------------------------------------------->

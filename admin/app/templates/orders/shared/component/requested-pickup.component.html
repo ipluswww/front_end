@@ -1,0 +1,28 @@
+<div class='requested-pickup' id="pickup" ng-form="requestedPickup.form">
+    <div class="requested-pickup--label">{{requestedPickup.getLabel()}}:</div>
+    <div data-as-sortable data-ng-model="requestedPickup.dates" class="requested-pickup-dates"
+        is-disabled="requestedPickup.isLocked">
+       <div data-ng-repeat="date in requestedPickup.dates" data-as-sortable-item>
+           <div data-as-sortable-item-handle>
+               <div class="requested-date">
+                   <div md-whiteframe="1" class="requested-date--date">
+                       <i class="material-icons">menu</i>
+                       <md-datepicker required ng-model="requestedPickup.dates[$index].date"
+                        md-placeholder="Select a date" ng-disabled="requestedPickup.isLocked"></md-datepicker>
+                       <md-radio-group ng-model="requestedPickup.dates[$index].timeframe"
+                        class="requested-timeframe">
+                          <md-radio-button ng-disabled="requestedPickup.isLocked" value="AM">AM</md-radio-button>
+                          <md-radio-button ng-disabled="requestedPickup.isLocked" value="PM"> PM </md-radio-button>
+                        </md-radio-group>
+                       <i class="material-icons requested-date--remove" ng-click="requestedPickup.removeDate($index)"
+                       ng-class="{'hidden' : !requestedPickup.canDeleteDate(), 'disabled': requestedPickup.isLocked }">clear</i>
+                   </div>
+                   <i class="material-icons requested-date--add"
+                       ng-click="requestedPickup.addDate()"
+                       ng-if="requestedPickup.showAbilityToAddDates($index)"
+                       ng-class="{'disabled': requestedPickup.isLocked }">add</i>
+              </div>
+            </div>
+       </div>
+   </div>
+</div>

@@ -1,0 +1,29 @@
+<div class="order-title">
+    <div>
+        <a ng-click="title.goBack()" ng-if="title.isBackable()">
+            <md-icon aria-hidden="false">keyboard_arrow_left</md-icon>
+        </a>
+        <md-icon ng-if="title.isPickup()" class="material-icons cb-icon--pickup-order"
+                 md-svg-src="assets/cardboard-box-pickup.svg" aria-label="New Pickup Order "></md-icon>
+        <md-icon ng-if="!title.isPickup()" class="material-icons cb-icon--delivery-order"
+                 md-svg-src="assets/truck-delivery.svg" aria-label="New Delivery Order "></md-icon>
+
+        <label ng-bind-html="title.getTitle()"></label>
+        <span class="customer-warnings">
+            <span>
+                <md-tooltip md-direction="bottom">
+                  Customer's Default Payment Method is expired.
+                </md-tooltip>
+                <md-icon  aria-hidden="false" ng-if="title.hasExpiredDefaultPaymentMethod">credit_card</md-icon>
+            </span>
+            <span>
+                <md-tooltip md-direction="bottom">
+                  Customer has order(s) in Payment Hold.
+                </md-tooltip>
+                <md-icon  aria-hidden="false" ng-if="title.hasOrderWithPaymentHold">swap_horiz</md-icon>
+            </span>
+
+        </span>
+    </div>
+
+</div>

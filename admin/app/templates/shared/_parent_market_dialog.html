@@ -1,0 +1,32 @@
+<md-dialog aria-label="Parent Markets"  ng-cloak class="parent-market-modals">
+    <form>
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h2>Markets</h2>
+                <span flex></span>
+                <md-button class="md-icon-button" ng-click="$ctrl.cancel()">
+                    <md-icon aria-label="Close dialog">
+                        <i class="material-icons">clear</i>
+                    </md-icon>
+                </md-button>
+            </div>
+        </md-toolbar>
+        <md-dialog-content layout="column" class="md-padding">
+            <div class="md-padding">
+                <md-radio-group ng-model="$ctrl.selected" layout="row" layout-wrap>
+                    <md-radio-button class="market-element" ng-repeat="d in $ctrl.totalData" ng-value="d._id" aria-label="{{ d.name }}" flex="50">
+                        {{ d.name }}
+                    </md-radio-button>
+                </md-radio-group>
+            </div>
+        </md-dialog-content>
+        <md-dialog-actions layout="row">
+            <md-button ng-click="$ctrl.confirm()" class="md-raised md-closetbox-primary">
+                Confirm
+            </md-button>
+            <md-button ng-click="$ctrl.cancel()">
+                Cancel
+            </md-button>
+        </md-dialog-actions>
+    </form>
+</md-dialog>

@@ -1,0 +1,63 @@
+<div class="order-billing-table" id="orderBillingTable">
+	<div layout="column" class="info-list">
+		<div layout="row" class="info-row">
+			<label>Insurance Coverage Amount</label>
+			<span>{{ $ctrl.getInsuranceAmount() | currency }}</span>
+		</div>
+		<div layout="row" class="info-row">
+			<label>Added Insurance Cost</label>
+			<span>{{ $ctrl.getInsuranceCost() | currency }}</span>
+		</div>
+		<div layout="row" class="info-row"  ng-show="!$ctrl.order.customer.spacePricing">
+			<label>Total Items Stored</label>
+			<span>{{ $ctrl.order.inventory.length }}</span>
+		</div>
+		<div layout="row" class="info-row" ng-if="$ctrl.order.storageUnit" ng-show="$ctrl.order.customer.spacePricing">
+			<label>Space (room)</label>
+			<span>{{ $ctrl.order.storageUnit.subType.name }}</span>
+		</div>
+		<div layout="row" class="info-row">
+			<label>Weight</label>
+			<span>{{ $ctrl.order.weight }}</span>
+		</div>
+		<div layout="row" class="info-row">
+			<label>Total Monthly Subscription</label>
+			<span>{{ $ctrl.getTotalSubscription() | currency}}</span>
+		</div>
+		<div layout="row" class="info-row">
+			<label>Customer Start Date</label>
+			<span>{{ $ctrl.order.customer.startDate | date }}</span>
+		</div>
+		<div layout="row" class="info-row">
+			<label>Customer End Date</label>
+			<span>{{ $ctrl.order.customer.endDate | date }}</span>
+		</div>
+	</div>
+	<md-table-container >
+        <table md-table md-row-select="false">
+            <thead md-head>
+                <tr md-row>
+                    <th md-column>Date</th>
+                    <th md-column>Amount</th>
+                    <th md-column>Description</th>
+                    <th md-column>Type</th>
+                    <th md-column>Status</th>
+                    <th md-column>Payment</th>
+                </tr>
+            </thead>
+            <tbody md-body>
+                <tr md-row ng-repeat="item in $ctrl.order.customer.transactions | orderBy: '-date'">
+                    <td md-cell>{{ item.date | date }}</td>
+                    <td md-cell>{{ item.amount | currency }}</td>
+                    <td md-cell>{{ item.description }}</td>
+                    <td md-cell>{{ item.type }}</td>
+                    <td md-cell>{{ $ctrl.displayBillingStatus(item) }}</td>
+                    <td md-cell>{{ item.paymentMethod.cardType }} - {{ item.paymentMethod.last4 }}</td>
+                </tr>
+                <tr md-row ng-show="!$ctrl.order.customer.transactions || $ctrl.order.customer.transactions.length === 0">
+                    <td md-cell colspan="6">No transaction history</td>
+                </tr>
+            </tbody>
+        </table>
+    </md-table-container>
+</div>

@@ -1,0 +1,10 @@
+<md-dialog aria-label="List dialog" class="confirm-modal-container">
+    <md-dialog-content class="md-dialog-content">
+        <p>{{ctrl.template.title}}</p>
+        <p>{{ctrl.template.description}}</p>
+    </md-dialog-content>
+    <md-dialog-actions>
+        <md-button ng-click="ctrl.cancel()" class="md-button md-closetbox-secondary">{{ctrl.template.cancelText}}</md-button>
+        <md-button ng-click="ctrl.continue()" class="md-button md-closetbox-primary" md-autofocus=true>{{ctrl.template.continueText}}</md-button>
+    </md-dialog-actions>
+</md-dialog>

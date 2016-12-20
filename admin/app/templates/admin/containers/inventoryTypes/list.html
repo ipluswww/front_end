@@ -1,0 +1,58 @@
+<div layout="column" class="admin-list">
+    <div class="section-header">
+        <div layout="row">
+            <md-input-container flex="20" class="search-container">
+                <md-icon class="material-icons">search</md-icon>
+                <input type="text" ng-model="$ctrl.query.search" placeholder="search" my-enter="$ctrl.onSearch()" ng-change="$ctrl.onSearch()" ng-model-options="{debounce: 1000}"/>
+            </md-input-container>
+            <div flex="40" flex-offset="5" class="filter-container">
+                <span ng-repeat="containerType in $ctrl.containerTypes" 
+                    ng-click="$ctrl.toggleContainerType(containerType)"
+                    ng-class="{'active': $ctrl.isContainerTypeSelected(containerType)}">
+                    <i class="material-icons">{{ ::containerType.iconClass }}</i>
+                    <md-tooltip>{{ ::containerType.name }}</md-tooltip>
+                </span>
+            </div>
+            <div class="button-group" flex-offset="10" flex="45" layout-align="end center" layout="row">
+                <md-button aria-label="Create" class="md-raised md-primary" ui-sref="app.admin.inventoryTypes.new">Create New</md-button>
+                <md-button class="md-fab md-closetbox-fab" aria-label="Back" ng-click="$ctrl.backTo()">
+                    <i class="material-icons">keyboard_arrow_left</i>
+                    <md-tooltip>Back</md-tooltip>
+                </md-button>
+            </div>
+        </div>
+    </div>
+
+
+    <div>
+        <md-table-container>
+            <table md-table md-row-select="false" md-progress="$ctrl.promise">
+                <thead md-head md-order="$ctrl.query.sort" md-on-reorder="$ctrl.onOrder">
+                <tr md-row>
+                    <th md-column md-order-by="name">Name</th>
+                    <th md-column md-order-by="active">Active</th>
+                    <th md-column md-order-by="containerType.name">Container Type</th>
+                    <th md-column md-order-by="estimatedWeight">Estimated Weights</th>
+                    <th md-column md-order-by="points">Points</th>
+                    <th md-column md-order-by="dateCreated">Date Created</th>
+                    <th md-column md-order-by="lastUpdated">Last Updated</th>
+                </tr>
+                </thead>
+                <tbody md-body>
+                <tr md-row ng-repeat="item in $ctrl.data">
+                    <td md-cell><a ui-sref="app.admin.inventoryTypes.detail({id: item._id})">{{::item.name}}</a></td>
+                    <td md-cell>{{ (item.active == true) ? "Yes" : "NO" }}</td>
+                    <td md-cell>{{ ::item.containerType.name }}</td>
+                    <td md-cell>{{ ::item.estimatedWeight }} Lbs</td>
+                    <td md-cell>{{ ::item.points }}</td>
+                    <td md-cell>{{ ::item.dateCreated | date }}</td>
+                    <td md-cell>{{ ::item.lastUpdated | date }}</td>
+                </tr>
+                </tbody>
+            </table>
+        </md-table-container>
+        <md-table-pagination class="enlarged" md-limit="$ctrl.query.limit" md-page="$ctrl.query.page" md-total="{{$ctrl.totalCount}}" md-on-paginate="$ctrl.onPagination" md-page-select></md-table-pagination>
+    </div>
+
+
+</div>

@@ -1,0 +1,19 @@
+<div class="inventory-filter">
+    <div class="filter-panel">
+        <div layout="row">
+            <div class="filter-item" flex-offset="5" flex="25" ng-repeat="inventoryType in $ctrl.inventoryTypes">
+                <i ng-click="$ctrl.toggleActivation(inventoryType)" class="material-icons" ng-disabled="$ctrl.isLocked"
+                ng-class="{'active': $ctrl.isInventoryTypeSelected(inventoryType), 'disabled': $ctrl.isLocked }">
+                {{::inventoryType.iconClass}}</i>
+            </div>
+        </div>
+    </div>
+    <div class="search-input">
+        <md-input-container md-no-float class="md-block">
+            <md-icon><i class="material-icons">search</i></md-icon>
+            <input ng-model="$ctrl.filter.search" type="text" placeholder="Inventory Search"
+            ng-change="$ctrl.filterChanged()" ng-model-options="{debounce: 1000}"
+            ng-disabled="$ctrl.isLocked"/>
+        </md-input-container>
+    </div>
+</div>

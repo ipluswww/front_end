@@ -1,0 +1,128 @@
+#editProspect {
+    display: none;
+    position: fixed;
+    width: 700px;
+    top: 50px;
+    right: 0px;
+    background: white;
+    &.expanded {
+        display: block;
+    }
+
+    /* section header styling */
+    .section-header {
+        padding-bottom: 10px;
+        i {
+            line-height: 45px;
+            outline: none;
+        }
+        i.collapse-panel-icon {
+            cursor: pointer;
+        }
+
+        .action-column {
+            span {
+                margin-left: 5px;
+            }
+        }
+    } /* /.section-header */
+
+    .section-body {
+        height: 350px;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        overflow-y: auto;
+
+        .prospect-label {
+            font-weight: bold;
+            margin-right: 5px;
+            line-height: 30px;
+            margin-bottom: 5px;
+        }
+        .prospect-value {
+            line-height: 30px;
+            margin-bottom: 5px;
+        }
+
+        .discount-label {
+            font-weight: bold;
+            margin-right: 10px;
+            line-height: 30px;
+            margin-bottom: 5px;
+        }
+        .discount-value {
+            line-height: 30px;
+            margin-bottom: 5px;
+        }
+
+        .data-row {
+            margin-bottom: 10px;
+        }
+
+        ul {
+            margin-top: 0px;
+        }
+
+        // Input control styling while in edit status
+        md-input-container, md-select {
+            margin-top: 0px;
+            margin-bottom: 0px;
+        }
+
+        .prospect-input md-input-container {
+            width: 90%;
+        }
+
+        .billing-status {
+            &.Yellow {
+                color: yellow;
+            }
+            &.Red {
+                color: red;
+            }
+            &.Greeen {
+                color: green;
+            }
+        }
+
+        .notes-section {
+            .atom-note {
+                position: relative;
+                padding-right: 60px;
+                margin-bottom: 10px;
+                border-bottom: 1px solid $grayColor2;
+                p {
+                    margin-top: 0px;
+                    margin-bottom: 0px;
+                }
+                .note-action {
+                    position: absolute;
+                    top: -6px;
+                    right: 0;
+                    color: $secondary;
+                    span {
+                        cursor: pointer;
+                    }
+                }
+            }
+            .add-note {
+                color: $secondary;
+                line-height: 30px;
+                vertical-align: middle;
+                cursor: pointer;
+                &:disabled {
+                    color: $grayColor2;
+                    cursor: default;
+                }
+                i {
+                    vertical-align: middle;
+                }
+            }
+
+            md-input-container {
+                width: 95%;
+            }
+        } /* /.notes-section */
+    } /* /.section-body */
+
+}

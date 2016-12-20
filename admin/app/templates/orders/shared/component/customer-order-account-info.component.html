@@ -1,0 +1,63 @@
+<div layout="column" ng-form="customerInfo.form">
+    <div layout="row">
+        <md-input-container flex>
+            <label>Customer Name</label>
+            <input name="name" ng-model="customerInfo.order.customer.name"
+                required aria-label="Customer Name" min-length="1"
+                ng-disabled="customerInfo.isLocked"/>
+        </md-input-container>
+    </div>
+    <div layout="row">
+        <md-input-container flex>
+            <label>Customer Email / Username</label>
+            <input name="email" ng-model="customerInfo.order.customer.email" ng-change="customerInfo.validateEmail()"
+                required aria-label="Email" type="email" disabled/>
+            <md-tooltip md-direction="top" ng-if="customerInfo.isPickup()">
+              Customer Email affects pricing as the person may have Customer Pricing.  Please go back to the Detail Inventory step to change the Customer Email.
+            </md-tooltip>
+        </md-input-container>
+        <cb-phone-input cb-number="customerInfo.order.customer.mobile"
+                        cb-label="Customer Phone / Mobile"
+                        cb-disabled="customerInfo.isLocked"
+                        cb-required="true"
+                        flex>
+        </cb-phone-input>
+    </div>
+    <div layout="row">
+        <md-input-container flex>
+            <label>Customer Address (street)</label>
+            <input name="address" ng-model="customerInfo.order.originationLocation.address"
+                required aria-label="Customer Address (street)" min-length="1"
+               ng-disabled="customerInfo.isLocked" ng-if="customerInfo.isPickup()" ng-blur="customerInfo.changeAdress()" />
+            <input name="address" ng-model="customerInfo.order.terminalLocation.address"
+               required aria-label="Customer Address (street)" min-length="1"
+              ng-disabled="customerInfo.isLocked" ng-if="!customerInfo.isPickup()" ng-blur="customerInfo.changeAdress()" />
+        </md-input-container>
+    </div>
+    <div layout="row">
+        <md-input-container flex="50">
+            <label>ZipCode</label>
+            <input name="name" ng-model="customerInfo.order.originationLocation.zipCode"
+                required aria-label="Customer ZipCode" ng-if="customerInfo.isPickup()" ng-blur="customerInfo.changeAdress()" />
+            <input name="name" ng-model="customerInfo.order.terminalLocation.zipCode"
+                required aria-label="Customer ZipCode" ng-if="!customerInfo.isPickup()" ng-blur="customerInfo.changeAdress()" />
+        </md-input-container>
+        <md-input-container flex="50">
+            <label>Market / Sub-Market</label>
+            <input name="name" ng-model="customerInfo.order.market.name"
+                required aria-label="Customer Market / Sub-Market" disabled />
+        </md-input-container>
+    </div>
+    <div layout="row" ng-if="!customerInfo.isPickup()">
+        <md-input-container flex>
+            <label>From Agent</label>
+            <input name="agent" ng-model="customerInfo.fromAgent"
+                required aria-label="Agent" type="text" disabled/>
+        </md-input-container>
+        <md-input-container flex>
+            <label>From Warehouse</label>
+            <input name="warehouse" type="text" ng-model="customerInfo.fromWarehouse"
+                required aria-label="From Warehouse" disabled />
+        </md-input-container>
+    </div>
+</div>

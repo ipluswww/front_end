@@ -1,0 +1,64 @@
+@import '../../variables/colors';
+.admin-list {
+    .section-header {
+        // Indicating search input container
+        md-input-container {
+            margin-bottom: 0px;
+        }
+
+        .button-group {
+            a {
+                vertical-align: middle;
+                i {
+                    vertical-align: middle;
+                }
+            }
+        }
+    }
+
+    .filter-container {
+        > span {
+            display: inline-block;
+            margin-top: 20px;
+            margin-right: 10px;
+            cursor: pointer;
+            &.active {
+                color: $secondary;
+            }
+        }
+    }
+} /* /.admin-list */
+
+.admin-detail {
+    .section-header {
+        a i, button i {
+            vertical-align: middle;
+        }
+    }
+
+    .detail-section {
+        padding: 20px;
+        .data-row {
+            padding: 10px;
+        }
+    }
+
+    .input-label {
+        line-height: 35px;
+        display: inline-block;
+    }
+    
+    .static-value {
+        line-height: 35px;
+    }
+
+    .input-container md-input-container {
+        margin-top: 0px;
+        md-switch {
+            margin-top: 0;
+            margin-bottom: 0;
+        }
+    }
+
+
+}

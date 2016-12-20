@@ -1,0 +1,55 @@
+@import "../../variables/colors.scss";
+#reports {
+    .vAccordion--default v-pane, v-pane-content {
+        z-index: 1;
+    }
+
+    .vAccordion--default v-pane.is-expanded, v-pane.is-expanded v-pane-content {
+        overflow: visible;
+        md-tab-content.md-no-scroll {
+            overflow: visible;
+        }
+    }
+
+    v-pane-header {
+        text-align: center;
+    }
+
+    md-tabs.md-dynamic-height md-tab-content.md-active {
+        padding-bottom: 120px;
+    }
+
+    .report-meta-info {
+        font-weight: bold;
+        font-size: 14px;
+    }
+
+    .report-label {
+        font-weight: bold;
+        margin-right: 10px;
+        text-align: right;
+        line-height: 20px;
+    }
+
+    .report-values {
+        line-height: 24px;
+        font-size: 14px;
+    }
+
+    .entry-row .report-label {
+        text-align: left;
+    }
+
+    .download-icon {
+        width: 100px;
+        margin: 30px auto 20px;
+        font-size: 14px;
+        font-weight: bold;
+    }
+
+    .report-criteria {
+        .layout-row {
+            margin-bottom: 7px;
+        }
+    }
+}

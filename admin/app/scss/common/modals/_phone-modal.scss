@@ -1,0 +1,61 @@
+@import '../../variables/colors';
+.phone-action-modal {
+    width: 600px;
+
+    md-input-container, md-select {
+        margin: 0;
+    }
+
+    md-dialog-content {
+        padding: 30px;
+    }
+
+    .phone-row {
+        margin-bottom: 30px;
+    }
+
+    .message-log {
+        height: 200px;
+        border: 1px solid $grayColor1;
+        overflow-y: scroll;
+        .message {
+            margin-bottom: 10px;
+            .message-wrapper {
+                padding: 5px 10px;
+                border-radius: 5px;
+                max-width: 90%;
+            }
+
+            &.from .message-wrapper {
+                text-align: left;
+                background: $grayColor2;
+            }
+            &.to .message-wrapper {
+                text-align: right;
+                margin-left: 10%;
+                float: right;
+                background: $green;
+            }
+        } /* /.message */
+
+    } /* /.message-log */
+
+    // message panel
+    .message-panel {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        .text-count {
+            float: left;
+        }
+        .text-status {
+            float: right;
+        }
+    }
+
+    // send sms button row
+    .button-row {
+        i {
+            vertical-align: middle;
+        }
+    }
+}

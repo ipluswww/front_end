@@ -1,0 +1,38 @@
+<md-dialog aria-label="Inventory Photo"  ng-cloak class="inventory-picture-modal">
+    <form>
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h2>Inventory Photo</h2>
+                <span flex></span>
+                <md-button class="md-icon-button" ng-click="$ctrl.cancel()">
+                    <md-icon aria-label="Close dialog">
+                        <i class="material-icons">clear</i>
+                    </md-icon>
+                </md-button>
+            </div>
+        </md-toolbar>
+        <md-dialog-content layout="column" class="md-padding">
+            <span aria-label="Inventory Photo" 
+                ngf-select="$ctrl.uploadPhoto($file)"
+                ngf-drop="$ctrl.uploadPhoto($file)"
+                ngf-drag-over-class="{pattern: 'image/*', accept:'drop', reject:'drop-err', delay:100}"  
+                class="drop-box ng-pristine ng-valid"
+                ngf-pattern="'image/*'" ngf-accept="'image/*'">
+                Drop Image here
+            </span>
+            <ul>
+                <li ng-repeat="photo in $ctrl.inventory.photos">
+                    <img ng-src="{{$ctrl.getPhotoURL(photo)}}" />
+                </li>
+            </ul>
+        </md-dialog-content>
+        <md-dialog-actions layout="row">
+            <md-button ng-click="$ctrl.confirm()" class="md-raised md-closetbox-primary">
+                Confirm
+            </md-button>
+            <md-button ng-click="$ctrl.cancel()">
+                Cancel
+            </md-button>
+        </md-dialog-actions>
+    </form>
+</md-dialog>

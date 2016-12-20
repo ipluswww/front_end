@@ -1,0 +1,61 @@
+@import 'variables/index';
+
+.hidden {
+    visibility:hidden;
+}
+
+a {
+    cursor: pointer;
+    &:not(.md-button) {
+        color: $secondary;
+
+        &:hover {
+            color: $secondary-hover;
+        }
+    }
+}
+
+i.disabled {
+	color: $grayColor1;
+    &:focus {
+        outline: none;
+    }
+}
+
+.cb-warn {
+    background-color: $inputWarning !important;
+}
+
+.no-left-margin {
+    margin-left: 0px;
+}
+
+.no-right-margin {
+    margin-right: 0px;
+}
+
+.no-animate {
+    -webkit-transition: none !important;
+    transition: none !important;
+}
+
+.input-error-message {
+    font-size: 12px;
+}
+
+.cb-icon--pickup-order svg {
+    width: 24px;
+    path {
+        fill: $secondary;
+    }
+}
+.cb-icon--delivery-order {
+    width: 30px;
+    height: 30px;
+
+    svg {
+        path {
+            fill: $secondary;
+        }
+    }
+}

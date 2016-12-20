@@ -1,0 +1,71 @@
+// =============================================================================
+// Profile form styling;
+//    - To use in multiple locations
+//    - Used location: /profile, /access(system => access page)
+// =============================================================================
+.profile-form {
+    .input-label, .static-value {
+        line-height: 30px;
+        display: inline-block;
+    }
+
+    .data-row, .input-row {
+        margin-bottom: 0px;
+    }
+
+    .data-row {
+        margin-bottom: 15px;
+    }
+
+
+    // Section-specific common styling tweak
+    //-------------------------------------------------------------------------------------------
+    md-input-container, md-switch {
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+    //-------------------------------------------------------------------------------------------
+
+
+
+    // Right hand side panel; System Role, Market Restrictions and Warehouse Restrictions
+    //-------------------------------------------------------------------------------------------
+    .information-panel {
+        md-content {
+            margin-bottom: 20px;
+        }
+        h6 {
+            margin-top: 0px;
+            font-size: 1rem;
+            margin-bottom: 10px;
+        }
+    }
+    //-------------------------------------------------------------------------------------------
+
+}
+
+
+// =============================================================================
+// Profile pages
+// =============================================================================
+#profile {
+    position: relative;
+
+    .password-form {
+        margin-top: 20px;
+        md-input-container {
+            margin-bottom: 10px;
+        }
+    }
+
+
+    // Button row
+    //-------------------------------------------------------------------------------------------
+    .button-row {
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+    //-------------------------------------------------------------------------------------------
+}
+
+

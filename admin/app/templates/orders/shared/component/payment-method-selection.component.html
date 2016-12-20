@@ -1,0 +1,13 @@
+<div class="payment-method-selection">
+    <md-radio-group ng-model="paymentMethodSelection.selection" >
+        <div md-whiteframe="1" class="payment-method-summary" ng-repeat="paymentMethod in paymentMethodSelection.braintreeCustomer.paymentMethods"">
+            <md-radio-button ng-value="paymentMethod" class="md-primary" >
+            </md-radio-button>
+            <img src="assets/{{paymentMethod.cardType}}.png" class="payment-method-summary--card-type-image"/>
+            <span><b>{{paymentMethod.cardType}}</b> ending in {{paymentMethod.last4}}</span>
+            <span class="payment-method-summary--expiration-date">Expires {{paymentMethod.expirationDate}}</span>
+        </div>
+    </md-radio-group>
+    <md-button class="md-raised" aria-label="Save" ng-click="paymentMethodSelection.saveChanges()" ng-disabled="!paymentMethodSelection.isDirty()">Save
+    </md-button>
+</div>

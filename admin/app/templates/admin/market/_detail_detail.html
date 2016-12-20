@@ -1,0 +1,158 @@
+<h3>Detail Section</h3>
+<section ng-if="!$ctrl._edit">
+    <div layout="row" class="data-row">
+        <span flex="30" class="input-label">Name</span>
+        <span flex="70" class="static-value">{{ ::$ctrl.data.name }}</span>
+    </div>
+    <div layout="row" class="data-row" ng-if="$ctrl.data.market">
+        <span flex="30" class="input-label">Parent Market</span>
+        <span flex="70" class="static-value">{{ ::$ctrl.data.market.name }}</span>
+    </div>
+    <div layout="row" class="data-row">
+        <span flex="30" class="input-label">Market Alais</span>
+        <span flex="70" class="static-value">{{ ::$ctrl.data.shortName}}</span>
+    </div>
+    <div layout="row" class="data-row">
+        <span flex="30" class="input-label">Marketing Title</span>
+        <span flex="70" class="static-value">{{ ::$ctrl.data.title}}</span>
+    </div>
+    <div layout="row" class="data-row">
+        <span flex="30" class="input-label">Marketing URL</span>
+        <span flex="70" class="static-value">
+            <a href="{{ ::$ctrl.data.url }}">{{ ::$ctrl.data.url }}</a>
+        </span>
+    </div>
+    <div layout="row" class="data-row">
+        <span flex="30" class="input-label">Description</span>
+        <span flex="70" class="static-value">{{ ::$ctrl.data.description}}</span>
+    </div>
+    <div layout="row" class="data-row">
+        <span flex="30" class="input-label">About</span>
+        <span flex="70" class="static-value">
+            <div ng-bind-html="$ctrl.data.about"></div>
+        </span>
+    </div>
+    <div layout="row" class="data-row">
+        <span flex="30" class="input-label">Active</span>
+        <span flex="70" class="static-value">{{($ctrl.data.active == true) ? "Yes" : "No" }}</span>
+    </div>
+
+    <div layout="row" class="data-row">
+        <span flex="30" class="input-label">Coming Soon</span>
+        <span flex="70" class="static-value">{{($ctrl.data.comingSoon == true) ? "Yes" : "No" }}</span>
+    </div>
+
+    <div layout="row" class="data-row">
+        <span flex="30" class="input-label">Auto Email Agent</span>
+        <span flex="70" class="static-value">{{($ctrl.data.autoEmailAgent == true) ? "Yes" : "No" }}</span>
+    </div>
+
+    <div layout="row" class="data-row">
+        <span flex="30" class="input-label">Timezone</span>
+        <span flex="70" class="static-value">{{ $ctrl.data.timeZoneHour | timezoneFilter }}</span>
+    </div>
+
+    <div layout="row" class="data-row">
+        <span flex="30" class="input-label">Insurance Factor</span>
+        <span flex="70" class="static-value">{{ ::$ctrl.data.insuranceFactor }}</span>
+    </div>
+</section>
+
+<section ng-if="$ctrl._edit">
+    <div layout="column">
+        <md-input-container>
+            <label>Name</label>
+            <input name="name" ng-model="$ctrl.data.name" aria-label="Market Label" ng-disabled="$ctrl.data._id" required ng-change="$ctrl.checkUniq('name')" ng-model-options="{debounce: 1000}" />
+            <div ng-messages="$ctrl.marketForm.name.$error" ng-show="$ctrl.marketForm.name.$touched && $ctrl.marketForm.name.$error.server">
+                <div ng-message-exp="['server']">
+                    The name is invalid, it already exists.
+                </div>
+            </div>
+        </md-input-container>
+        <md-input-container>
+            <div>
+                <p>Parent Market: {{ $ctrl.data.market.name }}</p>
+
+                <md-button class="md-raised md-closetbox-primary" ng-click="$ctrl.openMarketModal()">
+                    Select Parent Market
+                </md-button>
+            </div>
+        </md-input-container>
+        <md-input-container>
+            <label>Market Alias</label>
+            <input name="shortName" ng-model="$ctrl.data.shortName" aria-label="Market Alias" required ng-pattern="/^[a-z0-9]*$/" ng-change="$ctrl.checkUniq('shortName')"  ng-model-options="{debounce: 1000}" />
+            <div ng-messages="$ctrl.marketForm.shortName.$error" ng-show="$ctrl.marketForm.shortName.$touched && $ctrl.marketForm.shortName.$error.server">
+                <div ng-message-exp="['server']">
+                    The alias is invalid, it already exists.
+                </div>
+            </div>
+        </md-input-container>
+        <md-input-container>
+            <label>Marketing Title</label>
+            <input name="title" ng-model="$ctrl.data.title" aria-label="Marketing Title" required ng-change="$ctrl.checkUniq('title')" ng-model-options="{debounce: 1000}"  />
+            <div ng-messages="$ctrl.marketForm.title.$error" ng-show="$ctrl.marketForm.title.$touched && $ctrl.marketForm.title.$error.server">
+                <div ng-message-exp="['server']">
+                    The alias is invalid, it already exists.
+                </div>
+            </div>
+        </md-input-container>
+        <md-input-container>
+            <label>Marketing Description</label>
+            <input ng-model="$ctrl.data.description" aria-label="Marketing Description" required />
+        </md-input-container>
+        <md-input-container>
+            <label>Marketing URL</label>
+            <input ng-model="$ctrl.data.url" aria-label="Marketing URL" required />
+        </md-input-container>
+        <div layout="column">
+            <p>Marketing About</p>
+            <trix-editor angular-trix ng-model="$ctrl.data.about" class="trix-content"></trix-editor>
+        </div>
+        <p></p>
+        <div layout="row">
+            <span flex="15" class="input-label">Active</span>
+            <span flex="85" class="input-container">
+                <md-input-container>
+                    <md-switch ng-model="$ctrl.data.active" aria-label="Active">
+                    </md-switch>
+                </md-input-container>
+            </span>
+        </div>
+        <div layout="row">
+            <span flex="15" class="input-label">Coming Soon</span>
+            <span flex="85" class="input-container">
+                <md-input-container>
+                    <md-switch ng-model="$ctrl.data.comingSoon" aria-label="Coming Soon">
+                    </md-switch>
+                </md-input-container>
+            </span>
+        </div>
+
+        <div layout="row">
+            <span flex="15" class="input-label">Auto Email Agent</span>
+            <span flex="85" class="input-container">
+                <md-input-container>
+                    <md-switch ng-model="$ctrl.data.autoEmailAgent" aria-label="Coming Soon">
+                    </md-switch>
+                </md-input-container>
+            </span>
+        </div>
+
+        <div layout="row">
+            <span flex="15" class="input-label">Timezone</span>
+            <span flex="85" class="input-container">
+                <md-input-container>
+                    <md-select ng-model="$ctrl.data.timeZoneHour" aria-label="timezone" required>
+                        <md-option ng-value="null">No Value</md-option>
+                        <md-option ng-repeat="zone in $ctrl.timezones" ng-value="zone.hour">
+                            {{zone.name}}
+                        </md-option>
+                    </md-select>
+                </md-input-container>
+            </span>
+        </div>
+        <md-input-container>
+            <label>Insurance Factor</label>
+            <input ng-model="$ctrl.data.insuranceFactor" aria-label="Insurance Factor" required steps="0.001" />
+        </md-input-container>    </div>
+</section>

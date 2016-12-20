@@ -1,0 +1,18 @@
+<div class="available-inventories-list list">
+    <div class="warehouse-block" ng-repeat="warehouseLocation in $ctrl.customerWarehouseLocations">
+        <div class="warehouse-location">
+            <strong>Warehouse Location:</strong>
+            <div>{{$ctrl.getWarehouseLocationAddress(warehouseLocation)}}</div>
+        </div>
+        <ul>
+            <li ng-repeat="item in $ctrl.groupedInventory[warehouseLocation] track by item._id"
+                ng-dblclick="$ctrl.addItem(item)"
+                ng-class="{'active': item._id === $ctrl.selected._id, 'disabled': $ctrl.isLocked}">
+                {{$ctrl.getItemLabel(item)}} - {{item.subType.points}} pts - {{item.subType.estimatedWeight}} lbs
+            </li>
+        </ul>
+    </div>
+</div>
+<div>Total Available Inventory: {{$ctrl.currentlyStoredInventory.length}}</div>
+<div>Total Points: {{$ctrl.getTotalPoints()}}</div>
+<div>Total Est. Weight: {{$ctrl.getTotalEstimatedWeight()}} lbs</div>

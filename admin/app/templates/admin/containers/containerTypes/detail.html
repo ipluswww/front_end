@@ -1,0 +1,88 @@
+<div layout="column" id="containerTypesDetail" class="admin-detail">
+    <div class="section-header">
+        <div layout="row" layout-align="start center" >
+            <md-button class="md-fab md-closetbox-fab" aria-label="Back" ng-click="$ctrl.backTo()">
+                <i class="material-icons">keyboard_arrow_left</i>
+                <md-tooltip>Back</md-tooltip>
+            </md-button>
+            <md-button class="md-fab md-closetbox-fab" aria-label="Container Type List" ng-click="$ctrl.backToList()">
+                <i class="material-icons">list</i>
+                <md-tooltip>Container Type List</md-tooltip>
+            </md-button>
+            <a aria-label="Create Container Type" ui-sref="app.admin.containerTypes.new" ui-sref-active="md-closetbox-primary" class="md-link">
+                <i class="material-icons">add</i>
+                Create
+            </a>
+            <a aria-label="Edit Container Type" ui-sref="app.admin.containerTypes.edit({id: $ctrl._id})" ui-sref-active="md-closetbox-primary" ng-if="$ctrl._id" class="md-link" ng-hide="true">
+                <i class="material-icons">create</i>
+                Edit
+            </a>
+            <md-button aria-label="Delete Container Type" class="md-raised md-closetbox-error" ng-if="$ctrl._id" ng-disabled="!$ctrl.isDeletable()" ng-click="$ctrl.deleteRecord()">
+                <i class="material-icons">delete</i>
+                Delete
+            </md-button>
+        </div>
+    </div>
+
+    <div>
+        <!-- Detail View -->
+        <!-- --------------------------------------------------------------------------------------- -->
+
+        <div ng-if="!$ctrl._edit" class="detail-section">
+            <div layout="row" class="data-row">
+                <span flex="30" class="input-label">Name</span>
+                <span flex="70" class="static-value">{{ ::$ctrl.data.name }}</span>
+            </div>
+            <div layout="row" class="data-row">
+                <span flex="30" class="input-label">Active</span>
+                <span flex="70" class="static-value">{{($ctrl.data.active ===true) ? 'Yes' : 'No' }}</span>
+            </div>
+            <div layout="row" class="data-row">
+                <span flex="30" class="input-label">Date Created</span>
+                <span flex="70" class="static-value">{{ ::$ctrl.data.dateCreated | date }}</span>
+            </div>
+            <div layout="row" class="data-row">
+                <span flex="30" class="input-label">Last Updated</span>
+                <span flex="70" class="static-value">{{::$ctrl.data.lastUpdated | date }}</span>
+            </div>
+        </div>
+        <!-- End of Detail View -->
+        <!-- --------------------------------------------------------------------------------------- -->
+
+        <!-- Form -->
+        <!-- --------------------------------------------------------------------------------------- -->
+        <form ng-if="$ctrl._edit" class="md-padding edit-section" name="$ctrl.containerTypesForm">
+            <div layout="column">
+                <div>
+                    <div layout="column">
+                        <md-input-container>
+                            <label>Name</label>
+                            <input name="name" ng-model="$ctrl.data.name" required aria-label="Name" min-length="2" ng-change="$ctrl.checkDuplication($ctrl.data.name)" ng-model-options="{debounce: 1000}" ng-pattern="/^[a-zA-Z0-9]*$/" />
+                            <div ng-messages="$ctrl.containerTypesForm.name.$error" ng-show="$ctrl.containerTypesForm.name.$touched && ($ctrl.containerTypesForm.name.$error.server || $ctrl.containerTypesForm.name.$error.pattern)">
+                                <div ng-message-exp="['server']">
+                                    The key is invalid, it already exists.
+                                </div>
+                                <div ng-message-exp="['pattern']">
+                                    Must be greater than 1 character, Alpha-numeric, no spaces allowed
+                                </div>
+                            </div>
+                        </md-input-container>
+                        <md-input-container>
+                            <label>Active</label>
+                            <md-switch ng-model="$ctrl.data.active" aria-label="Active">
+                            </md-switch>
+                        </md-input-container>
+                    </div>
+                </div>
+                <div>
+                    <div layout="row" layout-align="end center">
+                        <md-button aria-label="Save Information" class="md-raised md-closetbox-primary" ng-click="$ctrl.saveData()">Save</md-button>
+                        <md-button aria-label="Cancel" class="md-raised md-primary" ng-click="$ctrl.cancelEdit()">Cancel</md-button>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <!-- End of Form -->
+        <!-- --------------------------------------------------------------------------------------- -->
+    </div>
+</div>

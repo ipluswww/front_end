@@ -1,0 +1,10 @@
+<div class="order-source" layout="row">
+	<md-input-container flex>
+		<label>Source</label>
+		<md-select ng-model="$ctrl.order.source" ng-disabled="$ctrl.isLocked">
+			<md-option ng-repeat="source in $ctrl.sourceList" ng-value="source">
+              {{ source }}
+            </md-option>
+		</md-select>
+	</md-input-container>
+</div>

@@ -1,0 +1,38 @@
+<div id="storedItems">
+    <h6>Currently Stored Items</h6>
+    <div class="inventory-filter" layout="row">
+        <div class="filter-panel" flex="20">
+            <div class="filter-item" flex-offset="5" flex="25" ng-repeat="inventoryType in $ctrl.inventoryTypes">
+                <i ng-click="$ctrl.toggleActivation(inventoryType)" class="material-icons" ng-class="{'active': inventoryType.active}">{{::inventoryType.iconClass}}</i>
+            </div>
+        </div>
+        <div class="search-input" flex="35" flex-offset="5">
+            <cb-jump-to-inventory flex
+                inventory="$ctrl.filteredInventories"
+                filter="$ctrl.filter"></cb-jump-to-inventory>
+        </div>
+        <div flex="35" flex-offset="5">
+            <div class="allocated-space"><b>Allocated Space</b>: {{ $ctrl.allocatedSpace() }}</div>
+        </div>
+    </div>
+    <div class="list md-padding no-item" ng-if="!$ctrl.filteredInventories || $ctrl.filteredInventories.length === 0">No Items</div>
+    <div class="delivery-items-list list md-padding" 
+        ng-if="$ctrl.filteredInventories && $ctrl.filteredInventories.length > 0" layout="column" 
+        jump-to="{{$ctrl.filter.jumpToTarget}}" container=".delivery-items-list">
+        <div class="container-unit" ng-repeat="container in $ctrl.filteredInventories" id="inventory-{{container._id}}">
+            <div layout="row" >
+                <span flex="5">
+                    <i class="material-icons type-icon icon active">{{$ctrl.getIconClass(container)}}</i>
+                </span>
+                <span class="value-box" flex="25">{{container.subType.name}}</span>
+                <span class="value-box" flex="25">{{container.label}}</span>
+                <span class="value-box" flex="15">{{container.contents}}</span>
+                <span class="value-box" flex="10">{{container.subType.points}} pt</span>
+                <span class="value-box" flex="10">{{container.subType.estimatedWeight}} lbs</span>
+                <span flex="5">
+                    <i class="material-icons icon active" ng-show="container.photos && container.photos.length > 0" ng-click="$ctrl.openPictureModal(container)">camera_alt</i>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>

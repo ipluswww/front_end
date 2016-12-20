@@ -1,0 +1,34 @@
+<div layout="row" class='order-discounts' ng-form="discountCode.form">
+    <md-chips flex ng-model="discountCode.discounts" md-autocomplete-snap
+              md-transform-chip="discountCode.transformChip($chip)"
+              md-max-chips="discountCode.maxDiscounts"
+              md-on-remove="discountCode.removeDiscount($chip)"
+              readonly="discountCode.isLocked">
+      <md-autocomplete ng-disabled="!discountCode.canAddMoreDiscounts()"
+        md-require-match="discountCode.requireMatch"
+        md-selected-item="discountCode.selectedItem"
+        md-search-text="discountCode.query.search"
+        md-items="item in discountCode.querySearch()"
+        md-item-text="item.code"
+        placeholder="Discount Code"
+                       ng-model-options="{debounce: 500}">
+        <md-item-template>
+            <span md-highlight-text="discountCode.searchText" md-highlight-flags="^i">
+            </span>
+            <strong>{{item.code}}</strong>
+            <em ng-if="item.type==='PERCENT'">({{(item.discountPercent * 100).toFixed(2)}}% off)</em>
+            <em ng-if="item.type!=='PERCENT'">(${{item.fixedPrice}} off)</em>
+        </md-item-template>
+        <md-not-found>
+            No discount code matching "{{discountCode.query.search}}" were found.
+        </md-not-found>
+      </md-autocomplete>
+      <md-chip-template>
+        <span>
+          <strong>{{$chip.code}}</strong>
+          <em ng-if="$chip.type==='PERCENT'">({{($chip.discountPercent * 100).toFixed(2)}}% off)</em>
+          <em ng-if="$chip.type!=='PERCENT'">({{$chip.fixedPrice | currency}} off)</em>
+        </span>
+      </md-chip-template>
+    </md-chips>
+</div>

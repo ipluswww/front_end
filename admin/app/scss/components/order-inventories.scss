@@ -1,0 +1,20 @@
+@import "../variables/colors.scss";
+
+.order-inventories {
+	ul {
+		margin-top: 0;
+		margin-bottom: 0;
+		.inventory-name {
+			color: $primary;
+		}
+		span {
+			&.inventory-label {
+				font-size: 12px;
+				font-weight: 600;
+				padding-left: 10px;
+			}
+			&.inventory-contents {
+			}
+		}
+	}
+}

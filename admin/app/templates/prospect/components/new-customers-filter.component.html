@@ -1,0 +1,19 @@
+<div layout="column" class="new-customers-filter">
+    <div class="new-customers-type text-center" ng-click="$ctrl.toggleFilterPanel()">
+        <span class="expand-icon">
+            <md-icon ng-if="!$ctrl.filterExpanded" class="material-icons">keyboard_arrow_down</md-icon>
+            <md-icon ng-if="$ctrl.filterExpanded" class="material-icons">keyboard_arrow_up</md-icon>
+        </span>
+        New Customers: {{ $ctrl.getStatus() | humanizeFilter }}
+    </div>
+    <div class="type-list" ng-show="$ctrl.filterExpanded">
+        <div layout="row">
+            <button class="md-button md-primary" ng-repeat="option in $ctrl.options"
+            		ng-click="$ctrl.toggle(option)"
+                    ng-class="{'md-raised': $ctrl.isExists(option)}"
+                    flex="33">
+                {{ option }}
+            </button>
+        </div>
+    </div>
+</div>

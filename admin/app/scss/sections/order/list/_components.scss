@@ -1,0 +1,163 @@
+@import "../../../variables/colors.scss";
+
+.available-orders-filter {
+    border: 1px solid $grayColor2;
+    border-radius: 5px;
+    .available-orders-type {
+        position: relative;
+        line-height: 35px;
+        margin-bottom: 5px;
+        outline: 0;
+        cursor: pointer;
+        .expand-icon {
+            position: absolute;
+            top: 0;
+            left: 5px;
+            cursor: pointer;
+            outline: 0;
+        }
+    }
+}
+
+.assignments-filter {
+    border: 1px solid $grayColor2;
+    border-radius: 5px;
+    .assignments-type {
+        position: relative;
+        line-height: 35px;
+        margin-bottom: 5px;
+        outline: 0;
+        cursor: pointer;
+        .expand-icon {
+            position: absolute;
+            top: 0;
+            left: 5px;
+            cursor: pointer;
+            outline: 0;
+        }
+    }
+}
+.orders-table {
+    .phone-link {
+        cursor: pointer;
+    }
+    .assign {
+        cursor: pointer;
+    }
+}
+
+.order-detail-view {
+    display: none;
+    position: fixed;
+    top: 50px;
+    right: 0;
+    max-width: 668px;
+    background-color: $white;
+    &.expanded {
+        display: block;
+    }
+    & > .section-header {
+        padding-bottom: 10px;
+        .md-button {
+            height: 36px;
+        }
+        i {
+            cursor: pointer;
+            outline: 0;
+            line-height: 45px;
+        }
+    }
+
+     .section-body {
+        height: 400px;
+        overflow-y: auto;
+        .field {
+            margin-bottom: 10px;
+            .values {
+                min-width: 50%;
+                & > label {
+                    font-weight: 700;
+                    line-height: 30px;
+                }
+                & > span {
+                    margin-left: 10px;
+                    line-height: 30px;
+                }
+            }
+            md-switch {
+                margin: 0 0 0 5px;
+            }
+            md-input-container {
+                margin-top: 10px;
+                margin-bottom: 0;
+                .md-errors-spacer {
+                    min-height: 19px;
+                }
+            }
+        }
+    }
+}
+
+.customer-orders {
+    margin: 20px 0;
+    & > label {
+        font-weight: 700;
+        line-height: 30px;
+    }
+
+    a {
+        font-weight: 700;
+        cursor: pointer;
+    }
+}
+
+/* read only inventory items list */
+#storedItems {
+    h6 {
+        font-size: 16px;
+        font-weight: 700;
+        line-height: 30px;
+        margin-top: 20px;
+        margin-bottom: 0px;
+    }
+    .list {
+        &.no-item {
+            height: auto;
+            text-align: center;
+        }
+        margin-top: 10px;
+        height: 250px;
+        overflow-y: auto;
+        border: 1px solid $grayColor2;
+    }
+    .inventory-filter {
+        margin-top: 0px;
+        .filter-panel {
+            .filter-item {
+                text-align: center;
+                float: left;
+            }
+        } /* /.filter-panel */
+    }
+
+    .allocated-space {
+        padding: 10px;
+    }
+
+    .container-unit .value-box {
+        font-size: 13px;
+    }
+
+    i {
+        cursor: pointer;
+        outline: none;
+        color: $grayColor1;
+        &.active {
+            color: $secondary;
+        }
+    }
+
+    md-input-container {
+        margin: 0 0 -21px;
+    }
+}

@@ -1,0 +1,36 @@
+.new-customers-filter {
+    border: 1px solid $grayColor2;
+    border-radius: 5px;
+    .new-customers-type {
+        position: relative;
+        line-height: 35px;
+        margin-bottom: 5px;
+        outline: 0;
+        cursor: pointer;
+        .expand-icon {
+            position: absolute;
+            top: 0;
+            left: 5px;
+            cursor: pointer;
+            outline: 0;
+        }
+    }
+}
+
+.prospect-table {
+    a {
+        cursor: pointer;
+    }
+    table.md-table:not(.md-row-select) {
+        th.md-column:nth-child(n+2):nth-last-child(n+2) {
+            padding: 0 32px 0 0;
+        }
+    }
+}
+
+.inquiries-table {
+    a {
+        cursor: pointer;
+    }
+}
+

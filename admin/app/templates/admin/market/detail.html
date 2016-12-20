@@ -1,0 +1,76 @@
+<div layout="row" id="marketDetail" layout-fill class="admin-detail">
+    <md-content class="md-whiteframe-2dp normal-padding"  flex>
+        <section layout="column">
+            <div class="section-header">
+                <div layout="row" layout-align="start center" >
+                    <md-button class="md-fab md-closetbox-fab" aria-label="Back" ng-click="$ctrl.backTo()">
+                        <i class="material-icons">keyboard_arrow_left</i>
+                        <md-tooltip>Back</md-tooltip>
+                    </md-button>
+                    <md-button class="md-fab md-closetbox-fab" aria-label="Market List" ng-click="$ctrl.backToList()">
+                        <i class="material-icons">list</i>
+                        <md-tooltip>Market List</md-tooltip>
+                    </md-button>
+                    <a aria-label="Create Market" ui-sref="app.admin.market.new" ui-sref-active="md-closetbox-primary" class="md-link">
+                        <i class="material-icons">add</i>
+                        Create
+                    </a>
+                    <a aria-label="Edit Market" ui-sref="app.admin.market.edit({id: $ctrl._id})" ui-sref-active="md-closetbox-primary" ng-if="$ctrl._id" class="md-link">
+                        <i class="material-icons">create</i>
+                        Edit
+                    </a>
+                </div>
+            </div>
+
+            <section>
+                <!-- Detail View -->
+                <!-- --------------------------------------------------------------------------------------- -->
+                <form class="md-padding edit-section" name="$ctrl.marketForm">
+                    <section class="detail-section">
+                        <v-accordion class="vAccordion--default" multiple>
+                            <v-pane expanded>
+                                <v-pane-header>
+                                    Detail
+                                </v-pane-header>
+
+                                <v-pane-content>
+                                    <ng-include src="'templates/admin/market/_detail_detail.html'"/>
+                                </v-pane-content>
+                            </v-pane>
+
+                            <v-pane>
+                                <v-pane-header>
+                                    Routing
+                                </v-pane-header>
+
+                                <v-pane-content>
+                                    <ng-include src="'templates/admin/market/_detail_routing.html'"/>
+                                </v-pane-content>
+                            </v-pane>
+
+                            <v-pane>
+                                <v-pane-header>
+                                    Pricing
+                                </v-pane-header>
+
+                                <v-pane-content>
+                                    <ng-include src="'templates/admin/market/_detail_pricing.html'"/>
+                                </v-pane-content>
+                            </v-pane>
+                        </v-accordion>
+
+
+                    </section>
+
+                    <div ng-if="$ctrl._edit">
+                        <div layout="row" layout-align="end center">
+                            <md-button ng-disabled="$ctrl.marketForm.$invalid" aria-label="Save Information" class="md-raised md-closetbox-primary" ng-click="$ctrl.saveData()">Save</md-button>
+                            <md-button aria-label="Cancel" class="md-raised md-primary" ng-click="$ctrl.cancelEdit()">Cancel</md-button>
+                        </div>
+                    </div>
+                </form>
+                <!-- End of Detail View -->
+            </section>
+        </div>
+    </md-content>
+</div>
