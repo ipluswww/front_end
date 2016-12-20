@@ -17,7 +17,7 @@ This is the frontend for portalobject.com data visualization using angular.js an
 
 3. Install the Portal Charts frontend.
 
-        $ git clone https://github.com/ipluswebstar/front_end
+        $ git clone https://github.com/ipluswebstar/front_end/tree/master/Portal%20Project%20-%20Chart
         $ cd portalobject-frontend
         $ npm install
         $ bower install
