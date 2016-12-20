@@ -1,0 +1,70 @@
+.light {
+
+  .snap-content {
+    background:#fff;
+    border-left:1px solid #e8e8e8;
+  }
+
+  .snap-drawers {
+    background:#fff;
+  }
+
+  .header {
+    background: #fff;
+    border-bottom: 1px solid #346aa9;
+  }
+
+  .header .wrapper {
+    background: #fff;
+    border-bottom: none;
+    //max-width: 1140px;
+    //margin: auto;
+  }
+
+  .theme {
+    color:#ccc;
+  }
+
+  .logo {
+    background-image:url('images/logo.png');
+
+  // Pixel ratio: 2
+  @media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-device-pixel-ratio: 2) {
+    background-image: url('images/logo-2x.png');
+    }
+  }
+
+  #helpButton {
+    color: #999;
+    background: #ddd;
+    border: 2px solid #bbb;
+  }
+
+  #helpButton:hover {
+    background:#e5e5e5;
+    color:#777;
+    border-color:#999;
+  }
+
+  #helpButton:active {
+    background:@PortalBlue;
+    border-color:#eee;
+    color:#eee;
+  }
+
+  footer {
+    border-color: #eee;
+  }
+
+  footer .footerInner {
+   color:#999;
+  }
+
+  footer a {
+    color:#999;
+  }
+
+  footer a:hover {
+   color:#bbb;
+  }
+}

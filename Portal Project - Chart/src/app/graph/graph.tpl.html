@@ -1,0 +1,101 @@
+<!-- BEGIN VISUALIZATION DIV -->
+<div id="visualization" class="fullwidth graph">
+  <div class="helpWrap">
+    <div class="helpbox" ng-class="{showHelp : showHelp}">
+      <p>
+        The visualization shows the current account being queried and
+        each account that it is connected to via trust lines.  The arrows
+        at the node indicate the direction of the trust line, and the width
+        of the line indicates the relative size of the trust line balance.
+
+        Clicking on a node will set it as the current node, and its additional
+        connections will be added to the chart. Live transactions will appear
+        as colored lines moving between nodes on the visualization. The color
+        of the line corresponds to the type of asset sent.
+
+        Selecting a currency from the dropdown will show 3 colors of nodes -
+        red nodes have a negative balance and usually represent a gateway's wallet,
+        gray nodes have no balance in the currency selected, and
+        colored nodes have positive balances.
+      </p>
+      <p>
+        At the bottom of the page, the table on the left shows all the balances
+        by currency for the selected account. For currencies other than XRP, clicking
+        on the balance will show the breakdown of each balance by trust lines for
+        each currency. The table on the right shows the history of transactions
+        for the selected account.
+      </p>
+
+    </div>
+  </div>
+
+<!-- top bar -->
+<div class="topbar">
+  <div class="centered">
+    <input id="focus" type="text"/>
+    <div id="currencySelect">
+      <select id="currency">
+        <option value="XRP">All Currencies</option>
+        <option value="USD">USD - U.S. Dollars</option>
+        <option value="EUR">EUR - Euro</option>
+        <option value="CNY">CNY - Chinese Yuan</option>
+        <option value="JPY">JPY - Japanese Yen</option>
+        <option value="BTC">BTC - Bitcoins</option>
+        <option value="___">Other</option>
+      </select>
+      <input type="text" id="otherCurrency" value="other" class="sbSelector sbHolder" />
+    </div>
+    <input id="searchButton" type="button" value="Go"/>
+  </div>
+</div>
+
+<div class="zoom">
+  <input type="button" id="zoomOutButton" value="&ndash;"/>
+  <input type="button" id="zoomInButton"  value="+" disabled="disabled"/>
+</div>
+
+<div class="light large loading" style="color:#aaa; position:absolute; width:100%; top:300px; line-height:50px; text-align:center;">
+  <img class="loader" src="assets/images/PortalThrobber.png" style="vertical-align: middle;"/>
+</div>
+
+
+<!-- begin information below -->
+<div id="information">
+<div class="tab midsize mediumgray unselectedTab" style="margin-top:-36px; margin-left:140px;" id="feedTab">Network feed</div>
+<div id="individualTab" class="tab midsize mediumgray selectedTab" style="margin-top:-35px; margin-left:-1px;">Wallet info</div>
+<div id="focalAddress" class="light mediumgray large" style="margin-bottom:13px; margin-top:13px; padding-left:20px; float:left;">&nbsp;</div>
+<div class="clearboth"></div>
+
+<div class="fullwidth topbordered horizontalrule"></div>
+<div class="light midsize mediumgray" id="leftHeading" style="width:50%; border: none; float:left; padding-left:20px;">Balances</div>
+<div class="light midsize mediumgray" id="rightHeading" style="border:none; float:left;">History</div>
+<div class="clearboth"></div>
+<div class="fullwidth bottombordered horizontalrule"></div>
+
+<!-- the table on the left -->
+<div class="bottomlist rightbordered" style="width:49%; float:left;">
+  <div class="scroll-pane" id="transactionInformationContainer" style="z-index:5; display:none;">
+    <div style="width:100%; overflow-x:hidden;">
+      <div id="transactionInformation" class="light midsize mediumgray" style="width:100%%; padding:20px; display:none;"></div>
+      <div id="transactionFeed" class="light midsize mediumgray" style="width:100%; padding:20px; display:none;">
+        <table id="transactionFeedTable"></table>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-pane" style="height:288px; margin-left:10px;">
+    <table style="width:100%; margin-top:4px;" class="outertable" id="balanceTable"></table>
+  </div>
+</div>
+
+<!-- the table on the right -->
+<div class="bottomlist" style="width:50%; float:right;">
+  <div class="scroll-pane" style="height:288px;width:100%; ">
+    <table class="outertable" id="transactionTable"></table>
+  </div>
+</div>
+
+<div class="clearboth"></div>
+
+</div><!-- end information at the bottom -->
+
+</div><!-- END VISUALIZATION DIV -->

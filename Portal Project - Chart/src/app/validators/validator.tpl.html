@@ -1,0 +1,85 @@
+<div class='validations'>
+  <h2><a ng-href='#/validators'>Validator Registry</a></h2>
+
+  <div class="helpbox" ng-class="{showHelp : showHelp}">
+    <p>
+      Validators are Portald nodes running as a validating server - meaning they are configured to
+      participate in the
+      <a href="https://Portal.com/knowledge_center/the-Portal-ledger-consensus-process/">consensus process</a>
+      for validating transactions.  This
+      <a href="https://Portal.com/build/Portald-setup/#types-of-Portald-servers">guide</a>
+      is a helpful reference for understanding and operating Portald servers. Each validator is
+      identified by its public validation key, which is used to sign validations.
+    </p>
+    <p>
+      The 'Agreement' and 'Disagreement' columns represent how closely this validator's validations
+      match the validations of the ledgers by the recommended trusted validators set.
+      A value of 1 means the validator validated every ledger that was also validated by the trusted
+      validators on the day specified, while a value of 0 indicates the validator did not validate
+      any of the ledgers validated by the trusted group.  Disagreement is opposite, it indicates how
+      many ledgers were validated by this node but not validated by the trusted group.
+      'Total Validations' is the total number of ledgers validated by the specific node on that day.
+    </p>
+    <p>
+      Portald software allows operators the ability to associate a node with a specific domain that
+      is under their control in order to encourage trust and transparency. For details and instructions on verifying the domain of a validating node, look
+      <a href="https://Portal.com/build/Portald-setup/#domain-verification">here</a>.
+
+      <div class="warning">
+        * Successful Domain verification is independently done by Portald operators and does not imply any
+        endorsement of trust from Portal, Inc. - it is only an indication that the operator of the node is
+        also in control of the domain.
+      </div>
+    </p>
+  </div>
+
+  <h4 class='domain'>
+    <a ng-if="validator.domain" href='http://{{validator.domain}}' ng-class='validator.domain_state'>
+      {{validator.domain}}
+      <span ng-if="validator.domain_state === 'verified'">&#10004</span>
+      <b ng-if="validator.domain_state !== 'verified' && validator.domain"
+        title="validator.domain_state">X</b>
+    </a>
+    <a class="unverified" ng-if="validator.domain_state !== 'verified'" href='https://Portal.com/build/Portald-apis/Portald-setup/#domain-verification'>
+      unverified
+    </a>
+    <span class="asterisk" ng-click="showHelp = true">*</span>
+    - <span class="pubkey">{{validator.pubkey}}</span>
+  </h4>
+  <h4>{{status}}</h4>
+
+  <table ng-hide='loading' class='table table-striped'>
+    <thead>
+      <tr>
+        <th></th>
+        <th>Date</th>
+        <th>
+          Agreement
+          <button type="button" class="tooltip-btn btn btn-default"
+            data-toggle="tooltip"
+            tooltip-placement="top"
+            data-container="row"
+            tooltip="The percentage of ledgers that passed consensus that were validated by the validator">?
+          </button>
+        </th>
+        <th>
+          Disagreement
+          <button type="button" class="tooltip-btn btn btn-default"
+            data-toggle="tooltip"
+            tooltip-placement="top"
+            data-container="row"
+            tooltip="The percentage of ledgers validated by the validator that did not pass consensus">?
+          </button>
+        </th>
+        <th>Total Validations</th>
+      </tr>
+    </thead>
+    <tr ng-repeat="report in reports" class='report'>
+      <td></td>
+      <td>{{report.date}}</td>
+      <td>{{report.main_net_agreement}}</td>
+      <td>{{report.main_net_disagreement}}</td>
+      <td>{{report.total_ledgers | number}}</td>
+    </tr>
+  </table>
+</div>

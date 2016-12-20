@@ -1,0 +1,532 @@
+@import url(priceChart.css);
+@import url(orderBook.css);
+
+#flip {
+  vertical-align: top;
+
+  :hover {
+    text-decoration: none;
+  }
+
+  img {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+
+#priceChart {
+  height:500px;
+}
+
+#bookChart {
+  height:200px;
+}
+
+#trades {
+  background:rgba(200,220,240,.3);
+  color:#aaa;
+  overflow:hidden;
+}
+
+.markets .controls {
+  overflow:hidden;
+  padding-top: 5px;
+}
+
+.markets .helpbox .type {
+  width: 5px;
+  background:#ccc;
+  padding:0;
+}
+
+.markets .helpbox table {
+  margin: 10px;
+}
+.markets .helpbox table th {
+  padding:2px 10px;
+}
+
+.markets .helpbox .bid {
+  background:indianred;
+}
+
+.markets .helpbox .ask {
+  background:mediumseagreen;
+}
+
+.markets {
+  text-align:center;
+}
+.markets h2 {
+  text-align:center;
+}
+
+#currencyPair {
+  margin: 10px 60px 5px 60px;
+  text-align: left;
+}
+
+#currencyPair .gateway {
+  min-width:150px;
+}
+
+#currencyPair h3 {
+  margin: 0 0 .5em;
+  background: #f6f6f6;
+}
+
+#currencyPair .sub,
+#base, #counter {
+  display: inline-block;
+  text-align: left;
+}
+
+#toCSV {
+  display: inline-block;
+  cursor: pointer;
+  margin: 0 auto;
+  color:#666;
+  text-decoration: none;
+  opacity: 0.3;
+  text-align: center;
+  vertical-align: top;
+  padding: 10px 5px;
+}
+
+.downloadIcon {
+  width: 18px;
+  height: 18px;
+}
+
+
+#flip {
+  font-size:12px;
+  cursor:pointer;
+  color:#666;
+  display:inline-block;
+  text-align:center;
+  font-family:"Open Sans", Arial;
+  padding: 12px 6px 0;
+}
+
+#flip span {
+  border-bottom:3px solid transparent;
+}
+
+#flip:hover span {
+  border-color:#666;
+}
+
+.PortalStatus {
+  overflow:hidden;
+  color:#aaa;
+  padding-top: 15px;
+}
+
+.PortalStatus .items {
+  display: inline-block;
+}
+
+.PortalStatus .items div {
+  display:table-cell;
+  vertical-align:middle;
+}
+
+.PortalStatus .label {
+  font-size:10px;
+  padding:0 5px;
+}
+
+.PortalStatus .index {
+  font-size:13px;
+}
+
+.PortalStatus svg {
+  opacity:.65;
+  float:right;
+}
+
+.PortalStatus svg.disconnected circle {
+  fill : #c00;
+}
+
+.PortalStatus svg.connected circle {
+  fill : #080;
+}
+
+.rangeIntervalWrapper {
+  padding: 5px 0 0 0;
+  clear: both;
+  display: block;
+  text-align:left;
+  margin:0 140px 0 60px;
+  overflow:hidden;
+}
+
+#range {
+  margin-right: 40px;
+  display: inline-block;
+  float: left;
+}
+
+#interval {
+  display: inline-block;
+  float: right;
+}
+
+.chartTypeWrapper {
+  float: right;
+  margin-top: -25px;
+
+  .selectList span.selected {
+    font-weight: normal;
+    border-bottom: none;
+    opacity: .8;
+  }
+}
+
+#dates {
+  width: auto;
+  height: auto;
+  display: inline-block
+}
+
+.datepicker {
+  width: auto;
+  height: auto;
+  width: 70px;
+  color: #3369a8;
+  background: 0;
+  border-radius: 2px;
+  border: 1.5px solid #ccc;
+  padding: 0 2px;
+  margin-left: 5px;
+  font-size: 12px;
+  line-height: 13px;
+  text-align: center;
+}
+
+.disabled {
+  color: #D3D3D3 !important;
+}
+
+.disabled:hover{
+  color: #D3D3D3 !important;
+  border-style: none !important;
+  cursor: default !important;
+}
+
+.bottomWrapper {
+  height: 35px;
+  clear: both;
+  margin: 2px 0;
+
+  .selectList a.selected {
+    font-weight: normal;
+    border-bottom: none;
+    opacity: .8;
+  }
+
+  .selectList a:hover {
+    border-bottom: none;
+  }
+}
+
+#chartType {
+  float: right;
+  margin-right: 60px;
+  display: inline-block;
+}
+
+.candlestickGraphic {
+  background: url('images/candlestick_new.svg') no-repeat top right;
+  background-size: 19px;
+  color: transparent !important;
+  opacity: .4;
+  width: 19px;
+  height: 19px;
+  margin-left: 5px !important;
+  vertical-align: sub;
+  border: none !important
+}
+
+.lineGraphic {
+  background: url('images/linechart.svg') no-repeat top right;
+  vertical-align: sub;
+  background-size: 19px;
+  height: 19px;
+  width: 19px;
+  color: transparent !important;
+  opacity: .4;
+  border: none !important
+}
+
+#bookChart {
+  margin-top:15px;
+}
+
+//edit list button
+.edit_list {
+  display: block;
+  font-family: 'Open Sans';
+  color: #000;
+  vertical-align: top;
+
+  li {
+    border: none !important;
+  }
+
+  &:hover {
+    background: #fafafa;
+  }
+
+  .plus {
+    display:block;
+    float:left;
+    color: rgb(153, 153, 153);
+    font-size: 24px;
+    padding: 2px 7px 0 13px;
+    font-weight: bold;
+  }
+}
+
+//gateway specific edit button
+  .edit_list.gateway {
+
+    .plus {
+      padding: 2px 10px 0 25px;
+    }
+
+  }
+
+/*
+ * Responsive tweaks
+ */
+.markets.row {
+  margin: 0 !important;
+}
+
+.markets .col-md-3 {
+  width: 27.8% !important;
+  padding:0 0 0 10px !important;
+  float:left;
+}
+
+.markets .col-md-3 .helpbox{
+  margin-left:0;
+  margin-right:0;
+}
+
+.markets .col-md-9 {
+  margin:0 !important;
+  width: 72% !important;
+  padding:0 !important;
+  float:right;
+}
+
+.markets .col-md-9 .helpbox {
+  margin-left:60px;
+  margin-right:60px;
+}
+
+@media (max-width: 1500px) {
+  .rangeIntervalWrapper #range,
+  .rangeIntervalWrapper #interval {
+    float: none;
+  }
+}
+
+@media (max-width:1100px) {
+  .markets .dropdowns, .markets #flip, .markets #toCSV {
+    //float:left;
+  }
+
+  .markets #counter {
+    clear: left;
+  }
+}
+
+@media (max-width: 979px) {
+
+  .PortalStatus {
+    display: none;
+  }
+
+  .markets .col-md-3, .markets .col-md-9 {
+    width:100% !important;
+    margin: 0 !important;
+  }
+
+  .markets .col-md-3 {
+    display:table;
+    border-bottom:1px solid rgba(150,150,150,.2);
+  }
+
+  .markets .col-md-3 .helpbox {
+    display:table-caption;
+    margin-left:60px;
+    margin-right:60px;
+  }
+
+  #tradeFeed {
+    display:table-row;
+  }
+
+  #tradeFeed .summary {
+    width:50% !important;
+    display:table-cell;
+    vertical-align:top;
+    border-right:1px solid rgba(150,150,150,.2);
+  }
+
+  #tradeFeed .table {
+    display:table-cell;
+    vertical-align:top;
+  }
+
+  #tradeFeed .tableWrap {
+    height:120px;
+    overflow:auto;
+  }
+
+  .markets .dropdowns, .markets #flip, .markets #toCSV {
+    float:none;
+  }
+
+  .markets #bookTables tr:nth-child(n + 16) {
+    display: none;
+  }
+}
+
+@media (max-width: 767px) {
+
+  #toCSV {
+    visibility: hidden;
+  }
+
+  .markets #bookTables table {
+    width:100%;
+    float:none !important;
+  }
+}
+
+@media (max-width: 600px) {
+
+  .rangeIntervalWrapper {
+    text-align: center;
+    margin: auto;
+  }
+
+  .chartTypeWrapper {
+    top: 0px;
+    margin-top: 0;
+    clear: both;
+    float: none;
+  }
+
+  #chartType {
+    float: none;
+    margin-right: 0;
+  }
+
+  #range, #interval  {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  #dates {
+    width: auto;
+    height: auto;
+    float: center;
+    margin: 3px 0px;
+    display: inherit;
+  }
+  .datepicker {
+    width: 70px;
+    font-size: 14px;
+  }
+
+  .markets .col-md-3 {
+    display:block;
+    border-color:rgba(150,150,150,.5);
+    padding:0 !important;
+  }
+
+  .markets .col-md-3 .helpbox {
+    display:inherit;
+  }
+
+  #tradeFeed {
+    display:block;
+  }
+
+  #tradeFeed .tableWrap {
+    border-top: 1px solid #ccc;
+    height:100px;
+  }
+
+  #tradeFeed .summary {
+    width:100% !important;
+    display:block;
+    border:none;
+  }
+
+  #tradeFeed .table {
+    display:block;
+  }
+
+  #currencyPair {
+    display:inline-block;
+    width:400px;
+    margin:5px 0;
+    text-align:center;
+  }
+
+  #currencyPair #flip,
+  #currencyPair #toCSV {
+    margin-right:-20px;
+    padding:12px 0;
+  }
+
+  .rangeIntervalWrapper {
+    padding: 5px 0;
+    //margin-left: 0;
+  }
+}
+
+
+@media (max-width: 480px) {
+  .markets #priceChart,
+  .markets #bookChart,
+  .markets #bookTables,
+  .markets .rangeIntervalWrapper {
+    zoom: 0.75;  //zoom 75% for phones
+  }
+
+  #currencyPair {
+    zoom: .92;
+  }
+
+  #currencyPair select{
+    padding: 5px 40px 5px 5px;
+    font-size: 16px;
+    background-size: 20px;
+  }
+
+  #currencyPair .gateway {
+    min-width:200px;
+  }
+
+  #interval {margin-left:20px; zoom:1.25}
+  #range {margin-left:0px; zoom:1.25}
+
+  .markets .col-md-3 .showHelp {
+    margin:10px;
+  }
+
+  .markets .wrap .showHelp {
+    zoom:1.33;
+    margin:10px;
+  }
+}

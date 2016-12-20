@@ -1,0 +1,103 @@
+<div>
+  <div class="main container landing">
+    <div class="helpbox" ng-class="{showHelp : showHelp}">
+      <h3>Welcome to Portal Charts</h3>
+      <p>
+        This charting site was built by Portal to provide live and historical data about
+        the Portal network. This site is open for anyone to use, alter and embed.  The source
+        code is available <a href="https://github.com/Portal/portalobject-frontend" target="_blank">here</a>.
+      </p>
+    </div>
+    <div class="row stats">
+      <div class="stat-group col-md-6">
+        <h5>
+          <b>Volume Stats (24 hours)</b>
+          <select class="valueCurrencySelect" ng-model="selectedCurrency"
+                  ng-options="currency for currency in currencies"></select>
+          <span class="valueRateDisplay" ng-bind="valueRatePair"></span>
+          <span class="valueRateDisplay"
+                ng-show="selectedCurrency !== 'XRP'"
+                ng-bind="valueRate"></span>
+        </h5>
+        <ul class="volume-stats">
+          <li ng-class="{selected:selectedMetric === metrics.totalTradeVolume}"
+              ng-click="showMetricDetails('totalTradeVolume')">
+            <div class="status"></div>
+            <label ng-bind-html="metrics.totalTradeVolume.label | trust"></label>
+            <div class="stat">
+              <sign ng-show="metrics.totalTradeVolume.converted"
+                    ng-bind="sign"></sign>
+              <span ng-show="metrics.totalTradeVolume.converted" ng-bind="metrics.totalTradeVolume.converted | number:2"></span>
+              <img  ng-hide="metrics.totalTradeVolume.converted" src="assets/images/PortalThrobber.png" class="loader"/>
+            </div>
+          </li>
+          <li ng-class="{selected:selectedMetric === metrics.tradeVolumeRCL}"
+              ng-click="showMetricDetails('tradeVolumeRCL')">
+            <div class="status"></div>
+            <label ng-bind-html="metrics.tradeVolumeRCL.label | trust"></label>
+            <div class="stat">
+              <sign ng-show="metrics.tradeVolumeRCL.converted"
+                    ng-bind="sign"></sign>
+              <span ng-show="metrics.tradeVolumeRCL.converted" ng-bind="metrics.tradeVolumeRCL.converted | number:2"></span>
+              <img  ng-hide="metrics.tradeVolumeRCL.converted" src="assets/images/PortalThrobber.png" class="loader"/>
+            </div>
+          </li>
+          <li ng-class="{selected:selectedMetric === metrics.paymentVolumeRCL}"
+              ng-click="showMetricDetails('paymentVolumeRCL')">
+            <div class="status"></div>
+            <label ng-bind-html="metrics.paymentVolumeRCL.label | trust"></label>
+            <div class="stat">
+              <sign ng-show="metrics.paymentVolumeRCL.converted"
+                    ng-bind="sign"></sign>
+              <span ng-show="metrics.paymentVolumeRCL.converted" ng-bind="metrics.paymentVolumeRCL.converted | number:2"></span>
+              <img  ng-hide="metrics.paymentVolumeRCL.converted" src="assets/images/PortalThrobber.png" class="loader"/>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="right">
+        <div id="metricDetail"></div>
+      </div>
+      <div class="stat-group col-md-6">
+        <h5>
+          Portal Network Stats
+        </h5>
+        <ul>
+          <li>
+            <label>Total XRP</label>
+            <div class="stat">
+              <span ng-bind="totalXRP | number:2"></span>
+              <img ng-hide="totalXRP"
+                   src="assets/images/PortalThrobber.png" class="loader"/>
+            </div>
+          </li>
+          <li>
+            <label ng-bind-html="metrics.capitalizationXRP.label | trust"></label>
+            <div class="stat">
+              <sign ng-show="metrics.capitalizationXRP.converted"
+                    ng-bind="sign"></sign>
+              <span ng-show="metrics.capitalizationXRP.converted" ng-bind="metrics.capitalizationXRP.converted | number:2"></span>
+              <img  ng-hide="metrics.capitalizationXRP.converted" src="assets/images/PortalThrobber.png" class="loader"/>
+            </div>
+          </li>
+          <li>
+            <label>Ledger Number</label>
+            <div class="stat">
+              <span ng-show="ledgerIndex" ng-bind="ledgerIndex | number:0"></span>
+              <img  ng-hide="ledgerIndex" src="assets/images/PortalThrobber.png" class="loader"/>
+            </div>
+          </li>
+          <li>
+            <label ng-bind-html="metrics.numAccounts.label | trust"></label>
+            <div class="stat">
+              <span ng-bind="metrics.numAccounts.total | number:0 "></span>
+              <img ng-hide="metrics.numAccounts.total" src="assets/images/PortalThrobber.png" class="loader"/>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <h5>Top Markets</h5>
+    <div id="topMarkets"></div>
+  </div>
+</div>

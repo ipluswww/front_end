@@ -1,0 +1,370 @@
+ .mmpage{
+  margin-bottom: 300px;
+ }
+
+ .multiMarket {
+
+ .add {
+  width:320px;
+  background:#f5f5f5;
+  float: left;
+  border: 1px solid #ddd;
+  margin: 5px;
+  font-size:200px;
+  color:#ddd;
+  cursor:pointer;
+  text-align:center;
+}
+
+ .add:hover {
+  background:#f2f2f2;
+  color:#d5d5d5;
+  border-color:#ccc;
+}
+
+ .chartHeader {
+  font-size:18px;
+  font-weight:bold;
+  border-bottom:1px solid #ddd;
+  padding:3px;
+  color:#888;
+
+}
+
+.chartHeader span {
+  max-width: 30%;
+  overflow: hidden;
+  display: inline-block;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  vertical-align: bottom;
+}
+
+.chartHeader small {
+  margin: 0 3px 2px;
+  font-weight: normal;
+  color: #aaa;
+  max-width: 32%;
+  overflow: hidden;
+  display: inline-block;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  vertical-align: bottom;
+  font-size: .7em;
+}
+
+ .chartDetails {
+  width:100%;
+  border-collapse:collapse;
+  min-height:42px;
+  overflow:hidden;
+  border-bottom:1px solid #ddd;
+  padding:0 15px 0 10px;
+}
+
+@-moz-document url-prefix() {
+  .chartDetails {
+    height:40px;
+  }
+}
+
+ .chartDetails label {display:inline}
+ .chartDetails .range {float:left; text-align:left; padding-top:2px; font-size:12px; font-weight:bold; overflow:hidden}
+ .chartDetails .range span {padding-right:5px}
+ .chartDetails .range label {font-size:10px; line-height:12px; font-weight:bold; display:inline-block; margin:0; padding-left:5px}
+ .chartDetails .range .high {color:#2a2;}
+ .chartDetails .range .low {color:#c33;}
+ .chartDetails .change {padding:0 5px; font-weight:bold;  font-size:20px; float:right; padding:7px 3px}
+ .chartDetails .volume {font-size:14px; font-weight:bold; float:left; clear:left}
+ .chartDetails .volume label {padding-left:5px; font-size:11px; color:#999; font-weight:bold}
+ .chartDetails .volume small {padding:0 5px; font-size:11px; color:#999; font-weight:normal}
+
+
+ .chart {
+  border:1px solid #ddd;
+  margin:5px;
+  float:left;
+  position:relative;
+  width:320px;
+  overflow:hidden;
+}
+
+ .chart .loader {
+  width:40px;
+  position:absolute;
+  top: 50%;
+  left: 50%;
+  width: 40px;
+  margin-top: -25px;
+  margin-left: -20px;
+  opacity:0;
+}
+
+ .clickable:hover {
+  box-shadow:0 0 2px #36c, inset 0 0 2px #36c;
+  border-color:#58b;
+  border-radius:2px;
+  cursor:pointer;
+}
+
+ .clickable:hover {
+  box-shadow:0 0 5px #36c, inset 0 0 3px #36c;
+  border-color:#249;
+}
+
+ .grid .domain {
+  display:none;
+}
+ .grid line {
+  stroke:#eee;
+}
+
+ .chart .axis {
+  fill: #333;
+  shape-rendering: crispEdges;
+}
+
+ .chart .axis .tick line {
+  stroke:none;
+}
+
+ .chart .axis .title {
+  stroke-width:1;
+  stroke: #bbb;
+  fill: #bbb;
+}
+
+
+ .chart .axis path, .chart .axis line {
+  fill: none;
+  stroke: #999;
+}
+
+ .chart .axis text {
+  font-size:10px;
+}
+
+ .chart .axis.price text {
+  font-size:9px;
+}
+
+ .chart .line {
+  fill:#ccc;
+  stroke:#999;
+  stroke-width: 1.25;
+  stroke-linejoin:round;
+  opacity:.75;
+}
+
+ .chart .down {
+  fill:#e88;
+  stroke:#c44;
+}
+
+ .chart .horizontal {
+  stroke-width:1.5;
+}
+
+ .chart .lastPrice {
+  stroke-width: .25;
+  font-size:24px;
+  stroke:#333;
+  fill:#333;
+}
+
+ .chart .timeBackground {
+  fill: #ddd;
+}
+
+ .chart .flip {
+  fill: #999;
+  stroke:none;
+  cursor:pointer;
+}
+
+ .chart .flip:hover {
+  fill: #888;
+}
+
+ .chart .flip:active {
+  fill: #456;
+}
+
+ .chart .flip text {
+  fill:#fff;
+}
+
+ .chart .pointer {
+  fill: #aaa;
+  stroke:none;
+}
+
+ .chart svg {display:block}
+ .chart .dropdowns {
+  float: left;
+  width: 50%;
+  border-top: 1px solid #bbb;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+ .chart .dropdowns .base {
+  border-right:1px solid #ddd;
+}
+
+ .chart .dropdowns select{
+  -webkit-appearance: none;
+  border:none;
+  background:none;
+  width:auto;
+  margin:0;
+  height:22px;
+  background:url('images/dropdown.png') no-repeat 97% 70%;
+  background-size:8px 10px;
+  padding:0 10px 0 5px;
+  border-right:1px solid #ddd;
+  border-radius:0;
+  display:inline;
+  color:#666;
+}
+
+ .chart .dropdowns .currency {
+  font-size:16px;
+  width:50px;
+  float: left;
+}
+
+ .chart .dropdowns .gateway {
+  font-size:11px;
+  border-right:1px solid #ddd;
+  min-width: 90px;
+}
+
+.chart .counter .gateway {
+  border-right: none !important;
+  background-position: 100% 70% !important;
+}
+
+@-moz-document url-prefix() {
+   .chart .dropdowns select {
+    padding:3px 0;
+    height:21px;
+  }
+}
+
+ .chart .status {
+  position:absolute;
+  width:100%;
+  text-align:center;
+  color:#ccc;
+  top:50%;
+  font-weight:normal;
+  margin-top:-20px;
+}
+
+ .chart .closeButton {
+  position: absolute;
+  right: 0;
+  top: 0;
+  line-height: 10px;
+  font-size: 12px;
+  font-weight: bold;
+  color: #ccc;
+  cursor:pointer;
+  border-radius:1px;
+  padding:2px 5px;
+  z-index:1;
+}
+
+ .chart .closeButton:hover {
+  color:#777;
+  background:#ddd;
+}
+
+}
+
+/*
+ * Dark theme
+ *
+ */
+
+ .dark .multiMarket {
+
+  .chart {
+    border-color:#333;
+  }
+
+   .closeButton {
+    color:@darkTextDark
+  }
+
+   .chart .closeButton:hover {
+    color:#aaa;
+    background:@darkLine;
+  }
+
+   .grid line {
+    stroke:#222;
+  }
+
+   .chart .axis path, .dark .chart .axis line {
+    stroke:#333;
+  }
+
+   .chart .axis text {
+    fill:@darkText;
+  }
+
+   .chart .timeBackground {
+    fill: #333;
+  }
+
+   .chart .flip {
+    fill: #555;
+  }
+
+   .chart .lastPrice {
+    stroke:#ddd;
+    fill:#ddd;
+  }
+
+   .chartHeader {
+    border-color:#444;
+  }
+
+   .chartHeader small {
+    color:#555;
+  }
+
+   .chartDetails {
+    background:rgba(255,255,255,.1);
+    border-color: #333;
+  }
+
+   .chartDetails .volume {
+    color:#ddd;
+  }
+
+   .chart .dropdowns {
+    border-color:#333;
+    background:#151515;
+  }
+
+   .chart .dropdowns .base {
+    border-color:#333;
+  }
+
+   .chart .dropdowns select {
+    border-color:#333;
+    color:#999;
+    font-weight:bold;
+    background-image: url('images/dropdownLight.png');
+  }
+
+   .add {
+    color:#333;
+    background:#222;
+    border-color:#333;
+  }
+
+}

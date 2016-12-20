@@ -1,0 +1,190 @@
+donut {
+  display: block;
+  width: 270px;
+}
+
+donut .valueSummary {
+  width: 240px;
+  height: 280px;
+  margin: auto;
+}
+
+donut .valueSummary .inner {
+  margin: 0;
+}
+
+donut .valueSummary .tooltip {
+  width: 240px;
+  bottom: auto;
+  right: 0px;
+}
+
+donut .tooltip .title {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.valueSummary {
+  text-align:center;
+  position:relative;
+
+  h5 {
+    margin-bottom: 20px;
+    font-weight: normal;
+    font-size: 14px;
+  }
+
+  h5 a {
+    font-weight: normal;
+    margin: 0 5px;
+  }
+
+  .inner {
+    display:inline-block;
+    position:relative;
+    margin-left:-25%;
+
+    svg {
+
+      path {
+        opacity:.9;
+        transition: opacity .3s ease;
+      }
+
+      path:hover {
+        opacity: 1;
+        transition: opacity .3s ease;
+      }
+
+      path.fade {
+        opacity: .4;
+      }
+
+      path.clickable {
+        cursor: pointer;
+      }
+    }
+
+    label {
+      position:absolute;
+      left:0;
+      padding:2px 2px;
+      border-radius:2px;
+      font-size:12px;
+      line-height:12px;
+      color:#666;
+      font-family:Arial;
+      transition: opacity .3s ease;
+      z-index: 1;
+      cursor: default;
+
+      b {
+        display:block;
+        margin-left:5px;
+        color:#888;
+        font-size:10px;
+        font-weight:normal
+      }
+    }
+
+    label:hover {
+      //background:rgba(255,255,255,.9);
+      z-index:10;
+    }
+
+    label.hidden {
+      display: none;
+    }
+
+    label.fade {
+      opacity: .4;
+      z-index: -1;
+    }
+  }
+
+  .tooltip {
+    opacity: 1;
+    position:absolute;
+    bottom:0;
+    right:5px;
+    padding:5px;
+    background:rgba(255,255,255,.9);
+    border-radius:3px;
+    pointer-events:none;
+    font-size:13px;
+    text-align:right;
+    font-weight:bold;
+
+    label {
+      display:inline-block;
+      margin:0 5px 0 0;
+      font-size:11px;
+      color:#999;
+    }
+
+    small {
+      color:#999;
+      margin-left: -.1em;
+    }
+
+    .issuer {
+      font-size:9px;
+      font-weight:normal;
+      margin-bottom:2px;
+    }
+
+    .title {
+      border-bottom:1px solid #ccc;
+      margin-bottom: 5px;
+      font-weight: normal;
+    }
+
+    .title small {
+      margin: 0 5px;
+    }
+  }
+}
+
+
+
+.dark {
+
+  .valueSummary {
+
+    .xrpToggle {
+      b:before {
+        border-color:#333
+      }
+
+      span {
+        color:#444;
+        font-weight:bold;
+      }
+    }
+
+    .inner {
+
+      label {
+        color:#888;
+      }
+
+      label:hover {
+        //background:rgba(0,0,0,.8);
+      }
+    }
+
+    .tooltip {
+      background:rgba(0,0,0,.8);
+      color:#ccc;
+
+      .title {
+        border-color:#333;
+      }
+
+      label {
+        color:#666;
+      }
+    }
+  }
+}

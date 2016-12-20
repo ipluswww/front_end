@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html ng-controller="AppCtrl">
+  <head>
+    <title ng-bind="pageTitle">Portal Charts</title>
+    <link rel="icon" type="image/png" href="assets/images/favicon.png"/>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans+Light:300,700|Open+Sans:400,400italic,700' rel='stylesheet' type='text/css'>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- D3 needs this -->
+    <meta charset="utf-8">
+
+    <!-- social media tags -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@Portal">
+    <meta name="twitter:title" content="Portal Charts">
+    <meta name="twitter:description" content="Portal Network Data Visualization.">
+    <meta name="twitter:creator" content="@Portal">
+    <meta name="twitter:image:src" content="">
+    <meta property="og:title" content="Portal Charts" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https:/portalobject.com" />
+    <meta property="og:image" content="" />
+    <meta property="og:description" content="Portal Network Data Visualization.">
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <script>
+      <%= maintenance ? "window.location = '"+maintenance+"';" : "" %>
+      var API = "<%= api %>";
+      var GA_ACCOUNT = "<%= ga_account %>";
+      var GA_ID = "<%= ga_id %>";
+      var remote;
+    </script>
+
+    <!-- compiled CSS --><% styles.forEach( function ( file ) { %>
+    <link rel="stylesheet" type="text/css" href="<%= file %>" /><% }); %>
+
+    <!-- compiled JavaScript --><% scripts.forEach( function ( file ) { %>
+    <script type="text/javascript" src="<%= file %>"></script><% }); %>
+
+  </head>
+  <body ng-class="theme">
+    <div id="loading">
+      <img class="loader" src="assets/images/PortalThrobber.png"/>
+    </div>
+    <div id="maintenance">
+      <div class="logo"></div>
+      <h3 class="title"></h3>
+      <div class="subtitle"></div>
+    </div>
+    <div class="header">
+      <div class="banner-wrap">
+        <div class="banner"></div>
+      </div>
+      <div class="wrapper">
+        <i class="nav-toggle mobile_only" snap-toggle>
+          <img src="assets/images/menu.svg"/>
+        </i>
+        <a href="#/" ui-route="/" class="logo" snap-close></a>
+        <status-check></status-check>
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class="category">
+              <a href="#/markets" snap-close>Markets  <span class="caret"></span></a>
+                <div class="sub_wrapper">
+                  <ul class="subnav">
+                    <li ui-route="/markets(/.+)?" ng-class="{active:$uiRoute !== false}">
+                      <a href="#/markets" snap-close>Live Chart</a>
+                    </li>
+                    <li ui-route="/multimarkets" ng-class="{active:$uiRoute !== false}">
+                      <a href="#/multimarkets" snap-close>Multi Markets</a>
+                    </li>
+                    <li ui-route="/active_accounts" ng-class="{active:$uiRoute !== false}">
+                      <a href="#/active_accounts" snap-close>Active Accounts</a>
+                    </li>
+                    <li ui-route="/trade-volume" ng-class="{active:$uiRoute !== false}">
+                      <a href="#/trade-volume" snap-close>Trade Volume</a>
+                    </li>
+                    <li ui-route="/external-markets" ng-class="{active:$uiRoute !== false}">
+                      <a href="#/external-markets" snap-close>External Markets</a>
+                    </li>
+                  </ul>
+              </div>
+            </li>
+            <li class="category">
+              <a href="#/value" snap-close>Network  <span class="caret"></span></a>
+              <div class="sub_wrapper">
+              <ul class="subnav">
+                <li ui-route="/value" ng-class="{active:$uiRoute !== false}">
+                  <a href="#/value" snap-close>Value Trends</a>
+                </li>
+                <li ui-route="/history" ng-class="{active:$uiRoute !== false}">
+                  <a href="#/history" snap-close>Historical Volume</a>
+                </li>
+                <li ui-route="/metrics" ng-class="{active:$uiRoute !== false}">
+                  <a href="#/metrics" snap-close>Metrics</a>
+                </li>
+                <li ui-route="/topology" ng-class="{active:$uiRoute !== false}">
+                  <a href="#/topology" snap-close>Topology</a>
+                </li>
+                <li ui-route="/validators" ng-class="{active:$uiRoute !== false}">
+                  <a href="#/validators" snap-close>Validators</a>
+                </li>
+              </ul>
+            </div>
+            </li>
+            <li class="category">
+              <a href="#/graph" snap-close>Accounts  <span class="caret"></span></a>
+              <div class="sub_wrapper">
+              <ul class="subnav">
+                <li ui-route="/graph(/.+)?" ng-class="{active:$uiRoute !== false}">
+                  <a href="#/graph" snap-close>Account Explorer</a>
+                </li>
+                <li ui-route="/accounts" ng-class="{active:$uiRoute !== false}">
+                  <a href="#/accounts" snap-close>Accounts Created</a>
+                </li>
+              </ul>
+            </div>
+            </li>
+            <li class="category">
+              <a href="#/transactions" snap-close ui-route="/transactions(/.+)?">Transactions</a>
+            </li>
+            <li class="category color_picker">
+              <a><img title="Toggle Light/Dark themes" class="toggle_theme" ng-click="toggleTheme()" src="assets/icons/icn_brightness.svg"></a>
+            </li>
+            <li class="category help">
+              <a id="helpButton_new" ng-click="showHelp = !showHelp">
+                <img class="more_info" src="assets/icons/icn_info.svg" title="More info"/>
+              </a>
+             </li>
+
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+    </div>
+    <div snap-drawer>
+      <div class="banner-pad"></div>
+      <ul class="nav">
+        <li class="top">
+        </li>
+        <li class="page">
+          <ul>
+            <li ui-route="/" ng-class="{active:$uiRoute}">
+              <a href="#/" snap-close>Dashboard</a>
+            </li>
+          </ul>
+        </li>
+        <li class="category">
+          <a href="#/markets" snap-close><img src="assets/icons/999_markets.svg">Markets</a>
+        </li>
+        <li class="page">
+          <ul>
+            <li ui-route="/markets(/.+)?" ng-class="{active:$uiRoute !== false}">
+              <a href="#/markets" snap-close>Live Chart</a>
+            </li>
+            <li ui-route="/multimarkets" ng-class="{active:$uiRoute !== false}">
+              <a href="#/multimarkets" snap-close>Multi Markets</a>
+            </li>
+            <li ui-route="/active_accounts" ng-class="{active:$uiRoute !== false}">
+              <a href="#/active_accounts" snap-close>Active Accounts</a>
+            </li>
+            <li ui-route="/trade-volume" ng-class="{active:$uiRoute !== false}">
+              <a href="#/trade-volume" snap-close>Trade Volume</a>
+            </li>
+            <li ui-route="/external-markets" ng-class="{active:$uiRoute !== false}">
+              <a href="#/external-markets" snap-close>External Markets</a>
+            </li>
+          </ul>
+        </li>
+        <li class="category">
+          <a href="#/value" snap-close><img src="assets/icons/999_network.svg">Network</a>
+        </li>
+        <li class="page">
+          <ul>
+            <li ui-route="/value" ng-class="{active:$uiRoute !== false}">
+              <a href="#/value" snap-close>Value Trends</a>
+            </li>
+            <li ui-route="/history" ng-class="{active:$uiRoute !== false}">
+              <a href="#/history" snap-close>Historical Volume</a>
+            </li>
+            <li ui-route="/metrics" ng-class="{active:$uiRoute !== false}">
+              <a href="#/metrics" snap-close>Metrics</a>
+            </li>
+            <li ui-route="/Topology" ng-class="{active:$uiRoute !== false}">
+              <a href="#/nodes" snap-close>Topology</a>
+            </li>
+            <li ui-route="/validators" ng-class="{active:$uiRoute !== false}">
+              <a href="#/validators" snap-close>Validators</a>
+            </li>
+          </ul>
+        </li>
+        <li class="category">
+          <a href="#/graph" snap-close><img src="assets/icons/999_accounts.svg">Accounts</a>
+        </li>
+        <li class="page">
+          <ul>
+            <li ui-route="/graph(/.+)?" ng-class="{active:$uiRoute !== false}">
+              <a href="#/graph" snap-close>Account Explorer</a>
+            </li>
+            <li ui-route="/accounts" ng-class="{active:$uiRoute !== false}">
+              <a href="#/accounts" snap-close>Accounts Created</a>
+            </li>
+          </ul>
+        </li>
+        <li class="category">
+          <a href="#/transactions" snap-close><img src="assets/images/flip.svg"/>Transactions</a>
+        </li>
+        <li class="category color_picker">
+          <a class="toggle_theme_mobile" ng-click="toggleTheme()"><img src="assets/icons/icn_brightness.svg">Light / Dark</a>
+        </li>
+        <li class="category"><div id="helpButton_new_mobile" ng-click="showHelp = !showHelp"><span><img src="assets/icons/icn_info.svg" title="More info"></span> Info</div></li>
+      </ul>
+    </div>
+
+    <div snap-content class="snap-content" snap-options="snapOptions">
+      <div class="banner-pad"></div>
+      <div class="headerPad"></div>
+      <div ui-view="main"></div>
+      <div class="footerPad"></div>
+
+      <footer class="footer">
+        <div class="footerInner container">
+          Portal Charts is built and maintained by Portal, based on data from the Portal Network.
+          <div class="disclaimer">
+            Information is provided "as is" and solely as an informative resource.
+            Portal Charts is not a trading advisor. Data may be delayed or incorrect.
+            Portal reserves the right not to include
+            transactions in Portal Charts that it believes are not bona fide, e.g., wash sales
+            where there is no change in beneficial ownership.
+          </div>
+          <div class="links">
+            <a href="https://Portal.com" target="_blank">Portal.com</a>
+            &middot;
+            <a href="https://Portal.com/blog" target="_blank">Blog</a>
+            &middot;
+            <a href="https://Portal.com/privacy-policy/" target="_blank">Privacy Policy</a>
+            &middot;
+            <a href="https://Portal.com/terms-of-use/" target="_blank">Terms of Service</a>
+            &middot;
+            <a href="https://github.com/Portal/portalobject-frontend" target="_blank">Github</a>
+            &middot;
+            <span class="version">v<%= version %></span>
+          </div>
+
+          <small><a style="display:none" href="">v<%= version %></a></small>
+        </div>
+      </footer>
+    </div>
+    </div>
+  </body>
+  <script>
+    if (GA_ACCOUNT && GA_ID) {
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', GA_ACCOUNT, GA_ID);
+      ga('require', 'displayfeatures');
+
+    } else {
+      ga = function(){};
+    }
+
+  </script>
+</html>
+

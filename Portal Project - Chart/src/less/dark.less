@@ -1,0 +1,311 @@
+.dark {
+  background: #282828;
+  color: @darkText;
+
+  .logo {
+    background-image:url('images/logo-dark.png');
+
+  // Pixel ratio: 2
+    @media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-device-pixel-ratio: 2) {
+      background-image: url('images/logo-dark-2x.png');
+    }
+  }
+
+  .banner-wrap {
+    background: #000;
+  }
+
+  #maintenance {
+    background: #000;
+    color: #666;
+  }
+
+  #helpButton {
+    color: #ccc;
+    background-color: #333;
+    border: 1px solid #666;
+    border-width: 1px;
+    box-shadow: 0 0 3px #fff, inset 0 0 8px #222;
+  }
+
+   #helpButton:hover {
+    background: #444;
+    color: #eee;
+    border-color: #999;
+  }
+
+   #helpButton:active {
+    background:#348;
+    border-color:#222;
+    box-shadow:none;
+    color:#eee;
+  }
+
+  .snap-drawers {
+    background:#282828;
+  }
+
+  .snap-content {
+    background:#000;
+    border-color:#000;
+    box-shadow:0 0 .5em #000;
+  }
+
+  .header {
+    border-color: @darkLine;
+    background:#000;
+  }
+
+  .header .wrapper {
+    background:#000;
+    border-bottom: none;
+    //max-width: 1140px;
+    //margin: auto;
+  }
+
+  .logo img {
+    opacity:.4;
+    border-radius:2px;
+  }
+
+  .nav-toggle {
+    color:#888;
+  }
+
+  .theme {
+    color:#444;
+  }
+
+  .dropdowns select {
+    color: #bbb;
+    border: 1.5px solid #404040;
+  }
+
+
+  .nav {
+    border-bottom:1px solid #333;
+  }
+
+  .nav .top {
+    background-color:#333;
+  }
+
+  .nav .category, .dark .nav .top {
+    background-color:#333;
+    border-bottom-color: #111;
+    border-top-color: #404040;
+    border-right-color: #404040;
+  }
+
+  .nav .top {
+    //border-bottom-color: #222;
+  }
+
+  .nav .page {
+    background-color:#222;
+  }
+
+  .nav .page {
+    border-color:#111;
+  }
+
+  .nav .page li a {
+    color:#777;
+  }
+
+  .nav .page li.active a {
+    border-color:#000;
+    color: #3a62ae;
+  }
+
+  .nav .page li a:hover {
+    color:#486db4;
+  }
+
+  .nav .page li {
+    border-bottom-color:#000;
+    border-top-color:#333;
+  }
+
+  .nav .page li.active {
+    background-color:#000;
+    border-color:#333;
+  }
+
+  .disclaimer {
+    color:@darkTextDark;
+  }
+
+  footer {
+    border-color:#333;
+  }
+
+  footer .footerInner {
+    color:@darkTextDark
+  }
+
+  footer .links a {
+    color:#777;
+  }
+
+  footer .links a:hover {
+    color: @darkText;
+  }
+
+  .nav .subnav {
+    background: #000;
+    border-left: 1px solid @darkLine;
+    border-right: 1px solid @darkLine;
+    border-bottom: 1px solid @darkLine;
+  }
+
+  .datepicker{
+    border: 1px solid #404040;
+    color: #99a;
+  }
+
+  .disabled {
+    color: rgb(50, 50, 50) !important;
+  }
+
+  .disabled:hover{
+    color: rgb(50, 50, 50) !important;
+    border-style: none !important;
+    cursor: default !important;
+  }
+
+  .PortalStatus {
+    color:@darkTextDark;
+    font-weight:bold;
+  }
+
+  .markets .helpbox .type {
+    background: @darkTextDark;
+  }
+
+  .markets .helpbox .bid,  {
+    background:#c22;
+  }
+
+  .markets .helpbox .ask {
+    background:#4a4;
+  }
+
+  .dropdowns select:disabled {
+    opacity:0.4;
+  }
+
+  .helpbox a {
+    color:#bbb;
+  }
+
+  .helpbox a:hover {
+    color:#ddd;
+  }
+
+  .selectList label {
+    color: @darkLine;
+  }
+
+  .manage_wrapper .sub_nav {
+    background: #000;
+    border-bottom: 1px solid #444;
+  }
+
+  .manage {
+
+    hr {
+      border-top: 1px solid #404040;
+    }
+  }
+
+  .lineGraphic {
+    background: url('images/linechart_white.svg') no-repeat top right;
+    background-size: 19px;
+  }
+
+  .candlestickGraphic {
+    background: url('images/candlestick_white_new.svg') no-repeat top right;
+    background-size: 19px;
+  }
+
+  //ddSlick
+  .dd-selected, .dd-option-text {
+    color: #bbb !important;
+
+    &:hover {
+      color: #bbb !important;
+    }
+  }
+
+  //borders
+  .dd-select {
+    border: 1px solid #404040;
+  }
+
+  .dd-options{
+    box-shadow: none;
+    border: 1px solid #404040;
+  }
+
+  .dd-container li {
+    border-bottom: 1px solid #404040;
+  }
+
+  .disabledDropdown {
+     border: 1px solid #404040;
+  }
+
+  .dd-pointer-down {
+    border: solid 5px transparent;
+    border-top: solid 5px #bbb;
+  }
+
+  .dd-pointer-up {
+    border-bottom: solid 5px #bbb !important;
+  }
+
+  .dd-options li {
+    background: #000 !important;
+
+    &:hover {
+      background: #222 !important;
+    }
+  }
+
+  .edit_list {
+    background: #000;
+    color: #bbb;
+
+    &:hover {
+      background: #222 !important;
+    }
+  }
+
+  .dropdowns select {
+    background-image:url('images/dropdownWhite.png');
+  }
+
+  .valueRateDisplay {
+    color:#555;
+  }
+
+  .valueCurrencySelect {
+    color:#aaa;
+    background-image: url('images/dropdownLight.png');
+  }
+
+
+  @media (max-width: 600px) {
+    #tradeFeed .tableWrap,  .dark .markets .col-md-3 {
+      border-color: @darkLine;
+    }
+  }
+
+  @media (max-width: 480px) {
+    #currencyPair select {
+      border-width:3px;
+    }
+  }
+
+}

@@ -1,0 +1,22 @@
+{
+  "development": {
+    "ga_account"  : "",
+    "ga_id"       : "",
+    "api"         : "REPLACEME",
+    "maintenance" : false
+  },
+
+  "staging": {
+    "ga_account"  : "",
+    "ga_id"       : "",
+    "api"         : "REPLACEME",
+    "maintenance" : false
+  },
+
+  "production": {
+    "ga_account"  : "",
+    "ga_id"       : "",
+    "api"         : "REPLACEME",
+    "maintenance" : false
+  }
+}

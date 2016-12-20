@@ -1,0 +1,354 @@
+.history-page {
+  text-align: center;
+}
+
+.history-page .helpbox {
+  width:80%;
+  display: inline-block;
+}
+
+.history-page .helpbox .table .cell {
+  display: table-cell;
+  width: 33%;
+  padding: 20px;
+}
+
+.history-page .interval {
+  font-size:14px;
+  float: right;
+  height: auto;
+  margin-top: 3px;
+  text-align: center;
+}
+
+.history-page .tag {
+  float:left;
+  font-size: 12px;
+  font-weight: bold;
+  color: #999;
+  margin-top: 3px;
+  font-size: 12px;
+  line-height: 13px;
+  color: #999;
+}
+
+.history-page #currency {
+  float: right;
+  margin: 3px 20px;
+}
+
+.history-page #ranges {
+  height: auto;
+  float: right;
+  margin-right:30px;
+}
+.history-page #intervals {
+  height: auto;
+  float: right;
+}
+
+.history-page .control {
+  text-align: left;
+  display: inline-block;
+  width: 90%;
+  height: auto;
+}
+
+.history-page #breadcrumb {
+  font-size:16px;
+  float: left;
+  height: auto;
+}
+
+.history-page #lineLegend {
+  display:inline-block;
+  width:90%;
+}
+
+.history-page .crumbs {
+  float: left;
+  margin-bottom: 0;
+  margin-left: 20px;
+}
+
+.history-page #currency .valueCurrencySelect {
+  margin-top:-2px;
+}
+
+.history-page .crumbs li{
+  margin-right: 25px;
+  float: left;
+  cursor: pointer;
+  text-indent: -5px;
+}
+
+.history-page .crumbs .crumb:hover {
+  text-decoration: underline;
+}
+
+
+.history-page .crumbs .crumb:last-child {
+  color: #3369a8;
+  font-weight:600;
+  cursor: default;
+  text-decoration: none;
+  margin-right: 10px;
+}
+
+.history-page .legend {
+  margin-top: 20px;
+}
+
+.history-page .int {
+  float: left;
+  margin-left: 10px;
+  cursor: pointer;
+  margin-top: 3px;
+  font-size: 12px;
+  line-height: 13px;
+  color: #666;
+}
+
+.history-page .range {
+  float: left;
+  margin-left: 10px;
+  cursor: pointer;
+  margin-top: 3px;
+  font-size: 12px;
+  line-height: 13px;
+  color: #666;
+}
+
+.history-page #custom {
+  float: left;
+  margin-left: 10px;
+  cursor: pointer;
+  margin-top: 3px;
+  font-size: 12px;
+  line-height: 13px;
+  color: #666;
+}
+
+.history-page #custom:hover:not(.clicked) {
+  border-bottom: 2px solid;
+  color: rgba(200,200,200,0.7);
+}
+
+.history-page .int:hover:not(.no-click):not(.clicked) {
+  border-bottom: 2px solid;
+  color: rgba(200,200,200,0.7);
+}
+
+.history-page .no-click {
+  color: rgba(200,200,200,0.7);
+  cursor: default !important;
+  text-decoration: none;
+}
+
+.history-page .range:hover:not(.clicked) {
+  border-bottom: 2px solid;
+  color: rgba(200,200,200,0.7);
+}
+
+.history-page .stackedChart .details th {
+  font-weight: bold;
+}
+
+.history-page .stackedChart .details th span {
+  font-weight: normal;
+  display: inline-block;
+  max-width: 100px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  vertical-align: text-bottom;
+}
+
+.history-page .clicked {
+  font-weight: bold;
+  border-bottom: 2px solid;
+  color: #3369a8;
+}
+
+.history-page .calendar {
+  float: left;
+  width: 85px;
+  margin-left: 10px;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 13px;
+  color: #3369a8;
+  background: 0;
+  border: 1.5px solid #3369a8;
+  display: none;
+}
+
+.history-page input {
+  text-align: center;
+}
+
+.history-page .label {
+  display:inline-block;
+  border: 1px solid rgba(200,200,200,0.15);
+  width: 240px;
+  padding: 5px 10px;
+  margin: 5px;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 2px;
+  background: rgba(200,200,200,0.1);
+  overflow: hidden;
+}
+
+.history-page .label:hover {
+  border: 1px solid rgba(200,200,200,0.5);
+}
+
+.history-page .label.market {
+  text-align: center;
+}
+
+.history-page .label.currency {
+}
+
+.history-page .label .title {
+  font-weight: 600;
+  font-size: 17px;
+}
+
+.history-page .label .subtitle {
+  font-size: 10px;
+}
+
+.history-page .label b {
+  display:inline-block;
+  vertical-align: top;
+}
+
+.history-page .label b:first-child {
+  text-align: right;
+}
+
+.history-page .label b:last-child {
+  text-align: left;
+}
+
+.history-page .label b small {
+  display:block;
+  font-size: .6em;
+  width: 100px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.history-page #csv {
+  cursor: pointer;
+  float: right;
+  margin: 0 5px;
+}
+
+.history-page #csv img {
+  height: 13px;
+  color: #666;
+}
+
+/**
+ * dark theme
+ */
+
+.dark .history-page .tag {
+  color: #444;
+}
+
+.dark .history-page .no-click {
+   color: #353535;
+}
+
+@media (max-width: 1024px) {
+  .history-page #breadcrumb {
+    width:100%;
+  }
+
+  .history-page #currency {
+    margin-right:0;
+  }
+
+  .history-page #csv {
+    float: none;
+  }
+}
+
+//tablet
+@media (max-width: 767px) {
+  .history-page #breadcrumb {
+    width:100%;
+  }
+
+  .history-page .interval {
+      float: none;
+      width: 100%;
+      overflow:hidden;
+  }
+
+ .history-page #ranges {
+    float: left;
+    clear: left;
+  }
+}
+
+@media (max-width: 600px) {
+  .history-page #intervals, .history-page #ranges {
+      float: left;
+      clear: left;
+  }
+
+  #historical-chart {
+    zoom: .8;
+  }
+}
+
+//mobile
+@media (max-width: 480px) {
+  .history-page {
+    zoom: .8;
+    width:100%;
+  }
+}
+
+@media only screen
+and (max-width : 480px) {
+  .history-page #currency {
+    float:left;
+    clear:both;
+    margin:20px 0 0 0;
+  }
+
+  .history-page #tooltip {
+    position:absolute;
+    width:100px;
+    text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 2px;
+    z-index: 1000;
+    display: none;
+    background: rgba(255,255,255,0.9);
+    pointer-events:none;
+  }
+
+  .history-page #tooltip .title {
+    font-size:7px;
+    margin-top: 2px;
+  }
+
+  .history-page #tooltip .date {
+    padding-top: 2px;
+    font-size:7px;
+  }
+
+  .history-page #tooltip .value {
+    padding: 2px;
+    font-size: 9px;
+    margin-bottom: 2px;
+  }
+}
