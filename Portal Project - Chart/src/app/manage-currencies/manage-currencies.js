@@ -60,6 +60,7 @@ angular.module( 'portalobject.manage-currencies', [
     if (!currency.custom)
       currencyWrapper.append('img').attr('class', 'curr_symb').attr('src', currency.icon);
     currencyWrapper.append('text').text(currency.currency);
+	
     if (currency.custom)
       currencyWrapper.append('a').attr('class', 'removeBtn').text('remove')
         .on('click', function() {
@@ -148,6 +149,7 @@ angular.module( 'portalobject.manage-currencies', [
     });
 
     inputWrapper.append('label').text(currency);
+	
     inputWrapper.append('a')
     .attr('class', 'removeBtn').text('remove')
     .on('click', function() {
@@ -155,6 +157,7 @@ angular.module( 'portalobject.manage-currencies', [
       checkLocal(currency, 'base');
       checkLocal(currency, 'trade');
     });
+	
     flashSaved();
 
   }
@@ -171,7 +174,9 @@ angular.module( 'portalobject.manage-currencies', [
       remove   : true,
       currency : currency
     });
+	
     flashSaved();
+	
     currencies = gateways.getCurrencies(true);
   }
 
@@ -192,6 +197,7 @@ angular.module( 'portalobject.manage-currencies', [
           }
         }
       }
+	  
       $scope[select] = {currency: 'XRP'};
       store.set(select, $scope[select]);
       store.session.set(select, $scope[select]);

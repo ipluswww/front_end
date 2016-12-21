@@ -11,6 +11,7 @@
       is a helpful reference for understanding and operating Portald servers. Each validator is
       identified by its public validation key, which is used to sign validations.
     </p>
+	
     <p>
       The 'Agreement' and 'Disagreement' columns represent how closely this validator's validations
       match the validations of the ledgers by the recommended trusted validators set.
@@ -20,6 +21,7 @@
       many ledgers were validated by this node but not validated by the trusted group.
       'Total Validations' is the total number of ledgers validated by the specific node on that day.
     </p>
+	
     <p>
       Portald software allows operators the ability to associate a node with a specific domain that
       is under their control in order to encourage trust and transparency. For details and instructions on verifying the domain of a validating node, look
@@ -62,6 +64,7 @@
             tooltip="The percentage of ledgers that passed consensus that were validated by the validator">?
           </button>
         </th>
+		
         <th>
           Disagreement
           <button type="button" class="tooltip-btn btn btn-default"
@@ -74,6 +77,7 @@
         <th>Total Validations</th>
       </tr>
     </thead>
+	
     <tr ng-repeat="report in reports" class='report'>
       <td></td>
       <td>{{report.date}}</td>
