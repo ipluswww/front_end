@@ -218,7 +218,7 @@ function buildScript(file) {
 			.pipe(browserSync.stream());
 	}
 	return rebundle();
-}
+};
 
 gulp.task('browserify', function() {
 	return buildScript('app.js');
