@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import AbstractController from '../../../abstract/abstract.controller.js'
+import AbstractController from '../../../abstract/abstract.controller.js';
 class  OrdersController extends AbstractController {
     constructor ($q, User, $state, $mdDialog, $mdToast, data){
         super($q, User, $state, $mdDialog, $mdToast);
