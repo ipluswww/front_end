@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset=utf-8 />
+<title>Timeline with scaled markers</title>
+<meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src='https://api.mapbox.com/mapbox.js/v2.4.0/mapbox.js'></script>
+<link href='https://api.mapbox.com/mapbox.js/v2.4.0/mapbox.css' rel='stylesheet' />
+<style>
+  body { margin:0; padding:0; }
+  #map { position:absolute; top:0; bottom:0; width:100%; }
+</style>
+</head>
+<body>
+
+
+<!-- This example requires d3 for AJAX and the brush,
+     though you can bring your own library. -->
+<script src='https://cdnjs.cloudflare.com/ajax/libs/d3/3.4.6/d3.min.js' charset="utf-8"></script>
+<style>
+.ui-brush {
+  background:#f8f8f8;
+  position:absolute;
+  bottom:0;right:0;left:0;
+  height:100px;
+}
+.brush .extent {
+  stroke:#fff;
+  fill-opacity:0.125;
+  shape-rendering:crispEdges;
+}
+.widget-left {
+	width: 34%;
+	float: left;
+	text-align: center;
+	padding: 30px 0;
+}
+.widget-left p {
+	margin-bottom: 37px;
+}
+.widget-left ul {
+	padding: 0;
+}
+.widget-right {
+	width: 66%;
+	float: left;
+	padding: 20px 0;
+	box-sizing: border-box;
+    position: relative;
+    height: 500px;
+}
+.widget-left ul li {
+	list-style: none;
+}
+.bottom-text {
+	padding: 10px 40px;
+}
+.bottom-text ul li {
+	padding: 10px;
+}
+.turtle-icon {
+	padding: 5px;
+	
+}
+.turtle-type {
+	cursor: pointer;
+}
+.main-widget {
+	width: 768px;
+	margin: auto;
+}
+.content {
+	display: block;
+	overflow: auto;
+}
+
+</style>
+<div class="main-widget">
+	<div class="content">
+		<div class="widget-left">
+			<p>Filter From 7 Turtle Types</p>
+			<ul>
+				<li class="turtle-icon"><img class="turtle-type" src="img/turtle-type-1.png" /></li>
+				<li class="turtle-icon"><img class="turtle-type" src="img/turtle-type-2.png" /></li>
+				<li class="turtle-icon"><img class="turtle-type" src="img/turtle-type-3.png" /></li>
+				<li class="turtle-icon"><img class="turtle-type" src="img/turtle-type-4.png" /></li>
+				<li class="turtle-icon"><img class="turtle-type" src="img/turtle-type-5.png" /></li>
+				<li class="turtle-icon"><img class="turtle-type" src="img/turtle-type-6.png" /></li>
+				<li class="turtle-icon"><img class="turtle-type" src="img/turtle-type-7.png" /></li>
+			</ul>
+		</div>
+		<div class="widget-right">
+			<div id='map' class='dark'></div>
+			<div id='brush' class='ui-brush'></div>
+		</div>
+		
+	</div>
+	<div class="bottom-text">
+		<div class="col-md-12">
+			<p>Notes</p>
+			<ul>
+				<li>Each turtle type will have it’s own unique marker. E.g, square, circle, triangle etc. displayed on the map.</li>
+				<li>With timeline function, user can select a slice of time and the map shows activity only in this slice e.g., https://www.mapbox.com/mapbox.js/example/v1.0.0/timeline-scaled-markers/</li>
+			</ul>	
+		</div>
+	
+	</div>
+	
+</div>
+
+
+<script>
+L.mapbox.accessToken = 'pk.eyJ1IjoidG9ueW1pcmUiLCJhIjoiY2lzbjhkNXo4MDAwejJ5bGZhNXprc290MCJ9.ieMOstFUAKRocOBt7dZoaw';
+var map = L.mapbox.map('map', 'mapbox.satellite')
+    .setView([0, 0], 1);
+
+var credits = L.control.attribution({
+  prefix: '<a href="http://earthquake.usgs.gov/earthquakes/feed/v1.0/geojson.php">Data from USGS</a>'
+}).addTo(map);
+
+// Create a new layer with a special pointToLayer function
+// that'll generate scaled points.
+var earthquakesLayer = L.geoJson(null, { pointToLayer: scaledPoint })
+    .addTo(map);
+
+function pointColor(feature) {
+    return feature.properties.mag > 5 ? '#f55' : '#a00';
+}
+
+function pointRadius(feature) {
+    return (feature.properties.mag - 4) * 10;
+}
+
+function scaledPoint(feature, latlng) {
+    return L.circleMarker(latlng, {
+        radius: pointRadius(feature),
+        fillColor: pointColor(feature),
+        fillOpacity: 0.7,
+        weight: 0.5,
+        color: '#fff'
+    }).bindPopup(
+        '<h2>' + feature.properties.place + '</h2>' +
+        '<h3>' + new Date(feature.properties.time) + '</h3>' +
+        feature.properties.mag + ' magnitude');
+}
+
+// Request our data and add it to the earthquakesLayer.
+d3.json('/excercise/source/observations-8560.geojson', function(err, data) {
+    earthquakesLayer.addData(data);
+    setBrush(data);
+});
+
+function setBrush(data) {
+    var container = d3.select('#brush'),
+        width = container.node().offsetWidth,
+        margin = {top: 0, right: 0, bottom: 0, left: 0},
+        height = 100;
+
+    var timeExtent = d3.extent(data.features, function(d) {
+        return new Date(d.properties.time);
+    });
+
+    var svg = container.append('svg')
+        .attr('width', width + margin.left + margin.right)
+        .attr('height', height + margin.top + margin.bottom);
+
+    var context = svg.append('g')
+        .attr('class', 'context')
+        .attr('transform', 'translate(' +
+            margin.left + ',' +
+            margin.top + ')');
+
+    var x = d3.time.scale()
+        .range([0, width])
+        .domain(timeExtent);
+
+    var brush = d3.svg.brush()
+        .x(x)
+        .on('brushend', brushend);
+
+    context.selectAll('circle.quake')
+        .data(data.features)
+        .enter()
+        .append('circle')
+        .attr('transform', function(d) {
+            return 'translate(' + [x(new Date(d.properties.time)), height / 2] + ')';
+        })
+        .attr('r', pointRadius)
+        .attr('opacity', 0.5)
+        .attr('stroke', '#fff')
+        .attr('stroke-width', 0.5)
+        .attr('fill', pointColor);
+
+    context.append('g')
+        .attr('class', 'x brush')
+        .call(brush)
+        .selectAll('rect')
+        .attr('y', -6)
+        .attr('height', height);
+
+    function brushend() {
+        var filter;
+            // If the user has selected no brush area, share everything.
+        if (brush.empty()) {
+            filter = function() { return true; }
+        } else {
+            // Otherwise, restrict features to only things in the brush extent.
+            filter = function(feature) {
+                return feature.properties.time > +brush.extent()[0] &&
+                    feature.properties.time < (+brush.extent()[1]);
+            };
+        }
+        var filtered = data.features.filter(filter);
+        earthquakesLayer.clearLayers()
+            .addData(filtered);
+    }
+}
+
+$('.turtle-type').click(function () {
+	
+});
+
+</script>
+
+
+</body>
+</html>

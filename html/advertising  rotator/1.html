@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html>
+	<head>
+
+		<!-- Basic -->
+		<meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">	
+
+		<title>Advertising - Responsive HTML5 Template 4.4.0</title>	
+
+		<meta name="keywords" content="HTML5 Template" />
+		<meta name="description" content="Advertising - Responsive HTML5 Template">
+		<meta name="author" content="upwork freelancer">
+
+		<!-- Favicon -->
+		<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
+		<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+
+		<!-- Mobile Metas -->
+		<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<!-- Web Fonts  -->
+		<link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800%7CShadows+Into+Light" rel="stylesheet" type="text/css">
+
+		<!-- OWl Carousel -->
+		<link rel="stylesheet" href="http://icewind.comxa.com/vendor/owlcarousel/css/owl.carousel.css">
+
+		<!-- fancybox -->
+		<link rel="stylesheet" href="http://icewind.comxa.com/vendor/fancybox/css/jquery.fancybox-buttons.css">
+        <link rel="stylesheet" href="http://icewind.comxa.com/vendor/fancybox/css/jquery.fancybox-thumbs.css">
+        <link rel="stylesheet" href="http://icewind.comxa.com/vendor/fancybox/css/jquery.fancybox.css">
+        
+
+		<style>
+			.shopify-advertisement-section {
+				text-align: center;
+			}
+
+			.shopify-advertisement-section .item .product-image-wrapper { 
+				width: 150px;
+				height: 150px;
+				margin: 0 auto;
+				position: relative;
+			}
+
+			.shopify-advertisement-section .item .product-image-wrapper .zoom { 
+				width: 100%;
+				height: 100%;
+				left: 0;
+				top: 0;
+				position: absolute;
+			}
+
+			.shopify-advertisement-section .item .product-image-wrapper .zoom .fancybox { 
+				display: block;
+				width: 100%;
+				height: 100%;
+				cursor: pointer;
+				background-color: rgba(0,0,0,0);
+			}
+
+			.shopify-advertisement-section .item .product-image-wrapper .zoom .fancybox:hover { 
+				background-color: rgba(0,0,0,0.3);				
+			}
+
+
+			.shopify-advertisement-section .item img.product {
+				width: 100%;
+    			height: 100%;
+    		}	
+
+			.shopify-advertisement-section .item .addtocart {
+				padding: 5px 10px;
+				color: #fff;
+				background-color: #2af;
+				display: block;
+				font-size: 15px;
+    			font-weight: bold;
+    			cursor: pointer;
+    			text-decoration: none;
+
+			}
+
+			.shopify-advertisement-section .item .brand-name {
+				height: 30px;
+				margin: 15px 0 10px;
+				font-size: 16px;
+			    line-height: 20px;
+			    font-family: serif;
+			    color: #888;
+			
+			}
+
+			.shopify-advertisement-section .item .product-name {
+			    color: #04a;
+			    height: 60px;
+			    margin: 10px 0 15px;
+			    line-height: 20px;
+			    font-size: 16px;
+			    font-family: monospace;
+
+			}
+
+			.shopify-advertisement-section .popup-item {
+				display: none;
+
+			}
+
+			.fancybox-inner .popup-item {
+				text-align: center;
+			}
+
+			.fancybox-inner .popup-item .product-image-wrapper { 
+
+				margin: 0 auto;
+				position: relative;
+			}
+
+			.fancybox-inner .popup-item img.product {
+				width: 100%;
+    			height: 100%;
+    			max-height: 70%;
+    			max-width: 70%;
+    		}	
+
+			.fancybox-inner .popup-item .addtocart {
+				padding: 5px 10px;
+				color: #fff;
+				background-color: #2af;
+				display: block;
+				font-size: 15px;
+    			font-weight: bold;
+    			cursor: pointer;
+    			text-decoration: none;
+
+			}
+
+			.fancybox-inner .popup-item .brand-name {
+				height: 30px;
+				margin: 15px 0 10px;
+				font-size: 16px;
+			    line-height: 20px;
+			    font-family: serif;
+			    color: #888;
+			
+			}
+
+			.fancybox-inner .popup-item .product-name {
+			    color: #04a;
+			    height: 60px;
+			    margin: 10px 0 15px;
+			    line-height: 20px;
+			    font-size: 16px;
+			    font-family: monospace;
+
+			}
+
+		</style>
+
+	</head>
+	<body>
+		<div class="body">
+			<div class="shopify-advertisement-section">
+				<div class="owl-carousel">
+				</div>
+			</div>
+
+		</div>
+
+		<!-- Owl Carousel -->
+		<script src="http://icewind.comxa.com/vendor/js/jquery/jquery.min.js"></script>
+		<script src="http://icewind.comxa.com/vendor/owlcarousel/owl.carousel.min.js"></script>
+		<script src="http://sdks.shopifycdn.com/js-buy-sdk/v0/latest/shopify-buy.umd.polyfilled.min.js"></script>
+
+		<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+		
+		<!-- fancy box -->
+        <script src="http://icewind.comxa.com/vendor/fancybox/js/jquery.fancybox.js"></script>
+        <script src="http://icewind.comxa.com/vendor/fancybox/js/jquery.fancybox-buttons.js"></script>
+        <script src="http://icewind.comxa.com/vendor/fancybox/js/jquery.fancybox-thumbs.js"></script>
+
+		<script>
+
+			$(document).ready(function(){
+
+			  function init() {
+			  
+				/* fancybox */
+				if ($('.fancybox').length){
+					$('.fancybox').fancybox({
+						tpl: {
+							closeBtn : '<a title="Close" class="fancybox-item fancybox-close" href="javascript:;"></a>',
+							next     : '<a title="Next" class="fancybox-nav fancybox-next" href="javascript:;"><span></span></a>',
+							prev     : '<a title="Previous" class="fancybox-nav fancybox-prev" href="javascript:;"><span></span></a>'
+						}
+					});         
+				}
+			  
+			  
+				if (typeof ShopifyBuy != "undefined") {
+
+					var shopClient = ShopifyBuy.buildClient({
+					  apiKey: 'f096982ff0f27104276b433772fdcb7b',
+					  domain: 'upper-limit.myshopify.com',
+					  appId: '6'
+					});
+
+					shopClient.fetchQueryProducts({ page: 1, limit: 20}).then(function(products) {
+
+					  console.log(products);
+
+					  var len = products.length;
+
+					  for(var i = 0; i < len; i++) {
+
+						var item_html = '<div class="item"><div class="product-image-wrapper"><img class="product" src="' + products[i]['attrs']['images'][0]['src'] + '" alt="image"><div class="zoom text-center" role="button"><a href="#product_item_' + i + '" class="fancybox"></a></div></div><h4 class="brand-name">' + products[i]['attrs']['vendor'] + '</h4><h4 class="product-name">' + products[i]['attrs']['title'] + '</h4><a class="addtocart" href="' + products[i].selectedVariant.checkoutUrl(1) + '">ADD TO CART</a><div class="popup-item" id = "product_item_' + i + '" class="hidden"><div class="product-image-wrapper"><img class="product" src="' + products[i]['attrs']['images'][0]['src'] + '" alt="image"></div><h4 class="brand-name">' + products[i]['attrs']['vendor'] + '</h4><h4 class="product-name">' + products[i]['attrs']['title'] + '</h4><a class="addtocart" href="' + products[i].selectedVariant.checkoutUrl(1) + '">ADD TO CART</a></div></div>';
+
+						$('.shopify-advertisement-section .owl-carousel').append(item_html);
+					  }
+
+					  $('.owl-carousel').owlCarousel({
+						loop:true,
+						margin:10,
+						nav:true,
+						navText: [,],
+						autoplay:false,
+						autoplayTimeout:1000,
+						autoplayHoverPause:true,
+						responsive:{
+							0:{
+								items:1
+							},
+							600:{
+								items:2
+							},
+							1000:{
+								items:4
+							},
+							1400:{
+								items:5
+							}
+						}
+					  });
+
+					  /* fancybox */
+					  if ($('.fancybox').length){
+						$('.fancybox').fancybox({
+							tpl: {
+								closeBtn : '<a title="Close" class="fancybox-item fancybox-close" href="javascript:;"></a>',
+								next     : '<a title="Next" class="fancybox-nav fancybox-next" href="javascript:;"><span></span></a>',
+								prev     : '<a title="Previous" class="fancybox-nav fancybox-prev" href="javascript:;"><span></span></a>'
+							}
+						 });         
+					  }  
+
+					});
+				}
+			  }	
+
+
+			  init();
+			  
+			});
+
+		</script>
+
+	</body>
+</html>

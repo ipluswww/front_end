@@ -1,0 +1,16 @@
+{	
+	"responsive": true,
+	"tmpSocialIconFont": true,
+	"enableEditorJS": true,
+    "description": "Ethereal is a beautiful, premium responsive Weebly theme. With a wide variety of features and a powerful, stunning interface, you can create the perfect website.",
+    "features": [
+        "responsive",
+        "css-buttons",
+        "social-icons",
+        "animation",
+        "navigation-fixed",
+        "full-width-header",
+        "navigation-top",
+		"color-palettes"
+    ]
+}

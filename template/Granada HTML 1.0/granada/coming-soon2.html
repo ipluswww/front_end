@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<!--[if IE 9]> <html class="ie9"> <![endif]-->
+<!--[if !IE]><!--> <html class="fheight"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <title>Granada - Premium Bootstrap eCommerce Template</title>
+        <meta name="description" content="Granada is premium, bootstrap based and responsive ecommerce template">
+
+        <!--[if IE]> <meta http-equiv="X-UA-Compatible" content="IE=edge"> <![endif]-->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/responsive.css">
+        
+        <!-- Favicon and Apple Icons -->
+        <link rel="icon" type="image/png" href="images/icons/icon.png">
+        <link rel="apple-touch-icon" sizes="57x57" href="images/icons/apple-icon-57x57.png">
+        <link rel="apple-touch-icon" sizes="72x72" href="images/icons/apple-icon-72x72.png">
+
+        <!--- jQuery -->
+        <script src="js/jquery-2.1.1.min.js"></script>
+	    
+    </head>
+    <body class="fheight">
+        <section id="coming-soon" class="comingsoon-line" role="main">
+            <div class="container-fluid full-height">
+                <div class="vcenter-container">
+                    <div class="vcenter text-center">
+                       <div class="row">
+                           <div class="line-container">
+                                <h1><a href="index.html" title="Coming Soon - Granada Premium Bootstrap eCommerce Template">
+                                    Granada
+                                </a></h1>
+                                <div class="col-lg-5">
+                                    <div class="fix-width">
+                                        <h2>notify me when its ready</h2>
+
+                                        <form action="">
+                                            <span class="email-icon"></span>
+                                            <input type="email" class="input-lg" required placeholder="Email address">
+                                            <input type="submit" class="btn btn-custom btn-lg min-width" value="Notify Me">
+                                        </form>
+                                    </div><!-- End .fix-width -->
+                                </div><!-- end .col-lg-5 -->
+
+                                <div class="col-lg-7">
+                                    <div id="countdown" class="clearfix"></div><!-- End #countdown -->
+                                </div><!-- end .col-lg-7 -->
+                            </div><!-- End .line-container -->
+                       </div><!-- End .row -->
+                    </div><!-- End .vcenter-container -->
+                </div><!-- End .vcenter -->
+            </div><!-- End .container -->
+        </section><!-- End #coming-soon-->
+
+	<!-- END -->
+    <script src="js/bootstrap.min.js"></script>
+	<script src="js/jquery.debouncedresize.js"></script>
+    <script src="js/retina.min.js"></script>
+    <script src="js/jquery.countdown.plugin.min.js"></script>
+    <script src="js/jquery.countdown.min.js"></script>
+	
+    <script>
+        $(function() {
+
+            // Countdown 
+
+                var newYear = new Date(); 
+                    newYear = new Date(newYear.getFullYear() + 1, 4 - 1, 1); 
+                    $('#countdown').countdown({until: newYear}); 
+
+        });
+    </script>
+    </body>
+</html>
