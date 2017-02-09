@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html><head>
+<meta http-equiv="Content-Type" CONTENT="text/html; charset=utf-8">
+<title>ERROR: The requested URL could not be retrieved</title>
+<style type="text/css"><!-- 
+ 
+
+body
+:lang(fa) { direction: rtl; font-size: 100%; font-family: Tahoma, Roya, sans-serif; float: right; }
+:lang(he) { direction: rtl; }
+ --></style>
+</head><body id=ERR_CONNECT_FAIL>
+<div id="titles">
+<h1>ERROR</h1>
+<h2>The requested URL could not be retrieved</h2>
+</div>
+<hr>
+
+<div id="content">
+<p>The following error was encountered while trying to retrieve the URL: <a href="http://www.hubvas.mobi:443/hb02/items/41129/41129_37725_100_420.png">http://www.hubvas.mobi:443/hb02/items/41129/41129_37725_100_420.png</a></p>
+
+<blockquote id="error">
+<p><b>Connection to 213.254.212.176 failed.</b></p>
+</blockquote>
+
+<p id="sysmsg">The system returned: <i>(110) Connection timed out</i></p>
+
+<p>The remote host or network may be down. Please try the request again.</p>
+
+<p>Your cache administrator is <a href="mailto:webmaster?subject=CacheErrorInfo%20-%20ERR_CONNECT_FAIL&amp;body=CacheHost%3A%20localhost%0D%0AErrPage%3A%20ERR_CONNECT_FAIL%0D%0AErr%3A%20(110)%20Connection%20timed%20out%0D%0ATimeStamp%3A%20Mon,%2001%20Aug%202016%2013%3A42%3A27%20GMT%0D%0A%0D%0AClientIP%3A%2079.181.239.161%0D%0AServerIP%3A%20www.hubvas.mobi%0D%0A%0D%0AHTTP%20Request%3A%0D%0AGET%20%2Fhb02%2Fitems%2F41129%2F41129_37725_100_420.png%20HTTP%2F1.1%0AHost%3A%20www.hubvas.mobi%3A443%0D%0AProxy-Connection%3A%20keep-alive%0D%0AProxy-Authorization%3A%20Basic%20ZWxhZC5jaGVycnlfZ2VvMTE6Y2hlcnJ5ODU4%0D%0AUser-Agent%3A%20Mozilla%2F5.0%20(Linux%3B%20Android%205.0%3B%20Nexus%209%20Build%2FLRX21R)%20AppleWebKit%2F537.36%20(KHTML,%20like%20Gecko)%20Version%2F4.0%20Chrome%2F37.0.0.0%20Safari%2F537.36%0D%0AAccept%3A%20image%2Fwebp,image%2F*,*%2F*%3Bq%3D0.8%0D%0AReferer%3A%20http%3A%2F%2Fwww.hubvas.mobi%2Fcp%2FvasShield%3Fpage%3D4813%0D%0AAccept-Encoding%3A%20gzip,%20deflate,%20sdch%0D%0AAccept-Language%3A%20it%0D%0A%0D%0A%0D%0A">webmaster</a>.</p>
+
+<br>
+</div>
+
+<hr>
+<div id="footer">
+<p>Generated Mon, 01 Aug 2016 13:42:27 GMT by localhost (squid)</p>
+<!-- ERR_CONNECT_FAIL -->
+</div>
+</body></html>
