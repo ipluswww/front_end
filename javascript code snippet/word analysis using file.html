@@ -1,0 +1,27 @@
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+</head>
+<script>
+
+function wordFreq(string) {
+    var words = string.replace(/[.]/g, '').split(/\s/);
+    var freqMap = {};
+    words.forEach(function(w) {
+        if (!freqMap[w]) {
+            freqMap[w] = 0;
+        }
+        freqMap[w] += 1;
+    });
+
+    return freqMap;
+}
+
+
+	
+	jQuery.get('http://localhost/foo.txt', function(data) {
+    alert(wordFreq(data));
+	console.log(wordFreq(data));
+});
+
+    
+</script>

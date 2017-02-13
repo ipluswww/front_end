@@ -1,0 +1,54 @@
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+</head>
+	<script>
+
+		function wordFreq(string) {
+			var words = string.split(/\s/);
+			var freqMap = [];
+			
+			words.forEach(function(w) {
+				if (!freqMap[w]) {
+					freqMap[w] = [];
+					freqMap[w][0] = w;
+					freqMap[w][1] = 0;
+				}
+				freqMap[w][1] += 1;
+			});
+			
+			var freqlist = [];
+			
+			var index = 0;
+			for (var key in freqMap) {
+				
+				freqlist[index++] = freqMap[key];
+			}
+			
+			freqlist.sort(function(a, b) {
+					//console.log('com');
+					return b[1] - a[1];
+				});
+				
+			return freqlist;
+		}
+
+
+		
+		
+		jQuery.get('http://localhost/foo.txt', function(data) {
+		var result = wordFreq(data);
+		
+		for (var key in result) {
+			$('.result').append('<span style="width: 50%; display: block; float: left; text-align: right;">' + result[key][0] + ':</span><span style="width: 50%; display: block; float: left;">' + result[key][1] + '</span>');
+		}
+	});
+
+	   
+	</script>
+<body>
+	<div class="result">
+	</div>
+	
+</body> 
+</html>
