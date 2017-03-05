@@ -10,6 +10,3 @@ In-the-Box closetbox Front End Portal: Angular1.5 and google materials
 
 Now browse to the app at `http://localhost:8000`.
 
-
-## Based on
-- [angular-es6-starter](https://github.com/GoThinkster/angular-es6-starter)
