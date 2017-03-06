@@ -1,0 +1,22 @@
+{
+  "name": "istart",
+  "version": "1.0.0",
+  "description": "istart project",
+  "main": "index.html",
+  "dependencies": {
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2",
+    "webpack": "^2.2.1",
+    "webpack-dev-server": "^2.4.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+	"start": "webpack-dev-server --hot"
+  },
+  "keywords": [
+    "istart",
+    "iplus"
+  ],
+  "author": "iplus",
+  "license": "ISC"
+}
