@@ -1,0 +1,24 @@
+{
+  "name": "contetto-fe",
+  "dependencies": {
+    "ember": "~2.6.0",
+    "ember-cli-shims": "0.1.1",
+    "ember-cli-test-loader": "0.2.2",
+    "ember-qunit-notifications": "0.1.0",
+    "pretender": "~0.10.1",
+    "lodash": "~3.7.0",
+    "Faker": "~3.0.0",
+    "blob-polyfill": "^1.0.20150320",
+    "swagger-ui": "2.1.3",
+    "underscore": "1.8.3",
+    "jquery-migrate": "1.2.1",
+    "toastr": "^2.1.2",
+    "bootstrap-datepicker": "^1.6.1",
+    "ckeditor": "^4.5.9",
+    "bootstrap-switch": "^3.3.2",
+    "fullcalendar": "3.0.1",
+    "fullcalendar-scheduler": "^1.3.2",
+    "bootstrap": "~3.3.5",
+    "blueimp-md5": "2.1.0"
+  }
+}

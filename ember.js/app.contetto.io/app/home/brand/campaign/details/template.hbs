@@ -1,0 +1,166 @@
+<div class="default-model tsk-details wraper-brands">
+    <div class="modelbox-body">
+      <div class="">
+       {{campaign-tabs isDetailsTabActive=model.isDetailsTabActive}}
+      </div>
+        <div class="right-panel">
+          <!-- Tab panes -->
+            <div class="tab-content">
+                <div class="tab-pane active">
+                	<form class="form-horizontal campaignDetailsForm col-md-12" autocomplete="off">
+                	 <h4 class="text-heading">Campaign Details</h4>
+
+						<div claas="row">
+							<div class="col-md-6 col-sm-12">
+								<div class="form-group">
+									<label class="control-label col-md-5 col-sm-12">Name</label>
+									<div class="col-md-7 col-sm-12">
+										{{input type="text" class="form-control" id="compaignName" value=model.campaign.name}}
+									    {{#each model.errors.name as |error|}}
+									      <span class="help-block">{{error.message}}</span>
+									    {{/each}}
+									</div>
+								</div>
+							</div>
+							<div class="col-md-6 col-sm-12">
+								<div class="form-group">
+									<label class="control-label col-md-5 col-sm-12">Status</label>
+									<div class="col-md-7 col-sm-12">
+										{{#x-select value=model.campaign.status id="compaignStatus" class="form-control" as |xs|}}
+						                    <option value="">Select Status</option>
+						                    {{#each model.statusArr as |item|}}
+										      {{#xs.option value=item.key}} {{item.val}} {{/xs.option}}
+										    {{/each}}			                    
+				                		{{/x-select}}
+									    {{#each model.errors.status as |error|}}
+									      <span class="help-block">{{error.message}}</span>
+									    {{/each}}
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div claas="row">
+							<div class="col-md-6 col-sm-12">
+								<div class="form-group">
+									<label class="control-label col-md-5 col-sm-12">Type</label>
+									<div class="col-md-7 col-sm-12">
+										{{#x-select value=model.campaign.type id="compaignType" class="form-control" as |xs|}}
+						                    <option value="">Select Type</option>
+						                    {{#each model.typesArr as |item|}}
+										      {{#xs.option value=item.key}} {{item.val}} {{/xs.option}}
+										    {{/each}}			                    
+				                		{{/x-select}}
+									    
+									    {{#each model.errors.type as |error|}}
+									      <span class="help-block">{{error.message}}</span>
+									    {{/each}}
+									</div>
+								</div>
+							</div>
+							<div class="col-md-6 col-sm-12">
+								<div class="form-group">
+									<label class="control-label col-md-5 col-sm-12">Start</label>
+									<div class="col-md-7 col-sm-12">
+										 {{#bs-datetimepicker date=model.startD updateDate=(action (mut model.campaign.start))  format='MM/DD/YYYY h:mm a'}}
+					                        {{input class="form-control"}}
+					                      {{/bs-datetimepicker}}
+									</div>
+								</div>      
+							</div>   
+
+							<!--<div class="col-md-6 col-sm-12">
+								<div class="form-group">
+									<label class="control-label col-md-5 col-sm-12">End</label>
+									<div class="col-md-7 col-sm-12">
+										 {{#bs-datetimepicker date=model.endD updateDate=(action (mut model.campaign.end)) format='MM/DD/YYYY'}}
+					                        {{input class="form-control"}}
+					                      {{/bs-datetimepicker}}
+									</div>
+								</div>
+							</div> -->
+						</div> 
+
+						<div claas="row">
+							<div class="col-md-6 col-sm-12">
+								<div class="form-group">
+									<label class="control-label col-md-5 col-sm-12">Category</label>
+									<div class="col-md-7 col-sm-12">
+										{{#x-select value=model.campaign.category id="compaignCategory" class="form-control" as |xs|}}
+						                    <option value="">Select Category</option>
+						                    {{#each model.catsArr as |item|}}
+										      {{#xs.option value=item.key}} {{item.val}} {{/xs.option}}
+										    {{/each}}			                    
+				                		{{/x-select}}
+									    {{#each model.errors.category as |error|}}
+									      <span class="help-block">{{error.message}}</span>
+									    {{/each}}
+									</div>
+								</div>
+							</div>
+							<div class="col-md-6 col-sm-12">
+								<div class="form-group">
+									<label class="control-label col-md-5 col-sm-12">Mode</label>
+									<div class="col-md-7 col-sm-12">
+									 {{#x-select value=model.campaign.mode id="campaignMode" class="form-control" as |xs|}}
+					                    <option value="">Select Mode</option>
+					                    {{#each model.modesArr as |item|}}
+									      {{#xs.option value=item.key}} {{item.val}} {{/xs.option}}
+									    {{/each}}			                    
+			                		{{/x-select}}
+					                {{#each model.errors.mode as |error|}}
+								      <span class="help-block">{{error.message}}</span>
+								    {{/each}}								
+									</div>
+								</div>
+							</div>
+						</div> 
+
+						<div claas="row">
+							<div class="col-md-6 col-sm-12">
+								<div class="form-group">
+									<label class="control-label col-md-5 col-sm-12">Related Posts</label>
+									<div class="col-md-7 col-sm-12">
+										<button type="button" class="btn btn-success">Add Posts</button>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-6 col-sm-12">
+								<div class="form-group">
+									<label class="control-label col-md-5 col-sm-12">Attachment</label>
+									<div class="col-md-7 col-sm-12">
+										<button type="button" class="btn btn-success">Add Attachment</button>
+									</div>
+								</div>
+							</div>
+						</div> 
+
+						<div claas="row">
+							<div class="col-md-6 col-sm-12 tagarea">
+								<div class="form-group">
+									<div class="col-md-12 col-sm-12">
+										<textarea class="form-control"></textarea>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-6 col-sm-12 tagarea">
+								<div class="form-group">
+									<div class="col-md-12 col-sm-12">
+										<textarea class="form-control"></textarea>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-12 col-sm-12 text-center">
+								<button type="button" {{action "editCampaign" true  on="click"}} class="btn btn-success">Save as draft</button>
+								<button type="button" {{action "editCampaign" false  on="click"}} class="btn btn-success" disabled={{model.data.isSubmitted}}>Update Campaign</button>
+							</div>
+						</div> 
+
+					</form>
+
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</div>

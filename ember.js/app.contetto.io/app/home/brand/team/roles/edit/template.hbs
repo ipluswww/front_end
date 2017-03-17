@@ -1,0 +1,56 @@
+<form class="form-horizontal" {{action "editRole" on="submit"}} autocomplete="off">
+  <div class="role-id-head">
+    <label class="col-md-3 col-sm-12 text-right control-label">Role name</label>
+    <div class="col-md-9 col-sm-12 col-xs-12">
+      {{input type="text" class="form-control" id="roleName" value=model.role.name}}
+      {{#each model.errors.name as |error|}}
+        <span class="help-block">{{error.message}}</span>
+      {{/each}}
+    </div>
+  </div>
+
+  <div class="">
+    <div class="col-md-6 col-sm-12 col-xs-12 checkcox-panel">
+      <div class="checkbox">
+        {{input type="checkbox" id="createPost" checked=model.role.createPosts}}
+        <label for="createPost">Create Post</label>
+      </div>
+      <div class="checkbox">
+        {{input type="checkbox" id="brandReviewPost" checked=model.role.reviewPosts}}
+        <label for="reviewPost">Review Post</label>
+      </div>
+      <div class="checkbox">
+        {{input type="checkbox" id="viewAnalytics" checked=model.role.viewAnalytics}}
+        <label for="viewAnalytics">View Analytics</label>
+      </div>
+      <div class="checkbox">
+        {{input type="checkbox" id="manageSocialAccount" checked=model.role.manageSocialAccounts}}
+        <label for="manageSocialAccount">Manage Social Account</label>
+      </div>
+      <div class="checkbox">
+        {{input type="checkbox" id="manageReviewStructure" checked=model.role.manageReviewStructure}}
+        <label for="manageReviewStructure">Manage Review Structure</label>
+      </div>
+      <div class="checkbox">
+        {{input type="checkbox" id="overrideReviewStructure" checked=model.role.overrideReviewStructure}}
+        <label for="overrideReviewStructure">Override Review Structure</label>
+      </div>
+      <div class="checkbox">
+        {{input type="checkbox" id="manageTeam" checked=model.role.manageTeam}}
+        <label for="manageTeam">Manage Team</label>
+      </div>
+    </div>
+
+    <div class="col-sm-12 text-center">
+      {{#each model.errors.check as |error|}}
+        <span class="help-block">{{error.message}}</span>
+      {{/each}}
+    </div>
+    <div class="col-md-12 col-sm-12 col-xs-12">
+      <div class="submit-btn ml-20">
+        <button type="submit" class="btn btn-success pull-left text-uppercase" disabled={{model.data.isSubmitted}}>Save</button>
+      </div>
+    </div>
+  </div>
+
+</form>

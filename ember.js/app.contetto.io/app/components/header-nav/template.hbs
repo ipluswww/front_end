@@ -1,0 +1,29 @@
+<div class="container-fluid {{if isTopOpened 'opened'}}">
+    <div class="row">
+        <div class="col-md-3 col-sm-3 col-xs-6"><a href="#" class="logo"><img class="img-responsive" src="assets/images/logo.png" alt=""></a></div>
+        <div class="right_header col-xs-6 col-md-9 col-sm-9 pull-right text-right">
+          <sapn class="mob-comments well-icons"><a href="#"><i class="fa fa-bell-o" aria-hidden="true"></i><span>1</span></a></sapn>
+          <sapn class="well-icons1"><a href="#"><img class="img-responsive" src="assets/images/brand.png" alt=""><span>Brand</span></a></sapn>
+          <sapn class="mob-comments"><a href="#"><i class="fa fa-comments"></i><span>07</span></a></sapn>
+            <div class="user_sec" {{action 'toggleMenu'}}>
+              <span class="mob-views-name"> {{fullUserName}}</span>{{gravatar-image email=userEmail}} <i class="fa fa-caret-down"></i><i class="fa fa-caret-up"></i>
+            </div>
+            <ul class="links desk-ul">
+              <li>
+                {{#link-to 'home.accountsettings.details'}}
+                  User Settings
+                {{/link-to}}
+              </li>
+               <li class="logout"><a href="javascript:void(0)" {{action 'logout'}}>Logout <i class="fa fa-sign-out"></i></a></li>
+            </ul>
+        </div>
+
+        <div class="right_header col-xs-12 col-md-9 col-sm-12 pull-right text-right mob-ul">
+            <ul class="links">
+               <li><a href="#/home/accountsettings/details">User Settings</a></li>
+               <li class="logout"><a href="javascript:void(0)" {{action 'logout'}}>Logout <i class="fa fa-sign-out"></i></a></li>
+            </ul>
+        </div>
+
+    </div>
+</div>

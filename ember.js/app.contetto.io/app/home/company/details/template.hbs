@@ -1,0 +1,145 @@
+<div class="modelbox-body">
+    <div class="left-panel padding-none">
+  <!-- Company Settings tab (Component) // Details tab active-->
+  {{company-tab-left-panel isDetailsTabActive=model.isDetailsTabActive companyId=model.company.id}}
+    </div>
+    <div class="right-panel">
+        <!-- Tab panes -->
+        <div class="tab-content">
+            <div class="tab-pane active" id="home">
+                <form class="form-horizontal" {{action "updateCompany" on="submit"}} autocomplete="off">
+                    <div class="col-md-6">
+                        <div class="form-group ">
+                          <label class="control-label col-md-4">Name:</label>
+                          <div class="col-md-8">
+                          <!-- <input type="text" class="form-control" id="" placeholder="Change Company Name"> -->
+                          {{input type="text" class="form-control"  placeholder="Change Company Name" value=model.company.name}}
+                          {{#each model.errors.name as |error|}}
+                            <span class="help-block">{{error.message}}</span>
+                          {{/each}}
+                          </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group ">
+                          <label class="control-label col-md-4">Address:</label>
+                          <div class="col-md-8">
+                          <!--  <input type="text" class="form-control" id="" placeholder="Change Address">
+                           -->
+                          {{input type="text" class="form-control"  placeholder="Change Company Address" value=model.company.address}}
+                          {{#each model.errors.address as |error|}}
+                            <span class="help-block">{{error.message}}</span>
+                          {{/each}}
+                          </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group ">
+                          <label class="control-label col-md-4">Phone No. :</label>
+                          <div class="col-md-8">
+                           <!--  <input type="text" class="form-control" id="" placeholder="Change Phone Number"> -->
+                          {{input type="text" class="form-control" placeholder="Change Phone Number" value=model.company.phone}}
+                          {{#each model.errors.phone as |error|}}
+                            <span class="help-block">{{error.message}}</span>
+                          {{/each}}
+                          </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group ">
+                          <label class="control-label col-md-4">City Name:</label>
+                          <div class="col-md-8">
+
+                            {{input type="text" class="form-control" placeholder="City" value=model.company.city}}
+
+                          {{#each model.errors.city as |error|}}
+                              <span class="help-block">{{error.message}}</span>
+                          {{/each}}
+                          </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group ">
+                          <label class="control-label col-md-4">State:</label>
+                          <div class="col-md-8">
+                          <!--<input type="text" class="form-control" id="" placeholder="Change Phone Number"> -->
+                            {{input type="text" class="form-control" placeholder="State" value=model.company.state}}
+
+                          {{#each model.errors.state as |error|}}
+                              <span class="help-block">{{error.message}}</span>
+                          {{/each}}
+                          </div>
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-6">
+                        <div class="form-group ">
+                          <label class="control-label col-md-4">Country:</label>
+                          <div class="col-md-8">
+
+                          {{input type="text" class="form-control" placeholder="Country" value=model.company.country}}
+
+                          {{#each model.errors.country as |error|}}
+                              <span class="help-block">{{error.message}}</span>
+                          {{/each}}
+                          </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group ">
+                          <label class="control-label col-md-4">About:</label>
+                          <div class="col-md-8">
+                            <!-- <textarea class="form-control" rows="3" placeholder="Change About Information"></textarea> -->
+                            {{textarea class="form-control text-adds" value=model.company.about rows="3" placeholder="Change About Information" }}
+                            {{#each model.errors.about as |error|}}
+                              <span class="help-block">{{error.message}}</span>
+                            {{/each}}
+                          </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group ">
+                          <label class="control-label col-md-4">Postal Code:</label>
+                          <div class="col-md-8">
+                         <!--  <input type="text" class="form-control" id="" placeholder="Change Postal Code"> -->
+                          {{input type="text" class="form-control"  placeholder="Change Postal Code"  value=model.company.province}}
+                          {{#each model.errors.province as |error|}}
+                          <span class="help-block">{{error.message}}</span>
+                          {{/each}}
+                          </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group ">
+                          <label class="control-label col-md-4">File name:</label>
+                          <div class="col-md-8">
+                              <div class="fileinput">
+                                <span class="btn btn-success fileinput-button uploader-btnss">Browse</span>
+                                {{input type="file" value=model.company.file name="files[]" }}
+                              </div>
+                          </div>
+                      </div>
+                    </div>
+
+                    <div class="block-add col-md-12">
+                        <div class="form-group">
+                          <div class="col-md-12">
+                         <button type="submit" class="btn btn-success text-uppercase" disabled={{model.data.isSubmitted}}>Update</button>
+                       </div>
+                      </div>
+                     </div>
+
+
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+</div>

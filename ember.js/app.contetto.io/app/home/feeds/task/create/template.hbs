@@ -1,0 +1,65 @@
+<div class="main-center newest-tsks">
+	<div class="wrapes-inbox">
+        <p class="inbox"><!-- <span class="feeds-icons"><i class="fa fa-list" aria-hidden="true"></i></span> -->Feeds
+        <ul class="pull-right">
+            <li>Help</li>
+            <li>Tutarials</li>
+            <li>Quick chat</li>
+        </ul>
+        </p>
+  </div>
+	<div class="default-model tsk-details">
+	    <div class="modelbox-body sec-mods">
+	        <div class="full-panel--task">
+	          <!-- Tab panes -->
+	          	<div class="tab-content">
+	            	<div class="tab-pane active">
+	            		<h3 class="model-heading text-center mode-head">New Task</h3>
+	            		<div class="row">
+							<form class="form-inline form-wraper" role="form">
+							<div class="col-md-6 col-sm-6">
+							  <div class="form-group">
+								<label for="Subject">Subject:</label>
+								<input type="text" class="form-control" id="Subject">
+							  </div>
+							</div>
+							<div class="col-md-6 col-sm-6">
+							  <div class="form-group pos-frm">
+								<label for="Due">Due by:</label>
+								<input type="text" class="form-control" id="Due">
+							  </div>
+							</div>
+							<div class="col-md-6 col-sm-6">
+							   <div class="form-group">
+								<label for="Assigned">Assigned by:</label>
+								<input type="text" class="form-control" id="Assigned">
+							  </div>
+							</div>
+							<div class="col-md-6 col-sm-6">
+							   <div class="form-group cat-frma">
+								<label for="sel1">Category:</label>
+									<select class="form-control frm-sls" id="sel1">
+										<option>Category1</option>
+										<option>Category2</option>
+										<option>Category3</option>
+										<option>Category4</option>
+									</select>
+							  </div>
+							</div>
+							</form>
+						<div class="wrpa-txt col-md-12 col-sm-12">
+							{{ember-ckeditor value=text}}
+						</div>
+						<p class="tsk-crt col-md-12 col-sm-12">This Task is related to <a href="#">post</a> on your feed</p>
+						<div class="text-center wrper-btss tsk-bts">
+							<button class="btn btn-success  text-uppercase" title="attachment">Select Attachment</button>
+							<button class="btn btn-success  text-uppercase">Create task</button>
+						</div>
+					</div>
+	            	</div>
+	          	</div>
+	        </div>
+	        <div class="clearfix"></div>
+	    </div>
+	</div>
+</div>

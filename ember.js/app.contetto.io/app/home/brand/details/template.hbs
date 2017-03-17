@@ -1,0 +1,74 @@
+<div class="main-center wrps-dtls">
+    <div class="row wrap-main-2">
+      <div class="wrapes-inbox">
+          <p class="inbox">Brand
+          <ul class="pull-right">
+              <li>Help</li>
+              <li>Tutorials</li>
+              <li>Quick chat</li>
+          </ul>
+          </p>
+      </div>
+<div class="default-model tsk-details wraper-brands">
+  <div class="modelbox-body">
+    {{brand-tab-left-panel class='left-panel padding-none tabs-left2' isDetailsTabActive=model.isDetailsTabActive}}
+    <div class="right-panel">
+      <!-- Tab panes -->
+      <div class="tab-content">
+        <div class="tab-pane active">
+          <div class="row brands-deatils">
+            <form class="" {{action "updateBrand" on="submit"}} autocomplete="off">
+
+
+              <label class="control-label col-md-4 col-sm-12 col-xs-12 text-right">Brand name</label>
+              <div class="form-group col-md-7 col-sm-12 col-xs-12">
+                {{input type="text" class="form-control" id="brandname" value=model.brand.name}}
+              </div>
+              <label class="control-label col-md-4 col-sm-12 col-xs-12 text-right">Description</label>
+              <div class="form-group col-md-7 col-sm-12 col-xs-12">
+                {{input type="text" class="form-control" id="description" value=model.brand.description}}
+              </div>
+              <label class="control-label col-md-4 col-sm-12 col-xs-12 text-right">Address</label>
+              <div class="form-group col-md-7 col-sm-12 col-xs-12">
+                {{input type="text" class="form-control" id="address" value=model.brand.address}}
+              </div>
+              <label class="control-label col-md-4 col-sm-12 col-xs-12 text-right">City</label>
+              <div class="form-group col-md-7 col-sm-12 col-xs-12">
+                {{input type="text" class="form-control" placeholder="City" value=model.brand.city}}
+              </div>
+              <label class="control-label col-md-4 col-sm-12 col-xs-12 text-right">State</label>
+              <div class="form-group col-md-7 col-sm-12 col-xs-12">
+                {{input type="text" class="form-control" placeholder="State" value=model.brand.state}}
+              </div>
+              <label class="control-label col-md-4 col-sm-12 col-xs-12 text-right">Phone</label>
+              <div class="form-group col-md-7 col-sm-12 col-xs-12">
+                {{input type="text" class="form-control" id="phone" value=model.brand.phone}}
+              </div>
+              <label class="control-label col-md-4 col-sm-12 col-xs-12 text-right">Postal code</label>
+              <div class="form-group col-md-7 col-sm-12 col-xs-12">
+                {{input type="text" class="form-control" id="postalCode" value=model.brand.postal}}
+              </div>
+              <!-- <label class="control-label col-md-4 col-sm-12 col-xs-12 text-right">Vertical</label>
+              <div class="form-group col-md-7 col-sm-12 col-xs-12">
+                <select class="form-control">
+                  <option>Select</option>
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                  <option>5</option>
+                </select>
+              </div> -->
+              <div class="submit-btn ml-20">
+                <button type="submit" class="btn btn-success pull-left text-uppercase" disabled={{model.data.isSubmitted}}>Update</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="clearfix"></div>
+  </div>
+</div>
+</div>
+</div>

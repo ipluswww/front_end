@@ -1,0 +1,28 @@
+<div class="table-responsive">
+  <table class="table table-bordered table-striped text-center">
+    <thead>
+      <tr class="text-uppercase">
+        <th class="text-center">Role</th>
+        <th class="text-center">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each model.roles as |role|}}
+        <tr>
+          <td>{{role.name}}</td>
+          <td>
+            {{#link-to 'home.brand.team.roles.edit' role.id}}
+              <u>Change Permission</u>
+            {{/link-to}} |
+            <a href="javascript:void(0)" class="text-danger" {{action 'removeRole' role.id}}>
+              <u>Remove</u>
+            </a>
+          </td>
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+</div>
+<div class="center-block submit-btn">
+  {{#link-to "home.brand.team.roles.add" class="btn btn-success  text-uppercase" }}Add Role{{/link-to}}
+</div>

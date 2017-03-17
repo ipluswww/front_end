@@ -1,0 +1,22 @@
+<div class="container content">
+    <div class="row">
+        <div class="col-sm-10 col-sm-offset-1">
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3 col-sm-10 col-sm-offset-1">
+                    {{#if model.isLoading}}
+                        <h3 class="text-center">Please Wait ...</h3>
+                    {{else}}
+                        {{#if model.isValid}}
+                            <h3 class="text-center">Successful</h3>
+                            <h4 class="text-center">Your account has been verified successfully.</h4>
+                            <h4 class="text-center">Click {{#link-to 'auth.index'}}here{{/link-to}} to login.</h4>
+                        {{else}}
+                            <h3 class="text-center">Error</h3>
+                            <h4 class="text-center">Not able to verify your account.</h4>
+                        {{/if}}
+                    {{/if}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

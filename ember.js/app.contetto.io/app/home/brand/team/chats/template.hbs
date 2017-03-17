@@ -1,0 +1,38 @@
+<div class="row">
+            <div class="col-md-3 col-sm-12 reviewfow_tabs">
+              {{brand-team-tab isTeamChatsActive=model.isTeamChatsActive}}
+            </div>
+            <div class="col-md-9 col-sm-12">
+             <div class="tab-content">
+  <div class="tab-pane active">
+    <!--Calling Chat-view component and passing chat JSON data in chatData attribute -->
+    <!-- <h3 class="model-heading">Brand chat</h3> -->
+    <div class="table-responsive">
+    <table class="table table-bordered table-striped customTable text-center">
+      <thead>
+        <tr class="text-uppercase">
+          <th class="text-center">Participants</th>
+          <th class="text-center">Chat Name</th>
+          <th class="text-center">Date Range</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each model.chatDetails as |chat|}}
+        <tr>
+          <td>{{chat.participant}}</td>
+          <td>{{chat.chatName}}</td>
+          <td>{{chat.dateRange}}</td>
+        </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+    <div class="submit-btn">
+      <button type="button" class="btn btn-success  text-uppercase">Show More</button>
+      <button type="button" class="btn btn-success  text-uppercase">New Chat</button>
+    </div>
+  </div>
+</div>
+  </div>
+</div>
+

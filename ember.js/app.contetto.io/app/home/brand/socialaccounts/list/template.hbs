@@ -1,0 +1,35 @@
+<div class="tab-content">
+  <div class="tab-pane active">
+    <div class="table-responsive">
+     <table class="table table-bordered table-striped text-center">
+      <tbody>
+        <tr class="text-uppercase">
+          {{!-- <th>Account</th> --}}
+          <th>Title</th>
+          <th>Type</th>
+          <th>Action</th>
+        </tr>
+
+        {{#each model as |account|}}
+          <tr>
+            {{!-- <td>{{account.provider}}</td> --}}
+            <td>{{account.title}}</td>
+            <td>{{account.platform}}</td>
+            <td>
+              <!-- {{#link-to 'home.brand.team.edit' class='text-primary'}}<u>Change Role</u>{{/link-to}} -->
+              <a href="home/brand/socialaccounts/schedule" class="text-primary"><u>Shedule</u></a> |
+              <a href="#" class="text-primary"><u>Setting</u></a> |
+              <a href="#" class="text-danger" {{action 'deleteAccount' account.id}}>
+                <u>Remove</u>
+              </a>
+            </td>
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+    <div class="center-block submit-btn">
+      {{#link-to "home.brand.socialaccounts.addaccount" class="btn btn-success  text-uppercase"}}Add Account{{/link-to}}
+    </div>
+  </div>
+</div>

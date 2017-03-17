@@ -1,0 +1,56 @@
+<div class="container content">
+    <div class="row">
+        <div class="col-sm-10 col-sm-offset-1">
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3 col-sm-10 col-sm-offset-1">
+                    <h3 class="text-center">Almost done!</h3>
+                    <div class="box">
+                        <div class="row">
+                            <div class="col-xs-12 text-center">
+                                {{#if (eq model.invite.type "company")}}
+                                      <h5>Company invite</h5>
+                                {{else}}
+                                      <h5>Brand invite</h5>
+                                {{/if}}
+                                <div class="row" style="padding-top: 15px;">
+                                      <div class="col-xs-8">
+                                        {{#if (eq model.invite.type "company")}}
+                                          Join <strong>{{model.invite.company.name}}</strong> as
+                                        {{else}}
+                                          Join <strong>{{model.invite.brand.name}}</strong> as
+                                        {{/if}}
+                                          <strong>{{model.invite.role.name}}</strong>
+                                      </div>
+                                      <div class="col-xs-4">
+                                          {{#if (eq model.invite.status "accept")}}
+                                            {{#if (eq model.invite.type "company")}}
+                                              <button type="button"
+                                                      class="btn btn-sm btn-success" {{action 'selectCompany' model.invite.company.id}}>
+                                                  Select and continue
+                                              </button>
+                                            {{else}}
+                                              <button type="button"
+                                                      class="btn btn-sm btn-success" {{action 'selectBrand' model.invite.brand.id}}>
+                                                  Select and continue
+                                              </button>
+                                            {{/if}}
+                                          {{else}}
+                                              <button type="button"
+                                                      class="btn btn-sm btn-success" {{action 'acceptInvite' model.invite}}>
+                                                  Accept
+                                              </button>
+                                              <button type="button"
+                                                      class="btn btn-sm btn-warning" {{action 'rejectInvite' model.invite}}>
+                                                  Reject
+                                              </button>
+                                          {{/if}}
+                                      </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

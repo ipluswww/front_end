@@ -1,0 +1,121 @@
+<div class="row">
+        <div class="col-md-3 col-sm-12 reviewfow_tabs">
+          {{brand-team-tab isTeamPostsActive=model.isTeamPostsActive}}
+        </div>
+
+        <div class="col-md-9 col-sm-12">
+         <div class="tab-content">
+            <div class="tab-pane active">
+                <div class="row">
+                          <div class="col-sm-6 col-md-6 col-lg-3">
+                            <div class="form-group">
+                                {{#bs-datetimepicker date1=model.date format='MM/DD/YYYY'}}
+                                  {{input value=date1 class="form-control" name="Date" placeholder="Date"}}
+                                {{/bs-datetimepicker}}
+                            </div>
+                          </div>
+                          <div class="col-sm-6 col-md-6 col-lg-3">
+                            <div class="form-group">
+                                {{#bs-datetimepicker date2=model.date format='MM/DD/YYYY'}}
+                                  {{input value=date2 class="form-control" name="Date" placeholder="Date"}}
+                                {{/bs-datetimepicker}}
+                            </div>
+                          </div>
+                          <div class="col-sm-6 col-md-6 col-lg-3">
+                            <div class="form-group">
+                            <select class="form-control">
+                            <option>Status</option>
+                            <option>Enable</option>
+                            <option>Disable</option>
+                            </select>
+                          </div>
+                           </div>
+                          <div class="col-sm-6 col-md-6 col-lg-3">
+                            <div class="form-group">
+                          <select class="form-control">
+                          <option>Type</option>
+                          <option>Enable</option>
+                          <option>Disable</option>
+                          </select>
+                          </div>
+                          </div>
+                        </div>
+
+                          <div class="panel fbPanel compaign-fb">
+                          <div class="panel-heading">
+                          <ul class="seasonalUl">
+                          <li><i class="fa fa-lg fa-facebook-square" aria-hidden="true"></i> Seasonal Tires Facebook</li>
+                          <li class="pull-right">Mar-13 16 at 10:15 am</li>
+                          </ul>
+                          </div>
+                          <div class="panel-body">
+                           <ul class="byUl">
+                          <li>By: Alex V on March-13 16</li>
+                          <li>Status: Pending Approval </li>
+                          </ul>
+                          <div class="row">
+                          <div class="col-md-9 col-sm-7">
+                            <p>Have you seen that we have a special on all all season tires notion wide. Come get yours before they are gone! Have you seen that we have a special on all all season tires notion wide.</p>
+                          <div class="campaignDiv">
+                          <ul>
+                          <li>Campaign: name</li>
+                          <li>Category: Name</li>
+                          </ul>
+                          <p>#tag #tag #tag more...</p>
+
+                          </div>
+
+                          </div>
+                          <div class="col-md-3 col-sm-5 pMarginNegative">
+                            <ul class="panelRightUl"><li><a class="tickIcon" href="javascript:void()"><span class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span></a></li><li><a class="crossIcon" href="javascript:void()"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></a></li><li><a class="minusIcon" href="javascript:void()"><span class="glyphicon glyphicon-minus-sign" aria-hidden="true"></span></a></li><li><a class="btnBorder" href="javascript:void()">1K Likes</a></li><li><a class="btnBorder" href="javascript:void()">30 Shares</a></li><li><a class="btnBorder" href="javascript:void()">Post Goal Met</a></li></ul>
+                          </div>
+                          </div>
+                          </div>
+                        </div>
+
+                        <div class="panel fbPanel compaign-fb">
+                          <div class="panel-heading">
+                          <ul class="seasonalUl">
+                          <li><i class="fa fa-lg fa-facebook-square" aria-hidden="true"></i> Seasonal Tires Facebook</li>
+                          <li class="pull-right">Mar-13 16 at 10:15 am</li>
+                          </ul>
+                          </div>
+                          <div class="panel-body">
+                           <ul class="byUl">
+                          <li>By: Alex V on March-13 16</li>
+                          <li>Status: Pending Approval </li>
+                          </ul>
+                          <div class="row">
+                          <div class="col-md-9 col-sm-7">
+                            <p>Have you seen that we have a special on all all season tires notion wide. Come get yours before they are gone! Have you seen that we have a special on all all season tires notion wide.</p>
+                          <div class="campaignDiv">
+                          <ul>
+                          <li>Campaign: name</li>
+                          <li>Category: Name</li>
+                          </ul>
+                          <p>#tag #tag #tag more...</p>
+
+                          </div>
+
+                          </div>
+                          <div class="col-md-3 col-sm-5 pMarginNegative">
+                            <ul class="panelRightUl"><li><a class="tickIcon" href="javascript:void()"><span class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span></a></li><li><a class="crossIcon" href="javascript:void()"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></a></li><li><a class="minusIcon" href="javascript:void()"><span class="glyphicon glyphicon-minus-sign" aria-hidden="true"></span></a></li><li><a class="btnBorder" href="javascript:void()">1K Likes</a></li><li><a class="btnBorder" href="javascript:void()">30 Shares</a></li><li><a class="btnBorder" href="javascript:void()">Post Goal Met</a></li></ul>
+                          </div>
+                          </div>
+                          </div>
+                        </div>
+
+                        <div class="col-sm-12 col-md 12 col-xs-12 chat-buttons">
+                          <ul class="towBtnUl text-posts">
+                          <li>
+                            {{#link-to 'home.brand.post.add' model.brandId class="btn btn-success text-uppercase"}}
+                              New Post
+                            {{/link-to}}
+                          </li>
+                          <li><a class="btn btn-success text-uppercase" href="javascript:void()">See More</a></li>
+                          </ul>
+                        </div>
+            </div>
+          </div>
+        </div>
+</div>

@@ -1,0 +1,202 @@
+.show-more-btns{
+  margin-top:10px;
+}
+.compaign-btns .text-uppercase {
+  font-size: 12px;
+  font-weight: bold;
+}
+.compaign-chat{
+  position: relative;
+}
+/*.compaign-chat .chat-buttons{
+position: absolute;
+bottom: 40px;
+right: 30%;
+}*/
+
+.chat-buttons .towBtnUl{ text-align: center;}
+
+.compaign-fb {
+  border: 1px solid #ccc;
+  margin: 5px auto 20px;
+  max-width: 500px;
+  width: 100%;
+}
+.compaign-fb .panel-heading{
+  background-color: #E8EBF2; display: inline-block; width: 100%;
+}
+.compaign-fb .panel-heading .seasonalUl > li {
+  font-size: 13px;
+  font-weight: bold;
+}
+.text-posts{
+  text-align: center!important;
+}
+.compaign-btns {
+  margin-top: 10px;
+}
+
+.table-padd th, .table-padd td{ padding: 8px;}
+.table-padd th{ text-align: center;}
+
+.right-calender-panel{ padding: 0px; background: #fff;}
+.calender .wrap-side-4 {
+  background-color: rgb(244, 245, 249);
+  height: 515px;
+  padding: 10px;
+}
+.calender .wrap-side-4 ul{
+  padding-right: 0;
+  padding-bottom: 10px;
+}
+.calender .wrap-side-4 ul li{
+ cursor: pointer;
+}
+.calender .wrap-side-4 ul li small{ font-size: 100%; position:relative; padding-right: 15px}
+.calender .wrap-side-4 ul li small:after{ position: absolute; right: 0; top: 5px; content: ''; width: 10px; height: 10px;}
+/*.calender .wrap-side-4 ul li small.green:after, .fc-view-container .fc-event.green{ background: green;}
+.calender .wrap-side-4 ul li small.blue:after, .fc-view-container .fc-event.blue{ background: blue;}
+.calender .wrap-side-4 ul li small.red:after, .fc-view-container .fc-event.red{ background: red}
+*/
+
+.calender .inpt-check {
+  padding-right: 5px;
+}
+.page-head {
+  color: rgb(155, 156, 160);
+  font-size: 15px;
+  margin-bottom: 3px;
+  text-transform: uppercase;
+}
+.calender .twitter{
+  color: #58B0EB!important;
+}
+.calender .facebook{
+  color:#415691!important; 
+}
+.react {
+  background-color: #F2CA25 !important;
+  display: inline-block;
+  height: 8px;
+  line-height: 25px;
+  margin: 0 5px;
+  vertical-align: middle;
+  width: 8px;
+}
+.react-color{
+  display: inline-block;
+  height: 8px;
+  line-height: 25px;
+  margin: 0 5px;
+  vertical-align: middle;
+  width: 8px;
+  background-color: #5DBF6C!important;
+}
+.modelbox-body .calender table {
+  font-weight: 300;
+  margin: 0;
+  width: 100%;
+  border:none;
+}
+/*.right-calender-panel .fc-unthemed .fc-today::after {
+  background-color: rgb(242, 202, 37);
+  content: "";
+  height: 8px;
+  position: absolute;
+  right: 20px;
+  top: 8px;
+  width: 8px;
+}
+.right-calender-panel .fc-unthemed .fc-today::before {
+  background-color: #5DBF6C;
+  content: "";
+  height: 8px;
+  position: absolute;
+  right: 30px;
+  top: 8px;
+  width: 8px;
+}*/
+.right-calender-panel .fc-unthemed .fc-today {
+  position: relative;
+}
+.right-calender-panel .fc-unthemed .fc-today{background-color: transparent;}
+.right-calender-panel .fc-toolbar .fc-left {
+  float: right;
+  margin-left: 15px;
+}
+.right-calender-panel .fc-toolbar .fc-right {
+  float: right;
+}
+.right-calender-panel .fc-toolbar .fc-center {
+  display: block;
+}
+.right-calender-panel .fc-toolbar h2 {
+  background-color: rgb(233, 236, 243);
+  font-size: 25px;
+  margin: 10px 0 0 !important;
+  padding: 7px;
+  width: 100%;
+  border: 1px solid #DDDDDD;
+  border-bottom: none;
+}
+.right-calender-panel .fc-toolbar{
+  margin-bottom: 0px;
+}
+.modelbox-body .right-panel .right-calender-panel table th {
+  background-color: rgba(0, 0, 0, 0);
+  border-bottom: medium none;
+  padding: 23px 2px;
+}
+
+.right-calender-panel .fc-license-message{ display: none;}
+
+.camlist li{ border-bottom: 1px solid rgba(0,0,0,0)}
+.camlist .y:hover{ border-bottom: 1px solid #f2ca25 }
+.camlist .g:hover{ border-bottom: 1px solid #5dbf6c }
+
+.newcampaign-page .rel-postarea textarea{ height: 200px; resize:none;}
+.newcampaign-page .tagarea textarea{ height: 68px; resize:none; margin: 0 0 15px;}
+.newcampaign-page .tagarea button{ margin-bottom: 10px;}
+
+.daterange label{ padding: 0; display: none}
+.daterange .form-group{ margin: 0;}
+
+.calender-tooltip{ background: rgba(0,0,0,.4); position:fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 9;}
+.calender-tooltip .tooltip-content{ position: absolute; background: #fff; box-shadow: 0 0 10px #888; padding: 15px; border-radius: 5px; width: 400px;  margin: -75px 0 0 -200px; left: 50%; top: 50%;}
+
+.calender-tooltip .tooltip-content span{ position: relative; padding-right: 15px;}
+.calender-tooltip .tooltip-content span:after{ position: absolute; right: 0; top: 5px; content: ''; width: 10px; height: 10px;}
+
+/*.calender-tooltip .tooltip-content span.green:after{ background: green}
+.calender-tooltip .tooltip-content span.blue:after{ background: blue}
+.calender-tooltip .tooltip-content span.red:after{ background: red}*/
+
+.calender-tooltip .tooltip-content .view-btn{ float: right; padding: 6px 10px; color: #fff; border-radius: 2px; background: #1abc9c; box-shadow: 0 1px 0 rgba(255, 255, 255, 0.15) inset, 0 1px 1px rgba(0, 0, 0, 0.075); text-decoration: none !important; border: none;}
+
+.calender-tooltip .tooltip-content .close-btn{ position: absolute; right: -12px; top: -12px; border:2px solid #222; width: 25px; height: 25px; border-radius: 50%; color: #222; background: #fff;}
+/******calender*******/
+.fc-day-grid-event .fc-time, .fc-time-grid-event .fc-time, .fc-day-grid-event .fc-title{
+  display: none;
+}
+.fc-day-grid-event {
+  border: medium none;
+  border-radius: 50%;
+  display: inline-block;
+  height: 7px;
+  margin: 1px 2px 0;
+  padding: 0 1px;
+  vertical-align: top;
+  width: 6px;
+  cursor: pointer;
+}
+.fc-event-container {
+  line-height: 10px;
+}
+.camp-circle{
+    border-radius: 50%;
+    display: inline-block;
+    height: 8px;
+    margin-right: 5px;
+    vertical-align: middle;
+    width: 8px;
+}

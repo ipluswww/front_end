@@ -1,0 +1,99 @@
+<div class="default-model wraper-brands">
+  <div class="modelbox-body">
+      <div>
+           {{campaign-tabs isPostsTabActive=model.isPostsTabActive}}
+          </div>
+         <div class="right-panel">
+          <div class="col-md-12 homepost-page">
+              <!-- Tab panes -->
+                <div class="tab-content">
+                    <div class="tab-pane active">
+                       <div class="row">
+                          <div class="col-sm-6 col-md-3">
+                            <div class="form-group post-date">
+                                {{bootstrap-datepicker changeDate="filterStartDate" autoclose=true todayHighlight=true}}
+                                <!-- {{#bs-datetimepicker date=model.currDate updateDate=(action (mut model.filters.startD)) format='MM/DD/YYYY'}}
+                                  {{input class="form-control"}}
+                                {{/bs-datetimepicker}} -->
+                            </div>
+                          </div>
+                          <div class="col-sm-6 col-md-3">
+                            <div class="form-group post-date">
+                              {{bootstrap-datepicker changeDate="filterEndDate" autoclose=true todayHighlight=true}}
+                                <!-- {{#bs-datetimepicker date=model.currDate updateDate=(action (mut model.filters.endD)) format='MM/DD/YYYY'}}
+                                  {{input class="form-control"}}
+                                {{/bs-datetimepicker}}   -->
+                            </div>
+                          </div>
+                          <div class="col-sm-6 col-md-3">
+                              <select class="form-control" onchange={{action "filterStatus" value="target.value"}}>
+                                <option value="">Select Status</option>
+                                <option value=true>Approved</option>
+                                <option value=false>Pending</option>
+                              </select>
+                          </div>
+                          <div class="col-sm-6 col-md-3">
+                              <select class="form-control" onchange={{action "filterType" value="target.value"}}>
+                                <option value="">Select Type</option>
+                                <option value=1>1</option>
+                                <option value=2>2</option>
+                              </select>
+                          </div>
+
+                        </div>
+                         {{#each pagedContent as |post|}}
+                          <div class="panel fbPanel compaign-fb">
+                          <div class="panel-heading">
+                          <ul class="seasonalUl">
+                          <li><i class="fa fa-lg fa-facebook-square" aria-hidden="true"></i> Seasonal Tires Facebook</li>
+                          <li class="pull-right">{{format-date post.createdAt  format="MMM-DD YY, HH:mm a"}}  </li>
+                          </ul>
+                          </div>
+                          <div class="panel-body">
+                           <ul class="byUl">
+                          <li>By: Alex V on {{format-date post.createdAt   format="MMMM-DD YY"}}</li>
+                          <li>Status:
+                              {{#if post.isApproved}}
+                                Approved
+                              {{else}}
+                               Pending  Approval
+                              {{/if}}
+
+
+                          </li>
+                          </ul>
+                          <div class="row">
+                          <div class="col-md-9 col-sm-7">
+                            <p>{{post.content}}</p>
+                          <div class="campaignDiv">
+                          <ul>
+                          <li>Campaign: name</li>
+                          <li>Category: Name</li>
+                          </ul>
+                          <p>#tag #tag #tag more...</p>
+
+                          </div>
+
+                          </div>
+                          <div class="col-md-3 col-sm-5 pMarginNegative">
+                            <ul class="panelRightUl"><li><a class="tickIcon" href="javascript:void()"><span class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span></a></li><li><a class="crossIcon" href="javascript:void()"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></a></li><li><a class="minusIcon" href="javascript:void()"><span class="glyphicon glyphicon-minus-sign" aria-hidden="true"></span></a></li><li><a class="btnBorder" href="javascript:void()">1K Likes</a></li><li><a class="btnBorder" href="javascript:void()">30 Shares</a></li><li><a class="btnBorder" href="javascript:void()">Post Goal Met</a></li></ul>
+                          </div>
+                          </div>
+                          </div>
+                        </div>
+                        {{/each}}
+
+
+                        <div class="col-sm-12 col-md 12 col-xs-12 compaign-btns chat-buttons">
+                          <ul class="towBtnUl text-posts">
+                          <li><a class="btn btn-success text-uppercase" href="javascript:void()">New Post</a></li>
+                          <li><button class="btn btn-success text-uppercase" {{action "loadNext" on="click"}} >See More</button></li>
+                          </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+      </div>
+    </div>

@@ -1,0 +1,79 @@
+/*body {
+background:url(images/login-bg.jpg) no-repeat top center #fff!important;
+font-family: 'Avenir Next LT Pro';
+}*/
+
+.header{ position: relative;}
+.loginscreens:after{ background:url(images/login-bg.jpg) no-repeat top center; left: 0; top: 0; height: 350px; width: 100%; position: absolute; content: ''; }
+
+.header .logo{ display: inline-block; position: relative; z-index: 9;}
+.header.loginscreens .logo{ margin: 10% 0 0;}
+
+.loginbox {
+background:#fff;
+width:80%;
+border-radius:15px;
+margin:15% auto 0; box-shadow: 0 0 20px 5px #d8d8d8;
+padding:80px 15% 45px;
+}
+
+.loginbox .login-btn{
+font-size:15px;
+background:#1abc9c;
+display:block;
+border-radius:8px;
+color:#fff;
+line-height:20px; border:none;
+border-bottom:1px solid #999;
+text-transform:uppercase;
+padding:10px; width: 100%;
+}
+
+.create-btn {
+background:#5aa44d;
+color:#fff;
+font-size:13px; border: none;
+border-bottom:2px solid #ccc;
+border-radius:8px;
+line-height:20px;
+text-transform:uppercase;
+display:block;
+width:90%;
+margin:0 auto;
+padding:10px;
+}
+
+.login-btn:hover,.create-btn:hover, .login-btn:active,.create-btn:active {
+text-decoration:none; outline: none;
+color:#fff;
+}
+
+.forget-pass{ font-size: 13px; color: #5d5d5d;}
+.loginbox input[type="text"], .loginbox input[type="password"], .loginbox input[type="email"]{ background: #e9ecf3; box-shadow: none; padding-left: 0; border-left:0;}
+.loginbox .input-group i{ color: #f8ac59;}
+.loginbox .input-group-addon{ background: #e9ecf3;}
+
+
+.signuppage .create-btn{ width: 100%;}
+
+.step2page{ margin: 5% auto 0;}
+.step2page .login-buttons .btn-primary{ font-size:15px; float: left;
+background:#1abc9c;
+border-radius:4px;
+color:#fff;
+line-height:20px; border:none;
+border-bottom:1px solid #999;
+text-transform:uppercase;
+padding:5px 15px;}
+
+.step2page .login-buttons .btn-success{ background:#5aa44d;
+color:#fff;
+font-size:13px; border: none;
+border-bottom:2px solid #ccc;
+border-radius:4px;
+line-height:20px; float: right;
+text-transform:uppercase;
+padding:5px 15px;}
+
+
+

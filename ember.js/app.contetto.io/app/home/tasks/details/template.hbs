@@ -1,0 +1,154 @@
+<div class="main-center newest-tsks">
+  <div class="wrapes-inbox">
+        <p class="inbox"><span class="feeds-icons"><i class="fa fa-list" aria-hidden="true"></i></span>Tasks
+        <ul class="pull-right">
+            <li>Help</li>
+            <li>Tutarials</li>
+            <li>Quick chat</li>
+        </ul>
+        </p>
+    </div>
+	<div class="default-model tsk-details">
+	    <div class="modelbox-body">
+	        <div class="full-panel--task">
+	          <!-- Tab panes -->
+	          	<div class="tab-content">
+	            	<div class="tab-pane active">
+	            		<h3 class="model-heading">New Task</h3>
+	            <form>
+                <div class="row row--bottom-space"> <!-- Subject & due date -->
+                  <strong class="col-md-2 col-sm-5 col-xs-6">Subject:</strong>
+                  <div id="subject" class="col-md-2 col-sm-7 col-xs-6">
+                    New content
+                  </div>
+                  <strong class="col-md-2 col-sm-5 col-xs-6">Due by:</strong>
+                  <div id="dueDate" class="col-md-2 col-sm-7 col-xs-6">
+                    03-25-2016
+                  </div>
+                   <strong class="col-md-2 col-sm-5 col-xs-6">Status:</strong>
+                  <div id="status" class="col-md-2 col-sm-7 col-xs-6">
+                    Overdue
+                  </div>
+                </div>
+                <!-- <div class="row row--bottom-space"> Status & assigned to
+                  <strong class="col-md-2">Status:</strong>
+                  <div id="status" class="col-md-4">
+                    Overdue
+                  </div>
+                  <strong class="col-md-2">Assigned to:</strong>
+                  <div id="assignedTo" class="col-md-4">
+                    Yassine
+                  </div>
+                </div> -->
+                <div class="row row--bottom-space"> <!-- Created by & created on -->
+                  <strong class="col-md-2 col-sm-5 col-xs-6">Assigned to:</strong>
+                  <div id="assignedTo" class="col-md-2 col-sm-7 col-xs-6">
+                    Yassine
+                  </div>
+                  <strong class="col-md-2 col-sm-5 col-xs-6">Created by:</strong>
+                  <div id="createdBy" class="col-md-2 col-sm-7 col-xs-6">
+                    Taylor
+                  </div>
+                  <strong class="col-md-2 col-sm-5 col-xs-6">Created on:</strong>
+                  <div id="createdOn" class="col-md-2 col-sm-7 col-xs-6">
+                    03-17-2016
+                  </div>
+                </div>
+                <div class="row row--bottom-space" style="margin-top:20px;"> <!-- Description  -->
+                  <div class="col-md-5 col-sm-12">
+                     <h3 class="model-heading">Task Dependies:</h3>
+                     <div class="dependency_box">
+                      <div class="row">
+                        <div class="col-md-8 col-sm-12"><input type="text" class="form-control" placeholder="Find Task"></div>
+                        <div class="col-md-4 col-sm-12"><button class="btn btn-success btn-block">New</button></div>
+                      </div>
+                        <div class="table-responsive">
+                          <table class="table table-striped">
+                            <thead>
+                              <tr>
+                                <th>Tasks</th>
+                                <th>Status</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td>Adipiscing</td>
+                                <td>Pending</td>
+                              </tr>
+                              <tr>
+                                <td>Eullomco</td>
+                                <td>Complete</td>
+                              </tr>
+                              <tr>
+                                <td>Adipiscing</td>
+                                <td>Pending</td>
+                              </tr>
+                              <tr>
+                                <td>Adipiscing</td>
+                                <td>Complete</td>
+                              </tr>
+                              <tr>
+                                <td>Adipiscing</td>
+                                <td>Pending</td>
+                              </tr>
+                              <tr>
+                                <td>Adipiscing</td>
+                                <td>Complete</td>
+                              </tr>
+                              <tr>
+                                <td>Adipiscing</td>
+                                <td>Pending</td>
+                              </tr>
+                              <tr>
+                                <td>Adipiscing</td>
+                                <td>Complete</td>
+                              </tr>
+                              <tr>
+                                <td>Adipiscing</td>
+                                <td>Pending</td>
+                              </tr>
+                              <tr>
+                                <td>Adipiscing</td>
+                                <td>Complete</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="col-md-7 col-sm-12 description-space">
+
+                    <div class="form-group">
+                      <h3 class="model-heading">Description:</h3>
+                      {{ember-ckeditor value=text}}
+                      <!-- <label for="description" class="col-md-12 control-label descr">Description:</label>
+                      <textarea id="description" class="form-control desc-text" rows="3" placeholder="write here..."></textarea> -->
+                      </div>
+                  </div>
+                </div>
+               
+                <div class="row"> <!-- Select attachments & update status  -->
+                  <div class="form-group">
+                    <div class="col-md-4 col-sm-12">
+                      <strong class="attched">Attached files:</strong>
+                      <span id="attachments">{{#link-to "home"}}screenshot.jpg{{/link-to}}</span>
+                    </div>
+                    <div class="col-md-4 col-sm-12">
+                        <strong class="attched">RelatedItems:</strong>
+                        <span id="dependencies">{{#link-to "home"}}Post#1234{{/link-to}}</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="btnrows-tasks">
+                  <button type="submit" class="btn btn-success  text-uppercase task-btnsss new-att-color">Select attachments</button>
+                  <button type="submit" class="btn btn-success  text-uppercase task-btnsss">Update status</button>
+                </div>
+
+							</form>
+	            	</div>
+	          	</div>
+	        </div>
+	        <div class="clearfix"></div>
+	    </div>
+	</div>
+</div>

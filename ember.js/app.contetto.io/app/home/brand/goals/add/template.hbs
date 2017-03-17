@@ -1,0 +1,241 @@
+<div class="tab-content">
+    {{#if (eq model.currentStep 'startGoal')}}
+    <div class="tab-pane active" style="display:;">
+    		<h3 class="model-heading">New Goal</h3>
+			<form class="form-horizontal">
+				<div class="col-md-6 col-md-offset-3">
+					<div class="row">
+						<label class="col-md-5 col-sm-6">Type of Goal :</label>
+						<div class="col-md-7 col-sm-6">
+							<ul style="list-style:none;padding-left:0">
+                <li>
+                  <div class="radio">
+                    {{#radio-button
+                        value="trafficGoal"
+                        groupValue=model.goalType}}
+                        Traffic
+                    {{/radio-button}}
+                  </div>
+                </li>
+								<li>
+									<div class="radio">
+                    {{#radio-button
+                        value="interactionGoal"
+                        groupValue=model.goalType}}
+                        Interaction
+                    {{/radio-button}}
+									</div>
+								</li>
+								<li>
+									<div class="radio">
+                    {{#radio-button
+                        value="followingGoal"
+                        groupValue=model.goalType}}
+                        Following
+                    {{/radio-button}}
+									</div>
+								</li>
+								<li>
+									<div class="radio">
+                    {{#radio-button
+                        value="reputationGoal"
+                        groupValue=model.goalType}}
+                        Reputation
+                    {{/radio-button}}
+									</div>
+								</li>
+							</ul>
+						</div>
+						<div class="col-md-12">
+							 <button type="button" class="btn btn-success text-uppercase" {{action "goToStep" model.goalType}}>Next</button>
+						</div>
+					</div>
+				</div>
+			</form>
+    	</div>
+     {{/if}}
+
+     {{#if (eq model.currentStep 'trafficGoal')}}
+    	<div class="tab-pane active" style="display:;">
+    		<h3 class="model-heading">New Traffic Goal</h3>
+    		<form class="form-horizontal">
+				<div class="col-md-6 col-md-offset-3">
+					<div class="row">
+						<label class="col-md-5 col-sm-6">Website</label>
+						<div class="col-md-7 col-sm-6"><select class="form-control"><option>My Blog 1</option><option>My Blog 1</option><option>My Blog 1</option></select></div>
+					</div>
+					<div class="row">
+						<label class="col-md-5 col-sm-6">Metrics</label>
+						<div class="col-md-7 col-sm-6">
+							<ul style="list-style:none;padding-left:0">
+								<li>
+									<div class="radio">
+										<input type="radio" id="traffic" value="taffic" checked={{model.goalType}} name="goaltype"/>
+										<label for="traffic">Click</label>
+									</div>
+								</li>
+								<li>
+									<div class="radio">
+										<input type="radio" id="traffic" value="taffic" checked={{model.goalType}} name="goaltype"/>
+										<label for="traffic">Views</label>
+									</div>
+								</li>
+							</ul>
+						</div>
+						<div class="col-md-12">
+							 <button type="button" class="btn btn-success text-uppercase" {{action "goToStep"}}>Next</button>
+						</div>
+					</div>
+				</div>
+			</form>
+    	</div>
+    {{/if}}
+
+    {{#if (eq model.currentStep 'reputationGoal')}}
+    	<div class="tab-pane active" style="display:;">
+    		<h3 class="model-heading">New Reputation Goal</h3>
+    		<form class="form-horizontal">
+				<div class="col-md-6 col-md-offset-3">
+					<div class="row">
+						<div class="col-md-12 col-sm-12">
+							<ul style="list-style:none;padding-left:0; margin:0 0 20px;">
+								<li>
+									<div class="radio">
+										<input type="radio" id="traffic" value="taffic" checked={{model.goalType}} name="goaltype"/>
+										<label for="traffic">Mean Score</label>
+									</div>
+								</li>
+								<li>
+									<div class="radio">
+										<input type="radio" id="traffic" value="taffic" checked={{model.goalType}} name="goaltype"/>
+										<label for="traffic">Score or Specific Page</label>
+									</div>
+								</li>
+							</ul>
+						</div>
+
+						<label class="col-md-5 col-sm-6">Page</label>
+						<div class="col-md-7 col-sm-6"><select class="form-control"><option>YELP</option><option>YELP 1</option><option>YELP 2</option></select></div>
+
+						<div class="col-md-12">
+							 <button type="button" class="btn btn-success text-uppercase" {{action "goToStep"}}>Next</button>
+						</div>
+					</div>
+				</div>
+			</form>
+    	</div>
+    {{/if}}
+
+    {{#if (eq model.currentStep 'followingGoal')}}
+    	<div class="tab-pane active" style="display:;">
+    		<h3 class="model-heading">New Following Goal</h3>
+    		<form class="form-horizontal">
+				<div class="col-md-6 col-md-offset-3">
+					<div class="row">
+						<label class="col-md-5 col-sm-6">Metrics</label>
+						<div class="col-md-7 col-sm-6">
+							<ul style="list-style:none;padding-left:0; margin:0 0 20px;">
+								<li>
+									<div class="radio">
+										<input type="radio" id="traffic" value="taffic" checked={{model.goalType}} name="goaltype"/>
+										<label for="traffic">Like & Followers</label>
+									</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div class="row">
+						<label class="col-md-5 col-sm-6">Page</label>
+						<div class="col-md-7 col-sm-6"><select class="form-control"><option>My Facebook</option><option>My google</option><option>My yahoo</option></select></div>
+						<div class="col-md-12">
+							 <button type="button" class="btn btn-success text-uppercase" {{action "goToStep"}}>Next</button>
+						</div>
+					</div>
+				</div>
+			</form>
+    	</div>
+    {{/if}}
+
+    {{#if (eq model.currentStep 'interactionGoal')}}
+    	<div class="tab-pane active" style="display:;">
+    		<h3 class="model-heading">New Interaction Goal</h3>
+    		<form class="form-horizontal">
+				<div class="col-md-6 col-md-offset-3">
+					<div class="row">
+						<label class="col-md-5 col-sm-6">Page</label>
+						<div class="col-md-7 col-sm-6"><select class="form-control"><option>My Facebook</option><option>My google</option><option>My yahoo</option></select></div>
+					</div>
+					<div class="row">
+						<label class="col-md-5 col-sm-6">Metrics</label>
+						<div class="col-md-7 col-sm-6">
+							<ul style="list-style:none;padding-left:0">
+								<li>
+									<div class="radio">
+										<input type="radio" id="traffic" value="taffic" checked={{model.goalType}} name="goaltype"/><label for="traffic">Like / Follow</label>
+									</div>
+								</li>
+								<li>
+									<div class="radio">
+										<input type="radio" id="traffic" value="taffic" checked={{model.goalType}} name="goaltype"/><label for="traffic">Share</label>
+									</div>
+								</li>
+								<li>
+									<div class="radio">
+										<input type="radio" id="traffic" value="taffic" checked={{model.goalType}} name="goaltype"/><label for="traffic">Mention</label>
+									</div>
+								</li>
+								<li>
+									<div class="radio">
+										<input type="radio" id="traffic" value="taffic" checked={{model.goalType}} name="goaltype"/><label for="traffic">Comment</label>
+									</div>
+								</li>
+								<li>
+									<div class="radio">
+										<input type="radio" id="traffic" value="taffic" checked={{model.goalType}} name="goaltype"/><label for="traffic">Reply</label>
+									</div>
+								</li>
+								<li>
+									<div class="radio">
+										<input type="radio" id="traffic" value="taffic" checked={{model.goalType}} name="goaltype"/><label for="traffic">Direct Message</label>
+									</div>
+								</li>
+							</ul>
+						</div>
+						<div class="col-md-12">
+							 <button type="button" class="btn btn-success text-uppercase" {{action "goToStep"}}>Next</button>
+						</div>
+					</div>
+				</div>
+			</form>
+    	</div>
+    {{/if}}
+
+    {{#if (eq model.currentStep 'finishGoal')}}
+    	<!-- Save Goals -->
+    	<div class="tab-pane active" style="display:;">
+    		<h3 class="model-heading">New Goal</h3>
+    		<form class="form-horizontal">
+				<div class="col-md-6 col-md-offset-3 addgoal6">
+					<div class="row">
+						<label class="col-md-5 col-sm-6">Amount</label>
+						<div class="col-md-7 col-sm-6"><input type="text" class="form-control" placeholder="100"></div>
+					</div>
+					<div class="row">
+						<label class="col-md-5 col-sm-6">By</label>
+						<div class="col-md-7 col-sm-6">
+							{{#bs-datetimepicker date1=model.date format='MM/DD/YYYY'}}
+	                          {{input value=date1 id="dueDate" class="form-control" name="Date" placeholder="Date"}}
+	                        {{/bs-datetimepicker}}
+                   		</div>
+					</div>
+					<div class="row">
+						<div class="col-md-12">
+							 <button type="button" class="btn btn-success text-uppercase" {{action "goToStep"}}>Save</button>
+						</div>
+					</div>
+				</div>
+			</form>
+    	</div>
+    {{/if}}
+
+</div>

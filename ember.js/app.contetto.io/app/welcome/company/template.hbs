@@ -1,0 +1,70 @@
+<div class="container content">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 welcome-pagebox">
+            <h3 class="text-center">Company</h3>
+            {{#unless (eq model.companyInvites.length 0)}}
+            <div class="box">
+                <div class="row">
+                    <div class="col-xs-12 text-center">
+                        <h4>Your Company Invites</h4>
+                        <div class="row" style="padding-top: 5px;">
+                            {{#if model.companyInvites.length}}
+                                {{#each model.companyInvites as |invite|}}
+                                    <div class="col-xs-7 text-left">
+                                        Join <strong>{{invite.company.name}}</strong> as
+                                        <strong>{{invite.role.name}}</strong>
+                                    </div>
+                                    <div class="col-xs-5 text-right">
+                                        {{#if (eq invite.status "accept")}}
+                                            <button type="button"
+                                                    class="btn btn-sm btn-warning" {{action 'selectCompany' invite.company.id }}
+                                                    disabled={{invite.isLoading}}>
+                                                Select and continue
+                                            </button>
+                                        {{else}}
+                                            <button type="button"
+                                                    class="btn btn-sm btn-success" {{action 'acceptInvite' invite}}
+                                                    disabled={{invite.isLoading}}>
+                                                Accept
+                                            </button>
+                                            <button type="button"
+                                                    class="btn btn-sm btn-danger" {{action 'rejectInvite' invite}}
+                                                    disabled={{invite.isLoading}}>
+                                                Reject
+                                            </button>
+                                        {{/if}}
+                                    </div>
+                                {{/each}}
+                            {{else}}
+                                <p>You don't have any pending company invitation.</p>
+                            {{/if}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {{/unless}}
+            {{#if (eq model.companyInvites.length 0)}}
+            <div class="box">
+                <div class="text-center">
+                    <h4>Tell us a little more about your organization</h4>
+                    <h5>What is the name of your Company?</h5>
+                    <form class="form-horizontal" {{action "createCompany" on="submit"}}
+                          autocomplete="off">
+                        <div class="{{if model.errors.name 'has-error'}}">
+                            <!--<input type="text" class="form-control" id="company" placeholder="Company Name">-->
+                            {{input type="text" class="form-control" id="company" placeholder="Company Name" value=model.company.name}}
+                            {{#each model.errors.name as |error|}}
+                                <span class="help-block">{{error.message}}</span>
+                            {{/each}}
+                        </div>
+                        <button class="btn btn-success"
+                                disabled={{model.data.isSubmitted}}>
+                            Next
+                        </button>
+                    </form>
+                </div>
+            </div>
+            {{/if}}
+        </div>
+    </div>
+</div>

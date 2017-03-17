@@ -1,0 +1,67 @@
+/* LEFT SIDE */
+.left-side {
+	/*position: fixed;
+	top: 50px;
+	left: 0;
+	width: 40px;
+	z-index: 9;
+	cursor: auto;
+	overflow: hidden;*/
+	transition: .5s;}
+.left-side {width: 20.25%; float: left; box-shadow: 0 0 10px #d4d7dd; background: #fff; position: relative;}
+.left-side.opened{ width: 60px; overflow: hidden;}
+.left-inner {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	width: 40px;}
+.left-nav {
+	float: left;
+	margin: 0;
+	width: 100%; min-width: 218px;
+	padding: 11px 0 0;}
+.left-nav li {
+	float: left; margin: 1px 0 0;
+	width: 100%;
+	display: block;}
+.left-nav li.active a{ background: rgba(26,188,156,.1); color: rgba(26,188,156,.9)}
+.left-nav li.active a:after{ position: absolute; content: ''; height: 100%; width: 5px; left: -5px; top: 0; background: #41a85f;}
+.left-nav li a {
+	position: relative;
+	padding: 10px 20px 10px 22px;
+	width: 100%;
+	font-size: 17px;
+	line-height: 32px;
+	color: #2e2e2e;
+	display: block;
+	transition: .2s;}
+.left-nav li a img {padding-right: 10px;}
+.left-nav li a .badge {
+	position: absolute;
+	top: 20px;
+	right: 20px; background: #f7da64; color: #333;}
+.left-nav li a:hover {
+	background: rgba(26,188,156,.1); color: rgba(26,188,156,.9);
+	text-decoration: none;}
+
+
+
+.left-side .nav-title {display: none;}
+.left-side .nav-title {display: inline-block;}
+
+.left-opener {
+	position: absolute;
+	top: calc(50% - 11px);
+	right: 0; font-size: 20px;
+	width: 20px; text-align: center;
+	height: 25px; 
+	/*background: url('images/vertical-dots.png');*/
+	cursor: pointer;
+	z-index: 19;}
+
+.notifications-social .notification-row{ border-bottom: 1px solid #e5e5e5; padding:20px 0 10px;}
+.notifications-social .notification-row img{ margin: 0 0 5px;}
+
+.col-sm-3.right-side{ margin: -10px 0 0;}
+.col-sm-9 .wrap-side-4 ul{ margin: 0 0 20px;}

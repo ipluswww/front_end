@@ -1,0 +1,174 @@
+<div class="main-center wrps-dtls">
+  <div class="row wrap-main-2">
+    <div class="wrapes-inbox">
+        <p class="inbox">User Settings
+        <ul class="pull-right">
+          <li><a href="#">Help</a></li>
+          <li><a href="#">Tutorials</a></li>
+          <li><a href="#">Quick chat</a></li>
+      </ul>
+        </p>
+    </div>
+    <div class="default-model">
+      <div class="modelbox-body">
+      <!-- Account Settings tab (Component) // Details tab active-->
+        {{account-tab-left-panel class='left-panel padding-none  tabs-left2' isDetailsTabActive=model.isDetailsTabActive}}
+          <div class="right-panel">
+            <!-- Tab panes -->
+              <div class="tab-content">
+                <div class="tab-pane active">
+                  <h3 class="model-heading">Personal informations</h3>
+                    <form class="form-horizontal account-wrape-form" {{action "updateInfo" on="submit"}} autocomplete="off">
+                    <div class="row">
+  	                   <div class="col-sm-6">
+                         <div class="form-group">
+                            <!-- <input type="text" class="form-control" placeholder="Change Company Name" /> -->
+                            <label class="control-label col-md-4">First Name</label>
+                                <div class="col-md-8">
+                            {{input type="text" class="form-control" id="first-name" placeholder="Change First Name" value=model.user.firstName}}
+                            {{#each model.errors.firstName as |error|}}
+                                <span class="help-block">{{error.message}}</span>
+                            {{/each}}
+                            </div>
+                           
+                        <!-- </div class="form-group"> -->
+                        </div>
+                      </div>
+                        <div class="col-sm-6">
+                        <div class="form-group">
+                            <!-- <input type="text" class="form-control" placeholder="Change Company Name" /> -->
+                             <label class="control-label col-md-4">Last Name</label>
+                                <div class="col-md-8">
+                            {{input type="text" class="form-control" id="last-name" placeholder="Change Last Name" value=model.user.lastName}}
+                            {{#each model.errors.lastName as |error|}}
+                                <span class="help-block">{{error.message}}</span>
+                            {{/each}}
+                            </div>
+
+                        <!-- </div class="form-group"> -->
+                        </div>
+                      </div>
+                      <div class="col-sm-6">
+                        <div class="form-group">
+                            <!-- <input type="text" class="form-control" placeholder="Change Phone Number" /> -->
+                             <label class="control-label col-md-4">Phone No.</label>
+                                <div class="col-md-8">
+                            {{input type="number" class="form-control" id="phone-number" placeholder="Change Phone Number" value=model.user.phoneNumber}}
+                            {{#each model.errors.phoneNumber as |error|}}
+                                <span class="help-block">{{error.message}}</span>
+                            {{/each}}
+                            </div>
+                        <!-- </div class="form-group"> -->
+                        </div>
+                      </div>
+                      <div class="col-sm-6">
+                        <div class="form-group">
+                            <!-- <textarea class="form-control" placeholder="Change About Information" ></textarea> -->
+                            <label class="control-label col-md-4">Country</label>
+                            <div class="col-md-8">
+                               {{input type="text" class="form-control" placeholder="Country" value=model.user.country}}
+                               {{#each model.errors.country as |error|}}
+                                 <span class="help-block">{{error.message}}</span>
+                               {{/each}}
+                            </div>
+                        <!-- </div class="form-group"> -->
+                        </div>
+                      </div>
+
+                        <div class="col-sm-6">
+                        <div class="form-group">
+                            <!-- <textarea class="form-control" placeholder="Change About Information" ></textarea> -->
+                             <label class="control-label col-md-4">Address</label>
+                                <div class="col-md-8">
+                           <!-- <input type="text" class="form-control" placeholder="Change Address" /> -->
+                            {{input type="text" class="form-control" id="user-address" placeholder="Change Address" value=model.user.address}}
+                            {{#each model.errors.address as |error|}}
+                                <span class="help-block">{{error.message}}</span>
+                            {{/each}}
+                            </div>
+                        <!-- </div class="form-group"> -->
+                        </div>
+                      </div>
+
+                       <div class="col-sm-6">
+                        <div class="form-group">
+                            <!-- <textarea class="form-control" placeholder="Change About Information" ></textarea> -->
+                            <label class="control-label col-md-4">City</label>
+                            <div class="col-md-8">
+                              {{input type="text" class="form-control" placeholder="City" value=model.user.city}}
+                              {{#each model.errors.city as |error|}}
+                                  <span class="help-block">{{error.message}}</span>
+                              {{/each}}
+                            </div>
+                        <!-- </div class="form-group"> -->
+                        </div>
+                      </div>
+
+                      <div class="col-sm-6">
+                        <div class="form-group">
+                            <!-- <textarea class="form-control" placeholder="Change About Information" ></textarea> -->
+                             <label class="control-label col-md-4">State</label>
+                                <div class="col-md-8">
+                                  {{input type="text" class="form-control" placeholder="State" value=model.user.state}}
+                                  {{#each model.errors.state as |error|}}
+                                    <span class="help-block">{{error.message}}</span>
+                                  {{/each}}
+                            </div>
+                            
+                        <!-- </div class="form-group"> -->
+                        </div>
+                        <div class="form-group">
+                             <label class="control-label col-md-4">Postal code</label>
+                                <div class="col-md-8">
+                         {{input type="text" class="form-control" id="user-zip" placeholder="Change Postal Code" value=model.user.postalCode}}
+                            {{#each model.errors.province as |error|}}
+                                <span class="help-block">{{error.message}}</span>
+                            {{/each}}
+                            </div>
+                            
+                        <!-- </div class="form-group"> -->
+                        </div>
+                      </div>
+
+                      <div class="col-sm-6">
+                        <div class="form-group">
+                            <!-- <textarea class="form-control" placeholder="Change About Information" ></textarea> -->
+                             <label class="control-label col-md-4">About</label>
+                                <div class="col-md-8">
+                            {{textarea class="form-control" id="about-info" placeholder="Change About Information" value=model.user.about}}
+                            {{#each model.errors.about as |error|}}
+                                <span class="help-block">{{error.message}}</span>
+                            {{/each}}
+                            </div>
+                            
+                        <!-- </div class="form-group"> -->
+                        </div>
+                        
+                      </div>
+
+                      
+                      <div class="col-sm-12">
+                        <div class="form-group">
+                            <div class="col-md-12">
+                            <button type="submit" class="btn btn-success  text-uppercase" disabled={{model.data.isSubmitted}}>UPDATE</button>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- </div class="row""> -->
+                    </div>
+                    <!-- </form class="form-horizontal"> -->
+                    </form>
+                    <!-- </div class="tab-pane active"> -->
+                </div>
+                <!-- </div class="tab-content"> -->
+              </div>
+              <!-- </div class="right-panel"> -->
+          </div>
+          <div class="clearfix"></div>
+          <!-- </div class="modelbox-body"> -->
+      </div>
+      <!-- </div class="default-model"> -->
+    </div>
+    <!-- </div class="main-center"> -->
+  </div>
+</div>

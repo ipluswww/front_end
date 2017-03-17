@@ -1,0 +1,106 @@
+.default-model .modelbox-body .full-panel--task {
+	float: left;
+	padding: 15px;
+}
+.default-model .modelbox-body .btn--task-search {
+	float: left;
+	padding:7px 4px; font-size: 13px
+}
+
+.default-model .modelbox-body .row.row--bottom-space {
+	margin-bottom: 0.8rem;
+}
+.tsk-details .full-panel--task {
+  width: 100%;
+}
+.tsk-details .tab-content .model-heading {
+  color: #262626;
+  font-size: 17px;
+  margin: 0;
+  padding-bottom: 9px;
+  text-align: left !important;
+  text-transform: uppercase;
+}
+.newest-tsks .tsk-details .descr {
+  font-size: 15px;
+  font-weight: bold !important;
+}
+.newest-tsks .tsk-details .full-panel--task {
+  background-color: #fff;
+}
+.desc-text{
+	background-color: #E8EBF2;
+	height: 150px!important;
+}
+.task-btnsss{
+	margin-top: 10px;
+}
+.attched{
+	font-weight: 300;
+	font-size: 15px;
+}
+.newest-tsks .new-tss-fomrs .form-control {
+  background-color: #e8ebf2;
+  border-radius: 6px;
+}
+.newest-tsks .new-tss-fomrs .form-control#dueDate{ border-radius: 6px 0 0 6px;}
+
+.newest-tsks .new-att-color{
+	background-color: #ebebeb !important;
+	color: #333;
+}
+.wrap-form-advance {
+  /*box-shadow: 2px 2px 8px 2px #ccc;*/
+  margin: 0 auto;
+  padding: 20px;
+  width: 70%;
+}
+.wrap-form-advance #tagsFilter {
+  /*background-color: #e8ebf2;*/
+  color: #333 !important;
+}
+.wrap-form-advance label {
+  color: #040404;
+  font-size: 15px;
+  padding-top: 10px;
+  vertical-align: middle;
+}
+.wrap-form-advance .text-heading {
+  color: #262626;
+  font-size: 17px;
+  text-align: center;
+  margin: 0;
+  padding-bottom: 20px;
+  text-transform: uppercase;
+}
+.campaignDetailsForm .form-group {
+ 
+}
+.campaignDetailsForm{
+   box-shadow: none;
+  margin: 0 auto;
+  padding:0 15px;
+  width: 100%;
+}
+
+.taskslist-table{ min-height: 280px;}
+.taskslist-table tr{ position: relative; display: flex;}
+.taskslist-table tr td, .taskslist-table tr th{ flex:1 0 0;}
+.taskslist-table tr th{ border: none;}
+.taskslist-table tr .popup{ position: absolute; z-index: 9; display: none; left: 20%; top: -33px; width: 100%; background: #fff; border: 1px solid #ccc; box-shadow: 0 0 5px #ccc; width: 400px; max-width: 100%; padding: 15px;}
+.taskslist-table tr:hover .popup{ display: block;}
+.taskslist-table tr .popup ul{ list-style: none;}
+.taskslist-table tr .popup ul li{ padding: 3px 10px; color: #444}
+.taskslist-table tr .popup ul li strong{ color: #222; display: inline-block; width: 40%; font-weight: 600;}
+/*.taskslist-table tr .popup ul li:nth-child(even){ background: #f2f2f2;}*/
+
+.taskslist-table tr .popup:after{ position: absolute; left: -15px; top: 40px; content: ''; border-right: 15px solid #ccc; border-top: 13px solid rgba(0,0,0,0); border-bottom: 13px solid rgba(0,0,0,0);}
+.taskslist-table tr .popup:before{ position: absolute; left: -14px; top: 40px; content: ''; border-right: 15px solid #fff; border-top: 13px solid rgba(0,0,0,0); border-bottom: 13px solid rgba(0,0,0,0); z-index: 9}
+
+.dependency_box{ border: 1px solid #ccc; border-radius: 5px; padding: 10px;}
+.dependency_box table{ background: #F9F9F9; margin: 0;}
+.dependency_box table td{ padding: 4px 8px !important; border: 0 !important;}
+.dependency_box .table-responsive{ margin-top: 10px; max-height: 230px; overflow: auto;}
+.description-space .cke_contents{ max-height: 122px;}
+.dependency_box .btn-block{ padding: 6px 2px !important;}
+.btnrows-tasks .btn-success{ margin-right: 15px;}

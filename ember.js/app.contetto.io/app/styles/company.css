@@ -1,0 +1,136 @@
+
+/*******company module***********/
+.roles-wrps {
+  max-width: 450px !important;
+  width: 100% !important;
+}
+.roles-wrps .modelbox-body > .role-id-head {
+  padding-top: 20px;
+}
+.roles-wrps .role-id-head .text-right {
+  padding-top: 7px;
+}
+.roles-wrps input[type="checkbox"] + label::before {
+  margin: 1px 5px 0 0;
+}
+.roles-wrps .submit-btn{
+	float: none;
+    margin: 0 auto;
+    width: 30%;
+}
+.roles-wrps .submit-btn > .text-uppercase{
+	margin-bottom: 15px;
+}
+.roles-wrps .checkcox-panel .checkbox {
+  margin: 10px 0!important;
+}
+
+/******company add********/
+.text-adds {
+  height: 80px !important;
+}
+.block-add.submit-btn {
+  display: block;
+  padding:10px 15px 0;
+  
+}
+
+
+/*****company detail*****/
+.wrps-dtls .tabs-left{
+ vertical-align: top; width: 100%; /*overflow: auto; white-space: nowrap;*/
+}
+.wrps-dtls .tabs-left li{ margin: 0 8px 0 0; float: none; display: inline-block; /*width: 180px;*/}
+.wrps-dtls .tabs-left li.active a{ background: #1abc9c; color: #fff;}
+.wrps-dtls .tabs-left li:last-child{ margin: 0;}
+.wrps-dtls .tabs-left li a{ background: #ffffff; padding: 7px 10px; border-radius: 8px 8px 0 0; margin: 0; font-size: 13px; color: #a3a3a3; border: 0 !important;}
+.wrps-dtls .right-panel{
+display: inline-block !important;
+}
+.wrps-dtls .default-model .left-panel, .wrps-dtls .default-model .right-panel {
+ 
+}
+@media (max-width: 1025px) {
+	.main-center{
+		width: 100%;
+	}
+	.default-model .modelbox-body .left-panel {
+		float: left;
+		width: 100%;
+	}
+	.default-model .left-panel, .default-model .right-panel {
+		display: block;
+	}
+	.default-model .modelbox-body .nav-tabs.tabs-left {
+		
+		border-radius: 3px;
+		height: 100%;
+		max-width: none;
+		min-height: auto;
+		
+	}
+	.right-panel{
+		max-width: none!important;
+		width: 100%!important;
+	}
+	.default-model.notificaton-page{
+		
+	}
+	.default-model .modelbox-body .nav-tabs > li {
+	  	
+	}
+	.default-model.notificaton-page .navigation-box ul li{
+		margin:0;
+	}
+	.default-model.notificaton-page .scrollable-box {
+		margin: 10px 0;
+	}
+	.col-md-4.col-sm-4.text-right > p {
+		float: left;
+		width: 100%;
+	}
+	.default-model.notificaton-page .navigation-box ul {
+		list-style: outside none none;
+		margin: 10px 0;
+		padding: 0;
+	}
+	.scrollable-box ul{
+		margin: 0!important
+	}
+  .wrps-dtls .default-model .modelbox-body .right-panel {
+    float: left;
+    width: 100% !important;
+  }
+}
+
+/*****company responsive*****/
+@media(max-width:800px){
+  .wrps-dtls .default-model .modelbox-body .left-panel {
+    width: 100%;
+  }
+  .wrps-dtls .default-model .modelbox-body .nav-tabs.tabs-left {
+    height: 100%;
+    min-height: auto;
+    max-width: 100%;
+  }
+  .wrps-dtls .tabs-left {
+    display: block;
+  }
+  .wrps-dtls .default-model .modelbox-body .nav-tabs.tabs-left {
+    min-height: auto;
+  }
+  .wrps-dtls .default-model .left-panel, .default-model .right-panel {
+    display: block!important;
+  }
+  .wrps-dtls .default-model .modelbox-body .nav-tabs.tabs-left {
+    max-width: 100%;
+    min-height: auto;
+  }
+}
+
+  /*======new css 27-06=======*/
+
+  .modelbox-body form input[type="checkbox"]{ margin: 0;}
+  .editrole-page label{ font-weight: 300;}
+  .role-id-head label{ margin: 6px 0;}
+  .companymodel .col-md-6{ margin-bottom: 15px;}

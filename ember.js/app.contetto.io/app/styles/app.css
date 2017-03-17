@@ -1,0 +1,59 @@
+/*
+DEFAULTS
+-- Body
+-- Placeholder
+-- Links
+-- Buttons
+
+HEADER
+-- Header
+-- Logo
+-- Menu
+
+MAIN
+-- Content
+-- Forms
+-- Custom buttons
+-- Custom checkbox
+-- Custom dropdown
+-- Custom table
+
+HELPERS
+-- Classes
+*/
+
+/* TASKS */
+@import 'task.css';
+
+/* inboxFeeds */
+/* @import 'inboxFeeds.css'; */
+
+/* Company */
+@import 'company.css';
+
+/* DEFAULTS
+================================== */
+/* Body */
+
+@import 'post.css';
+@import url("team.css");
+@import url("login.css");
+@import url("homecommon.css");
+@import url("left-navbar.css");
+@import url("right-navbar.css");
+@import url("inbox.css");
+@import url("accountsetting.css");
+@import url("feeds.css");
+@import url("task.css");
+@import url("footer.css");
+@import url("brand.css");
+@import url("campaign.css");
+@import url("responsive.css");
+@import url(https://fonts.googleapis.com/css?family=Nunito:400,300,700);
+@import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css");
+
+body {
+	color: #111;
+	background: #ededed;
+	font-family: 'Nunito', sans-serif; font-weight: 300;
+}

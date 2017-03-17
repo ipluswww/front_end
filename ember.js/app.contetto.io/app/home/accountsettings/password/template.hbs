@@ -1,0 +1,74 @@
+<div class="main-center wrps-dtls">
+  <div class="row wrap-main-2">
+     <div class="wrapes-inbox">
+        <p class="inbox">User Setting
+          <ul class="pull-right">
+            <li><a href="#">Help</a></li>
+            <li><a href="#">Tutarials</a></li>
+            <li><a href="#">Quick chat</a></li>
+          </ul>
+        </p>
+    </div>
+    <div class="default-model">
+      <div class="modelbox-body">
+        <!-- Account Settings tab (Component)  // Password tab active -->
+        {{account-tab-left-panel class='left-panel padding-none  tabs-left2' isPasswordTabActive=model.isPasswordTabActive}}
+          <div class="right-panel">
+            <!-- Tab panes -->
+              <div class="tab-content">
+                <div class="tab-pane active">
+                  <h3 class="model-heading text-center">Change your password</h3>
+                    <form class="form-horizontal password-form" {{action "updatePassword" on="submit"}} autocomplete="off">
+                    <div class="row">
+                       <div class="col-sm-12">
+                         <div class="form-group">
+                            <!-- <input type="text" class="form-control" placeholder="Old password" /> -->
+                            {{input type="password" class="form-control" id="old-pass" placeholder="Old password" value=model.user.oldPassword}}
+                            {{#each model.errors.oldPassword as |error|}}
+                                <span class="help-block">{{error.message}}</span>
+                            {{/each}}
+
+                          <!-- </div class="form-group"> -->
+                        </div>
+                        <div class="form-group">
+                            <!-- <input type="text" class="form-control" placeholder="New password" /> -->
+                            {{input type="password" class="form-control" id="new-pass" placeholder="New password" value=model.user.newPassword}}
+                            {{#each model.errors.newPassword as |error|}}
+                                <span class="help-block">{{error.message}}</span>
+                            {{/each}}
+
+                          <!-- </div class="form-group"> -->
+                        </div>
+                        <div class="form-group">
+                            <!-- <input type="text" class="form-control" placeholder="Re-enter New Password" /> -->
+
+                            {{input type="password" class="form-control" id="cnf-pass" placeholder="Re-enter New Password" value=model.user.cnfPassword}}
+                            {{#each model.errors.cnfPassword as |error|}}
+                                <span class="help-block">{{error.message}}</span>
+                            {{/each}}
+
+                          <!-- </div class="form-group"> -->
+                        </div>
+                        <div class="form-group save-new-btn">
+                            <button type="submit" class="btn btn-success  text-uppercase" disabled={{model.data.isSubmitted}}>SAVE</button>
+                        </div>
+                      <!-- </div class="col-sm-12"> -->
+                      </div>
+                      <!-- </div class="row"> -->
+                    </div>
+                    <!-- </form class="form-horizontal"> -->
+                    </form>
+                  <!-- </div class="tab-pane active"> -->
+                </div>
+              <!-- </div class="tab-content"> -->
+              </div>
+            <!-- </div class="right-panel"> -->
+          </div>
+          <div class="clearfix"></div>
+          <!-- </div class="modelbox-body"> -->
+      </div>
+      <!-- </div class="default-model"> -->
+    </div>
+    <!-- </div class="main-center"> -->
+  </div>
+</div>

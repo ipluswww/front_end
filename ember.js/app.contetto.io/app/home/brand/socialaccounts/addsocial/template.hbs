@@ -1,0 +1,134 @@
+<div class="tab-content">
+  <div class="tab-pane active">
+     <!-- <h3 class="model-heading text-center">Connect more social accounts</h3> -->
+      {{#unless showButton}}
+        <div class="col-md-6 col-md-offset-3 col-sm-12 addaccount-page">
+         	<p>We Recommened connecting all your all social accounts to contetto</p>
+         	<p>This will help you manage everything in one easy locations</p>
+         	<div class="account_box">
+         		<ul class="btns text-uppercase">
+         			<li>
+                <a href="#" class="btn btn-linked btn-block" {{action 'signIn' 'linked-in-oauth2'}}>
+                  <i class="fa fa-linkedin"></i>
+                  Sign in with Linked in
+                </a>
+              </li>
+         			<li>
+                <a href="#" class="btn btn-tweet btn-block" {{action 'signIn' 'twitter-oauth1'}}>
+                  <i class="fa fa-twitter"></i>
+                  Sign in with Twitter
+                </a>
+              </li>
+         			<li>
+                <a href="#" class="btn btn-face btn-block" {{action 'signIn' 'facebook-oauth2'}}>
+                  <i class="fa fa-facebook"></i>
+                  Sign in with Facebook
+                </a>
+              </li>
+              <li>
+                <a href="#" class="btn btn-tweet btn-block" {{action 'signIn' 'reddit-oauth2'}}>
+                  <i class="fa fa-reddit-alien"></i>
+                  Sign in with Reddit
+                </a>
+              </li>
+         			<li>
+                <a href="#" class="btn btn-google btn-block" {{action 'signIn' 'google-oauth2'}}>
+                  <i class="fa fa-google"></i>
+                  Sign in with Google
+                </a>
+              </li>
+         			<li>
+                <a href="#" class="btn btn-you btn-block" {{action 'signIn' 'youtube-oauth2'}}>
+                  <i class="fa fa-youtube"></i>
+                  Sign in with You tube
+                </a>
+              </li>
+         		</ul>
+         	</div>
+        </div>
+
+      {{else}}
+
+        {{#if showAddPage}}
+
+          <div class="col-md-12">
+            <form class="form-horizontal">
+              <div class="form-group">
+                <label for="username" class="col-md-3 control-label">&nbsp;</label>
+                <div class="col-md-offset-3 col-md-9">
+                  <button type="submit" class="btn btn-success  text-uppercase" {{action 'facebookAction' 'profile'}}>
+                    Add Profile
+                  </button>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="username" class="col-md-3 control-label">&nbsp;</label>
+                <div class="col-md-offset-3 col-md-9">
+                  <span class="text-uppercase"><strong>OR</strong></span>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="assignRole" class="col-md-3 control-label">Facebook pages</label>
+                <div class="col-md-9">
+
+                  {{#x-select value=model.page id="facebook-pages" class="form-control"}}
+                    {{#x-option value=false}} Choose a page{{/x-option}}
+                    {{#each tokenParser.data.0.pages as |page|}}
+                      {{#x-option value=page.attributes}} {{page.attributes.name}} {{/x-option}}
+                    {{/each}}
+                  {{/x-select}}
+
+                  {{#if pageError}}
+                    <span class="help-block">{{pageError}}</span>
+                  {{/if}}
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-md-offset-3 col-md-9">
+                  <button type="submit" class="btn btn-success  text-uppercase" {{action 'facebookAction' 'page'}}>
+                    Add Page
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+
+        {{else}}
+          <div class="tab-content">
+              <div class="tab-pane active">
+              <div class="row brands-deatils">
+                <form class="" {{action "saveAccount" on="submit"}} autocomplete="off">
+
+                  <label class="control-label col-md-4 col-sm-12 col-xs-12 text-right">Title</label>
+                  <div class="form-group col-md-7 col-sm-12 col-xs-12">
+                    {{input type="text" class="form-control" id="brandname" value=model.account.title}}
+
+                    {{#each model.errors.title as |error|}}
+                        <span class="help-block">{{error.message}}</span>
+                    {{/each}}
+                  </div>
+
+                  {{#if model.page}}
+                    <label class="control-label col-md-4 col-sm-12 col-xs-12 text-right">Page Title</label>
+                    <div class="form-group col-md-7 col-sm-12 col-xs-12">
+                      {{input type="text" class="form-control" id="page-name" value=model.page.name readonly=true}}
+                    </div>
+                  {{/if}}
+
+                  <label class="control-label col-md-4 col-sm-12 col-xs-12 text-right">Type</label>
+                  <div class="form-group col-md-7 col-sm-12 col-xs-12">
+                    {{input type="text" class="form-control" id="type" value=tokenParser.data.0.type readonly=true}}
+                  </div>
+
+                  <div class="submit-btn ml-20">
+                    <button type="submit" class="btn btn-success pull-left text-uppercase" disabled={{model.isSubmitted}}>Save</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+
+        {{/if}}
+      {{/unless}}
+  </div>
+</div>

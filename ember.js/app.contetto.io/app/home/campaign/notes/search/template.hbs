@@ -1,0 +1,57 @@
+	<div class="tab-content">
+		<div class="tab-pane active">
+		   <form class="wrap-form-advance">
+                <h3 class="text-heading">Notes Advanced Settings</h3>
+				
+			
+				
+				<div class="row row--bottom-space"> <!-- Tags filter -->
+                  <label for="tagsFilter" class="col-md-4 control-label">Filter by date Range:</label>
+                  <div class="col-md-8 daterange">
+                   {{date-range-picker}}
+                  </div>
+                </div>
+				
+                <div class="row row--bottom-space"> <!-- Tags filter -->
+                  <label for="tagsFilter" class="col-md-4 control-label">Filter by tags:</label>
+                  <div class="col-md-8">
+                      <input type="text" class="form-control" id="tagsFilter" placeholder="#contetto, #filesneeded"/>
+                  </div>
+                </div>
+                <div class="row row--bottom-space"> <!-- Status filter -->
+                  <label for="statusFilter" class="col-md-4 control-label">Filter by Status:</label>
+                  <div class="col-md-8">
+                    <select id="status" class="form-control">
+                            <option>Pending</option>
+                            <option>Half</option>
+                            <option>complete</option>
+                            <option>progress</option>
+                            <option>working</option>
+                            <option>done</option>
+                    </select>
+                  </div>
+                </div>
+                
+                <div class="row row--bottom-space"> <!-- Assigned to -->
+                  <label for="assignedTo" class="col-md-4 control-label">Filter by Author:</label>
+                  <div class="col-md-8">
+                    <select id="assignedTo" class="form-control">
+                            <option>Taylor Macdogoll</option>
+                            <option>Taylor Macdogoll</option>
+                            <option>Taylor Macdogoll</option>
+                            <option>Taylor Macdogoll</option>
+                            <option>Taylor Macdogoll</option>
+                            <option>Taylor Macdogoll</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="row"> <!-- Save  -->
+                  <div class="form-group">
+                    <div class="col-md-3 col-md-offset-4">
+                         <button type="submit" class="btn btn-success  text-uppercase">Save</button>
+                    </div>
+                  </div>
+                </div>
+							</form>
+		</div>
+	</div>

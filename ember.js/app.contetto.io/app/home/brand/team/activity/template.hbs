@@ -1,0 +1,34 @@
+<div class="row">
+      <div class="col-md-3 col-sm-12 reviewfow_tabs">
+        {{brand-team-tab isTeamActivityActive=model.isTeamActivityActive}}
+      </div>
+      <div class="col-md-9 col-sm-12">
+       <div class="tab-content">
+          <div class="tab-pane active">
+            <!-- <h3 class="model-heading">Brand activity</h3> -->
+            <div class="table-responsive">
+            <table class="table table-bordered table-striped table-responsive text-center">
+              <tbody>
+                <tr class="text-uppercase">
+                  <th>Name</th>
+                  <th>Activity</th>
+                  <th>Date</th>
+                </tr>
+                {{#each model.activity as |act|}}
+                <tr>
+                  <td>{{act.Name}}</td>
+                  <td>{{act.Activity}}</td>
+                  <td>{{act.Date}}</td>
+                </tr>
+                {{/each}}
+
+              </tbody>
+            </table>
+            </div>
+        <div class="center-block submit-btn">
+          <button type="button" class="btn btn-success  text-uppercase">Show More</button>
+        </div>
+      </div>
+      </div>
+  </div>
+</div>

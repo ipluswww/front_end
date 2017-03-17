@@ -1,0 +1,27 @@
+<!-- Header beginning -->
+<div class="header welcome-header">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-3 col-md-3 col-xs-4">
+                <a href="#" class="logo"><img class="img-responsive" src="assets/images/logo.png" alt=""></a>
+            </div>
+            <div class="right_header welcome col-xs-8 col-md-9 col-sm-9 pull-right text-right">
+               <div class="user_sec">
+                 <span class="mob-views-name">{{model.user.fullName}}</span>
+                   {{gravatar-image email=model.user.email}}
+                </div>
+                <ul class="links">
+                   <li class="logout">
+                    <button type="button" role="button" {{action 'logout'}}> <i class="fa fa-sign-out"></i> Logout</button>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Header ending -->
+
+<!-- Main beginning -->
+{{outlet}}
+<!-- Main ending -->

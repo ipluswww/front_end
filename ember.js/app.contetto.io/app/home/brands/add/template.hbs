@@ -1,0 +1,99 @@
+<div class="main-center wrps-dtls">
+  <div class="row wrap-main-2">
+    <div class="wrapes-inbox">
+      <p class="inbox">Brand Information
+      </p>
+    </div>
+    <div class="default-model companymodel">
+      <div class="modelbox-body">
+        <div class="right-panel">
+          <div class="col-sm-12">
+            <!-- Tab panes -->
+            <div class="tab-content">
+              <div class="tab-pane active" id="home">
+                <form class="form-horizontal" {{action "addBrand" on="submit"}} autocomplete="off">
+                  <div class="row">
+                    <div class="col-md-6 col-sm-12">
+
+                      {{input type="text" class="form-control" placeholder="Brand Name" value=model.brand.name}}
+                      {{#each model.errors.name as |error|}}
+                        <span class="help-block">{{error.message}}</span>
+                      {{/each}}
+
+                    </div>
+                    <div class="col-md-6 col-sm-12">
+
+                      <!--  <input type="text" class="form-control" id="" placeholder="Change Address">
+                             -->
+                      {{input type="text" class="form-control" placeholder="Brand Address" value=model.brand.address}}
+                      {{#each model.errors.address as |error|}}
+                        <span class="help-block">{{error.message}}</span>
+                      {{/each}}
+
+                    </div>
+                    <div class="col-md-6 col-sm-12">
+
+                      {{input type="text" class="form-control" placeholder="Phone Number" value=model.brand.phone}}
+                      {{#each model.errors.phone as |error|}}
+                        <span class="help-block">{{error.message}}</span>
+                      {{/each}}
+
+                    </div>
+                    <div class="col-md-6 col-sm-12">
+
+                      {{input type="text" class="form-control" placeholder="City" value=model.brand.city}}
+
+                      {{#each model.errors.city as |error|}}
+                        <span class="help-block">{{error.message}}</span>
+                      {{/each}}
+
+                    </div>
+                    <div class="col-md-6 col-sm-12">
+
+                      <!-- <textarea class="form-control" rows="3" placeholder="Change About Information"></textarea> -->
+                      {{textarea class="form-control text-adds" value=model.brand.description rows="3" placeholder="About Information" }}
+                      {{#each model.errors.about as |error|}}
+                        <span class="help-block">{{error.message}}</span>
+                      {{/each}}
+
+                    </div>
+                    <div class="col-md-6 col-sm-12">
+
+                      {{input type="text" class="form-control" placeholder="State" value=model.brand.state}}
+
+                      {{#each model.errors.state as |error|}}
+                        <span class="help-block">{{error.message}}</span>
+                      {{/each}}
+
+                    </div>
+                    <div class="col-md-6 col-sm-12">
+
+                      {{input type="text" class="form-control" placeholder="Country" value=model.brand.country}}
+
+                      {{#each model.errors.country as |error|}}
+                        <span class="help-block">{{error.message}}</span>
+                      {{/each}}
+
+                    </div>
+                    <div class="col-md-6 col-sm-12">
+
+                      {{input type="text" class="form-control" placeholder="Postal Code" value=model.brand.postal}}
+                      {{#each model.errors.postal as |error|}}
+                        <span class="help-block">{{error.message}}</span>
+                      {{/each}}
+
+                    </div>
+
+                    <div class="col-md-12 col-sm-12">
+                      <button type="submit" class="btn btn-success  text-uppercase" disabled={{model.data.isSubmitted}}>ADD</button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,24 @@
+<div class="main-center anMDiv newest-tsks wrps-dtls">
+  <div class="wrapes-inbox">
+        <p class="inbox">Campaign
+        <ul class="pull-right">
+            <li>Help</li>
+            <li>Tutarials</li>
+            <li>Quick chat</li>
+        </ul>
+        </p>
+    </div>
+    <div class="default-model tsk-details wraper-brands">
+      <div class="modelbox-body">
+        <div class="">
+           {{campaign-tabs isNotesTabActive=model.isNotesTabActive}}
+          </div>
+        <div class="right-panel compaign-noteslist">
+		<!-- Tab panes -->
+			{{outlet}}
+
+			</div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</div>

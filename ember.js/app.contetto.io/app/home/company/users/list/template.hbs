@@ -1,0 +1,33 @@
+<div class="tab-content">
+    <div class="tab-pane active" id="profile">
+        {{#if model.company.companyMembers.length}}
+            <table class="table table-responsive">
+            <thead>
+            <tr class="text-uppercase">
+                <th>Name</th>
+                <th>Role</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+                {{#each model.company.companyMembers as |cmember|}}
+                <tr>
+                    <td>{{cmember.user.firstName}} {{cmember.user.lastName}}</td>
+                    <td>{{#link-to 'home.company.roles.edit' cmember.role.id class='text-primary'}}<u>{{cmember.role.name}}</u>{{/link-to}}</td>
+                    <td>
+                        {{#if (not-eq cmember.user.id model.userId)}}
+                            {{#link-to 'home.company.users.changerole' cmember.id class='text-primary'}}<u>Change</u>{{/link-to}} | <span {{action "removeMember" cmember.id }} class="text-danger"><u>Remove</u></span>
+                        {{/if}} 
+                    </td>
+                </tr>
+                {{/each}}
+            </tbody>
+            </table>
+        {{else}}
+            <p align="center">No results found!</p>
+        {{/if}}
+        <div class="submit-btn block-add ">
+            {{#link-to 'home.company.users.invite' class='btn btn-success text-uppercase'}}Invite User{{/link-to}}
+        </div>
+    </div>
+</div>

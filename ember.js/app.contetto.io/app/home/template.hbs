@@ -1,0 +1,25 @@
+<div class="header">
+    {{header-nav clickLogout="logout" clickToggle="toggleTopMenu" isTopOpened=model._isTopMenuOpened}}
+</div>
+
+<div class="mainwrapper {{if model._isRightSideMenuOpened 'sidelesscontent'}}" >
+    <div class="two_columnsec {{if model._isLeftSideMenuOpened 'morecontent'}}">
+
+        {{header-company-nav
+          isOpened=model._isTopMenuOpened
+          companies=model.companies
+          brandList=model.brands
+        }}
+
+        {{left-nav-bar action=toggleLeftSideMenu isOpened=model._isLeftSideMenuOpened}}
+        <div class="maincenter_container">
+           {{outlet}}
+        </div>
+    </div>
+    <div class="single_columnsec">
+        {{right-nav-bar action=toggleRightSideMenu isOpened=model._isRightSideMenuOpened}}
+    </div>
+</div>
+
+
+{{chat-bar}}

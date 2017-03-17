@@ -1,0 +1,61 @@
+		<!-- Main beginning -->
+		<style>
+			.radio-inline input[type="radio"]{
+				display: block
+			}
+			.show{
+				display: none;
+			}
+		</style>
+		<div class="container content">
+			<div class="row">
+				<div class="col-sm-10 col-sm-offset-1">
+					<div class="row">
+						<div class="col-md-6 col-md-offset-3 col-sm-10 col-sm-offset-1">
+							<h3 class="text-center">Let's get organized!</h3>
+							<div class="box">
+								<div class="row">
+									<div class="col-xs-12 text-center">
+										<p>Tell us a little more about your organization</p>
+										<h5>What is the name of your Company?</h5>
+										<div class="row" style="padding-top: 15px;">
+											<div class="col-xs-12">
+												<form>
+													<div class="form-group">
+														<label class="radio-inline">
+														<input  {{action 'test' }} type="radio" value="one" name="new-company-option" chec>Create New Company
+
+														</label>
+
+
+														<label class="radio-inline">
+														<input  {{action 'test2' Model.isNew}} type="radio" value="two" name="new-company-option" >Select existing company
+														</label>
+
+													</div>
+													{{#if model.isNew}}
+													<div class="form-group ">
+														{{input type="text" class="form-control" id="company" placeholder="Company Name"}}
+													</div>
+													{{else}}
+													<div class="form-group"> 
+														<select name="existing_companies" id="existing_companies" class="form-control">
+															<option value="1">Company 1</option>
+															<option value="2">Company 2</option>
+															<option value="3">Company 3</option>
+														</select>
+													</div>
+													{{/if}}
+													<button class="btn btn-success pull-right">Next</button>
+												</form>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Main ending -->

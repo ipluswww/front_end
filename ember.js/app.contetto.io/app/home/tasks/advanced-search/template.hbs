@@ -1,0 +1,96 @@
+<div class="main-center newest-tsks">
+  <div class="wrapes-inbox">
+        <p class="inbox"><span class="feeds-icons"><i class="fa fa-list" aria-hidden="true"></i></span>Tasks
+        <ul class="pull-right">
+            <li>Help</li>
+            <li>Tutarials</li>
+            <li>Quick chat</li>
+        </ul>
+        </p>
+    </div>
+	<div class="default-model tsk-details">
+	    <div class="modelbox-body">
+	        <div class="full-panel--task">
+	          <!-- Tab panes -->
+	          	<div class="tab-content">
+	            	<div class="tab-pane active">
+	            <form class="wrap-form-advance">
+                <h3 class="text-heading">Tasks Advanced Settings</h3>
+                <div class="row row--bottom-space"> <!-- Due date -->
+                  <label for="dueDate" class="col-md-4 control-label">Due date:</label>
+                  <div class="col-md-8">
+                      <!-- <input type="text" class="form-control" placeholder="Due date" id="dueDate"/> -->
+                      {{#bs-datetimepicker date1=model.date format='MM/DD/YYYY'}}
+                        {{input id="dueDate" class="form-control" name="Date" placeholder="Due date"}}
+                      {{/bs-datetimepicker}}
+                  </div>
+                </div>
+                <div class="row row--bottom-space"> <!-- Created on -->
+                  <label for="createdOn" class="col-md-4 control-label">Assigned date:</label>
+                  <div class="col-md-8">
+                      <!-- <input type="text" class="form-control" placeholder="Assigned date" id="createdOn"/> -->
+                      {{#bs-datetimepicker date1=model.date format='MM/DD/YYYY'}}
+                        {{input id="createdOn" class="form-control" name="Date" placeholder="Assigned date"}}
+                      {{/bs-datetimepicker}}
+                  </div>
+                </div>
+                <div class="row row--bottom-space"> <!-- Tags filter -->
+                  <label for="tagsFilter" class="col-md-4 control-label">Filter by tags:</label>
+                  <div class="col-md-8">
+                      <input type="text" class="form-control" id="tagsFilter" placeholder="#contetto, #filesneeded"/>
+                  </div>
+                </div>
+                <div class="row row--bottom-space"> <!-- Status filter -->
+                  <label for="statusFilter" class="col-md-4 control-label">Filter by status:</label>
+                  <div class="col-md-8">
+                    <select id="status" class="form-control">
+                            <option>Status</option>
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="row row--bottom-space"> <!-- Assigned by -->
+                  <label for="tagsFilter" class="col-md-4 control-label">Assigned by:</label>
+                  <div class="col-md-8">
+                      <select id="assignedBy" class="form-control">
+                            <option>Taylor</option>
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="row row--bottom-space"> <!-- Assigned to -->
+                  <label for="assignedTo" class="col-md-4 control-label">Assigned to:</label>
+                  <div class="col-md-8">
+                    <select id="assignedTo" class="form-control">
+                            <option>Kevin</option>
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="row"> <!-- Save  -->
+                  <div class="form-group">
+                    <div class="col-md-3 col-md-offset-4">
+                         <button type="submit" class="btn btn-success  text-uppercase">Save</button>
+                    </div>
+                  </div>
+                </div>
+							</form>
+	            	</div>
+	          	</div>
+	        </div>
+	        <div class="clearfix"></div>
+	    </div>
+	</div>
+</div>

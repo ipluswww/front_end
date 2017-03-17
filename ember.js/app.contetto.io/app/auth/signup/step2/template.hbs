@@ -1,0 +1,48 @@
+<div class="container content">
+    <div class="row">
+        <div class="col-md-6 col-sm-8 col-sm-offset-2 col-md-offset-3">
+            <h3 class="text-center success-msg">Thanks for joining Contetto</h3>
+            <h4 class="text-center success-msg">We need a bit more information to get started</h4>
+            <div class="loginbox step2page">
+                <form class="form-horizontal" {{action "updateSignUp" on="submit"}} autocomplete="off">
+                    <div class="form-group {{if model.errors.firstName 'has-error'}}">
+                          <div class="input-group">
+                              <div class="input-group-addon"><i class="fa fa-user"></i></div>
+                              {{input type="text" class="form-control" id="first-name" placeholder="First Name" value=model.user.firstName}}
+                          </div>
+                           {{#each model.errors.firstName as |error|}}
+                                <span class="help-block">{{error.message}}</span>
+                           {{/each}}  
+                    </div>
+
+                    <div class="form-group {{if model.errors.lastName 'has-error'}}">
+                        <div class="input-group">
+                              <div class="input-group-addon"><i class="fa fa-user"></i></div>
+                              {{input type="text" class="form-control" id="last-name" placeholder="Last Name" value=model.user.lastName}}
+                        </div>
+                        {{#each model.errors.lastName as |error|}}
+                            <span class="help-block">{{error.message}}</span>
+                        {{/each}}
+                    </div>
+                    <div class="form-group {{if model.errors.phoneNumber 'has-error'}}">
+                         <div class="input-group">
+                              <div class="input-group-addon"><i class="fa fa-phone"></i></div>
+                              {{input type="text" class="form-control" id="phone-number" placeholder="Phone Number" value=model.user.phoneNumber}}
+                         </div>
+                        {{#each model.errors.phoneNumber as |error|}}
+                            <span class="help-block">{{error.message}}</span>
+                        {{/each}}
+                    </div>
+                    <div class="login-buttons form-group">
+                        <button class="btn btn-primary sign-in" type="button"
+                                role="button" {{action "transitionTo" "auth.signup.index"}}>BACK
+                        </button>
+                        <button class="btn btn-success pull-right sign-up" type="submit"
+                                disabled={{model.isSubmitted}}> SIGN UP
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,52 @@
+.right-opener {
+	position: absolute;
+	top:305px;
+	left: 0; font-size: 20px;
+	width: 20px;
+	height: 25px; text-align: center;
+	/*background: url('images/vertical-dots-right.png');*/
+	cursor: pointer;}
+
+/* RIGHT SIDE */
+.right-side {
+	/*position: fixed;
+	padding: 10px;
+	top: 90px;
+	right: -21px;
+	bottom: 40px;
+	width: 40px;
+	border-left: 1px solid #8b8b8b;
+	background: #fff;
+	cursor: pointer;
+	z-index: 7;
+	overflow: hidden;*/ transition: .3s; float: right;}
+	.right-side > .text-center{ padding: 0 20px;}
+.right-side {
+	
+	background: #fff;
+	cursor: auto; padding: 0;}
+.right-side h4{ font-size: 17px; line-height: 23px; padding: 0 0 10px; border-bottom: 1px solid #d1f2eb; color: #1abc9c; font-weight: bold;}
+.right-side h4,
+.right-side .btn,
+.right-side .notifications-bottom {display: none;}
+.right-side .right-opener {display: block ;}
+.right-side div,
+.right-side h4 {display: block;}
+
+.quick-postright{ background: #eef0f5 url(images/quicj-post.png) no-repeat center center; padding: 32px 50px !important; display: inline-block; width: 100%;}
+.right-side .assigned_manager{ font-size: 17px; color: #1abc9c; line-height: 23px; padding: 25px 20px 20px;}
+
+.brands_select{border-bottom: 1px solid #e5e5e5; margin: 0 auto; padding: 10px 0 20px; width: 85%;}
+.brands_select select{ background: #e9ecf3;}
+.mainright_bar{ box-shadow: 0 0 10px #d4d7dd; position: relative; padding:0 !important; transition:.5s; background:#fff !important;}
+.mainright_bar.opened{ }
+
+/*===========my css 27-06 start here=======*/
+
+.notifications-social .notification-row{ border-bottom: 1px solid #e5e5e5; padding:20px 0 10px;}
+.notifications-social .notification-row img{ margin: 0 0 5px;}
+
+.col-sm-3.right-side{ margin: -10px 0 0;}
+.col-sm-9 .wrap-side-4 ul{ margin: 0 0 20px;}
+.mainright_bar.opened .right-opener{ left: auto; right: 0; transition:.5s;}
+.mainright_bar.opened .quick-postright{ background: #fff;}

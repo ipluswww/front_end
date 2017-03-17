@@ -1,0 +1,52 @@
+<div class="right-side mainright_bar {{if isOpened 'opened'}}">
+     <div class="right-opener" {{action 'toggleMenu'}}><i class="fa fa-ellipsis-v"></i></div>
+    <div class="text-center">
+        <h4 class="text-center">Notifications <i class="fa fa-bell"></i></h4>
+        <div class="btn-group w100">
+            <button type="button" class="btn btn-default dropdown-toggle w100" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Brand <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-right">
+                <li><a href="#">Option</a></li>
+                <li><a href="#">Option</a></li>
+                <li><a href="#">Option</a></li>
+                <li><a href="#">Option</a></li>
+            </ul>
+        </div>
+        <div class="clearfix"></div>
+        <div class="brands_select">
+            <select class="form-control">
+                <option>Brand</option>
+                <option>Brand1</option>
+                <option>Brand2</option>
+                <option>Brand3</option>
+            </select>
+        </div>
+        <div class="notifications-social">
+            <div class="notification-row">
+                <div class="p10">
+                    <img src="assets/images/notification-fb.png">
+                    <p>You have 17 new likes</p>
+                </div>
+            </div>
+            <div class="notification-row">
+                <div class="p10">
+                    <img src="assets/images/notification-tw.png">
+                    <p>You have 7 new followers</p>
+                </div>
+            </div>
+            <div class="assigned_manager">
+                <i class="fa fa-sticky-note"></i>
+                <p>Eric has assigned you as Manager of Contetto</p>
+            </div>
+        </div>
+    </div>
+    {{#link-to 'home.brand.post.add' companyDetail.data.brandId}}
+      <div class="quick-postright text-center">
+          <img class="center-block" src="assets/images/icon-post.png" style="padding-bottom: 10px;">
+          <p>
+            Click Quick Post to easily schedule a social media post!
+          </p>
+      </div>
+    {{/link-to}}
+</div>

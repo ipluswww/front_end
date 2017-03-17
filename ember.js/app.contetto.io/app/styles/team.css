@@ -1,0 +1,61 @@
+.control-label.with-btn{ line-height: 25px}
+.default-model{position:relative;}
+.crossIcon{list-style:none;margin:0px;padding:0;text-align:right;}
+.crossIcon > li{display:inline-block;margin:0 1px}
+.detailsUl{list-style:none;background:#464646;margin:0;font-family: 'Open Sans', sans-serif;font-weight:300;text-align:center;padding:6px 0}
+.detailsUl > li{display:inline-block;border-right:1px solid #fff;padding:0px 4px;line-height:11px}
+.detailsUl > li:last-child{border:none}
+.detailsUl > li > a{font-size:11px;color:#fff;text-decoration:none}
+.detailsUl > li > a:hover{color:#3cb878}
+.detailsUl > li.active> a{color:#3cb878}
+/*Member Post css start*/
+.fbPanel{margin-top:15px;border:1px solid #b7b7b7}
+.fbPanel > .panel-heading{background:#00bff3}
+.fbPanel > .panel-body{position:relative}
+.seasonalUl{list-style:none;padding:0;margin:0;font-size:13px;font-family: 'Open Sans', sans-serif;font-weight:300}
+.seasonalUl > li > i{color:#3b5998}
+.seasonalUl > li{display:inline-block}
+.seasonalUl > li:first-child{padding-right:24px}
+.byUl{list-style:none;margin:-15px -15px 0px -15px;padding:5px 15px;background:#f8f8f8;border-bottom:1px solid #e1e1e1}
+.byUl > li{display:inline-block;color:#000;font-size:10px;font-family: 'Open Sans', sans-serif;font-weight:300}
+.byUl > li:first-child{padding-right:24px}
+.fbPanel .panel-body p{font-size:12px;font-family: 'Open Sans', sans-serif;font-weight:300;margin:20px 0}
+.pMarginNegative{margin-top:-29px}
+.fbPanel .panelRightUl{list-style:none;display:inline-block;padding:0;margin:0;text-align:right}
+.fbPanel .panelRightUl{display:block}
+.fbPanel .panelRightUl .tickIcon{color:#179983}
+.fbPanel .panelRightUl .crossIcon, .minusIcon{color:#a8a8a8}
+.fbPanel .panelRightUl li  a span{font-size:2em}
+.fbPanel .panelRightUl > li > .btnBorder{border:1px solid #c2c2c2;color:#3cb878;padding:3px 8px;display:inline-block;margin:5px 0 0 0;font-size:12px;font-family: 'Open Sans', sans-serif;font-weight:300;text-decoration:none}
+.fbPanel .panelRightUl > li > .btnBorder:hover{background:#3cb878;color:#fff;border-color:#3cb878}
+.towBtnUl{display:block;padding:0;list-style:none;margin:0;text-align:right}
+.towBtnUl > li{display:inline-block;}
+.towBtnUl > li > a{background:#3cb878;color:#fff;padding:0px;display:inline-block;text-transform:uppercase;font-family: 'Open Sans', sans-serif;font-weight:300;font-size:13px;padding:8px 13px;border-radius:2px}
+.towBtnUl > li > a:hover{background:#2d8f5d;text-decoration:none}
+.fbPanel .campaignDiv{border-top:1px solid #f1f1f1;padding:6px 0px}
+.fbPanel .campaignDiv > ul{list-style:none; margin:0;padding:0}
+.fbPanel .campaignDiv > ul > li{display:inline-block;color:#7b7b7b;font-size:12px}
+.fbPanel .campaignDiv > p{color:#7b7b7b;font-size:12px;margin:5px 0}
+/*Member Post css end*/
+/*Campaign Details section css start*/
+.campaignDetailsForm label{color:#555555;font-weight:400}
+/*Campaign Details section css end*/
+td.fc-day > div{min-height:70px}
+.fc-button .fc-icon{font-size:1em!important}
+.gridIcons{list-style:none;margin:0 0 20px 0;padding:0;text-align:right}
+.gridIcons > li{display:inline-block;padding:0 2px}
+.gridIcons > li > a{color:#ddd;font-size:20px}
+.gridIcons > li > a:hover{color:#3c9d63}
+.scrollTable > .ember-view{overflow-x:auto}
+.right-panel{width:100%;}
+
+.team_detailpage ul{ list-style: none;}
+.team_detailpage ul li{ margin: 0 0 10px;}
+.team_detailpage ul li strong{ display: inline-block; width: 130px; font-weight: 400;}
+
+.teamlist-page table .dropdown .dropdown-menu{ right: 0; left: auto;}
+.form-horizontal .checkbox label{ padding-top: 0 !important;}
+.form-horizontal .checkbox label.checkbox-heading{ padding-left: 0;}
+.teamtabs .tab-pane{ padding: 0;}
+.teamtabs table{ margin-top: 0;}
+

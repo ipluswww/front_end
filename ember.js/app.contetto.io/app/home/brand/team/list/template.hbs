@@ -1,0 +1,44 @@
+<div class="row">
+  <div class="col-md-3 col-sm-12 reviewfow_tabs">
+    {{brand-team-tab}}
+  </div>
+  <div class="col-md-9 col-sm-12">
+    <div class="tab-content">
+      <div class="tab-pane active teamlist-page">
+        <div class="table-responsive">
+          <table class="table table-bordered table-striped text-center">
+            <tbody>
+              <tr class="text-uppercase">
+                <th>Name</th>
+                <th>Role</th>
+                <th>Action</th>
+              </tr>
+              {{#each model.members as |member|}}
+                <tr>
+                  <td>{{member.user.firstName}} {{member.user.lastName}}</td>
+                  <td>{{member.brandRole.name}}</td>
+                  <td>
+                    {{#link-to 'home.brand.team.edit' member.id class="text-primary"}}<u>Edit</u>{{/link-to}}|
+                    <a href="#" class="text-danger" {{action 'deleteMember' member.id}}><u>Remove</u></a> |
+                    <a href="javascript:void(0);" class="entry-icon cmenu dropdown">
+                      <u class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Action</u>
+                      <ul class="custom-menu dropdown-menu brand-uls">
+                        <li><a href="#">Activity Log</a></li>
+                        <li><a href="#">New Task</a></li>
+                        <li><a href="#">New Chat</a></li>
+                        <li><a href="#">New Note</a></li>
+                      </ul>
+                    </a>
+                  </td>
+                </tr>
+              {{/each}}
+            </tbody>
+          </table>
+        </div>
+        <div class="center-block submit-btn">
+          {{#link-to "home.brand.team.invite" class="btn btn-success  text-uppercase" }}Add User{{/link-to}}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

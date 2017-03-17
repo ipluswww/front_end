@@ -1,0 +1,33 @@
+<div class="container content">
+    <div class="row">
+        <div class="col-md-6 col-sm-8 col-sm-offset-2 col-md-offset-3">
+            <div class="loginbox signuppage">
+                <form class="form-horizontal text-center" {{action "signup" on="submit"}} autocomplete="off">
+                  <div class="form-group">
+                      <div class="input-group">
+                          <div class="input-group-addon"><i class="fa fa-user"></i></div>
+                          <!-- <input type="text" class="form-control" placeholder="Email"> -->
+                          {{input type="email" class="form-control" id="username" placeholder="E-mail" value=model.user.email}}
+                      </div>
+                        {{#each model.errors.email as |error|}}
+                            <span class="help-block text-left">{{error.message}}</span>
+                        {{/each}}
+                  </div>
+                  <div class="form-group">
+                      <div class="input-group">
+                          <div class="input-group-addon"><i class="fa fa-lock"></i></div>
+                          <!-- <input type="password" class="form-control" placeholder="Password"> -->
+                          {{input type="password" class="form-control" id="password" placeholder="Password" value=model.user.password}}
+                      </div>
+                        {{#each model.errors.password as |error|}}
+                            <span class="help-block text-left">{{error.message}}</span>
+                        {{/each}}
+                  </div>
+                  <div class="form-group"><button type="submit" class="create-btn" disabled={{model.isSubmitted}}>Sign Up</button></div>
+                  <div class="form-group text-left"><span class="forget-pass">Already have account ?</span></div>
+                  <div class="form-group">{{#link-to "auth.index" class="login-btn"}}Sign In{{/link-to}}</div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

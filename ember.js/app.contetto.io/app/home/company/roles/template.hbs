@@ -1,0 +1,11 @@
+<div class="modelbox-body">
+    <div class="left-panel padding-none">
+  <!-- Company Settings tab (Component) // Roles tab active-->
+  {{company-tab-left-panel isRolesTabActive=model.isRolesTabActive companyId=model.company.id}}
+    </div>
+    <div class="right-panel">
+        <!-- Tab panes -->
+        {{outlet}}
+    </div>
+    <div class="clearfix"></div>
+</div>

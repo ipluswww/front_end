@@ -1,0 +1,34 @@
+<div class="container content">
+  <div class="row">
+    <div class="col-md-6 col-sm-8 col-sm-offset-2 col-md-offset-3">
+      <div class="loginbox">
+        {{#unless model.success}}
+        <form class="form-horizontal text-center" {{action "resetPassword" on="submit"}} autocomplete="off">
+          <div class="form-group">
+            <div class="input-group">
+              <div class="input-group-addon"><i class="fa fa-user"></i></div>
+              {{input
+                type="email"
+                class="form-control"
+                id="e-mail"
+                placeholder="E-mail"
+                value=model.forgot.email
+              }}
+            </div>
+            {{#each model.errors.email as |error|}}
+                <span class="help-block">{{error.message}}</span>
+            {{/each}}
+          </div>
+          <div class="form-group">
+            <button class="login-btn" type="submit" role="button" disabled={{model.isSubmitted}}>
+              Reset Password
+            </button>
+          </div>
+        </form>
+        {{else}}
+          <span class="help-block">Please check your email.</span>
+        {{/unless}}
+      </div>
+    </div>
+  </div>
+</div>

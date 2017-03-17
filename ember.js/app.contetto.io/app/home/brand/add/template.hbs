@@ -1,0 +1,95 @@
+<div class="main-center wrps-dtls">
+  <div class="default-model companymodel">
+    <div class="modelbox-body">
+      <div class="right-panel">
+        <div class="col-sm-12">
+          <!-- Tab panes -->
+          <div class="tab-content">
+            <div class="tab-pane active" id="home">
+              <form class="form-horizontal" {{action "addCompany" on="submit"}} autocomplete="off">
+                <div class="row">
+                  <div class="col-md-6 col-sm-12">
+
+                    {{input type="text" class="form-control"  placeholder="Brand Name" value=model.company.name}}
+                    {{#each model.errors.name as |error|}}
+                    <span class="help-block">{{error.message}}</span>
+                    {{/each}}
+
+                  </div>
+                  <div class="col-md-6 col-sm-12">
+
+                    {{input type="text" class="form-control"  placeholder="Brand Address" value=model.company.address}}
+                    {{#each model.errors.address as |error|}}
+                    <span class="help-block">{{error.message}}</span>
+                    {{/each}}
+
+                  </div>
+                  <div class="col-md-6 col-sm-12">
+
+                    {{input type="text" class="form-control" placeholder="Phone Number" value=model.company.phone}}
+                    {{#each model.errors.phone as |error|}}
+                    <span class="help-block">{{error.message}}</span>
+                    {{/each}}
+
+                  </div>
+                  <div class="col-md-6 col-sm-12">
+
+                    {{input type="text" class="form-control" placeholder="City" value=model.company.city}}
+
+                    {{#each model.errors.city as |error|}}
+                    <span class="help-block">{{error.message}}</span>
+                    {{/each}}
+
+                  </div>
+                  <div class="col-md-6 col-sm-12">
+
+                    {{textarea class="form-control text-adds" value=model.company.about rows="3" placeholder="About Information" }}
+                    {{#each model.errors.about as |error|}}
+                    <span class="help-block">{{error.message}}</span>
+                    {{/each}}
+
+                  </div>
+                  <div class="col-md-6 col-sm-12">
+
+                    {{input type="text" class="form-control" placeholder="City" value=model.company.state}}
+
+                    {{#each model.errors.state as |error|}}
+                    <span class="help-block">{{error.message}}</span>
+                    {{/each}}
+
+                  </div>
+                  <div class="col-md-6 col-sm-12">
+
+                    {{input type="text" class="form-control" placeholder="Country" value=model.company.country}}
+
+                    {{#each model.errors.country as |error|}}
+                    <span class="help-block">{{error.message}}</span>
+                    {{/each}}
+
+                  </div>
+                  <div class="col-md-6 col-sm-12">
+
+                    {{input type="text" class="form-control"  placeholder="Postal Code"  value=model.company.province}}
+                    {{#each model.errors.province as |error|}}
+                    <span class="help-block">{{error.message}}</span>
+                    {{/each}}
+
+                  </div>
+                  <div class="col-md-6 col-sm-12">
+                    <div class="fileinput">
+                      {{input type="file" value=model.company.file name="files[]" }}
+                      <span class="btn btn-success fileinput-button">Upload Files</span>
+                    </div>
+                  </div>
+                  <div class="col-md-12 col-sm-12">
+                    <button type="submit" class="btn btn-success  text-uppercase" disabled={{model.data.isSubmitted}}>SAVE</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,42 @@
+<div class="row">
+        <div class="col-md-3 col-sm-12 reviewfow_tabs">
+          {{brand-team-tab isTeamTasksActive=model.isTeamTasksActive}}
+        </div>
+        
+        <div class="col-md-9 col-sm-12">
+         <div class="tab-content">
+          <div class="tab-pane active">
+            <!--Calling Chat-view component and passing chat JSON data in chatData attribute -->
+            <!-- <h3 class="model-heading">Brand chat</h3> -->
+            <div class="table-responsive">
+            <table class="table table-bordered table-striped customTable text-center">
+              <thead>
+                <tr class="text-uppercase">
+                  <th>DUE DATE</th>
+                  <th>Created By</th>
+                  <th>Assigned To</th>
+                  <th>Status</th>
+                  <th>Subject</th>
+                </tr>
+              </thead>
+              <tbody>
+                {{#each model.task as |task|}}
+                <tr>
+                  <td>{{task.DueDate}}</td>
+                  <td>{{task.CreatedBy}}</td>
+                  <td>{{task.AssignedTo}}</td>
+                  <td>{{task.Status}}</td>
+                  <td>{{task.Subject}}</td>
+                </tr>
+                {{/each}}
+              </tbody>
+            </table>
+          </div>
+          <div class="submit-btn">
+            <button type="button" class="btn btn-success  text-uppercase">Show More</button>
+            <button type="button" class="btn btn-success  text-uppercase">New Task</button>
+          </div>
+          </div>
+        </div>
+        </div>
+</div>

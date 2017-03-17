@@ -1,0 +1,100 @@
+<form class="form-horizontal" {{action "editRole" on="submit"}} autocomplete="off">
+<div class="role-id-head">
+  <label class="col-sm-12 col-md-3 text-right control-label">Role name</label>
+  <div class="col-sm-12 col-sm-9">
+    {{input type="text" class="form-control" id="roleName" value=model.role.name}}
+    {{#each model.errors.name as |error|}}
+      <span class="help-block">{{error.message}}</span>
+    {{/each}}
+  </div>
+</div>
+<div class="editrole-page">
+    <div class="col-md-6 col-sm-12 checkcox-panel">
+        <div class="checkbox">
+          <label class="checkbox-heading">Staff</label>
+        </div>
+          <div class="checkbox">
+          {{input type="checkbox" id="invite" checked=model.role.companyInvite}}
+          <label for="invite">Invite</label>
+        </div>
+        <div class="checkbox">
+          {{input type="checkbox" id="remove" checked=model.role.companyRemove}}
+          <label for="remove">Remove</label>
+        </div>
+        <div class="checkbox">
+          {{input type="checkbox" id="changerole" checked=model.role.companyChangeRoles}}
+          <label for="changerole">Change Roles</label>
+        </div>
+
+        <div class="checkbox">
+          <label class="checkbox-heading">Roles</label>
+        </div>
+          <div class="checkbox">
+          {{input type="checkbox" id="create" checked=model.role.rolesCreate}}
+          <label for="create">Create</label>
+        </div>
+        <div class="checkbox">
+          {{input type="checkbox" id="editpermission" checked=model.role.rolesEditPermissions}}
+          <label for="editpermission">Edit Permission</label>
+        </div>
+        <div class="checkbox">
+          {{input type="checkbox" id="remove1" checked=model.role.rolesRemove}}
+          <label for="remove1">Remove</label>
+        </div>
+    </div>
+    <div class="col-md-6 col-sm-12 checkcox-panel">
+      <div class="checkbox">
+        <label class="checkbox-heading">Profiles</label>
+      </div>
+        <div class="checkbox">
+        {{input type="checkbox" id="create1" checked=model.role.brandCreate}}
+        <label for="create1">Create</label>
+      </div>
+      <div class="checkbox">
+        {{input type="checkbox" id="remove2" checked=model.role.brandRemove}}
+        <label for="remove2">Remove</label>
+      </div>
+
+      <div class="checkbox">
+        <label class="ml-20"><u>Manage Profile Roles</u></label>
+      </div>
+        <div class="checkbox">
+        {{input type="checkbox" id="create2" checked=model.role.brandRolesCreate}}
+        <label for="create2">Create</label>
+      </div>
+      <div class="checkbox">
+        {{input type="checkbox" id="managepermission" checked=model.role.brandRolesManage}}
+      <label for="managepermission">Manage Permission</label>
+      </div>
+
+
+      <div class="checkbox">
+        <label class="ml-20"><u>Manage Profile Users</u></label>
+      </div>
+      <div class="checkbox">
+        {{input type="checkbox" id="addprofile" checked=model.role.brandUsersAdd}}
+        <label for="addprofile">Add to Profile</label>
+      </div>
+      <div class="checkbox">
+        {{input type="checkbox" id="changerole1" checked=model.role.brandUsersChangeRole}}
+        <label for="changerole1">Change Role</label>
+      </div>
+      <div class="checkbox">
+        {{input type="checkbox" id="removeprofile" checked=model.role.brandUsersRemove}}
+        <label for="removeprofile">Remove from Profile</label>
+      </div>
+    </div>
+
+    <div class="col-sm-12 text-center">
+        {{#each model.errors.check as |error|}}
+          <span class="help-block">{{error.message}}</span>
+        {{/each}}
+    </div>
+
+    <div class="col-md-12 col-sm-12 col-xs-12">
+      <div class="submit-btn ml-20">
+              <button type="submit" class="btn btn-success pull-left text-uppercase" disabled={{model.data.isSubmitted}}>Save</button>
+          </div>
+    </div>
+ </div>
+</form>

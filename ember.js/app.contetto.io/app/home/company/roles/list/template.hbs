@@ -1,0 +1,31 @@
+<div class="tab-content">
+  <div class="tab-pane active" id="messages">
+        {{#if model.company.length}}
+            <table class="table table-bordered table-striped table-responsive">
+                <thead>
+                <tr class="text-uppercase">
+                    <th>Role</th>
+                    <th>Action</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                {{#each model.company as |role|}}
+                <tr>
+                    <td>{{role.name}}</td>
+                    <td>
+                        {{#link-to "home.company.roles.edit" role.id class="text-uppercase text-center"}}<u>Edit Permission</u>{{/link-to}} |
+                        <span {{action "removeRole" role.id }} class="text-danger"><u>Remove</u></span>
+                    </td>
+                </tr>
+                {{/each}}
+                </tbody>
+            </table>
+        {{else}}
+            <p align="center">No results found!</p>
+        {{/if}}
+        <div class="submit-btn block-add ">
+            {{#link-to "home.company.roles.add" class='btn btn-success text-uppercase'}}New Role{{/link-to}}
+        </div>
+    </div>
+</div>

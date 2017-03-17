@@ -1,0 +1,5 @@
+.footer-line{ background: #fff; box-shadow: 0 0 10px #ccc; padding: 20px 0; margin: 0 0 35px;}
+.footer-line p{ margin: 0;}
+.footer-line ul li{ display: inline-block; vertical-align: middle; font-size: 15px; text-transform: uppercase; color: #1abc9c; margin:0 0 0 90px;}
+.footer-line ul li a{ margin: 0 0 0 10px; background: #1abc9c; color: #fff; border-radius: 4px; padding: 6px 10px; position: relative;}
+.footer-line ul li a span{ background: #41a85f none repeat scroll 0 0; border: 2px solid #ffffff; border-radius: 50%; color: #ffffff; height: 28px; line-height: 25px; position: absolute; right: -12px; text-align: center; top: -13px; width: 28px;}

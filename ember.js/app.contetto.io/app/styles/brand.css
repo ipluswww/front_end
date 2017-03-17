@@ -1,0 +1,135 @@
+.right-panel .model-heading{ margin: 0px 0 15px; padding: 12px; background: #e9ecf3; color: #36c1a4; font-size: 18px; font-weight: bold;}
+.addgoal-page input[type="radio"]{ margin: 0;}
+.addgoal-page ul{ margin: 0 0 15px;}
+.addgoal-page p{ font-size: 18px; line-height: 24px;}
+
+.edit-department button, .edit-team button{ margin: 10px 0 0;}
+.edit-department ul li, .edit-team ul li{ margin: 3px 0;}
+.edit-department ul li input[type="checkbox"], .edit-team ul li input[type="checkbox"]{ margin: 3px 0 0;}
+.wraper-brands .model-heading {
+  margin-bottom: 15px !important;
+}
+/*.wraper-brands .tabs-left li a {
+  font-size: 11px;
+}*/
+.wraper-brands .center-block{
+padding: 2% 0;
+}
+.wraper-brands .detailsUl {
+  float: left;
+  width: 100%;
+  background: #00a885 none repeat scroll 0 0;
+}
+.wraper-brands .detailsUl > li.active > a {
+  color: #333;
+}
+.wraper-brands .detailsUl > li > a:hover{
+	color: #fff;
+}
+.wraper-brands table tbody tr th {
+  text-align: center;
+}
+/*****Socialaccount******/
+
+.wraper-all-btns{
+	width: 70%;
+	margin: 0 auto;
+}
+.wraper-all-btns .btn {
+  border: medium none;
+  border-radius: 0;
+  margin: 5px 0;
+  padding: 12px!important;
+  width: 100%;
+}
+.wraper-all-btns .btn:hover{
+	background-image: none;
+}
+.wraper-all-btns .YELP{
+background-color: #9D0B0E!important;
+color: #fff;
+}
+.wraper-all-btns .ZOMATO{
+background-color: #014A81!important;
+color: #fff;
+}
+.wraper-all-btns .OPEN-TABLE{
+background-color: #636363!important;
+color: #fff;
+}
+.wraper-all-btns .FOUR-SQUARe{
+background-color: #00A652!important;
+color: #fff;
+}
+.wraper-all-btns .TRUST{
+background-color: #9E003A!important;
+color: #fff;
+}
+.wraper-all-btns .FOUR-SQUARe:hover{
+background-color: #00A652!important;
+}
+.wraper-all-btns .TRUST:hover{
+background-color: #9E003A!important;
+}
+.table-responsive{border: none;}
+
+
+
+/*=====Review page css start here========*/
+.reviewflow-maintab{ padding: 0 !important;}
+.review-setting-page .cat-set{ float:right; text-decoration: underline; margin: 5px 0;}
+.reviewfow_tabs .nav-tabs{ background: #E9ECF3; min-height: 372px;}
+.reviewfow_tabs .nav-tabs li{ display: block; float: none; }
+.reviewfow_tabs .nav-tabs li a{ display: block; border-radius: 0; font-size: 13px; border: none; text-align: left; padding: 10px 10px; margin: 0 !important; border:0 !important; border-bottom: 1px solid #ccc !important;}
+.setting-cat .table select{ width: 150px; border: 1px solid #ccc; height: 30px;}
+.reviewfow_tabs + .col-sm-8 table{ margin: 0 0 15px;}
+.reviewfow_tabs + .col-sm-8{ padding-bottom: 10px;}
+
+.review-channel-page .stepbox{ border: 1px solid #ccc; border-radius: 5px; padding: 10px 10px 0; margin: 0 0 10px;}
+.review-channel-page .stepbox textarea{ height: 34px; resize:none;}
+.reviewfow_tabs + .col-sm-8 .review-channel-page table{ margin: 15px 0;}
+
+/*.brandgoal-page .radio input[type="radio"]{ margin: 2px 0 0;}*/
+.review-channel-page .stepbox .row .btn{ margin: 25px 0 0}
+.addgoal6 .row{ margin-bottom: 15px;}
+.modelbox-body .brandgoal-page form .col-md-5{ padding-top: 6px}
+
+
+/*=====Social Account page css start here========*/
+.account-schedulepage a{ background: #1abc9c; border-radius: 50%; width: 30px; height: 30px; text-align: center; line-height: 30px; color: #fff; font-size:16px; display: inline-block; position: relative;}
+.account-schedulepage a.bordered:after{ position: absolute; width: 100%; height: 100%;  left: 0; top: 0; content: ''; border: 1px solid;}
+.account-schedulepage a.bordered.blue:after{ border-color: blue;}
+.account-schedulepage a.bordered.red:after{ border-color: red;}
+.account-schedulepage .btn{ width: auto; border-radius: 5px; height: auto; line-height: 25px;}
+.account-schedulepage .shedule-info{ margin: 20px 2% 0;}
+.account-schedulepage tbody tr td:first-child, .account-schedulepage tbody tr th:first-child{ min-width: 140px;}
+
+.account_box{ margin: 15px 0; /*background: #F9F9F9; border: 1px solid #ccc; padding: 5px 15px; border-radius: 5px;*/}
+.account_box .btns{ list-style: none;}
+.account_box .btns li{ margin: 10px 0;}
+.account_box .btns li .btn{ border-radius: 0; padding: 10px 12px; margin: 0;}
+.account_box .btns li .btn:hover{ opacity: .9;}
+
+.account_box .btns li .btn-primary-dark{ background: #0D014D; color: #fff;}
+.account_box .btns li .btn-linked{ background: #0177B5; color: #fff;}
+.account_box .btns li .btn-tweet{ background: #55ACEF; color: #fff;}
+.account_box .btns li .btn-face{ background: #3B5999; color: #fff;}
+.account_box .btns li .btn-google{ background: #E04A32; color: #fff;}
+.account_box .btns li .btn-you{ background: #D01E2C; color: #fff;}
+
+.account_box .btns li .btn-yelp{ background: #9D0B0E; color: #fff;}
+.account_box .btns li .btn-zomato{ background: #014A81; color: #fff;}
+.account_box .btns li .btn-open{ background: #636363; color: #fff;}
+.account_box .btns li .btn-four{ background: #00A652; color: #fff;}
+.account_box .btns li .btn-trust{ background: #9E003A; color: #fff;}
+.account_box form{ padding: 10px 0;}
+.account_box form .btn-link{ margin-top: 5px;}
+.account_box .authenticate input[type="checkbox"]{ margin: 10px 0 0;}
+
+.addaccount-page p{ font-size: 15px; line-height: 18px;}
+.addwordpress-page .account_box .btn{ margin-bottom: 10px;}
+
+.reviewflow-maintab .table-responsive{ margin-bottom: 15px; margin-top: 15px;}
+
+.reviewflow-maintab.teamtabs .tab-content{ padding-top: 20px; padding-bottom: 20px;}
+.reviewfow_tabs + .col-md-9{ padding-top: 20px;}
