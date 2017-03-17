@@ -1,181 +1,299 @@
 <!DOCTYPE html>
 <html>
-	<head>
 
-		<!-- Basic -->
-		<meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">	
+<head>
 
-		<title>Advertising - Responsive HTML5 Template 4.4.0</title>	
+    <!-- Basic -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-		<meta name="keywords" content="HTML5 Template" />
-		<meta name="description" content="Advertising - Responsive HTML5 Template">
-		<meta name="author" content="upwork freelancer">
+    <title>Advertising - Responsive HTML5 Template 4.4.0</title>
 
-		<!-- Favicon -->
-		<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
-		<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+    <meta name="keywords" content="HTML5 Template" />
+    <meta name="description" content="Advertising - Responsive HTML5 Template">
+    <meta name="author" content="upwork freelancer">
 
-		<!-- Mobile Metas -->
-		<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
 
-		<!-- Web Fonts  -->
-		<link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800%7CShadows+Into+Light" rel="stylesheet" type="text/css">
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<!-- OWl Carousel -->
-		<link rel="stylesheet" href="http://icewind.comxa.com/vendor/owlcarousel/css/owl.carousel.css">
+    <!-- Web Fonts  -->
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800%7CShadows+Into+Light" rel="stylesheet" type="text/css">
 
-		<!-- fancybox -->
-		<link rel="stylesheet" href="http://icewind.comxa.com/vendor/fancybox/css/jquery.fancybox-buttons.css">
-        <link rel="stylesheet" href="http://icewind.comxa.com/vendor/fancybox/css/jquery.fancybox-thumbs.css">
-        <link rel="stylesheet" href="http://icewind.comxa.com/vendor/fancybox/css/jquery.fancybox.css">
-        
+    <!-- OWl Carousel -->
+    <link rel="stylesheet" href="http://icewind.comxa.com/vendor/owlcarousel/css/owl.carousel.css">
 
-		<style>
-			.ecwid-advertisement-section {
-				text-align: center;
-			}
-
-			.ecwid-advertisement-section .item .ecwid-SingleProduct-picture { 
-				width: 200px;
-				height: 200px;
-				margin: 0 auto !important;
-				position: relative !important;
-			}
-
-			.ecwid-advertisement-section .item img.gwt-Image {
-				width: 100% !important;
-    			height: 100% !important;
-    		}	
-
-			.ecwid-advertisement-section .item .ecwid-btn {
-				padding: 5px 10px !important;
-				color: #fff !important;
-				background-color: #2af !important;
-				display: block !important;
-				font-size: 15px !important;
-    			font-weight: bold !important;
-    			cursor: pointer !important;
-    			text-decoration: none !important;
-
-			}
-
-			.ecwid-advertisement-section .item .ecwid-title {
-			    color: #04a !important;
-			    height: 60px !important;
-			    margin: 10px 0 15px !important;
-			    line-height: 20px !important;
-			    font-size: 16px !important;
-			    font-family: monospace !important;
-
-			}
-
-			.ecwid-advertisement-section .popup-item {
-				display: none;
-
-			}
+    <!-- fancybox -->
+    <link rel="stylesheet" href="http://icewind.comxa.com/vendor/fancybox/css/jquery.fancybox-buttons.css">
+    <link rel="stylesheet" href="http://icewind.comxa.com/vendor/fancybox/css/jquery.fancybox-thumbs.css">
+    <link rel="stylesheet" href="http://icewind.comxa.com/vendor/fancybox/css/jquery.fancybox.css">
 
 
-		</style>
+    <style>
+        .ecwid-advertisement-section {
+            text-align: center;
+        }
+        .ecwid-advertisement-section .item .ecwid-SingleProduct-picture {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto !important;
+            position: relative !important;
+        }
+        .ecwid-advertisement-section .item img.gwt-Image {
+            width: 100% !important;
+            height: 100% !important;
+        }
+        .ecwid-advertisement-section .item .ecwid-btn {
+            padding: 5px 10px !important;
+            color: #fff !important;
+            background-color: #2af !important;
+            display: block !important;
+            font-size: 15px !important;
+            font-weight: bold !important;
+            cursor: pointer !important;
+            text-decoration: none !important;
+        }
+        .ecwid-advertisement-section .item .ecwid-title {
+            color: #04a !important;
+            height: 60px !important;
+            margin: 10px 0 15px !important;
+            line-height: 20px !important;
+            font-size: 16px !important;
+            font-family: monospace !important;
+        }
+        .ecwid-advertisement-section .popup-item {
+            display: none;
+        }
 
-	</head>
-	<body>
-		<div class="body">
-			<div class="ecwid-advertisement-section">
-				<div class="owl-carousel">
-					<div class="item">
-						<div class="ecwid ecwid-SingleProduct-v2 ecwid-SingleProduct-v2-centered ecwid-Product ecwid-Product-75696286" itemscope itemtype="http://schema.org/Product" data-single-product-id="75696286"><div itemprop="image"></div><div class="ecwid-title" itemprop="name" content="Aspen Luxury Fur Chalk Bag"></div><div itemtype="http://schema.org/Offer" itemscope itemprop="offers"><div class="ecwid-productBrowser-price ecwid-price" itemprop="price" content="49" data-spw-price-location="button"><div itemprop="priceCurrency" content="USD"></div></div></div><div customprop="options"></div><div customprop="addtobag"></div></div>
-					</div>
-					<div class="item">
-						<div class="ecwid ecwid-SingleProduct-v2 ecwid-SingleProduct-v2-centered ecwid-Product ecwid-Product-75628098" itemscope itemtype="http://schema.org/Product" data-single-product-id="75628098"><div itemprop="image"></div><div class="ecwid-title" itemprop="name" content="Bahamas Chalk Bag"></div><div itemtype="http://schema.org/Offer" itemscope itemprop="offers"><div class="ecwid-productBrowser-price ecwid-price" itemprop="price" content="28" data-spw-price-location="button"><div itemprop="priceCurrency" content="USD"></div></div></div><div customprop="options"></div><div customprop="addtobag"></div></div>
-					</div>
-					<div class="item">
-						<div class="ecwid ecwid-SingleProduct-v2 ecwid-SingleProduct-v2-centered ecwid-Product ecwid-Product-77375469" itemscope itemtype="http://schema.org/Product" data-single-product-id="77375469"><div itemprop="image"></div><div class="ecwid-title" itemprop="name" content="Climbing Dead Short sleeve women&#x0027;s t-shirt"></div><div itemtype="http://schema.org/Offer" itemscope itemprop="offers"><div class="ecwid-productBrowser-price ecwid-price" itemprop="price" content="24.95" data-spw-price-location="button"><div itemprop="priceCurrency" content="USD"></div></div></div><div customprop="addtobag"></div></div>
-					</div>
-					<div class="item">
-						<div class="ecwid ecwid-SingleProduct-v2 ecwid-SingleProduct-v2-centered ecwid-Product ecwid-Product-75696312" itemscope itemtype="http://schema.org/Product" data-single-product-id="75696312"><div itemprop="image"></div><div class="ecwid-title" itemprop="name" content="Cordura Stealth Chalk Bag"></div><div itemtype="http://schema.org/Offer" itemscope itemprop="offers"><div class="ecwid-productBrowser-price ecwid-price" itemprop="price" content="34" data-spw-price-location="button"><div itemprop="priceCurrency" content="USD"></div></div></div><div customprop="options"></div><div customprop="addtobag"></div></div>
-					</div>
-					<div class="item">
-						<div class="ecwid ecwid-SingleProduct-v2 ecwid-SingleProduct-v2-centered ecwid-Product ecwid-Product-75696315" itemscope itemtype="http://schema.org/Product" data-single-product-id="75696315"><div itemprop="image"></div><div class="ecwid-title" itemprop="name" content="Flannel Chalk Bag"></div><div itemtype="http://schema.org/Offer" itemscope itemprop="offers"><div class="ecwid-productBrowser-price ecwid-price" itemprop="price" content="28" data-spw-price-location="button"><div itemprop="priceCurrency" content="USD"></div></div></div><div customprop="options"></div><div customprop="addtobag"></div></div>
-					</div>
-					<div class="item">
-						<div class="ecwid ecwid-SingleProduct-v2 ecwid-SingleProduct-v2-centered ecwid-Product ecwid-Product-75696317" itemscope itemtype="http://schema.org/Product" data-single-product-id="75696317"><div itemprop="image"></div><div class="ecwid-title" itemprop="name" content="Grassy Aztec Chalk Bag"></div><div itemtype="http://schema.org/Offer" itemscope itemprop="offers"><div class="ecwid-productBrowser-price ecwid-price" itemprop="price" content="28" data-spw-price-location="button"><div itemprop="priceCurrency" content="USD"></div></div></div><div customprop="addtobag"></div></div>
-					</div>
-					<div class="item">
-						<div class="ecwid ecwid-SingleProduct-v2 ecwid-SingleProduct-v2-centered ecwid-Product ecwid-Product-75696330" itemscope itemtype="http://schema.org/Product" data-single-product-id="75696330"><div itemprop="image"></div><div class="ecwid-title" itemprop="name" content="M&#x0026;Ms Chalk Bag"></div><div itemtype="http://schema.org/Offer" itemscope itemprop="offers"><div class="ecwid-productBrowser-price ecwid-price" itemprop="price" content="28" data-spw-price-location="button"><div itemprop="priceCurrency" content="USD"></div></div></div><div customprop="addtobag"></div></div>
-					</div>
-					<div class="item">
-						<div class="ecwid ecwid-SingleProduct-v2 ecwid-SingleProduct-v2-centered ecwid-Product ecwid-Product-75696332" itemscope itemtype="http://schema.org/Product" data-single-product-id="75696332"><div itemprop="image"></div><div class="ecwid-title" itemprop="name" content="Sandstone Chalk Bag"></div><div itemtype="http://schema.org/Offer" itemscope itemprop="offers"><div class="ecwid-productBrowser-price ecwid-price" itemprop="price" content="28" data-spw-price-location="button"><div itemprop="priceCurrency" content="USD"></div></div></div><div customprop="addtobag"></div></div>
-					</div>
-					<div class="item">
-						<div class="ecwid ecwid-SingleProduct-v2 ecwid-SingleProduct-v2-centered ecwid-Product ecwid-Product-75682526" itemscope itemtype="http://schema.org/Product" data-single-product-id="75682526"><div itemprop="image"></div><div class="ecwid-title" itemprop="name" content="The Climbing Dead Short Sleeve T-Shirt"></div><div itemtype="http://schema.org/Offer" itemscope itemprop="offers"><div class="ecwid-productBrowser-price ecwid-price" itemprop="price" content="22" data-spw-price-location="button"><div itemprop="priceCurrency" content="USD"></div></div></div><div customprop="addtobag"></div></div>
-					</div>
-					<div class="item">
-						<div class="ecwid ecwid-SingleProduct-v2 ecwid-SingleProduct-v2-centered ecwid-Product ecwid-Product-76153772" itemscope itemtype="http://schema.org/Product" data-single-product-id="76153772"><div itemprop="image"></div><div class="ecwid-title" itemprop="name" content="Upper Limit Hoodie (Black Logo)"></div><div itemtype="http://schema.org/Offer" itemscope itemprop="offers"><div class="ecwid-productBrowser-price ecwid-price" itemprop="price" content="47" data-spw-price-location="button"><div itemprop="priceCurrency" content="USD"></div></div></div><div customprop="addtobag"></div></div>
-					</div>
-					<div class="item">
-						<div class="ecwid ecwid-SingleProduct-v2 ecwid-SingleProduct-v2-centered ecwid-Product ecwid-Product-76153912" itemscope itemtype="http://schema.org/Product" data-single-product-id="76153912"><div itemprop="image"></div><div class="ecwid-title" itemprop="name" content="Upper Limit Hoodie (White Logo)"></div><div itemtype="http://schema.org/Offer" itemscope itemprop="offers"><div class="ecwid-productBrowser-price ecwid-price" itemprop="price" content="47" data-spw-price-location="button"><div itemprop="priceCurrency" content="USD"></div></div></div><div customprop="addtobag"></div></div>
-					</div>
-					<div class="item">
-						<div class="ecwid ecwid-SingleProduct-v2 ecwid-SingleProduct-v2-centered ecwid-Product ecwid-Product-76153877" itemscope itemtype="http://schema.org/Product" data-single-product-id="76153877"><div itemprop="image"></div><div class="ecwid-title" itemprop="name" content="Upper Limit Men&#x0027;s short sleeve v-neck (White Logo)"></div><div itemtype="http://schema.org/Offer" itemscope itemprop="offers"><div class="ecwid-productBrowser-price ecwid-price" itemprop="price" content="25" data-spw-price-location="button"><div itemprop="priceCurrency" content="USD"></div></div></div><div customprop="addtobag"></div></div>
-					</div>
-					<div class="item">
-						<div class="ecwid ecwid-SingleProduct-v2 ecwid-SingleProduct-v2-centered ecwid-Product ecwid-Product-77375404" itemscope itemtype="http://schema.org/Product" data-single-product-id="77375404"><div itemprop="image"></div><div class="ecwid-title" itemprop="name" content="Women’s Crop Tee"></div><div itemtype="http://schema.org/Offer" itemscope itemprop="offers"><div class="ecwid-productBrowser-price ecwid-price" itemprop="price" content="23" data-spw-price-location="button"><div itemprop="priceCurrency" content="USD"></div></div></div><div customprop="addtobag"></div></div>
-					</div>
+    </style>
 
-				</div>
-			</div>
-		</div>
-		
-		<script type="text/javascript" src="https://app.ecwid.com/script.js?10486767&data_platform=singleproduct_v2" charset="utf-8"></script><script type="text/javascript">xProduct()</script>
-		
-		<!-- Owl Carousel -->
-		<script src="http://icewind.comxa.com/vendor/js/jquery/jquery.min.js"></script>
-		<script src="http://icewind.comxa.com/vendor/owlcarousel/owl.carousel.min.js"></script>
-		<script src="http://sdks.shopifycdn.com/js-buy-sdk/v0/latest/shopify-buy.umd.polyfilled.min.js"></script>
+</head>
 
-		<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-		
-		<!-- fancy box -->
-        <script src="http://icewind.comxa.com/vendor/fancybox/js/jquery.fancybox.js"></script>
-        <script src="http://icewind.comxa.com/vendor/fancybox/js/jquery.fancybox-buttons.js"></script>
-        <script src="http://icewind.comxa.com/vendor/fancybox/js/jquery.fancybox-thumbs.js"></script>
+<body>
+    <div class="body">
+        <div class="ecwid-advertisement-section">
+            <div class="owl-carousel">
+                <div class="item">
+                    <div class="ecwid ecwid-SingleProduct-v2 ecwid-SingleProduct-v2-centered ecwid-Product ecwid-Product-75696286" itemscope itemtype="http://schema.org/Product" data-single-product-id="75696286">
+                        <div itemprop="image"></div>
+                        <div class="ecwid-title" itemprop="name" content="Aspen Luxury Fur Chalk Bag"></div>
+                        <div itemtype="http://schema.org/Offer" itemscope itemprop="offers">
+                            <div class="ecwid-productBrowser-price ecwid-price" itemprop="price" content="49" data-spw-price-location="button">
+                                <div itemprop="priceCurrency" content="USD"></div>
+                            </div>
+                        </div>
+                        <div customprop="options"></div>
+                        <div customprop="addtobag"></div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="ecwid ecwid-SingleProduct-v2 ecwid-SingleProduct-v2-centered ecwid-Product ecwid-Product-75628098" itemscope itemtype="http://schema.org/Product" data-single-product-id="75628098">
+                        <div itemprop="image"></div>
+                        <div class="ecwid-title" itemprop="name" content="Bahamas Chalk Bag"></div>
+                        <div itemtype="http://schema.org/Offer" itemscope itemprop="offers">
+                            <div class="ecwid-productBrowser-price ecwid-price" itemprop="price" content="28" data-spw-price-location="button">
+                                <div itemprop="priceCurrency" content="USD"></div>
+                            </div>
+                        </div>
+                        <div customprop="options"></div>
+                        <div customprop="addtobag"></div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="ecwid ecwid-SingleProduct-v2 ecwid-SingleProduct-v2-centered ecwid-Product ecwid-Product-77375469" itemscope itemtype="http://schema.org/Product" data-single-product-id="77375469">
+                        <div itemprop="image"></div>
+                        <div class="ecwid-title" itemprop="name" content="Climbing Dead Short sleeve women&#x0027;s t-shirt"></div>
+                        <div itemtype="http://schema.org/Offer" itemscope itemprop="offers">
+                            <div class="ecwid-productBrowser-price ecwid-price" itemprop="price" content="24.95" data-spw-price-location="button">
+                                <div itemprop="priceCurrency" content="USD"></div>
+                            </div>
+                        </div>
+                        <div customprop="addtobag"></div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="ecwid ecwid-SingleProduct-v2 ecwid-SingleProduct-v2-centered ecwid-Product ecwid-Product-75696312" itemscope itemtype="http://schema.org/Product" data-single-product-id="75696312">
+                        <div itemprop="image"></div>
+                        <div class="ecwid-title" itemprop="name" content="Cordura Stealth Chalk Bag"></div>
+                        <div itemtype="http://schema.org/Offer" itemscope itemprop="offers">
+                            <div class="ecwid-productBrowser-price ecwid-price" itemprop="price" content="34" data-spw-price-location="button">
+                                <div itemprop="priceCurrency" content="USD"></div>
+                            </div>
+                        </div>
+                        <div customprop="options"></div>
+                        <div customprop="addtobag"></div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="ecwid ecwid-SingleProduct-v2 ecwid-SingleProduct-v2-centered ecwid-Product ecwid-Product-75696315" itemscope itemtype="http://schema.org/Product" data-single-product-id="75696315">
+                        <div itemprop="image"></div>
+                        <div class="ecwid-title" itemprop="name" content="Flannel Chalk Bag"></div>
+                        <div itemtype="http://schema.org/Offer" itemscope itemprop="offers">
+                            <div class="ecwid-productBrowser-price ecwid-price" itemprop="price" content="28" data-spw-price-location="button">
+                                <div itemprop="priceCurrency" content="USD"></div>
+                            </div>
+                        </div>
+                        <div customprop="options"></div>
+                        <div customprop="addtobag"></div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="ecwid ecwid-SingleProduct-v2 ecwid-SingleProduct-v2-centered ecwid-Product ecwid-Product-75696317" itemscope itemtype="http://schema.org/Product" data-single-product-id="75696317">
+                        <div itemprop="image"></div>
+                        <div class="ecwid-title" itemprop="name" content="Grassy Aztec Chalk Bag"></div>
+                        <div itemtype="http://schema.org/Offer" itemscope itemprop="offers">
+                            <div class="ecwid-productBrowser-price ecwid-price" itemprop="price" content="28" data-spw-price-location="button">
+                                <div itemprop="priceCurrency" content="USD"></div>
+                            </div>
+                        </div>
+                        <div customprop="addtobag"></div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="ecwid ecwid-SingleProduct-v2 ecwid-SingleProduct-v2-centered ecwid-Product ecwid-Product-75696330" itemscope itemtype="http://schema.org/Product" data-single-product-id="75696330">
+                        <div itemprop="image"></div>
+                        <div class="ecwid-title" itemprop="name" content="M&#x0026;Ms Chalk Bag"></div>
+                        <div itemtype="http://schema.org/Offer" itemscope itemprop="offers">
+                            <div class="ecwid-productBrowser-price ecwid-price" itemprop="price" content="28" data-spw-price-location="button">
+                                <div itemprop="priceCurrency" content="USD"></div>
+                            </div>
+                        </div>
+                        <div customprop="addtobag"></div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="ecwid ecwid-SingleProduct-v2 ecwid-SingleProduct-v2-centered ecwid-Product ecwid-Product-75696332" itemscope itemtype="http://schema.org/Product" data-single-product-id="75696332">
+                        <div itemprop="image"></div>
+                        <div class="ecwid-title" itemprop="name" content="Sandstone Chalk Bag"></div>
+                        <div itemtype="http://schema.org/Offer" itemscope itemprop="offers">
+                            <div class="ecwid-productBrowser-price ecwid-price" itemprop="price" content="28" data-spw-price-location="button">
+                                <div itemprop="priceCurrency" content="USD"></div>
+                            </div>
+                        </div>
+                        <div customprop="addtobag"></div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="ecwid ecwid-SingleProduct-v2 ecwid-SingleProduct-v2-centered ecwid-Product ecwid-Product-75682526" itemscope itemtype="http://schema.org/Product" data-single-product-id="75682526">
+                        <div itemprop="image"></div>
+                        <div class="ecwid-title" itemprop="name" content="The Climbing Dead Short Sleeve T-Shirt"></div>
+                        <div itemtype="http://schema.org/Offer" itemscope itemprop="offers">
+                            <div class="ecwid-productBrowser-price ecwid-price" itemprop="price" content="22" data-spw-price-location="button">
+                                <div itemprop="priceCurrency" content="USD"></div>
+                            </div>
+                        </div>
+                        <div customprop="addtobag"></div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="ecwid ecwid-SingleProduct-v2 ecwid-SingleProduct-v2-centered ecwid-Product ecwid-Product-76153772" itemscope itemtype="http://schema.org/Product" data-single-product-id="76153772">
+                        <div itemprop="image"></div>
+                        <div class="ecwid-title" itemprop="name" content="Upper Limit Hoodie (Black Logo)"></div>
+                        <div itemtype="http://schema.org/Offer" itemscope itemprop="offers">
+                            <div class="ecwid-productBrowser-price ecwid-price" itemprop="price" content="47" data-spw-price-location="button">
+                                <div itemprop="priceCurrency" content="USD"></div>
+                            </div>
+                        </div>
+                        <div customprop="addtobag"></div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="ecwid ecwid-SingleProduct-v2 ecwid-SingleProduct-v2-centered ecwid-Product ecwid-Product-76153912" itemscope itemtype="http://schema.org/Product" data-single-product-id="76153912">
+                        <div itemprop="image"></div>
+                        <div class="ecwid-title" itemprop="name" content="Upper Limit Hoodie (White Logo)"></div>
+                        <div itemtype="http://schema.org/Offer" itemscope itemprop="offers">
+                            <div class="ecwid-productBrowser-price ecwid-price" itemprop="price" content="47" data-spw-price-location="button">
+                                <div itemprop="priceCurrency" content="USD"></div>
+                            </div>
+                        </div>
+                        <div customprop="addtobag"></div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="ecwid ecwid-SingleProduct-v2 ecwid-SingleProduct-v2-centered ecwid-Product ecwid-Product-76153877" itemscope itemtype="http://schema.org/Product" data-single-product-id="76153877">
+                        <div itemprop="image"></div>
+                        <div class="ecwid-title" itemprop="name" content="Upper Limit Men&#x0027;s short sleeve v-neck (White Logo)"></div>
+                        <div itemtype="http://schema.org/Offer" itemscope itemprop="offers">
+                            <div class="ecwid-productBrowser-price ecwid-price" itemprop="price" content="25" data-spw-price-location="button">
+                                <div itemprop="priceCurrency" content="USD"></div>
+                            </div>
+                        </div>
+                        <div customprop="addtobag"></div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="ecwid ecwid-SingleProduct-v2 ecwid-SingleProduct-v2-centered ecwid-Product ecwid-Product-77375404" itemscope itemtype="http://schema.org/Product" data-single-product-id="77375404">
+                        <div itemprop="image"></div>
+                        <div class="ecwid-title" itemprop="name" content="Women’s Crop Tee"></div>
+                        <div itemtype="http://schema.org/Offer" itemscope itemprop="offers">
+                            <div class="ecwid-productBrowser-price ecwid-price" itemprop="price" content="23" data-spw-price-location="button">
+                                <div itemprop="priceCurrency" content="USD"></div>
+                            </div>
+                        </div>
+                        <div customprop="addtobag"></div>
+                    </div>
+                </div>
 
-		<script>
+            </div>
+        </div>
+    </div>
 
-	$(document).ready(function(){
+    <script type="text/javascript" src="https://app.ecwid.com/script.js?10486767&data_platform=singleproduct_v2" charset="utf-8"></script>
+    <script type="text/javascript">
+        xProduct()
 
-		function init() {
-			$('.owl-carousel').owlCarousel({
-				loop:true,
-				margin:10,
-				nav:true,
-				navText: [,],
-				autoplay:false,
-				autoplayTimeout:1000,
-				autoplayHoverPause:true,
-				responsive:{
-					0:{
-						items:1
-					},
-					600:{
-						items:2
-					},
-					1000:{
-						items:4
-					},
-					1400:{
-						items:5
-					}
-				}
-			});
-		}
-		
-		init();
-			  
-		});
+    </script>
 
-		</script>
+    <!-- Owl Carousel -->
+    <script src="http://icewind.comxa.com/vendor/js/jquery/jquery.min.js"></script>
+    <script src="http://icewind.comxa.com/vendor/owlcarousel/owl.carousel.min.js"></script>
+    <script src="http://sdks.shopifycdn.com/js-buy-sdk/v0/latest/shopify-buy.umd.polyfilled.min.js"></script>
 
-	</body>
+    <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+
+    <!-- fancy box -->
+    <script src="http://icewind.comxa.com/vendor/fancybox/js/jquery.fancybox.js"></script>
+    <script src="http://icewind.comxa.com/vendor/fancybox/js/jquery.fancybox-buttons.js"></script>
+    <script src="http://icewind.comxa.com/vendor/fancybox/js/jquery.fancybox-thumbs.js"></script>
+
+    <script>
+        $(document).ready(function() {
+
+            function init() {
+                $('.owl-carousel').owlCarousel({
+                    loop: true,
+                    margin: 10,
+                    nav: true,
+                    navText: [, ],
+                    autoplay: false,
+                    autoplayTimeout: 1000,
+                    autoplayHoverPause: true,
+                    responsive: {
+                        0: {
+                            items: 1
+                        },
+                        600: {
+                            items: 2
+                        },
+                        1000: {
+                            items: 4
+                        },
+                        1400: {
+                            items: 5
+                        }
+                    }
+                });
+            }
+
+            init();
+
+        });
+
+    </script>
+
+</body>
+
 </html>

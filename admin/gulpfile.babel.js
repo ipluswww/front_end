@@ -101,7 +101,7 @@ gulp.task('html', () => {
 
 // Handle assets changes.
 gulp.task('assets', () => {
-	return gulp.src(`${DIRS.src}/assets/*`)
+	return gulp.src('${DIRS.src}/assets/*')
 		.pipe(gulp.dest(`${DIRS.dest}/assets`));
 });
 
