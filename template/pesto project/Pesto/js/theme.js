@@ -669,14 +669,6 @@ $(document).ready(function() {
         $(this).siblings('.dropdown-menu').not('.droped').slideDown("slow").addClass('droped');
     });
 
-
-    $('.header-top-links .dropdown-search .dropdown-menu').mouseleave(function() {
-		
-		'use strict';
-		
-        $(this).slideUp().removeClass("droped");
-    });
-
     /* set owl-carousel in product */
     if ($.isFunction($.fn.owlCarousel) ) {
         $('.product-owl-carousel').owlCarousel({
@@ -787,7 +779,7 @@ $(document).ready(function() {
     }
 
     if ($('.header-normal').length) {
-        initializeMenuCarousel();            
+		initializeMenuCarousel(); 
     }
     
     // submenu drop or collapse
